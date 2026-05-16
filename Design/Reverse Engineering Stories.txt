@@ -1,0 +1,103 @@
+<<<<<<< HEAD
+I am trying to hack into the following application http://paragonwiki.com/wiki/Titan_Icon, info / hints can be found at http://www.cohtitan.com/forum/index.php?board=174.0. One topic of note > http://www.cohtitan.com/forum/index.php/topic,11356.0.html
+
+I want to be able to...
+
+1) fire a power in any direction
+-- in COH type /spawn_npc model_statesman test > a toon loads
+-- type /loadcostume Spyder_Rune > a costume appears on the toon (costumes must be located in COH\costumes)
+-- type /loadcostume Spyder_Rune_Blast.fx > a new costume loads, one with a power in it, the "power" fires in specific direction, towards 0,0,0 on the map
+-- type/editpos > you can see the coordinates of the toon in x,y.z
+
+Question > what memory variable / function, etc can change the destination of the power being fired? Want to be able to fire powers in any direction
+
+2) retrieve info of target character that cursor is hovering over
+-- I have found out how to access the name and pos of a targeted character ( I can share the code)
+> pointer to target Memory Address:=0x00F14FB0 
+> name  := pointer to target Memory Address + 12740 (needs to be converted to hex)
+> x,y,z := pointer to target Memory Address + 92,96,100 (needs to be converted to hex)
+
+Question > how do i get the details for the character the mouse is hovering over (this causes the name of te character to popp up so the software must know)
+
+3) Modify In Game menu
+-- The COH game comes with a number of menues / dialogue boxes. Key are Combat Attributes, Incarnate Abilitites, Powers Tray, + custom, main menu, targeted character, and chat. Each dialogue has trays, options, etx
+> is there a way to hack into COH to...
+> remove powers in trays
+> add powers to trays (can do macros already) looking for actual powers with pictures
+> change groupings, grouping titles, powers in groupings, specifiy "automatic" powers
+> use different images for powers
+> choose what is highlighted and what isnt
+> change what is displayed on tooltips
+> capture when button, power, etc is clicked, expanded, etc...
+
+4) Dynamically load Pop up menu
+-- load a popup menu into Icon (place into COH\data\texts\English\Menus) and relaunch COH
+-- change a menu item and activate pop up, menu does not change
+> figure out way to reload contents of popmenu on demand
+
+5)Get the x,y,z boundaries of walls, floors, and ceilings on the map
+-- currently the camera/ main character respects boundaries on the map ie cannot move through floors and walls on the map
+-- the only way to move toons is to dynamically change x,y,z in memory
+-- is there a way of getting coordinates / boundaries of building/floor from memory, that way I can program collision detection
+
+6) Changing direction
+-- currently rotation of a targeted character is captured using a rotation matrix at pointer to target Memory Address (0x00F14FB0) + 56, 64,80,	88
+> what is the function that converts the question "turn left 5 degrees" into the right numbers to plug into the matrix (my 3d math sucks)
+
+7)launching key binds
+-- currently the only way to execute an action in icon is through 
+> typing in a keybind in the command line eg: /spawn_npc model_statesman test
+> loading a keybind file that binds a keystroke eg:/bind_load data\custom_keybinds.txt (with "B /spawn_npc model_statesman test" in the file) and press the appropriate key
+-- Is there a way to invoke keybind commands directly from memory? key commands are at http://paragonwiki.com/wiki/Titan_Icon
+=======
+I am trying to hack into the following application http://paragonwiki.com/wiki/Titan_Icon, info / hints can be found at http://www.cohtitan.com/forum/index.php?board=174.0. One topic of note > http://www.cohtitan.com/forum/index.php/topic,11356.0.html
+
+I want to be able to...
+
+1) fire a power in any direction
+-- in COH type /spawn_npc model_statesman test > a toon loads
+-- type /loadcostume Spyder_Rune > a costume appears on the toon (costumes must be located in COH\costumes)
+-- type /loadcostume Spyder_Rune_Blast.fx > a new costume loads, one with a power in it, the "power" fires in specific direction, towards 0,0,0 on the map
+-- type/editpos > you can see the coordinates of the toon in x,y.z
+
+Question > what memory variable / function, etc can change the destination of the power being fired? Want to be able to fire powers in any direction
+
+2) retrieve info of target character that cursor is hovering over
+-- I have found out how to access the name and pos of a targeted character ( I can share the code)
+> pointer to target Memory Address:=0x00F14FB0 
+> name  := pointer to target Memory Address + 12740 (needs to be converted to hex)
+> x,y,z := pointer to target Memory Address + 92,96,100 (needs to be converted to hex)
+
+Question > how do i get the details for the character the mouse is hovering over (this causes the name of te character to popp up so the software must know)
+
+3) Modify In Game menu
+-- The COH game comes with a number of menues / dialogue boxes. Key are Combat Attributes, Incarnate Abilitites, Powers Tray, + custom, main menu, targeted character, and chat. Each dialogue has trays, options, etx
+> is there a way to hack into COH to...
+> remove powers in trays
+> add powers to trays (can do macros already) looking for actual powers with pictures
+> change groupings, grouping titles, powers in groupings, specifiy "automatic" powers
+> use different images for powers
+> choose what is highlighted and what isnt
+> change what is displayed on tooltips
+> capture when button, power, etc is clicked, expanded, etc...
+
+4) Dynamically load Pop up menu
+-- load a popup menu into Icon (place into COH\data\texts\English\Menus) and relaunch COH
+-- change a menu item and activate pop up, menu does not change
+> figure out way to reload contents of popmenu on demand
+
+5)Get the x,y,z boundaries of walls, floors, and ceilings on the map
+-- currently the camera/ main character respects boundaries on the map ie cannot move through floors and walls on the map
+-- the only way to move toons is to dynamically change x,y,z in memory
+-- is there a way of getting coordinates / boundaries of building/floor from memory, that way I can program collision detection
+
+6) Changing direction
+-- currently rotation of a targeted character is captured using a rotation matrix at pointer to target Memory Address (0x00F14FB0) + 56, 64,80,	88
+> what is the function that converts the question "turn left 5 degrees" into the right numbers to plug into the matrix (my 3d math sucks)
+
+7)launching key binds
+-- currently the only way to execute an action in icon is through 
+> typing in a keybind in the command line eg: /spawn_npc model_statesman test
+> loading a keybind file that binds a keystroke eg:/bind_load data\custom_keybinds.txt (with "B /spawn_npc model_statesman test" in the file) and press the appropriate key
+-- Is there a way to invoke keybind commands directly from memory? key commands are at http://paragonwiki.com/wiki/Titan_Icon
+>>>>>>> ffc95739ea57c1fee3cd9a2279a3e9217057a4ea

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HVT Crowd Viewer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ── Left panel ── */
+  #sidebar {
+    width: 340px;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #2d2d4e;
+    background: #16213e;
+  }
+
+  #toolbar {
+    padding: 12px;
+    background: #0f3460;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #toolbar h1 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e94560;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  #openBtn {
+    padding: 7px 12px;
+    background: #e94560;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  #openBtn:hover { background: #c73652; }
+
+  #searchBox {
+    padding: 6px 10px;
+    background: #1a1a2e;
+    border: 1px solid #2d2d4e;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 13px;
+    display: none;
+  }
+  #searchBox::placeholder { color: #666; }
+
+  #status {
+    font-size: 11px;
+    color: #888;
+  }
+
+  #tree {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+  }
+
+  /* ── Tree nodes ── */
+  .node {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    user-select: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .node:hover { background: #2d2d4e; }
+  .node.active { background: #0f3460; color: #e94560; }
+
+  .node .toggle {
+    font-size: 10px;
+    color: #666;
+    width: 12px;
+    flex-shrink: 0;
+  }
+  .node .icon { flex-shrink: 0; }
+  .node .label { overflow: hidden; text-overflow: ellipsis; }
+
+  .children { display: none; }
+  .children.open { display: block; }
+
+  .indent1 .node { padding-left: 28px; }
+  .indent2 .node { padding-left: 44px; }
+  .indent3 .node { padding-left: 60px; }
+
+  /* ── Right panel ── */
+  #detail {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    background: #1a1a2e;
+  }
+
+  #detail h2 {
+    font-size: 20px;
+    color: #e94560;
+    margin-bottom: 4px;
+  }
+  #detail .subtitle {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    background: #16213e;
+    border: 1px solid #2d2d4e;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .card h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #e94560;
+    margin-bottom: 12px;
+  }
+
+  .pill {
+    display: inline-block;
+    background: #0f3460;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 12px;
+    margin: 3px;
+    color: #aad4f5;
+  }
+
+  .kv { display: flex; gap: 12px; margin-bottom: 6px; font-size: 13px; }
+  .kv .k { color: #888; min-width: 140px; }
+  .kv .v { color: #e0e0e0; }
+
+  .crowd-members { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .member-chip {
+    background: #2d2d4e;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #aad4f5;
+  }
+  .member-chip:hover { background: #0f3460; }
+  .member-chip.is-crowd { color: #e9b560; }
+
+  #placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 12px;
+    color: #444;
+    text-align: center;
+  }
+  #placeholder .big { font-size: 48px; }
+  #placeholder p { font-size: 14px; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #2d2d4e; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div id="toolbar">
+    <h1>⚡ HVT Crowd Viewer</h1>
+    <button id="openBtn">📂 Open repos/ folder</button>
+    <input id="searchBox" type="search" placeholder="Search characters…">
+    <div id="status">No folder loaded.</div>
+  </div>
+  <div id="tree"></div>
+</div>
+
+<div id="detail">
+  <div id="placeholder">
+    <div class="big">🦸</div>
+    <p>Click <strong>Open repos/ folder</strong> and pick:<br><code style="color:#e94560">coh-files\repos</code><br><small style="color:#555">(must contain crowds\ and characters\ inside)</small></p>
+  </div>
+  <div id="content" style="display:none"></div>
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────────
+let crowdsHandle  = null;
+let charsHandle   = null;
+let reposHandle   = null;
+const crowdCache      = {};  // crowdName → parsed JSON (top-level files)
+const legacyHierarchy = {};  // crowdName → {Name, Members} from crowd-hierarchy.json
+const charCache       = {};  // characterName → parsed JSON
+
+// ── File System Access ─────────────────────────────────────────────────────
+document.getElementById('openBtn').addEventListener('click', async () => {
+  try {
+    const root = await window.showDirectoryPicker({ mode: 'read' });
+    reposHandle = root;
+    setStatus('Opening…');
+    try {
+      crowdsHandle = await root.getDirectoryHandle('crowds');
+      charsHandle  = await root.getDirectoryHandle('characters');
+    } catch {
+      setStatus('⚠ Pick the repos/ folder (must contain crowds/ and characters/ inside)');
+      return;
+    }
+    await loadTree();
+  } catch (e) {
+    if (e.name !== 'AbortError') setStatus('Error: ' + e.message);
+  }
+});
+
+async function readJson(dirHandle, filename) {
+  const fh = await dirHandle.getFileHandle(filename);
+  return JSON.parse(await (await fh.getFile()).text());
+}
+
+function toFilename(name) {
+  return name.replace(/\//g, '_') + '.json';
+}
+
+// ── Build sidebar tree ─────────────────────────────────────────────────────
+async function loadTree() {
+  setStatus('Loading crowds…');
+  const tree = document.getElementById('tree');
+  tree.innerHTML = '';
+
+  // Collect and sort crowd filenames
+  const crowdFiles = [];
+  for await (const entry of crowdsHandle.values()) {
+    if (entry.kind === 'file' && entry.name.endsWith('.json')) {
+      crowdFiles.push(entry.name);
+    }
+  }
+  crowdFiles.sort();
+
+  // Load all crowd JSONs into cache (they're tiny — 9 files)
+  for (const fname of crowdFiles) {
+    try {
+      const data = await readJson(crowdsHandle, fname);
+      crowdCache[data.Name] = data;
+    } catch (e) {
+      console.warn('Failed to load crowd', fname, e);
+    }
+  }
+
+  // Try to load the legacy hierarchy for full sub-crowd resolution
+  await loadLegacyHierarchy();
+
+  const allChars = Object.values(crowdCache).flatMap(c => (c.Members||[]).filter(m => !m.IsCrowd));
+  const uniqueChars = new Set(allChars.map(m => m.Name)).size;
+  setStatus(`${crowdFiles.length} crowds · ${uniqueChars} characters`);
+  document.getElementById('searchBox').style.display = 'block';
+
+  // Render one top-level node per crowd file
+  for (const crowdName of Object.keys(crowdCache).sort()) {
+    tree.appendChild(buildCrowdNode(crowdCache[crowdName], 0));
+  }
+}
+
+async function loadLegacyHierarchy() {
+  try {
+    const fh = await reposHandle.getFileHandle('crowd-hierarchy.json');
+    const text = await (await fh.getFile()).text();
+    const raw = JSON.parse(text);
+    // raw is a dict: crowdName → {Name, Members:[{Name,IsCrowd}]}
+    for (const val of Object.values(raw)) {
+      if (val && val.Name) legacyHierarchy[val.Name] = val;
+    }
+    console.log('Legacy hierarchy loaded:', Object.keys(legacyHierarchy).length, 'crowds');
+  } catch (e) {
+    console.warn('crowd-hierarchy.json not found — sub-crowd resolution limited', e);
+  }
+}
+
+function resolveCrowd(name) {
+  return crowdCache[name] || legacyHierarchy[name] || null;
+}
+
+function buildCrowdNode(crowd, depth) {
+  const wrapper = document.createElement('div');
+
+  const row = document.createElement('div');
+  row.className = 'node';
+  row.style.paddingLeft = (12 + depth * 16) + 'px';
+
+  const members = crowd.Members || [];
+  const subCrowds = members.filter(m => m.IsCrowd);
+  const chars     = members.filter(m => !m.IsCrowd);
+  const hasChildren = members.length > 0;
+
+  row.innerHTML = `
+    <span class="toggle">${hasChildren ? '▶' : ' '}</span>
+    <span class="icon">👥</span>
+    <span class="label" title="${crowd.Name}">${crowd.Name}</span>
+    <span style="margin-left:auto;font-size:11px;color:#555">${members.length}</span>
+  `;
+
+  const childrenDiv = document.createElement('div');
+  childrenDiv.className = 'children';
+
+  let expanded = false;
+
+  row.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    showCrowd(crowd);
+
+    if (!hasChildren) return;
+    expanded = !expanded;
+    childrenDiv.classList.toggle('open', expanded);
+    row.querySelector('.toggle').textContent = expanded ? '▼' : '▶';
+
+    if (expanded && childrenDiv.childElementCount === 0) {
+      await populateCrowdChildren(childrenDiv, crowd, depth + 1);
+    }
+  });
+
+  wrapper.appendChild(row);
+  wrapper.appendChild(childrenDiv);
+  return wrapper;
+}
+
+async function populateCrowdChildren(container, crowd, depth) {
+  const members = crowd.Members || [];
+
+  for (const m of members) {
+    if (m.IsCrowd) {
+      const sub = resolveCrowd(m.Name);
+      if (sub) {
+        container.appendChild(buildCrowdNode(sub, depth));
+      } else {
+        const row = leafNode('👥', m.Name, depth, true);
+        row.addEventListener('click', () => showMissingCrowd(m.Name));
+        container.appendChild(row);
+      }
+    } else {
+      // character
+      const row = leafNode('🦸', m.Name, depth, false);
+      row.addEventListener('click', async () => {
+        markActive(row);
+        await showCharacter(m.Name);
+      });
+      container.appendChild(row);
+    }
+  }
+}
+
+function leafNode(icon, name, depth, isCrowd) {
+  const div = document.createElement('div');
+  div.className = 'node';
+  div.style.paddingLeft = (12 + depth * 16) + 'px';
+  div.innerHTML = `
+    <span class="toggle"> </span>
+    <span class="icon">${icon}</span>
+    <span class="label" title="${name}">${name}</span>
+  `;
+  return div;
+}
+
+let activeRow = null;
+function markActive(row) {
+  if (activeRow) activeRow.classList.remove('active');
+  activeRow = row;
+  row.classList.add('active');
+}
+
+// ── Detail panel ───────────────────────────────────────────────────────────
+function showPlaceholder(show) {
+  document.getElementById('placeholder').style.display = show ? 'flex' : 'none';
+  document.getElementById('content').style.display = show ? 'none' : 'block';
+}
+
+function showCrowd(crowd) {
+  showPlaceholder(false);
+  const members = crowd.Members || [];
+  const subCrowds = members.filter(m => m.IsCrowd);
+  const chars     = members.filter(m => !m.IsCrowd && m.Name);
+
+  let html = `
+    <h2>👥 ${esc(crowd.Name)}</h2>
+    <div class="subtitle">Crowd · ${members.length} members</div>
+  `;
+
+  if (subCrowds.length) {
+    html += `<div class="card"><h3>Sub-Crowds (${subCrowds.length})</h3><div class="crowd-members">`;
+    for (const s of subCrowds) {
+      html += `<span class="member-chip is-crowd" onclick="clickSubCrowd('${esc(s.Name)}')">👥 ${esc(s.Name)}</span>`;
+    }
+    html += `</div></div>`;
+  }
+
+  if (chars.length) {
+    html += `<div class="card"><h3>Characters (${chars.length})</h3><div class="crowd-members">`;
+    for (const c of chars) {
+      html += `<span class="member-chip" onclick="clickCharacter('${esc(c.Name.replace(/'/g,"\\\'"))}')">🦸 ${esc(c.Name)}</span>`;
+    }
+    html += `</div></div>`;
+  }
+
+  document.getElementById('content').innerHTML = html;
+}
+
+async function showCharacter(name) {
+  showPlaceholder(false);
+  document.getElementById('content').innerHTML = `<h2>🦸 ${esc(name)}</h2><div class="subtitle">Loading…</div>`;
+
+  let data = charCache[name];
+  if (!data) {
+    try {
+      const fname = toFilename(name);
+      data = await readJson(charsHandle, fname);
+      charCache[name] = data;
+    } catch (e) {
+      document.getElementById('content').innerHTML = `
+        <h2>🦸 ${esc(name)}</h2>
+        <div class="subtitle" style="color:#e94560">Character file not found: ${esc(toFilename(name))}</div>`;
+      return;
+    }
+  }
+
+  const identity = data.defaultIdentity || data.DefaultIdentity || {};
+  const groups   = data.OptionGroups || [];
+  const identities = (groups.find(g => g.Name === 'Identities')?.Options || []);
+  const powers     = (groups.find(g => g.Name === 'Powers')?.Options || []);
+  const movements  = (groups.find(g => g.Name === 'Movements')?.Options || []);
+
+  let html = `
+    <h2>🦸 ${esc(data.Name || name)}</h2>
+    <div class="subtitle">Character</div>
+    <div class="card">
+      <h3>Default Identity</h3>
+      <div class="kv"><span class="k">Surface / Model</span><span class="v">${esc(identity.Surface || identity.Name || '—')}</span></div>
+      <div class="kv"><span class="k">Type</span><span class="v">${identity.Type ?? '—'}</span></div>
+      ${identity.AnimationOnLoad ? `<div class="kv"><span class="k">Animation on Load</span><span class="v">${esc(identity.AnimationOnLoad)}</span></div>` : ''}
+    </div>
+  `;
+
+  if (identities.length > 1) {
+    html += `<div class="card"><h3>All Identities (${identities.length})</h3><div class="crowd-members">`;
+    for (const id of identities) {
+      const i = id.$ref ? '[ref]' : (id.Name || id.Surface || JSON.stringify(id));
+      html += `<span class="pill">${esc(i)}</span>`;
+    }
+    html += `</div></div>`;
+  }
+
+  if (powers.length) {
+    html += `<div class="card"><h3>Powers (${powers.length})</h3><div class="crowd-members">`;
+    for (const p of powers) {
+      html += `<span class="pill">⚡ ${esc(p.Name || JSON.stringify(p))}</span>`;
+    }
+    html += `</div></div>`;
+  }
+
+  if (movements.length) {
+    html += `<div class="card"><h3>Movements (${movements.length})</h3><div class="crowd-members">`;
+    for (const mv of movements) {
+      html += `<span class="pill">🏃 ${esc(mv.Name || '?')}</span>`;
+    }
+    html += `</div></div>`;
+  }
+
+  if (data.SavedPosition) {
+    const p = data.SavedPosition;
+    html += `<div class="card"><h3>Saved Position</h3>
+      <div class="kv"><span class="k">X</span><span class="v">${p.X ?? p.x ?? '—'}</span></div>
+      <div class="kv"><span class="k">Y</span><span class="v">${p.Y ?? p.y ?? '—'}</span></div>
+      <div class="kv"><span class="k">Z</span><span class="v">${p.Z ?? p.z ?? '—'}</span></div>
+    </div>`;
+  }
+
+  document.getElementById('content').innerHTML = html;
+}
+
+function showMissingCrowd(name) {
+  const crowd = resolveCrowd(name);
+  if (crowd) { showCrowd(crowd); return; }
+
+  showPlaceholder(false);
+  document.getElementById('content').innerHTML = `
+    <h2>👥 ${esc(name)}</h2>
+    <div class="subtitle" style="color:#e9b560">Sub-crowd not found in hierarchy data.</div>
+    <div class="card" style="color:#888;font-size:13px">
+      No crowd data found for <strong>${esc(name)}</strong>.<br><br>
+      Make sure <code>crowd-hierarchy.json</code> is present in the <code>repos/</code> folder.
+    </div>`;
+}
+
+// ── Click handlers from innerHTML ──────────────────────────────────────────
+window.clickSubCrowd = (name) => {
+  const crowd = resolveCrowd(name);
+  if (crowd) showCrowd(crowd); else showMissingCrowd(name);
+};
+window.clickCharacter = async (name) => {
+  await showCharacter(name);
+};
+
+// ── Search ─────────────────────────────────────────────────────────────────
+document.getElementById('searchBox').addEventListener('input', async (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  if (!q) { renderAllCrowds(); return; }
+
+  const tree = document.getElementById('tree');
+  tree.innerHTML = '<div style="padding:12px;color:#888;font-size:12px">Searching…</div>';
+
+  // Search character names across All Characters crowd
+  // Search across all crowd member names
+  const allMembers = Object.values(crowdCache).flatMap(c => c.Members || []);
+  const seen = new Set();
+  const hits = allMembers.filter(m => {
+    if (m.IsCrowd || !m.Name || !m.Name.toLowerCase().includes(q)) return false;
+    if (seen.has(m.Name)) return false;
+    seen.add(m.Name);
+    return true;
+  });
+
+  tree.innerHTML = `<div style="padding:8px 12px;font-size:11px;color:#888">${hits.length} results</div>`;
+  for (const m of hits.slice(0, 100)) {
+    const row = leafNode('🦸', m.Name, 0, false);
+    row.addEventListener('click', async () => {
+      markActive(row);
+      await showCharacter(m.Name);
+    });
+    tree.appendChild(row);
+  }
+  if (hits.length > 100) {
+    tree.innerHTML += `<div style="padding:8px 12px;font-size:11px;color:#888">…and ${hits.length - 100} more</div>`;
+  }
+});
+
+function renderAllCrowds() {
+  const tree = document.getElementById('tree');
+  tree.innerHTML = '';
+  for (const crowd of Object.values(crowdCache)) {
+    tree.appendChild(buildCrowdNode(crowd, 0));
+  }
+}
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+function setStatus(msg) {
+  document.getElementById('status').textContent = msg;
+}
+function esc(str) {
+  return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
