@@ -1,72 +1,23 @@
 ---
-state: ubiquitous-language
+state: domain-terms
 ---
 
-# Hero Virtual Tabletop
+# Module: [Hero Virtual Tabletop]
 
-**Terms**:
-- **Character**
-  - **character** — the foundational active unit the GM creates, names, equips, and directs
-  - **option group** — a named, keyed, ordered collection of *character options* (identities, abilities, or movements) on a *character*
-  - **position** — the 3D world-space coordinates and model matrix read from and written to game memory for a *character*
-  - **attack configuration** — the per-engagement combat parameters (mode, effect, knockback, hit/miss) a *character* holds
-  - **ghost shadow** — an independent *character* instance alongside a *model identity* character that carries FX costume overlays
-  - **active identity** — the currently rendered *identity* slot on a *character*
-  - **default identity** — the fallback *identity* used when the *active identity* is unset
-  - **maneuvering with camera** — a boolean mode flag enabling camera-driven locomotion for a *character*
-  - **distance count** — the accumulated travel distance in the current movement, expressed in tabletop units
-- **Crowd**
-  - **crowd** — a named, hierarchical container of *crowd members* the GM organizes for scene staging and group management
-  - **crowd member** — a *character* that participates in a *crowd* with membership behavior (roster reference, position save/restore)
-  - **saved position** — the X, Y, Z and matrix snapshot for a *crowd member* stored in the parent *crowd's* position dictionary
-  - **crowd repository** — the persistent JSON store for the entire *crowd* hierarchy, with daily backup
-  - **gang mode** — a boolean flag on *crowd* indicating coordinated activation under a *gang leader*
-  - **crowd manager** — the pre-session library surface where the GM creates, organizes, browses, and persists *crowds* and *characters*; distinct from the *desktop* which is the live session overlay
-  - **all characters crowd** — a special protected root *crowd* that aggregates every *character* in the *crowd repository* as a flat alphabetical list; cannot be deleted
-  - **clipboard** — the transient in-memory buffer that holds a cut or copied *crowd member* awaiting paste; *crowd members* carry the cut, copy, and paste behaviors that interact with the *clipboard*
-  - **flatten-copy** — the operation that replaces a *crowd's* membership with independently numbered deep-copy *characters*, breaking shared references within that *crowd*
-- **Identity**
-  - **identity** — the visual appearance a *character* presents in game, defined by a *surface* name and an *identity type*
-  - **model identity** — an *identity* type that renders via NPC model swap and requires a *ghost shadow* for FX
-  - **costume identity** — an *identity* type backed by a `.costume` file with variant management (original, persistent, ghost)
-  - **animation on load** — an *animated ability* that fires automatically when an *identity* is rendered
-  - **costume file** — the on-disk `.costume` text file an *identity* or *FX effect element* reads and writes
-  - **surface** — the model name or costume filename that identifies the visual resource for an *identity*
-- **Animated Ability**
-  - **animated ability** — a named, composable behavior a *character* can perform: a tree of *animation elements* executed in defined order
-  - **animation element** — the base concept for any single step in an *animated ability's* sequence
-  - **FX effect element** — an *animation element* that injects an FX directive into a *costume file* and reloads it
-  - **MOV element** — an *animation element* that issues a `mov` animation command to the game engine
-  - **sound element** — an *animation element* that plays a 3D positional audio file
-  - **pause element** — an *animation element* that blocks sequence execution for a configured duration
-  - **sequence element** — an *animation element* grouping child elements in And (sequential) or Or (random) order
-  - **reference ability** — an *animation element* that delegates execution to a linked *animated ability*
-  - **identity element** — an *animation element* that switches the owning *character's* active *identity* mid-sequence
-  - **animation resource** — the typed payload an *animation element* carries (file path, time value, or object reference)
-  - **attack** — an *animated ability* flagged for combat targeting with an *on-hit animation* and *attack configuration* management
-  - **on-hit animation** — the *animated ability* played on each *defender* when an *attack* connects
-- **Character Movement**
-  - **character movement** — a named, configured locomotion behavior (Walk, Run, Swim, Fly, Jump, etc.) on a *character*
-  - **movement instruction** — transient state holding the current rotation axis direction for an in-progress turn operation
-- **Roster**
-  - **roster** — the live staging area for a session: the set of *crowd members* promoted for active play and potentially *spawned*
-  - **desktop** — the game window overlay rendering *spawned characters* with status indicators, handling mouse and context-menu input
-  - **character targeting** — the operation sequence that resolves the game's target pointer to the application's selected *character*
-- **Game Bridge**
-  - **game bridge** — the exclusive communication channel between the application and the COH game engine
-  - **COH game directory** — the file-system path to the City of Heroes installation; required by the *game bridge* to locate the *HookCostume DLL*, COH data directory, and costume directory
-  - **keybind** — a single assembled COH slash command string with its arguments
-  - **keybind file** — the text file written to the COH data directory that loads and executes *keybinds* via the two-key idiom
-  - **HookCostume DLL** — the native DLL providing memory read/write, hover-NPC query, mouse 3D position, and collision-raycast access
-  - **memory element** — the target NPC's memory pointer, used to read label, position, and orientation
-  - **camera** — the in-game NPC serving as the GM's 3D viewpoint and movement destination reference
-  - **pop-up menu** — a COH menu definition file written to the menus directory and loaded via keybind
+Scope: The full runtime vocabulary for the Hero Virtual Tabletop — the GM tool that orchestrates live superhero RPG sessions inside the City of Heroes 3D engine.
 
-> Boundary concepts (see `# Boundary Domain`): **HCS** (owned by External Combat System), **COH Game Engine** (owned by City of Heroes Platform).
-
----
-
-The Hero Virtual Tabletop lets the *GM* orchestrate live superhero RPG sessions inside the City of Heroes 3D engine. All runtime capabilities — spawn, move, animate, attack — execute against a *character*. *Characters* are organized into *crowds* and persisted by the *crowd repository* between sessions. When a session begins, the *GM* promotes *crowd members* onto the *roster*, spawning them onto the *desktop*. Each *character* holds *identities* that control its appearance, *animated abilities* for its actions, and *character movements* for locomotion. Every instruction the *GM* issues is translated into *keybinds* or DLL calls through the *game bridge*, which the COH engine executes as slash commands.
+**Key Abstractions (term grouping)**:
+- **Character**: option group, position, attack configuration, ghost shadow, active identity, default identity, maneuvering with camera, distance count
+- **Crowd**: crowd member, saved position, crowd repository, gang mode, crowd manager, all characters crowd, clipboard, flatten-copy
+- **Identity**: model identity, costume identity, animation on load, costume file, surface
+- **Animated Ability**: animation element, FX effect element, MOV element, sound element, pause element, sequence element, reference ability, identity element, animation resource, attack, on-hit animation
+- **Character Movement**: movement instruction
+- **Roster**: desktop, character targeting
+- **Game Bridge**: keybind, keybind file, HookCostume DLL, memory element, camera, pop-up menu, COH game directory
+h
+**Boundary terms**:
+- HCS (Hero Combat System) *(owned by: External Combat System)*
+- COH Game Engine *(owned by: City of Heroes Platform)*
 
 ---
 
@@ -76,15 +27,11 @@ The Hero Virtual Tabletop lets the *GM* orchestrate live superhero RPG sessions 
 
 A *character* is the foundational active unit of the system — the entity the GM creates, names, equips, and directs. Every runtime capability (spawn, move, animate, attack) executes against a *character*. Its state is the aggregate of what it looks like (*active identity*), what it can do (*animated abilities*, *character movements*), where it is (*position*), whether it is present in the game world (*spawned state*), and what combat it is involved in (*attack configuration map*). All other KAs either own *characters*, direct them, or communicate their commands to the game engine on their behalf.
 
-### character
-
 - holds an ordered *option group* for each capability class — Identities, Abilities, and Movements — created on demand and never absent
 - resolves its *active identity* at construction by scanning for a *costume file* matching its name; defaults to a Model identity if none is found
 - spawns into the game world by issuing a *keybind* with the *active identity's* surface name, then polls the *game bridge* until the NPC is registered in game memory, producing a live *position* and *memory element*
 - targets itself in the game — a prerequisite for all game-side commands — by issuing a target *keybind* or instructing the *memory element* directly
-- clears from the desktop by issuing a delete *keybind*, releasing its *memory ele
-
-ment*, and removing any *ghost shadow*
+- clears from the desktop by issuing a delete *keybind*, releasing its *memory element*, and removing any *ghost shadow*
 - moves to a 3D destination by delegating to its *default movement to activate*, which selects the *active movement*, *default movement*, or Walk movement in order of preference
 - tracks accumulated travel distance against its *distance limit*, updating *distance count* on every position write
 - stores zero or more *attack configurations*, from which it derives combat state flags: attacker, defender, stunned, unconscious, dying, dead, knocked back
@@ -92,55 +39,6 @@ ment*, and removing any *ghost shadow*
 - adds *default abilities* (Walk, Run, Swim movements; Recovery, Strike, Dodge, and 17 other standard abilities) to every non-special character on first configuration
 - **Invariant:** a *spawned character* always has a valid *position* and an *active identity*; the *default identity* is used if the *active identity* is removed or unset
 - **Invariant:** exactly three canonical *option groups* (Identities, Abilities, Movements) must always exist on every *character* — they are created lazily but never absent
-
-### option group
-
-- groups *character options* — identities, *animated abilities*, or *character movements* — under a named key, maintaining insertion order and name-keyed lookup
-- adds, inserts, removes, and replaces *character options* by index or name, notifying observers on every structural change
-- enforces uniqueness by name within the group; duplicate names are rejected on add
-- **Invariant:** the three canonical *option groups* (Identities, Abilities, Movements) are always present on a *character*, created on first access if not already present
-
-### position
-
-- reads the *character's* current X, Y, Z world-space coordinates from game memory at the target NPC's memory pointer offset
-- writes X, Y, Z back to game memory to physically relocate the NPC in the game world, triggering a *distance count* update
-- reads and writes the character's 4×4 model matrix at the NPC memory offset, encoding rotation and translation for orientation changes
-- reads the character's facing vector from the model matrix and writes a target-facing direction by computing a look-at matrix from world-space destination
-- clones itself for saved-position storage, preserving coordinate and matrix state without a live memory pointer
-- **Invariant:** a *position* object is created only after the *memory element* confirms NPC registration; it is meaningless and absent for an un-spawned *character*
-
-### attack configuration
-
-- records the *attack* and its associated parameters (attack mode, knockback distance, effect severity, hit/miss result) for one combat engagement, keyed by a unique GUID
-- holds zero or more concurrent *attack configurations* simultaneously, allowing a *character* to participate in multiple overlapping attacks as attacker and defender
-- derives the *character's* combat state flags — attacker, defender, stunned, unconscious, dying, dead, knocked back — by evaluating the union of all held *attack configuration* entries
-- adds a new entry when the GM initiates an attack, updates it when parameters change, and removes it when combat for that engagement ends
-- **Invariant:** combat state flags are always recomputed from the full map; no single *attack configuration* entry can alone make a *character* "dead" while another marks it "alive"
-
-### ghost shadow
-
-- spawns as an independent *character* instance alongside a *model identity character* to serve as a live FX carrier in the game world
-- mirrors the principal *character's* world-space position and model matrix on every move and turn, keeping itself co-located
-- carries *FX costume file* overlays — effect particles and visual augmentations — that the COH engine cannot load directly onto model NPCs
-- is created with a ghost *costume file* copied from the `ghost_original.costume` template, and its own *character movements* cloned from the principal's movement set
-- is removed and set to null when the principal switches to a *costume identity*, clears from the desktop, or explicitly removes it
-- **Invariant:** a *ghost shadow* exists only while the principal *character's* active identity is of type Model and the principal is *spawned*; a *costume identity character* never has a *ghost shadow*
-
-### active identity
-
-- is a property of *character* — the reference slot pointing to the currently rendered *identity*; falls back to *default identity* if unset or removed from the available identities collection
-
-### default identity
-
-- is a property of *character* — the fallback *identity* used when no *active identity* is set; auto-creates a Model identity if the available identities collection is empty
-
-### maneuvering with camera
-
-- is a property of *character* — a boolean mode flag; when true, the *camera* is the maneuvered character's movement controller
-
-### distance count
-
-- is a property of *character* — the accumulated travel distance in the current movement, computed as Δposition / 8 (game units to tabletop distance)
 
 ### Decisions made
 
@@ -206,11 +104,74 @@ Extract: partial
 
 ---
 
+### option group
+
+- groups *character options* — identities, *animated abilities*, or *character movements* — under a named key, maintaining insertion order and name-keyed lookup
+- adds, inserts, removes, and replaces *character options* by index or name, notifying observers on every structural change
+- enforces uniqueness by name within the group; duplicate names are rejected on add
+- **Invariant:** the three canonical *option groups* (Identities, Abilities, Movements) are always present on a *character*, created on first access if not already present
+
+---
+
+### position
+
+- reads the *character's* current X, Y, Z world-space coordinates from game memory at the target NPC's memory pointer offset
+- writes X, Y, Z back to game memory to physically relocate the NPC in the game world, triggering a *distance count* update
+- reads and writes the character's 4×4 model matrix at the NPC memory offset, encoding rotation and translation for orientation changes
+- reads the character's facing vector from the model matrix and writes a target-facing direction by computing a look-at matrix from world-space destination
+- clones itself for saved-position storage, preserving coordinate and matrix state without a live memory pointer
+- **Invariant:** a *position* object is created only after the *memory element* confirms NPC registration; it is meaningless and absent for an un-spawned *character*
+
+---
+
+### attack configuration
+
+- records the *attack* and its associated parameters (attack mode, knockback distance, effect severity, hit/miss result) for one combat engagement, keyed by a unique GUID
+- holds zero or more concurrent *attack configurations* simultaneously, allowing a *character* to participate in multiple overlapping attacks as attacker and defender
+- derives the *character's* combat state flags — attacker, defender, stunned, unconscious, dying, dead, knocked back — by evaluating the union of all held *attack configuration* entries
+- adds a new entry when the GM initiates an attack, updates it when parameters change, and removes it when combat for that engagement ends
+- **Invariant:** combat state flags are always recomputed from the full map; no single *attack configuration* entry can alone make a *character* "dead" while another marks it "alive"
+
+---
+
+### ghost shadow
+
+- spawns as an independent *character* instance alongside a *model identity character* to serve as a live FX carrier in the game world
+- mirrors the principal *character's* world-space position and model matrix on every move and turn, keeping itself co-located
+- carries *FX costume file* overlays — effect particles and visual augmentations — that the COH engine cannot load directly onto model NPCs
+- is created with a ghost *costume file* copied from the `ghost_original.costume` template, and its own *character movements* cloned from the principal's movement set
+- is removed and set to null when the principal switches to a *costume identity*, clears from the desktop, or explicitly removes it
+- **Invariant:** a *ghost shadow* exists only while the principal *character's* active identity is of type Model and the principal is *spawned*; a *costume identity character* never has a *ghost shadow*
+
+---
+
+### active identity
+
+- is a property of *character* — the reference slot pointing to the currently rendered *identity*; falls back to *default identity* if unset or removed from the available identities collection
+
+---
+
+### default identity
+
+- is a property of *character* — the fallback *identity* used when no *active identity* is set; auto-creates a Model identity if the available identities collection is empty
+
+---
+
+### maneuvering with camera
+
+- is a property of *character* — a boolean mode flag; when true, the *camera* is the maneuvered character's movement controller
+
+---
+
+### distance count
+
+- is a property of *character* — the accumulated travel distance in the current movement, computed as Δposition / 8 (game units to tabletop distance)
+
+---
+
 ## Crowd
 
 A *crowd* is a named, hierarchical container of *crowd members* — each of whom is either a *character* or a nested *crowd* — that the GM organizes for scene staging and group management. It is the organizing unit of the *crowd repository* and the persistence boundary for the entire *character* collection. A *crowd* can save and restore the *position* of each *crowd member*, turning the *crowd* into a reusable scene arrangement. In *gang mode*, one *crowd member* is the *gang leader* and the *crowd* coordinates activation and movement for the group as a unit.
-
-### crowd
 
 - contains an ordered, name-keyed collection of *crowd members*, which may be *characters* or nested *crowds*
 - adds, removes, clones, and reorders *crowd members*; notifies observers on every structural change
@@ -219,61 +180,6 @@ A *crowd* is a named, hierarchical container of *crowd members* — each of whom
 - filters its visible *crowd members* by name regex, collapsing non-matching branches and expanding matching ones
 - responds to *gang mode* activation by nominating one *crowd member* as *gang leader* and coordinating group activation and movement
 - **Invariant:** *crowd member* names must be unique within a *crowd* — the collection is keyed by name and rejects duplicates
-
-### crowd member
-
-- participates in one or more *crowds* by maintaining a back-reference to its *roster crowd*
-- can be cloned into an independent copy, linked across multiple *crowds* as a shared reference, or flattened into a numbered standalone *character*
-- saves its own *position* when its containing *crowd* triggers a save-position operation
-- is placed at a *saved position* when its containing *crowd* places it, teleporting it back to a prior arrangement
-- **Invariant:** a *crowd member's* name must be unique within any *crowd* it belongs to at any moment
-
-### saved position
-
-- stores the X, Y, Z world-space coordinates and model matrix of a *crowd member* at a snapshot moment, keyed by the *crowd member's* name in the parent *crowd's* saved-positions dictionary
-- is applied to a *crowd member* by a place call, writing the stored coordinates back to the *crowd member's* live *position*
-- is cloned without a live memory pointer so it can be persisted and restored across sessions
-
-### crowd repository
-
-- deserializes the full *crowd* hierarchy from a JSON file in the COH data directory on session start, restoring all *crowd members* with their *option groups*, *identities*, *abilities*, and *movements*
-- serializes the full *crowd* hierarchy back to JSON on save, preserving the complete *character* and *crowd* state tree
-- creates a daily backup copy of the valid JSON file before overwriting, protecting against corruption
-- seeds the collection from an embedded resource of default *crowd members* when no file is found on first run
-- **Invariant:** exactly one *crowd repository* file is the source of truth; the backup is read-only and used only for disaster recovery
-
-### gang mode
-
-- is a property of *crowd* — a boolean flag indicating whether the *crowd* is operating as a coordinated gang with a designated *gang leader*
-
-### crowd manager
-
-- is the pre-session library surface — the main application screen that opens at startup and shows the *crowd* hierarchy
-- presents the *crowd* tree where the GM creates, renames, deletes, nests, clones, links, filters, and browses *crowds* and *crowd members*
-- triggers loading of the *crowd repository* on open and saving on explicit save actions
-- is distinct from the *desktop*, which is the live session overlay for *spawned characters* during play
-- **Invariant:** the *crowd manager* is always the first surface the GM sees; the *desktop* is only active once game session begins
-
-### all characters crowd
-
-- is a special protected root *crowd* that aggregates every *character* in the *crowd repository* as a flat alphabetically sorted list
-- is automatically maintained — any *character* added to any *crowd* also appears here
-- cannot be deleted; attempts to delete it are blocked
-- **Invariant:** the *all characters crowd* is always present and always current; it reflects the full character population of the *crowd repository* at all times
-
-### clipboard
-
-- holds at most one cut or copied *crowd member* (or *crowd*) at a time, ready for paste into any *crowd*
-- is populated when a *crowd member* is cut (removes it from the source *crowd*) or copied (leaves the source intact)
-- is consumed and cleared when the GM pastes into a target *crowd*
-- **Invariant:** cutting a *crowd member* immediately removes it from the source *crowd*; pasting places the held item into the target *crowd* and clears the *clipboard*
-
-### flatten-copy
-
-- is an operation on *crowd* — replaces its membership with independently numbered deep-copy *characters* (e.g. "Guard 1", "Guard 2")
-- breaks any shared *crowd member* references within the flattened *crowd* — the resulting copies are fully independent
-- leaves nested *crowds* in place; only character-level members are numbered and replaced
-- **Invariant:** after flatten-copy, no two resulting *characters* share state; modifying one does not affect any other
 
 ### Decisions made
 
@@ -317,46 +223,86 @@ Extract: whole
 
 ---
 
+### crowd member
+
+- participates in one or more *crowds* by maintaining a back-reference to its *roster crowd*
+- can be cloned into an independent copy, linked across multiple *crowds* as a shared reference, or flattened into a numbered standalone *character*
+- saves its own *position* when its containing *crowd* triggers a save-position operation
+- is placed at a *saved position* when its containing *crowd* places it, teleporting it back to a prior arrangement
+- **Invariant:** a *crowd member's* name must be unique within any *crowd* it belongs to at any moment
+
+---
+
+### saved position
+
+- stores the X, Y, Z world-space coordinates and model matrix of a *crowd member* at a snapshot moment, keyed by the *crowd member's* name in the parent *crowd's* saved-positions dictionary
+- is applied to a *crowd member* by a place call, writing the stored coordinates back to the *crowd member's* live *position*
+- is cloned without a live memory pointer so it can be persisted and restored across sessions
+
+---
+
+### crowd repository
+
+- deserializes the full *crowd* hierarchy from a JSON file in the COH data directory on session start, restoring all *crowd members* with their *option groups*, *identities*, *abilities*, and *movements*
+- serializes the full *crowd* hierarchy back to JSON on save, preserving the complete *character* and *crowd* state tree
+- creates a daily backup copy of the valid JSON file before overwriting, protecting against corruption
+- seeds the collection from an embedded resource of default *crowd members* when no file is found on first run
+- **Invariant:** exactly one *crowd repository* file is the source of truth; the backup is read-only and used only for disaster recovery
+
+---
+
+### gang mode
+
+- is a property of *crowd* — a boolean flag indicating whether the *crowd* is operating as a coordinated gang with a designated *gang leader*
+
+---
+
+### crowd manager
+
+- is the pre-session library surface — the main application screen that opens at startup and shows the *crowd* hierarchy
+- presents the *crowd* tree where the GM creates, renames, deletes, nests, clones, links, filters, and browses *crowds* and *crowd members*
+- triggers loading of the *crowd repository* on open and saving on explicit save actions
+- is distinct from the *desktop*, which is the live session overlay for *spawned characters* during play
+- **Invariant:** the *crowd manager* is always the first surface the GM sees; the *desktop* is only active once game session begins
+
+---
+
+### all characters crowd
+
+- is a special protected root *crowd* that aggregates every *character* in the *crowd repository* as a flat alphabetically sorted list
+- is automatically maintained — any *character* added to any *crowd* also appears here
+- cannot be deleted; attempts to delete it are blocked
+- **Invariant:** the *all characters crowd* is always present and always current; it reflects the full character population of the *crowd repository* at all times
+
+---
+
+### clipboard
+
+- holds at most one cut or copied *crowd member* (or *crowd*) at a time, ready for paste into any *crowd*
+- is populated when a *crowd member* is cut (removes it from the source *crowd*) or copied (leaves the source intact)
+- is consumed and cleared when the GM pastes into a target *crowd*
+- **Invariant:** cutting a *crowd member* immediately removes it from the source *crowd*; pasting places the held item into the target *crowd* and clears the *clipboard*
+
+---
+
+### flatten-copy
+
+- is an operation on *crowd* — replaces its membership with independently numbered deep-copy *characters* (e.g. "Guard 1", "Guard 2")
+- breaks any shared *crowd member* references within the flattened *crowd* — the resulting copies are fully independent
+- leaves nested *crowds* in place; only character-level members are numbered and replaced
+- **Invariant:** after flatten-copy, no two resulting *characters* share state; modifying one does not affect any other
+
+---
+
 ## Identity
 
 An *identity* is the visual appearance a *character* presents in the COH game world, defined by a *surface* name and an *identity type*. The *identity type* determines the rendering path: a *model identity* instructs the game engine to swap the NPC's model; a *costume identity* loads a `.costume` file. Each *identity* may carry an *animation on load* that plays automatically on render. The *identity* manages the *costume file* variants that persist FX effects and provide ghost overlays.
-
-### identity
 
 - owns a *surface* name and an *identity type* (Model or Costume), which together determine how the game engine renders the *character*
 - renders itself by generating the appropriate *keybind* — model swap for Model, `load_costume` for Costume — and triggering *animation on load* if present
 - renders without animation (on spawn) by generating only the *keybind* without triggering *animation on load*
 - clones itself, producing an independent *identity* with the same surface, type, and a deep-copy of its *animation on load*
 - **Invariant:** a *costume identity* requires a `.costume` file at `<coh_dir>/costumes/<surface>.costume` to render successfully; a *model identity* uses the surface name directly as the NPC model argument
-
-### Model identity *is a type of* identity
-
-- triggers creation and alignment of the *character's* *ghost shadow* on every render, because the game engine cannot embed costume FX directly onto model NPCs
-- removes the *ghost shadow* when the *character* switches away from this *identity*
-
-### Costume identity *is a type of* identity
-
-- manages three *costume file* variants on disk: the *original costume* (archived backup), the *persistent costume* (with active FX baked in), and the *ghost costume* (for the *ghost shadow*)
-- issues a `load_costume` *keybind* with the *surface* filename on render
-- on *character* deactivation, reloads the *persistent costume* variant if a *persistent* *animated ability* is active, or the *original costume* otherwise
-
-### animation on load
-
-- fires automatically when an *identity* is rendered, playing a specified *animated ability* on the *character* at the moment of the identity switch
-- is stopped before the new *identity's* *animation on load* begins, ensuring no two load animations overlap
-- plays with an optional initial *costume* argument for *costume identity* renders, enabling FX sequencing on top of the freshly loaded costume
-
-### costume file
-
-- exists as a text file in `<coh_dir>/costumes/<name>.costume` encoding the visual parts, colors, and FX attachment slots of a *costume identity*
-- maintains three variants: the *original* (archived backup copied before modification), the *persistent* (original with FX baked in for active persistent abilities), and the *ghost* (copy of `ghost_original.costume` for the *ghost shadow*)
-- is injected with an FX reference by an *FX effect element* — the element writes a new file with `Fx <path>` inserted into a `CostumePart` block, then loads it
-- is restored to the *original* variant when a *persistent* *animated ability* stops
-- **Invariant:** the *original* variant is written only once — on first archive — and is never overwritten by FX injection; subsequent injections read from the *original*
-
-### surface
-
-- is a property of *identity* — the model name or costume filename string that identifies the visual resource; no independent behavior
 
 ### Decisions made
 
@@ -399,11 +345,48 @@ Extract: partial
 
 ---
 
+### model identity *(is a type of identity)*
+
+- triggers creation and alignment of the *character's* *ghost shadow* on every render, because the game engine cannot embed costume FX directly onto model NPCs
+- removes the *ghost shadow* when the *character* switches away from this *identity*
+
+---
+
+### costume identity *(is a type of identity)*
+
+- manages three *costume file* variants on disk: the *original costume* (archived backup), the *persistent costume* (with active FX baked in), and the *ghost costume* (for the *ghost shadow*)
+- issues a `load_costume` *keybind* with the *surface* filename on render
+- on *character* deactivation, reloads the *persistent costume* variant if a *persistent* *animated ability* is active, or the *original costume* otherwise
+
+---
+
+### animation on load
+
+- fires automatically when an *identity* is rendered, playing a specified *animated ability* on the *character* at the moment of the identity switch
+- is stopped before the new *identity's* *animation on load* begins, ensuring no two load animations overlap
+- plays with an optional initial *costume* argument for *costume identity* renders, enabling FX sequencing on top of the freshly loaded costume
+
+---
+
+### costume file
+
+- exists as a text file in `<coh_dir>/costumes/<name>.costume` encoding the visual parts, colors, and FX attachment slots of a *costume identity*
+- maintains three variants: the *original* (archived backup copied before modification), the *persistent* (original with FX baked in for active persistent abilities), and the *ghost* (copy of `ghost_original.costume` for the *ghost shadow*)
+- is injected with an FX reference by an *FX effect element* — the element writes a new file with `Fx <path>` inserted into a `CostumePart` block, then loads it
+- is restored to the *original* variant when a *persistent* *animated ability* stops
+- **Invariant:** the *original* variant is written only once — on first archive — and is never overwritten by FX injection; subsequent injections read from the *original*
+
+---
+
+### surface
+
+- is a property of *identity* — the model name or costume filename string that identifies the visual resource; no independent behavior
+
+---
+
 ## Animated Ability
 
 An *animated ability* is a named, composable behavior a *character* can perform — a tree of *animation elements* executed in defined order. It extends the *sequence element* pattern, making it both a top-level ability and a nestable element. Its execution model follows the *animation sequence type*: And plays elements sequentially in order; Or picks one element at random. A *persistent* ability sustains its FX and sounds until explicitly stopped. An ability flagged as an *attack* participates in combat targeting and is gated by the attack workflow.
-
-### animated ability
 
 - plays its *animation elements* in order (And) or at random (Or), delegating each element's execution to its concrete type
 - stops all active *animation elements*, reverting any *FX effect element* costume modifications and silencing any *sound elements*
@@ -413,69 +396,6 @@ An *animated ability* is a named, composable behavior a *character* can perform 
 - fires grouped animations across multiple *characters* simultaneously for area-effect scenarios, collecting *keybinds* per target into a single batched command
 - clones itself with a deep copy of all *animation elements*, preserving structure while allowing independent configuration
 - **Invariant:** a *persistent* *animated ability* that is active must be stopped before any *identity* switch on the owning *character*
-
-### animation element
-
-- holds a name, an execution order index, a *type* discriminator, a *persistent* flag, and a play-with-next flag that chains this element with the next in the same *keybind* batch
-- declares play and stop operations that concrete subtypes implement — the base implementation is a no-op
-- carries an *animation resource* that the concrete subtype interprets as its payload (file path, time, or object reference)
-- provides a get-keybind operation that returns the raw *keybind* string for the element without executing it, used in grouped-animation batching
-- can be cloned into an independent copy that retains type, resource, order, and flags
-
-### FX effect element *is a type of* animation element
-
-- reads the *character's* active *costume file* (or the *ghost shadow's* if the character is a Model type), injects an `Fx <path>` directive into a `CostumePart` block, writes the result to a new variant file, and issues a load-costume *keybind*
-- archives the *original costume* on first modification so it can be restored on stop
-- stops by reloading the *original costume* file, erasing the FX overlay from the game world
-- supports a *fire coordinates* string that directs the FX emission point for directional attack effects
-- **Invariant:** the *original costume* archive is written once and never overwritten; all FX variants are built from the original
-
-### MOV element *is a type of* animation element
-
-- issues a `mov` *keybind* targeting the *character* (and its *ghost shadow* if present) to trigger a game-engine animation from the MOV catalog
-- issues the keybind in a play-with-next chain when the flag is true, batching multiple elements into one command execution
-
-### sound element *is a type of* animation element
-
-- plays a 3D positional audio file from the COH sound directory, positioned at the *character's* world-space location relative to the *camera* as listener
-- loops the sound continuously when *persistent*, updating the 3D position as the *character* moves using a recurring timer callback
-- stops all sounds immediately, canceling the loop timer
-
-### pause element *is a type of* animation element
-
-- blocks execution for a fixed number of milliseconds before releasing, creating timing gaps between animation steps in a sequence
-- supports distance-adaptive delay variants — close, short, medium, long — that let the sequence timing adjust based on how far a target is from the attacker
-
-### sequence element *is a type of* animation element
-
-- groups a set of child *animation elements* and plays them in And order (sequential) or picks one at random (Or)
-- manages child element ordering, play-with-next chaining rules, and event subscriptions for property change propagation
-- supports grouped execution across multiple *character* targets simultaneously, collecting all *keybinds* into a batched command
-
-### reference ability *is a type of* animation element
-
-- delegates all play, stop, and keybind-collection operations to a linked *animated ability* by reference rather than containing its own *animation elements*
-- propagates active state from the referenced *animated ability* rather than tracking its own state
-
-### identity element *is a type of* animation element
-
-- switches the owning *character's* active *identity* mid-sequence by rendering the configured *identity* target
-- reverts to the *character's* current *active identity* (without animation) on stop
-
-### animation resource
-
-- holds the typed payload an *animation element* interprets: a file path string for FX, a MOV catalog entry name, a sound file path, a millisecond integer for pause, a reference to an *animated ability*, or a reference to an *identity*
-- implicit-converts from string or from domain objects (*animated ability*, *identity*) to provide a uniform carrier type across element subtypes
-
-### Attack *is a type of* animated ability
-
-- is flagged with an attack indicator and an optional area-effect indicator, enabling combat targeting restrictions
-- carries an *on-hit animation* — an *animated ability* played on each *defender* when the attack connects
-- manages *attack configuration* entries on each involved *character*, recording attack mode, effect severity, knockback distance, and hit/miss result
-
-### on-hit animation
-
-- is a property of *attack* — a reference to an *animated ability* played on each *defender* when the *attack* connects
 
 ### Decisions made
 
@@ -541,11 +461,94 @@ Extract: partial
 
 ---
 
+### animation element
+
+- holds a name, an execution order index, a *type* discriminator, a *persistent* flag, and a play-with-next flag that chains this element with the next in the same *keybind* batch
+- declares play and stop operations that concrete subtypes implement — the base implementation is a no-op
+- carries an *animation resource* that the concrete subtype interprets as its payload (file path, time, or object reference)
+- provides a get-keybind operation that returns the raw *keybind* string for the element without executing it, used in grouped-animation batching
+- can be cloned into an independent copy that retains type, resource, order, and flags
+
+---
+
+### FX effect element *(is a type of animation element)*
+
+- reads the *character's* active *costume file* (or the *ghost shadow's* if the character is a Model type), injects an `Fx <path>` directive into a `CostumePart` block, writes the result to a new variant file, and issues a load-costume *keybind*
+- archives the *original costume* on first modification so it can be restored on stop
+- stops by reloading the *original costume* file, erasing the FX overlay from the game world
+- supports a *fire coordinates* string that directs the FX emission point for directional attack effects
+- **Invariant:** the *original costume* archive is written once and never overwritten; all FX variants are built from the original
+
+---
+
+### MOV element *(is a type of animation element)*
+
+- issues a `mov` *keybind* targeting the *character* (and its *ghost shadow* if present) to trigger a game-engine animation from the MOV catalog
+- issues the keybind in a play-with-next chain when the flag is true, batching multiple elements into one command execution
+
+---
+
+### sound element *(is a type of animation element)*
+
+- plays a 3D positional audio file from the COH sound directory, positioned at the *character's* world-space location relative to the *camera* as listener
+- loops the sound continuously when *persistent*, updating the 3D position as the *character* moves using a recurring timer callback
+- stops all sounds immediately, canceling the loop timer
+
+---
+
+### pause element *(is a type of animation element)*
+
+- blocks execution for a fixed number of milliseconds before releasing, creating timing gaps between animation steps in a sequence
+- supports distance-adaptive delay variants — close, short, medium, long — that let the sequence timing adjust based on how far a target is from the attacker
+
+---
+
+### sequence element *(is a type of animation element)*
+
+- groups a set of child *animation elements* and plays them in And order (sequential) or picks one at random (Or)
+- manages child element ordering, play-with-next chaining rules, and event subscriptions for property change propagation
+- supports grouped execution across multiple *character* targets simultaneously, collecting all *keybinds* into a batched command
+
+---
+
+### reference ability *(is a type of animation element)*
+
+- delegates all play, stop, and keybind-collection operations to a linked *animated ability* by reference rather than containing its own *animation elements*
+- propagates active state from the referenced *animated ability* rather than tracking its own state
+
+---
+
+### identity element *(is a type of animation element)*
+
+- switches the owning *character's* active *identity* mid-sequence by rendering the configured *identity* target
+- reverts to the *character's* current *active identity* (without animation) on stop
+
+---
+
+### animation resource
+
+- holds the typed payload an *animation element* interprets: a file path string for FX, a MOV catalog entry name, a sound file path, a millisecond integer for pause, a reference to an *animated ability*, or a reference to an *identity*
+- implicit-converts from string or from domain objects (*animated ability*, *identity*) to provide a uniform carrier type across element subtypes
+
+---
+
+### attack *(is a type of animated ability)*
+
+- is flagged with an attack indicator and an optional area-effect indicator, enabling combat targeting restrictions
+- carries an *on-hit animation* — an *animated ability* played on each *defender* when the attack connects
+- manages *attack configuration* entries on each involved *character*, recording attack mode, effect severity, knockback distance, and hit/miss result
+
+---
+
+### on-hit animation
+
+- is a property of *attack* — a reference to an *animated ability* played on each *defender* when the *attack* connects
+
+---
+
 ## Character Movement
 
 A *character movement* is a named, configured locomotion behavior a *character* can use — Walk, Run, Swim, Fly, Jump, and others. Each wraps a movement implementation that issues *keybinds*, animates the *character* in incremental steps, handles floor and wall collision, tracks *distance count* against a *distance limit*, and turns the *character* to face its destination. The *character movement* is an option on the *character's* Movements *option group*, with an optional *activation key*. Crowd-level movement dispatches all *crowd members'* movements using relative or optimal-spread positioning algorithms.
-
-### character movement
 
 - activates by fetching the animation resource for the target locomotion style, targeting the *character*, and issuing the *keybind*
 - moves the *character* to a destination vector in incremental steps, computing the path, issuing movement *keybinds*, pausing between steps to allow the game to process, and detecting floor collision to maintain ground contact
@@ -554,11 +557,6 @@ A *character movement* is a named, configured locomotion behavior a *character* 
 - enforces *distance limit* by refusing further movement steps when *distance count* exceeds the cap for the current movement
 - accepts a *movement instruction* carrying the current rotation axis direction, enabling continuous turn operations during movement
 - **Invariant:** only one *character movement* can be active at a time on a *character*; activating a new movement deactivates the previous one
-
-### movement instruction
-
-- holds the current rotation axis direction (Upward or Downward) for an in-progress turn operation, letting the *character movement* apply consistent rotation direction across multiple incremental turn steps
-- is created on demand at the start of a turn and referenced until the turn completes
 
 ### Decisions made
 
@@ -584,11 +582,16 @@ Extract: partial
 
 ---
 
+### movement instruction
+
+- holds the current rotation axis direction (Upward or Downward) for an in-progress turn operation, letting the *character movement* apply consistent rotation direction across multiple incremental turn steps
+- is created on demand at the start of a turn and referenced until the turn completes
+
+---
+
 ## Roster
 
 The *roster* is the live staging area for a session — the set of *crowd members* the GM has promoted for active play and potentially *spawned* onto the desktop (the visible game window). A *character* enters the *roster* when the GM adds it from the *crowd* tree; it is tracked as a *spawned character* once spawn succeeds. The *roster* mediates all desktop interaction: mouse click selection, drag-to-move, double-click activation, and context-menu operations all operate on *roster* members. It maintains the *active character* turn state and coordinates gang-mode activation.
-
-### roster
 
 - tracks all *crowd members* that have been added to active play, maintaining their *spawned state*, *active* status, and *gang leader* designation
 - syncs the application selection with the game's target pointer — selecting a *character* in the UI triggers targeting in the game, and the game's current target is reflected back into the selection
@@ -597,19 +600,6 @@ The *roster* is the live staging area for a session — the set of *crowd member
 - activates a *crowd member* (marking its turn) and deactivates it at turn end, coordinating with *gang mode* to activate/deactivate the full group
 - dispatches desktop context-menu actions — place at location, move to camera, save position, clone-link, activate — to the targeted *crowd member*
 - **Invariant:** the game's current target pointer must match the application's selected *character* before any game-side command is issued; targeting is always synchronized before command dispatch
-
-### desktop
-
-- renders *spawned characters* as interactive overlays on the game window — showing position, status indicators (active, attacker, defender, stunned), and progress bars for each *spawned character*
-- receives GM mouse click, multi-select, and drag events, translating screen coordinates to *character* targeting and movement commands
-- responds to double-click by activating the clicked *character* and triggering its *default ability*
-- presents a context menu on right-click, exposing spawn, place, move-to-camera, save position, clone-link, and activate-option commands for the targeted *character*
-
-### character targeting
-
-- resolves the game's live target pointer to the application's selected *character* by issuing a target *keybind* or directing the *memory element* by pointer
-- polls the *memory element* in a tight loop until the game's current NPC label matches the *character's* label, confirming targeting registration, producing a confirmed *memory element* or a timeout
-- is a prerequisite for every game-side command (spawn, move, load costume, delete) — all commands assume the targeted NPC is the intended *character*
 
 ### Decisions made
 
@@ -628,11 +618,6 @@ Source: docs/story-map.md
 Locator: lines 63–91
 Extract: partial
 
-**Ref — story-map.md (Interact with Roster on Desktop / Desktop Context Menu Actions)**
-Source: docs/story-map.md
-Locator: lines 75–91
-Extract: partial
-
 **Ref — Character.cs (Target / WaitUntilTargetIsRegistered)**
 Source: HeroVirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\Characters\Character.cs
 Locator: lines 767–1099
@@ -640,11 +625,26 @@ Extract: partial
 
 ---
 
+### desktop
+
+- renders *spawned characters* as interactive overlays on the game window — showing position, status indicators (active, attacker, defender, stunned), and progress bars for each *spawned character*
+- receives GM mouse click, multi-select, and drag events, translating screen coordinates to *character* targeting and movement commands
+- responds to double-click by activating the clicked *character* and triggering its *default ability*
+- presents a context menu on right-click, exposing spawn, place, move-to-camera, save position, clone-link, and activate-option commands for the targeted *character*
+
+---
+
+### character targeting
+
+- resolves the game's live target pointer to the application's selected *character* by issuing a target *keybind* or directing the *memory element* by pointer
+- polls the *memory element* in a tight loop until the game's current NPC label matches the *character's* label, confirming targeting registration, producing a confirmed *memory element* or a timeout
+- is a prerequisite for every game-side command (spawn, move, load costume, delete) — all commands assume the targeted NPC is the intended *character*
+
+---
+
 ## Game Bridge
 
 The *game bridge* is the exclusive communication channel between the application and the COH game engine. All game-side mutations flow through one of three paths: *keybind files* written to disk and loaded via the two-key idiom, the *HookCostume DLL* for direct native queries, or *game memory* read/write at known pointer offsets via the *memory element*. No managed code in the application calls game APIs directly — every command is serialized into a *keybind file* or a DLL call.
-
-### game bridge
 
 - generates *keybind files* for each game event, writing a loader-key/trigger-key chain to the COH data directory and injecting commands into the game through key presses
 - reads the NPC label, world-space position, and memory pointer of the currently hovered NPC via the *HookCostume DLL*
@@ -653,54 +653,6 @@ The *game bridge* is the exclusive communication channel between the application
 - reads and writes *character* position, model matrix, and facing vector directly in game process memory via the *memory element*
 - initializes the *HookCostume DLL* on session start and closes it on session end
 - **Invariant:** all game-side commands flow through the *keybind* mechanism or the *HookCostume DLL*; the application never invokes game engine code from managed memory directly
-
-### keybind
-
-- encodes one COH slash command and its arguments as a string (e.g. `spawn_npc Model_Statesman Hero1`)
-- is assembled by the *game bridge* from a typed game event and zero or more string arguments
-- is written into a *keybind file* alongside a loader-key binding and the trigger-key re-bind so the two-key idiom can be re-used on the next command
-
-### keybind file
-
-- is a text file written to `<coh_dir>/data/custom_keybinds.txt` containing two lines: a trigger-key command line and a self-referential re-bind of the trigger key
-- is loaded into the game via a bind-load-file command (the loader key), then executed by pressing the trigger key, then auto-reloaded for the next command
-- chains multiple commands in sequence by writing them all before the single complete-event call, which writes the final file and presses the loader key
-
-### HookCostume DLL
-
-- is loaded from `<coh_dir>/HookCostume.dll` at session start, establishing a native bridge into the game process
-- queries the NPC name and world-space position of the NPC currently under the mouse cursor, enabling hover-to-target functionality
-- queries the 3D world-space position of the mouse cursor in the game scene
-- performs collision-detection raycasts between two world-space points, reporting whether a straight-line path is obstructed by game geometry
-- checks whether the game process has exited, enabling clean application shutdown
-- is closed at session end
-
-### memory element
-
-- obtains the target NPC's memory pointer from the game process by reading the pointer-to-target address after the *character* has been successfully targeted
-- reads the NPC's label string from the pointer offset to confirm the targeted entity matches the expected *character*
-- exposes the memory pointer as an address for *position* to use in reading/writing X, Y, Z coordinates and the model matrix
-- detects staleness — when the pointer no longer points to the correct NPC — and triggers a re-target and pointer refresh
-- **Invariant:** a *memory element* is valid only when the game's current target matches the *character's* label; stale pointers must be refreshed before any read or write
-
-### camera
-
-- reports its current world-space position by reading the camera position vector from game memory at the camera pointer offset
-- is the destination for "move to camera" and "teleport to camera" operations — the *character* or *crowd* moves to wherever the GM has aimed the game camera
-- receives a *character* reference in *maneuvering with camera* mode and continuously pushes its current position to that *character's* position, creating camera-driven locomotion
-- can be detached from the player model to enable free-camera movement independent of the player NPC
-
-### pop-up menu
-
-- is a thin concept under *game bridge* — a COH menu definition file written to `<coh_dir>/data/texts/English/Menus/` and loaded in-game via a pop-up menu *keybind*
-- is used for the area-attack selection menu; has on-disk identity and a load *keybind*, but minimal session state or behavior beyond triggering the menu
-
-### COH game directory
-
-- is the file-system path to the City of Heroes installation, validated at startup before any *game bridge* operations begin
-- provides the root for all derived paths: the *HookCostume DLL* location, the COH data directory (for *keybind files* and the *crowd repository*), and the costumes directory (for *costume files*)
-- is stored in application configuration and prompted from the GM when absent or invalid
-- **Invariant:** the *game bridge* cannot initialize and no game-side operations can proceed until the *COH game directory* is confirmed valid
 
 ### Decisions made
 
@@ -743,11 +695,71 @@ Extract: whole
 
 ---
 
+### keybind
+
+- encodes one COH slash command and its arguments as a string (e.g. `spawn_npc Model_Statesman Hero1`)
+- is assembled by the *game bridge* from a typed game event and zero or more string arguments
+- is written into a *keybind file* alongside a loader-key binding and the trigger-key re-bind so the two-key idiom can be re-used on the next command
+
+---
+
+### keybind file
+
+- is a text file written to `<coh_dir>/data/custom_keybinds.txt` containing two lines: a trigger-key command line and a self-referential re-bind of the trigger key
+- is loaded into the game via a bind-load-file command (the loader key), then executed by pressing the trigger key, then auto-reloaded for the next command
+- chains multiple commands in sequence by writing them all before the single complete-event call, which writes the final file and presses the loader key
+
+---
+
+### HookCostume DLL
+
+- is loaded from `<coh_dir>/HookCostume.dll` at session start, establishing a native bridge into the game process
+- queries the NPC name and world-space position of the NPC currently under the mouse cursor, enabling hover-to-target functionality
+- queries the 3D world-space position of the mouse cursor in the game scene
+- performs collision-detection raycasts between two world-space points, reporting whether a straight-line path is obstructed by game geometry
+- checks whether the game process has exited, enabling clean application shutdown
+- is closed at session end
+
+---
+
+### memory element
+
+- obtains the target NPC's memory pointer from the game process by reading the pointer-to-target address after the *character* has been successfully targeted
+- reads the NPC's label string from the pointer offset to confirm the targeted entity matches the expected *character*
+- exposes the memory pointer as an address for *position* to use in reading/writing X, Y, Z coordinates and the model matrix
+- detects staleness — when the pointer no longer points to the correct NPC — and triggers a re-target and pointer refresh
+- **Invariant:** a *memory element* is valid only when the game's current target matches the *character's* label; stale pointers must be refreshed before any read or write
+
+---
+
+### camera
+
+- reports its current world-space position by reading the camera position vector from game memory at the camera pointer offset
+- is the destination for "move to camera" and "teleport to camera" operations — the *character* or *crowd* moves to wherever the GM has aimed the game camera
+- receives a *character* reference in *maneuvering with camera* mode and continuously pushes its current position to that *character's* position, creating camera-driven locomotion
+- can be detached from the player model to enable free-camera movement independent of the player NPC
+
+---
+
+### pop-up menu
+
+- is a COH menu definition file written to `<coh_dir>/data/texts/English/Menus/` and loaded in-game via a pop-up menu *keybind*
+- is used for the area-attack selection menu; has on-disk identity and a load *keybind*, but minimal session state or behavior beyond triggering the menu
+
+---
+
+### COH game directory
+
+- is the file-system path to the City of Heroes installation, validated at startup before any *game bridge* operations begin
+- provides the root for all derived paths: the *HookCostume DLL* location, the COH data directory (for *keybind files* and the *crowd repository*), and the costumes directory (for *costume files*)
+- is stored in application configuration and prompted from the GM when absent or invalid
+- **Invariant:** the *game bridge* cannot initialize and no game-side operations can proceed until the *COH game directory* is confirmed valid
+
+---
+
 # Boundary Domain
 
-## HCS (Hero Combat System)
-
-Owned by: External Combat System
+### HCS (Hero Combat System) *(owned by: External Combat System)*
 
 - an external application that writes event info files to a shared directory watched by the Hero Virtual Tabletop
 - processes attack result events by writing a file that the *game bridge's* file watcher reads and dispatches as attack, simple-ability, held-character, or sweep-result events
@@ -766,9 +778,7 @@ Extract: whole
 
 ---
 
-## COH Game Engine
-
-Owned by: City of Heroes Platform
+### COH Game Engine *(owned by: City of Heroes Platform)*
 
 - the Titan Icon fork of the City of Heroes client that the Hero Virtual Tabletop drives via *keybind files*, *slash commands*, and the *HookCostume DLL*
 - hosts NPCs (spawnable *characters*), the 3D map, the *camera*, costumes, pop-up menus, and sound/FX systems
@@ -789,3 +799,5 @@ Extract: whole
 Source: docs/story-map.md
 Locator: lines 12–28
 Extract: whole
+
+---
