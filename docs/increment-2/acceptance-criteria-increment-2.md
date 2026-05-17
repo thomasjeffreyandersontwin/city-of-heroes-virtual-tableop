@@ -859,7 +859,7 @@
 - *Active Identity* — the identity being replaced in the switch
 - *Character* — the entity whose *Persistent Abilities* are stopped
 
-1. **WHEN** the GM initiates an identity switch on a *Character* that has one or more active *Persistent Abilities* 
+1. **WHEN** the GM initiates an identity switch on a *Character* that has one or more active *Persistent Abilities*  
    **THEN** all *Persistent Abilities* on that *Character* are stopped before the old *Active Identity* is despawned  
    **AND** the *Persistent Abilities* stop indicators are updated in the ability list
 

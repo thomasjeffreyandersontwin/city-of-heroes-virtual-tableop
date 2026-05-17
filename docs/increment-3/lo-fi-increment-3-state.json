@@ -1,0 +1,263 @@
+{
+  "target": "docs/ux/lo-fi/increment-3.drawio",
+  "screens": [
+    {
+      "name": "crowd manager — abilities",
+      "layout": "sidebar",
+      "col": 1,
+      "row": 1,
+      "regions": [
+        {
+          "name": "crowd tree (dimmed)",
+          "slot": "panel",
+          "type": "chrome",
+          "modifier": "--dimmed",
+          "note": "same crowd tree as increment-1; greyed on sibling tabs"
+        },
+        {
+          "name": "tab bar",
+          "slot": "body",
+          "type": "nav-tabs",
+          "tabs": [
+            { "label": "Identities" },
+            { "label": "Abilities", "active": true },
+            { "label": "Movements" }
+          ]
+        },
+        {
+          "name": "ability list",
+          "slot": "body",
+          "type": "list",
+          "columns": ["name", "key", "persist", "attack"],
+          "rows": 6,
+          "actions": [
+            { "label": "Create" },
+            { "label": "Edit" },
+            { "label": "Delete" },
+            { "label": "Set Key" },
+            { "label": "Toggle Persist" },
+            { "label": "Play", "primary": true },
+            { "label": "Stop" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ability editor",
+      "layout": "form",
+      "col": 2,
+      "row": 1,
+      "regions": [
+        {
+          "name": "ability config",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "Name", "input": "text" },
+            { "label": "Key", "input": "text" },
+            { "label": "Attack", "input": "checkbox" },
+            { "label": "Persistent", "input": "checkbox" },
+            { "label": "Sequence", "input": "radio", "options": ["And", "Or"] }
+          ]
+        },
+        {
+          "name": "element toolbar",
+          "slot": "body",
+          "type": "toolbar",
+          "buttons": [
+            { "label": "Cut" },
+            { "label": "Clone" },
+            { "label": "Paste" },
+            { "label": "▲ (up)" },
+            { "label": "▼ (down)" },
+            { "label": "− (remove)" },
+            { "label": "▶ (play)", "primary": true },
+            { "label": "+MOV" },
+            { "label": "+FX" },
+            { "label": "+SND" },
+            { "label": "+SEQ" },
+            { "label": "+PAUSE" },
+            { "label": "+REF" }
+          ]
+        },
+        {
+          "name": "element tree",
+          "slot": "body",
+          "type": "tree",
+          "note": "hierarchical tree with expand/collapse; sequences nest children",
+          "sample": [
+            { "level": 0, "label": "Mov Element 1", "type": "mov" },
+            { "level": 0, "label": "FX Element 1", "type": "fx" },
+            { "level": 0, "label": "Sound Element", "type": "sound" },
+            { "level": 0, "label": "Sequence:AND", "type": "sequence", "expanded": true },
+            { "level": 1, "label": "Mov Element 2", "type": "mov" },
+            { "level": 1, "label": "Pause 5", "type": "pause", "selected": true },
+            { "level": 1, "label": "Sound Element", "type": "sound" },
+            { "level": 1, "label": "Sequence:OR", "type": "sequence", "expanded": true },
+            { "level": 2, "label": "Mov Element 2", "type": "mov" },
+            { "level": 2, "label": "FX Element 1", "type": "fx" },
+            { "level": 0, "label": "Ref Ability 1", "type": "reference" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "animation resource browser",
+      "layout": "modal",
+      "col": 3,
+      "row": 1,
+      "regions": [
+        {
+          "name": "resource filter",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "Animation Resource", "input": "dropdown" },
+            { "label": "Play W/ Next", "input": "checkbox" }
+          ]
+        },
+        {
+          "name": "resource list",
+          "slot": "body",
+          "type": "listbox",
+          "columns": ["Tag", "Animation"],
+          "rows": 10,
+          "note": "selectable rows; selecting demos the animation",
+          "actions": [
+            { "label": "Select", "primary": true },
+            { "label": "Demo" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reference ability browser",
+      "layout": "modal",
+      "col": 3,
+      "row": 2,
+      "regions": [
+        {
+          "name": "reference filter",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "Character", "input": "dropdown" },
+            { "label": "Mode", "input": "radio", "options": ["Link", "Copy"] }
+          ]
+        },
+        {
+          "name": "ability list",
+          "slot": "body",
+          "type": "listbox",
+          "columns": ["Character", "Ability"],
+          "rows": 8,
+          "note": "selectable rows; selecting demos the reference ability",
+          "actions": [
+            { "label": "Select", "primary": true },
+            { "label": "Demo" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ability groups",
+      "layout": "form",
+      "col": 4,
+      "row": 1,
+      "regions": [
+        {
+          "name": "group tree",
+          "slot": "body",
+          "type": "tree",
+          "note": "hierarchical group tree; groups contain abilities; selected group highlighted green",
+          "sample": [
+            { "level": 0, "label": "Common", "expanded": true },
+            { "level": 1, "label": "Ability 1" },
+            { "level": 1, "label": "Ability 2" },
+            { "level": 0, "label": "Defenses", "expanded": true },
+            { "level": 1, "label": "Shield Buff" },
+            { "level": 0, "label": "Weapons", "expanded": true, "selected": true },
+            { "level": 1, "label": "Burst Attack" },
+            { "level": 1, "label": "Fire Breath" },
+            { "level": 1, "label": "Dodge" }
+          ],
+          "actions": [
+            { "label": "+ Add Group" },
+            { "label": "Delete Group" },
+            { "label": "+ Place Ability" },
+            { "label": "− Remove" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "attack configuration",
+      "layout": "modal",
+      "col": 4,
+      "row": 2,
+      "regions": [
+        {
+          "name": "result",
+          "slot": "body",
+          "type": "listbox",
+          "items": ["Hit", "Miss"],
+          "note": "selectable listbox for attack result"
+        },
+        {
+          "name": "effects",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "Stunned", "input": "checkbox" },
+            { "label": "Unconscious", "input": "checkbox" },
+            { "label": "Dead", "input": "checkbox" }
+          ]
+        },
+        {
+          "name": "knockback",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "Knockback type", "input": "radio", "options": ["Knocked Down", "Knockback"] }
+          ],
+          "buttons": [
+            { "label": "OK", "primary": true },
+            { "label": "Cancel" }
+          ]
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "crowd manager — abilities",
+      "to": "ability editor",
+      "label": "edit ability"
+    },
+    {
+      "from": "ability editor",
+      "to": "crowd manager — abilities",
+      "label": "saves / cancels"
+    },
+    {
+      "from": "ability editor",
+      "to": "animation resource browser",
+      "label": "browse resources"
+    },
+    {
+      "from": "ability editor",
+      "to": "reference ability browser",
+      "label": "add reference"
+    },
+    {
+      "from": "crowd manager — abilities",
+      "to": "ability groups",
+      "label": "manage groups"
+    },
+    {
+      "from": "crowd manager — abilities",
+      "to": "attack configuration",
+      "label": "activate attack"
+    }
+  ]
+}

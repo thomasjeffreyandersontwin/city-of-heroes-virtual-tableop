@@ -1,0 +1,101 @@
+{
+  "target": "docs/ux/lo-fi/increment-4.drawio",
+  "screens": [
+    {
+      "name": "crowd manager — movements",
+      "layout": "sidebar",
+      "col": 1,
+      "row": 2,
+      "regions": [
+        {
+          "name": "crowd tree (dimmed)",
+          "slot": "panel",
+          "type": "chrome",
+          "modifier": "--dimmed",
+          "note": "same crowd tree as increment-1; greyed on sibling tabs"
+        },
+        {
+          "name": "tab bar",
+          "slot": "body",
+          "type": "nav-tabs",
+          "tabs": [
+            { "label": "Identities" },
+            { "label": "Abilities" },
+            { "label": "Movements", "active": true }
+          ]
+        },
+        {
+          "name": "movement list",
+          "slot": "body",
+          "type": "list",
+          "columns": ["name", "key", "default", "type"],
+          "rows": 4,
+          "actions": [
+            { "label": "Add" },
+            { "label": "Remove" },
+            { "label": "Set Default" },
+            { "label": "Set Key" },
+            { "label": "Edit", "primary": true }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "movement editor",
+      "layout": "form",
+      "col": 2,
+      "row": 2,
+      "regions": [
+        {
+          "name": "movement config",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "Movement Type", "input": "dropdown", "options": ["Walk", "Run", "Swim", "Fly", "Jump"] },
+            { "label": "Default", "input": "checkbox" }
+          ],
+          "buttons": [
+            { "label": "Play", "primary": true }
+          ]
+        },
+        {
+          "name": "direction abilities",
+          "slot": "body",
+          "type": "form",
+          "note": "6 directional ability dropdown assignments",
+          "fields": [
+            { "label": "→ Fly Right Ability", "input": "dropdown" },
+            { "label": "← Fly Left Ability", "input": "dropdown" },
+            { "label": "↑ Fly Forward Ability", "input": "dropdown" },
+            { "label": "↓ Fly Back Ability", "input": "dropdown" },
+            { "label": "⬆ Fly Up Ability", "input": "dropdown" },
+            { "label": "⬇ Fly Down Ability", "input": "dropdown" }
+          ]
+        },
+        {
+          "name": "animations",
+          "slot": "body",
+          "type": "listbox",
+          "note": "selectable animation listbox for movement",
+          "items": [
+            "Become The Character 2!",
+            "Character 2 Attack",
+            "Character 2 Dodge"
+          ]
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "crowd manager — movements",
+      "to": "movement editor",
+      "label": "edit movement"
+    },
+    {
+      "from": "movement editor",
+      "to": "crowd manager — movements",
+      "label": "saves / cancels"
+    }
+  ]
+}
