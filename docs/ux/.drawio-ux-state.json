@@ -1,0 +1,147 @@
+{
+  "target": "C:\\hero-desktop\\city-of-heroes-virtual-tabletop\\docs\\ux\\initial-ia-diagram.drawio",
+  "screens": [
+    {
+      "name": "game directory prompt",
+      "layout": "modal",
+      "col": 0, "row": 0,
+      "stories": ["Validate Game Directory", "Prompt if Invalid"],
+      "terms": ["COH game directory"],
+      "regions": [
+        { "name": "directory entry form", "type": "form", "slot": "body",
+          "fields": ["COH game directory", "directory path", "browse", "validation feedback"],
+          "actions": ["continue"] }
+      ]
+    },
+    {
+      "name": "crowd manager — identities",
+      "layout": "sidebar",
+      "col": 1, "row": 0,
+      "stories": ["Create/Rename/Delete Crowd", "Nest Crowd", "Create/Rename/Delete/Clone/Cut/Link Character", "Drag-Drop Character", "Browse Crowds", "Add/Remove/Set Identity"],
+      "terms": ["identity", "crowd", "crowd member"],
+      "regions": [
+        { "name": "crowd tree", "type": "list", "slot": "panel",
+          "fields": ["crowd name", "member count", "  > char name", "  > type · spawned · active"],
+          "actions": ["create crowd", "rename", "delete", "nest crowd", "create character", "rename character", "delete character", "clone", "cut", "link", "clone-link", "flatten-copy", "clone memberships", "drag-drop", "filter", "browse concept", "browse coh-structure"] },
+        { "name": "[ Identities ]  Abilities  Movements", "type": "chrome", "slot": "body" },
+        { "name": "identity list", "type": "list", "slot": "body",
+          "fields": ["name", "type", "active", "default"],
+          "actions": ["add", "remove", "set-default", "set-active", "add ghost", "assign-surface", "set-type"] }
+      ]
+    },
+    {
+      "name": "crowd manager — abilities",
+      "layout": "sidebar",
+      "col": 1, "row": 1,
+      "stories": ["Create/Delete Ability", "Set Key/Persistence/Default", "Play/Stop Ability"],
+      "terms": ["animated ability", "activation key"],
+      "regions": [
+        { "name": "crowd tree", "type": "list", "slot": "panel", "dimmed": true,
+          "fields": ["crowd name", "member count", "  > char name", "  > type · spawned · active"],
+          "actions": ["create crowd", "rename", "delete", "nest crowd", "create character", "rename character", "delete character", "clone", "cut", "link", "clone-link", "flatten-copy", "clone memberships", "drag-drop", "filter", "browse concept", "browse coh-structure"] },
+        { "name": "Identities  [ Abilities ]  Movements", "type": "chrome", "slot": "body" },
+        { "name": "ability list", "type": "list", "slot": "body",
+          "fields": ["name", "activation key", "persistent", "attack flag"],
+          "actions": ["create", "delete", "set-key", "toggle-persistence", "set-default", "play", "stop", "edit"] }
+      ]
+    },
+    {
+      "name": "crowd manager — movements",
+      "layout": "sidebar",
+      "col": 1, "row": 2,
+      "stories": ["Add/Remove Movement", "Set Default/Key", "Edit Movement Parameters"],
+      "terms": ["character movement", "activation key"],
+      "regions": [
+        { "name": "crowd tree", "type": "list", "slot": "panel", "dimmed": true,
+          "fields": ["crowd name", "member count", "  > char name", "  > type · spawned · active"],
+          "actions": ["create crowd", "rename", "delete", "nest crowd", "create character", "rename character", "delete character", "clone", "cut", "link", "clone-link", "flatten-copy", "clone memberships", "drag-drop", "filter", "browse concept", "browse coh-structure"] },
+        { "name": "Identities  Abilities  [ Movements ]", "type": "chrome", "slot": "body" },
+        { "name": "movement list", "type": "list", "slot": "body",
+          "fields": ["name", "activation key", "default", "type"],
+          "actions": ["add", "remove", "set-default", "set-key", "edit"] }
+      ]
+    },
+    {
+      "name": "model browser",
+      "layout": "modal",
+      "col": 1, "row": 3,
+      "stories": ["Create Crowd from COH Model List", "Select Models"],
+      "terms": ["crowd", "character"],
+      "regions": [
+        { "name": "model list", "type": "list", "slot": "body",
+          "fields": ["model name", "type"],
+          "actions": ["select", "deselect", "create crowd"] }
+      ]
+    },
+    {
+      "name": "ability editor",
+      "layout": "form",
+      "col": 2, "row": 1,
+      "stories": ["Edit Animated Ability", "Add FX/MOV/Sound/Reference/Sequence/Pause/Identity Element", "Reorder/Remove Element", "Browse Resources"],
+      "terms": ["animated ability", "animation element", "animation resource"],
+      "regions": [
+        { "name": "ability config", "type": "form", "slot": "body",
+          "fields": ["name", "activation key", "persistent", "attack flag"],
+          "actions": ["save", "cancel"] },
+        { "name": "element list", "type": "list", "slot": "body",
+          "fields": ["type", "resource", "order"],
+          "actions": ["add FX", "add MOV", "add sound", "add reference", "add sequence", "add pause", "add identity", "reorder", "remove"] }
+      ]
+    },
+    {
+      "name": "movement editor",
+      "layout": "form",
+      "col": 2, "row": 2,
+      "stories": ["Edit Movement Parameters"],
+      "terms": ["character movement"],
+      "regions": [
+        { "name": "movement config", "type": "form", "slot": "body",
+          "fields": ["name", "activation key", "default", "type"],
+          "actions": ["save", "cancel"] }
+      ]
+    },
+    {
+      "name": "desktop",
+      "layout": "split-screen",
+      "col": 2, "row": 0,
+      "stories": ["Manage Roster", "Activate/Deactivate Characters/Gang", "Select/Drag/Multi-Select on Overlay", "Spawn/Place/Move/Orient via Context Menu", "Follow/Unfollow Camera"],
+      "terms": ["roster", "desktop", "active character", "gang mode", "spawned character"],
+      "regions": [
+        { "name": "roster panel", "type": "list", "slot": "left",
+          "fields": ["name", "spawned", "active", "status"],
+          "actions": ["add", "add-crowd", "spawn", "remove", "clear", "activate", "deactivate", "activate-gang", "deactivate-gang"] },
+        { "name": "game overlay", "type": "list", "slot": "right",
+          "fields": ["character overlay", "status indicator"],
+          "actions": ["select", "multi-select", "drag to position", "double-click to activate"] },
+        { "name": "context menu", "type": "list", "slot": "right",
+          "fields": ["target character"],
+          "actions": ["spawn", "place at location", "save-position", "move-camera-to-target", "move-target-to-camera", "move-to-location", "teleport-to-camera", "move-crowd-relative", "move-crowd-spread", "turn-to-target", "align-with-gang-leader", "follow", "unfollow", "maneuver-with-camera", "reset-orientation", "activate-option", "clone-link"] }
+      ]
+    },
+    {
+      "name": "attack configuration",
+      "layout": "flyout",
+      "col": 3, "row": 0,
+      "stories": ["Select Attacker/Defenders", "Set Attack Effect/Knockback/Result/Mode", "Area/Sweep/Spread Attack", "Cancel/Abort/Reset"],
+      "terms": ["attack", "attack configuration", "attack effect"],
+      "regions": [
+        { "name": "combatant selectors", "type": "list", "slot": "body",
+          "fields": ["name", "role"],
+          "actions": ["select attacker", "add defender", "remove defender", "confirm targets", "reset combat state"] },
+        { "name": "attack parameters", "type": "form", "slot": "body",
+          "fields": ["effect", "knockback", "result", "mode", "center", "sweep targets", "auto-fire shots"],
+          "actions": ["confirm", "cancel", "abort"] }
+      ]
+    }
+  ],
+  "connections": [
+    { "from": "game directory prompt", "to": "crowd manager — identities", "label": "valid path" },
+    { "from": "crowd manager — identities", "to": "crowd manager — abilities", "label": "Abilities tab" },
+    { "from": "crowd manager — abilities", "to": "crowd manager — movements", "label": "Movements tab" },
+    { "from": "crowd manager — identities", "to": "model browser", "label": "model browser" },
+    { "from": "crowd manager — abilities", "to": "ability editor", "label": "edit" },
+    { "from": "crowd manager — movements", "to": "movement editor", "label": "edit" },
+    { "from": "crowd manager — identities", "to": "desktop", "label": "start session" },
+    { "from": "desktop", "to": "attack configuration", "label": "attack ability" }
+  ]
+}

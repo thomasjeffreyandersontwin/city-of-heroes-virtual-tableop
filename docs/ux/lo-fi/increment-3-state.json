@@ -1,0 +1,118 @@
+{
+  "target": "docs/ux/lo-fi/increment-3.drawio",
+  "screens": [
+    {
+      "name": "crowd manager — abilities",
+      "layout": "sidebar",
+      "col": 1,
+      "row": 1,
+      "regions": [
+        {
+          "name": "crowd tree (dimmed)",
+          "slot": "panel",
+          "type": "chrome",
+          "modifier": "--dimmed",
+          "note": "same crowd tree as increment-1; greyed on sibling tabs"
+        },
+        {
+          "name": "tab bar",
+          "slot": "body",
+          "type": "nav-tabs",
+          "tabs": [
+            { "label": "Identities" },
+            { "label": "Abilities", "active": true },
+            { "label": "Movements" }
+          ]
+        },
+        {
+          "name": "ability list",
+          "slot": "body",
+          "type": "list",
+          "columns": ["name", "key", "persistent", "attack"],
+          "rows": 6,
+          "actions": [
+            { "label": "Create" },
+            { "label": "Edit" },
+            { "label": "Delete" },
+            { "label": "Set Key" },
+            { "label": "Toggle Persist" },
+            { "label": "Set Default" },
+            { "label": "Play", "primary": true },
+            { "label": "Stop" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ability editor",
+      "layout": "form",
+      "col": 2,
+      "row": 1,
+      "regions": [
+        {
+          "name": "ability config",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "Name",           "input": "text" },
+            { "label": "Activation Key", "input": "text" },
+            { "label": "Persistent",     "input": "checkbox" },
+            { "label": "Attack Flag",    "input": "checkbox" }
+          ],
+          "buttons": [
+            { "label": "Save", "primary": true },
+            { "label": "Cancel" }
+          ]
+        },
+        {
+          "name": "element list",
+          "slot": "body",
+          "type": "list",
+          "columns": ["type", "resource", "order", "persistent"],
+          "rows": 5,
+          "actions": [
+            { "label": "Add FX" },
+            { "label": "Add MOV" },
+            { "label": "Add Sound" },
+            { "label": "Add Reference" },
+            { "label": "Add Sequence" },
+            { "label": "Add Pause" },
+            { "label": "Add Identity" },
+            { "label": "Reorder ↕" },
+            { "label": "Remove" }
+          ]
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "crowd manager — identities",
+      "to": "crowd manager — abilities",
+      "label": "selects Abilities tab",
+      "style": "dashed"
+    },
+    {
+      "from": "crowd manager — abilities",
+      "to": "crowd manager — identities",
+      "label": "selects Identities tab",
+      "style": "dashed"
+    },
+    {
+      "from": "crowd manager — abilities",
+      "to": "crowd manager — movements",
+      "label": "selects Movements tab",
+      "style": "dashed"
+    },
+    {
+      "from": "crowd manager — abilities",
+      "to": "ability editor",
+      "label": "edit ability"
+    },
+    {
+      "from": "ability editor",
+      "to": "crowd manager — abilities",
+      "label": "saves / cancels"
+    }
+  ]
+}

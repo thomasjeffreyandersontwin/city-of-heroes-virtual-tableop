@@ -1,0 +1,97 @@
+{
+  "target": "docs/ux/lo-fi/increment-6.drawio",
+  "screens": [
+    {
+      "name": "desktop",
+      "layout": "split-screen",
+      "col": 3,
+      "row": 0,
+      "regions": [
+        {
+          "name": "roster panel",
+          "slot": "left",
+          "type": "list",
+          "columns": ["name", "spawned", "active"],
+          "rows": 4,
+          "actions": [
+            { "label": "Add" },
+            { "label": "Spawn" },
+            { "label": "Activate", "primary": true }
+          ]
+        },
+        {
+          "name": "game overlay",
+          "slot": "right",
+          "type": "list",
+          "columns": ["character overlay", "status indicator"],
+          "rows": 3
+        },
+        {
+          "name": "context menu",
+          "slot": "right",
+          "type": "list",
+          "columns": ["action"],
+          "rows": 5,
+          "actions": [
+            { "label": "Activate Attack Ability", "primary": true }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "attack configuration",
+      "layout": "flyout",
+      "col": 4,
+      "row": 0,
+      "regions": [
+        {
+          "name": "combatant selectors",
+          "slot": "body",
+          "type": "list",
+          "columns": ["character name", "role (attacker / defender)"],
+          "rows": 3,
+          "actions": [
+            { "label": "Select Attacker" },
+            { "label": "Add Defender" },
+            { "label": "Remove Defender" },
+            { "label": "Confirm Targets", "primary": true }
+          ]
+        },
+        {
+          "name": "attack parameters",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "Attack Effect",      "input": "dropdown", "options": ["Stunned", "Unconscious", "Dying", "Dead"] },
+            { "label": "Knockback Distance", "input": "text" },
+            { "label": "Attack Result",      "input": "dropdown", "options": ["Hit", "Miss"] },
+            { "label": "Attack Mode",        "input": "dropdown", "options": ["Attack", "Defend"] },
+            { "label": "Area Center",        "input": "checkbox" }
+          ],
+          "buttons": [
+            { "label": "Confirm", "primary": true },
+            { "label": "Cancel" },
+            { "label": "Abort" }
+          ]
+        },
+        {
+          "name": "(no IA content)",
+          "slot": "panel",
+          "type": "chrome"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "desktop",
+      "to": "attack configuration",
+      "label": "activates attack ability"
+    },
+    {
+      "from": "attack configuration",
+      "to": "desktop",
+      "label": "confirms / cancels attack"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "target": "docs/ux/lo-fi/increment-1.drawio",
+  "screens": [
+    {
+      "name": "game directory prompt",
+      "layout": "modal",
+      "col": 0,
+      "row": 0,
+      "regions": [
+        {
+          "name": "directory entry form",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "COH Game Directory", "input": "text" },
+            { "label": "Validation feedback", "input": "text" }
+          ],
+          "buttons": [
+            { "label": "Browse" },
+            { "label": "Continue  (disabled until valid)", "primary": true }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "crowd manager — identities",
+      "layout": "sidebar",
+      "col": 1,
+      "row": 0,
+      "regions": [
+        {
+          "name": "crowd tree toolbar — structural",
+          "slot": "panel",
+          "type": "toolbar",
+          "buttons": [
+            { "label": "New Crowd" },
+            { "label": "New Char" },
+            { "label": "Rename" },
+            { "label": "Delete" }
+          ]
+        },
+        {
+          "name": "crowd tree toolbar — clipboard",
+          "slot": "panel",
+          "type": "toolbar",
+          "buttons": [
+            { "label": "Cut" },
+            { "label": "Clone" },
+            { "label": "Link" },
+            { "label": "Clone-Link" }
+          ]
+        },
+        {
+          "name": "crowd tree toolbar — batch ops",
+          "slot": "panel",
+          "type": "toolbar",
+          "buttons": [
+            { "label": "Flatten-Copy" },
+            { "label": "Clone Mbrs" }
+          ]
+        },
+        {
+          "name": "filter bar",
+          "slot": "panel",
+          "type": "form",
+          "fields": [
+            { "label": "Filter by Name", "input": "text" }
+          ],
+          "buttons": [
+            { "label": "× Clear" }
+          ]
+        },
+        {
+          "name": "crowd tree",
+          "slot": "panel",
+          "type": "list",
+          "columns": ["crowd / character", "cnt"],
+          "rows": 8
+        },
+        {
+          "name": "browse modes",
+          "slot": "panel",
+          "type": "button-bar",
+          "buttons": [
+            { "label": "By Concept" },
+            { "label": "By Gangs" },
+            { "label": "By COH Structure" },
+            { "label": "All Characters", "primary": true }
+          ]
+        },
+        {
+          "name": "tab bar",
+          "slot": "body",
+          "type": "nav-tabs",
+          "tabs": [
+            { "label": "Identities", "active": true },
+            { "label": "Abilities" },
+            { "label": "Movements" }
+          ]
+        },
+        {
+          "name": "identity list  (placeholder — Increment 2)",
+          "slot": "body",
+          "type": "list",
+          "columns": ["name", "type", "active", "default"],
+          "rows": 2,
+          "actions": [
+            { "label": "Add" },
+            { "label": "Remove" },
+            { "label": "Set Active", "primary": true }
+          ]
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "game directory prompt",
+      "to": "crowd manager — identities",
+      "label": "Continue (valid path)"
+    }
+  ]
+}

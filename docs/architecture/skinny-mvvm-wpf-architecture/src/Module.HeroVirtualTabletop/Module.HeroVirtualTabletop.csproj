@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Prism.Core: BindableBase (SetProperty) + DelegateCommand. No WPF dependency. -->
+    <PackageReference Include="Prism.Core" Version="9.0.537" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library.GameCommunicator\Library.GameCommunicator.csproj" />
+    <ProjectReference Include="..\Library.ProcessCommunicator\Library.ProcessCommunicator.csproj" />
+  </ItemGroup>
+</Project>

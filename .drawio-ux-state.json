@@ -1,0 +1,487 @@
+{
+  "target": "C:\\hero-desktop\\city-of-heroes-virtual-tabletop\\docs\\ux\\initial-ia.drawio",
+  "screens": [
+    {
+      "name": "game directory prompt",
+      "modal": true,
+      "tabOf": null,
+      "regions": [
+        {
+          "name": "directory entry form",
+          "type": "form",
+          "fields": [
+            "COH game directory",
+            "directory path",
+            "browse",
+            "validation feedback",
+            "continue"
+          ]
+        }
+      ],
+      "stories": [
+        "Validate Game Directory",
+        "Prompt if Invalid"
+      ],
+      "terms": [
+        "COH game directory"
+      ]
+    },
+    {
+      "name": "crowd manager — identities",
+      "modal": false,
+      "tabOf": null,
+      "regions": [
+        {
+          "name": "toolbar",
+          "type": "chrome"
+        },
+        {
+          "name": "crowd tree",
+          "type": "list",
+          "fields": [
+            "crowd name",
+            "member count",
+            "type"
+          ],
+          "actions": [
+            "create crowd",
+            "rename",
+            "delete",
+            "create character",
+            "clone",
+            "link",
+            "filter"
+          ],
+          "editsTo": null
+        },
+        {
+          "name": "identity list",
+          "type": "list",
+          "fields": [
+            "name",
+            "type",
+            "active",
+            "default"
+          ],
+          "actions": [
+            "add",
+            "remove",
+            "set-default",
+            "set-active",
+            "add ghost"
+          ],
+          "editsTo": null
+        },
+        {
+          "name": "status bar",
+          "type": "chrome"
+        }
+      ],
+      "stories": [
+        "Add Identity",
+        "Set Default Identity",
+        "Set Active Identity",
+        "Remove Identity",
+        "Create Crowd",
+        "Create Character in Crowd"
+      ],
+      "terms": [
+        "identity",
+        "model identity",
+        "costume identity",
+        "active identity",
+        "default identity",
+        "crowd"
+      ]
+    },
+    {
+      "name": "crowd manager — abilities",
+      "modal": false,
+      "tabOf": "crowd manager — identities",
+      "regions": [
+        {
+          "name": "toolbar",
+          "type": "chrome"
+        },
+        {
+          "name": "crowd tree",
+          "type": "chrome"
+        },
+        {
+          "name": "ability list",
+          "type": "list",
+          "fields": [
+            "name",
+            "activation key",
+            "persistent",
+            "attack flag"
+          ],
+          "actions": [
+            "create",
+            "delete",
+            "set-key",
+            "toggle-persistence",
+            "play",
+            "stop",
+            "edit"
+          ],
+          "editsTo": null
+        },
+        {
+          "name": "status bar",
+          "type": "chrome"
+        }
+      ],
+      "stories": [
+        "Create Animated Ability",
+        "Delete Animated Ability",
+        "Set Ability Activation Key",
+        "Toggle Ability Persistence",
+        "Play Animated Ability",
+        "Stop Active Ability"
+      ],
+      "terms": [
+        "animated ability",
+        "activation key",
+        "persistent"
+      ]
+    },
+    {
+      "name": "crowd manager — movements",
+      "modal": false,
+      "tabOf": "crowd manager — identities",
+      "regions": [
+        {
+          "name": "toolbar",
+          "type": "chrome"
+        },
+        {
+          "name": "crowd tree",
+          "type": "chrome"
+        },
+        {
+          "name": "movement list",
+          "type": "list",
+          "fields": [
+            "name",
+            "activation key",
+            "default",
+            "type"
+          ],
+          "actions": [
+            "add",
+            "remove",
+            "set-default",
+            "set-key",
+            "edit"
+          ],
+          "editsTo": null
+        },
+        {
+          "name": "status bar",
+          "type": "chrome"
+        }
+      ],
+      "stories": [
+        "Add Movement",
+        "Remove Movement",
+        "Set Default Movement",
+        "Set Movement Activation Key",
+        "Edit Movement Parameters"
+      ],
+      "terms": [
+        "character movement",
+        "activation key"
+      ]
+    },
+    {
+      "name": "ability editor",
+      "modal": false,
+      "tabOf": null,
+      "regions": [
+        {
+          "name": "ability config",
+          "type": "form",
+          "fields": [
+            "name",
+            "activation key",
+            "persistent",
+            "attack flag"
+          ]
+        },
+        {
+          "name": "element list",
+          "type": "list",
+          "fields": [
+            "type",
+            "resource",
+            "order",
+            "persistent"
+          ],
+          "actions": [
+            "add FX",
+            "add MOV",
+            "add sound",
+            "add reference",
+            "add sequence",
+            "add pause",
+            "add identity",
+            "reorder",
+            "remove"
+          ],
+          "editsTo": null
+        }
+      ],
+      "stories": [
+        "Edit Animated Ability",
+        "Add FX Element",
+        "Add MOV Element",
+        "Add Sound Element",
+        "Reorder Animation Elements"
+      ],
+      "terms": [
+        "animated ability",
+        "animation element",
+        "FX effect element",
+        "MOV element",
+        "sound element"
+      ]
+    },
+    {
+      "name": "model browser",
+      "modal": false,
+      "tabOf": null,
+      "regions": [
+        {
+          "name": "model list",
+          "type": "list",
+          "fields": [
+            "model name",
+            "type"
+          ],
+          "actions": [
+            "select",
+            "deselect",
+            "create crowd from selection"
+          ],
+          "editsTo": null
+        }
+      ],
+      "stories": [
+        "Create Crowd from COH Model List",
+        "Select Models to Include in Crowd"
+      ],
+      "terms": [
+        "crowd",
+        "character"
+      ]
+    },
+    {
+      "name": "desktop",
+      "modal": false,
+      "tabOf": null,
+      "regions": [
+        {
+          "name": "roster panel",
+          "type": "list",
+          "fields": [
+            "character name",
+            "spawned",
+            "active",
+            "status"
+          ],
+          "actions": [
+            "add",
+            "add-crowd",
+            "spawn",
+            "remove",
+            "clear",
+            "activate",
+            "deactivate",
+            "activate-gang"
+          ],
+          "editsTo": null
+        },
+        {
+          "name": "game overlay",
+          "type": "list",
+          "fields": [
+            "character overlay",
+            "status indicator"
+          ],
+          "actions": [
+            "select",
+            "multi-select",
+            "drag",
+            "double-click"
+          ],
+          "editsTo": null
+        },
+        {
+          "name": "context menu",
+          "type": "list",
+          "fields": [
+            "target character"
+          ],
+          "actions": [
+            "spawn",
+            "place",
+            "move-to-camera",
+            "save-position",
+            "clone-link",
+            "activate-option",
+            "maneuver-with-camera"
+          ],
+          "editsTo": null
+        }
+      ],
+      "stories": [
+        "Add Character to Roster",
+        "Spawn Character",
+        "Activate Character",
+        "Deactivate Character",
+        "Activate Crowd as Gang"
+      ],
+      "terms": [
+        "roster",
+        "desktop",
+        "active character",
+        "gang mode",
+        "gang leader",
+        "spawned character"
+      ]
+    },
+    {
+      "name": "attack configuration",
+      "modal": false,
+      "tabOf": null,
+      "regions": [
+        {
+          "name": "combatant selectors",
+          "type": "list",
+          "fields": [
+            "character name",
+            "role"
+          ],
+          "actions": [
+            "select attacker",
+            "add defender",
+            "remove defender",
+            "confirm targets"
+          ],
+          "editsTo": null
+        },
+        {
+          "name": "attack parameters",
+          "type": "form",
+          "fields": [
+            "attack effect",
+            "knockback distance",
+            "attack result",
+            "attack mode",
+            "area center"
+          ]
+        }
+      ],
+      "stories": [
+        "Select Attacking Character",
+        "Select Defender Targets",
+        "Set Attack Effect",
+        "Set Knockback Distance",
+        "Set Attack Result",
+        "Set Attack Mode"
+      ],
+      "terms": [
+        "attack",
+        "attack configuration",
+        "attack effect"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "game directory prompt",
+      "to": "crowd manager — identities",
+      "label": "submits valid path",
+      "dashed": false
+    },
+    {
+      "from": "crowd manager — identities",
+      "to": "crowd manager — abilities",
+      "label": "selects Abilities tab",
+      "dashed": true
+    },
+    {
+      "from": "crowd manager — identities",
+      "to": "crowd manager — movements",
+      "label": "selects Movements tab",
+      "dashed": true
+    },
+    {
+      "from": "crowd manager — abilities",
+      "to": "crowd manager — identities",
+      "label": "selects Identities tab",
+      "dashed": true
+    },
+    {
+      "from": "crowd manager — abilities",
+      "to": "crowd manager — movements",
+      "label": "selects Movements tab",
+      "dashed": true
+    },
+    {
+      "from": "crowd manager — movements",
+      "to": "crowd manager — identities",
+      "label": "selects Identities tab",
+      "dashed": true
+    },
+    {
+      "from": "crowd manager — movements",
+      "to": "crowd manager — abilities",
+      "label": "selects Abilities tab",
+      "dashed": true
+    },
+    {
+      "from": "crowd manager — abilities",
+      "to": "ability editor",
+      "label": "opens ability editor",
+      "dashed": false
+    },
+    {
+      "from": "ability editor",
+      "to": "crowd manager — abilities",
+      "label": "saves / cancels",
+      "dashed": false
+    },
+    {
+      "from": "crowd manager — identities",
+      "to": "model browser",
+      "label": "opens model browser",
+      "dashed": false
+    },
+    {
+      "from": "model browser",
+      "to": "crowd manager — identities",
+      "label": "creates crowd / cancels",
+      "dashed": false
+    },
+    {
+      "from": "crowd manager — identities",
+      "to": "desktop",
+      "label": "starts game session",
+      "dashed": false
+    },
+    {
+      "from": "desktop",
+      "to": "attack configuration",
+      "label": "activates attack ability",
+      "dashed": false
+    },
+    {
+      "from": "attack configuration",
+      "to": "desktop",
+      "label": "confirms / cancels",
+      "dashed": false
+    }
+  ]
+}

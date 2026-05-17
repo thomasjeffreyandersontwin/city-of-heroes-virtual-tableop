@@ -1,0 +1,15 @@
+---
+description: Generate Skinny ViewModel + domain class pairs in the Hero Virtual Tabletop WPF architecture
+alwaysApply: true
+---
+
+# Run skinny-mvvm-wpf-architecture
+
+Read `docs/architecture/skinny-mvvm-wpf-architecture/SKILL.md` and follow the **Agent Instructions** section. The reference document is at `docs/architecture/skinny-mvvm-wpf-architecture/inputs/architecture-reference.md`.
+
+When generating or modifying any ViewModel:
+
+1. Identify the scope (new module / refactor / extraction) using the **Build** section.
+2. Use `templates/viewmodel-module.template.txt` as the concrete starting point.
+3. Validate the result against every rule in the bundled rules block of `SKILL.md` before completing.
+4. Command handlers must be one-liners. Bound properties must be direct domain references. No ViewModel knows another ViewModel exists.

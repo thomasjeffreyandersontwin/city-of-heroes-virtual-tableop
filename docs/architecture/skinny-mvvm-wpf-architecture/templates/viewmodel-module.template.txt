@@ -1,0 +1,260 @@
+# Skinny ViewModel Module Template — Hero Virtual Tabletop WPF Architecture
+# Source: Mechanism: Skinny ViewModel — inputs/architecture-reference.md
+#
+# Usage: For each new feature, instantiate the three files below.
+#        Substitute {Feature} with the domain entity name (e.g. Roster, CrowdMember, Identity).
+#        Substitute {DomainInterface} with the injected interface (e.g. IRoster, ICharacter).
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# FILE 1: {Feature}ViewModel.cs
+# Pattern: Delegating ViewModel with Observable Domain (Skinny ViewModel)
+# ─────────────────────────────────────────────────────────────────────────────
+
+using System.Collections.ObjectModel;
+using Prism.Commands;
+using Prism.Mvvm;
+
+namespace Module.HeroVirtualTabletop.{Feature}
+{
+    public class {Feature}ViewModel : BindableBase
+    {
+        private readonly {DomainInterface} _{domainField};
+
+        public {Feature}ViewModel({DomainInterface} {domainParam})
+        {
+            _{domainField} = {domainParam};
+
+            // Wire commands to domain methods — one-liner per handler
+            {PrimaryActionCommand} = new DelegateCommand({PrimaryActionMethod}, Can{PrimaryActionMethod});
+            {SecondaryActionCommand} = new DelegateCommand({SecondaryActionMethod}, Can{SecondaryActionMethod});
+        }
+
+        // ── Bound properties: direct domain references, no copy ──────────────
+        public ObservableCollection<{ItemType}> Items => _{domainField}.Members;
+
+        private {ItemType}? _selected;
+        public {ItemType}? Selected
+        {
+            get => _selected;
+            set => SetProperty(ref _selected, value);
+        }
+
+        // ── Commands ─────────────────────────────────────────────────────────
+        public DelegateCommand {PrimaryActionCommand} { get; }
+        public DelegateCommand {SecondaryActionCommand} { get; }
+
+        // One-liner handlers — domain owns the logic
+        private void {PrimaryActionMethod}()   => _{domainField}.{DomainPrimaryMethod}(Selected!);
+        private void {SecondaryActionMethod}() => _{domainField}.{DomainSecondaryMethod}(Selected!);
+
+        // Can-execute predicates — guard conditions live here, not in handlers
+        private bool Can{PrimaryActionMethod}()   => Selected != null;
+        private bool Can{SecondaryActionMethod}() => Selected != null;
+    }
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FILLED EXAMPLE (Roster module — substitute your own feature)
+# ─────────────────────────────────────────────────────────────────────────────
+
+using System.Collections.ObjectModel;
+using Prism.Commands;
+using Prism.Mvvm;
+
+namespace Module.HeroVirtualTabletop.Rosters
+{
+    public class RosterExplorerViewModel : BindableBase
+    {
+        private readonly IRoster _roster;
+
+        public RosterExplorerViewModel(IRoster roster)
+        {
+            _roster = roster;
+            ActivateCharacterCommand = new DelegateCommand(Activate, CanActivate);
+            SpawnCommand             = new DelegateCommand(Spawn,    CanSpawn);
+            ClearFromDesktopCommand  = new DelegateCommand(Clear,    CanClear);
+        }
+
+        // Direct domain reference — CollectionChanged propagates automatically
+        public ObservableCollection<ICrowdMember> Participants => _roster.Members;
+
+        private ICrowdMember? _selectedCharacter;
+        public ICrowdMember? SelectedCharacter
+        {
+            get => _selectedCharacter;
+            set => SetProperty(ref _selectedCharacter, value);
+        }
+
+        public DelegateCommand ActivateCharacterCommand { get; }
+        public DelegateCommand SpawnCommand             { get; }
+        public DelegateCommand ClearFromDesktopCommand  { get; }
+
+        private void Activate() => _roster.ActivateCrowdMember(SelectedCharacter!);
+        private void Spawn()    => _roster.SpawnCrowdMember(SelectedCharacter!);
+        private void Clear()    => _roster.ClearFromDesktop(SelectedCharacter!);
+
+        private bool CanActivate() => SelectedCharacter != null;
+        private bool CanSpawn()    => SelectedCharacter != null && !SelectedCharacter.IsSpawned;
+        private bool CanClear()    => SelectedCharacter != null &&  SelectedCharacter.IsSpawned;
+    }
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FILE 2: {Feature}.cs   (domain entity — owns all rules and state)
+# Pattern: Observable Domain Entity
+# ─────────────────────────────────────────────────────────────────────────────
+
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace Module.HeroVirtualTabletop.{Feature}
+{
+    public class {Feature} : I{Feature}, INotifyPropertyChanged
+    {
+        // ── Observable state ─────────────────────────────────────────────────
+        public ObservableCollection<{ItemType}> Members { get; } = new();
+
+        private bool _{boolProp};
+        public bool {BoolProp}
+        {
+            get => _{boolProp};
+            private set { _{boolProp} = value; OnPropertyChanged(); }
+        }
+
+        // ── Cross-feature subscription (domain-to-domain, no ViewModel) ──────
+        public {Feature}(I{RelatedDomain} related)
+        {
+            related.Members.CollectionChanged += OnRelatedMembersChanged;
+        }
+
+        private void OnRelatedMembersChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.OldItems == null) return;
+            foreach ({ItemType} removed in e.OldItems)
+                Members.Remove(removed);
+            // Bound ViewModels observe the result automatically
+        }
+
+        // ── Domain behaviour methods (ViewModel calls these one-liners) ───────
+        public void {DomainPrimaryMethod}({ItemType} item)
+        {
+            // business logic lives here — validate, change state, interact with seam
+        }
+
+        public void {DomainSecondaryMethod}({ItemType} item)
+        {
+            // ...
+        }
+
+        // ── INotifyPropertyChanged ────────────────────────────────────────────
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string? name = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FILE 3 (optional): {Concept}.cs  — extracted domain concept
+# Pattern: Domain Extraction (use when ViewModel contains structural plumbing)
+# ─────────────────────────────────────────────────────────────────────────────
+
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+
+namespace Module.HeroVirtualTabletop.{Feature}
+{
+    /// <summary>
+    /// {Concept} — named domain concept; owns uniqueness, ordering, and change notification.
+    /// Source: OptionGroup extraction pattern, inputs/architecture-reference.md.
+    /// </summary>
+    public class {Concept} : INotifyCollectionChanged, IEnumerable<{ItemType}>
+    {
+        private readonly Dictionary<string, {ItemType}> _index = new();
+        private readonly List<{ItemType}> _ordered = new();
+
+        public event NotifyCollectionChangedEventHandler? CollectionChanged;
+
+        public void Add({ItemType} item)
+        {
+            if (_index.ContainsKey(item.Key)) return;  // uniqueness invariant
+            _index[item.Key] = item;
+            _ordered.Add(item);
+            CollectionChanged?.Invoke(this,
+                new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
+        }
+
+        public bool Remove(string key)
+        {
+            if (!_index.TryGetValue(key, out var item)) return false;
+            _index.Remove(key);
+            _ordered.Remove(item);
+            CollectionChanged?.Invoke(this,
+                new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
+            return true;
+        }
+
+        public IEnumerator<{ItemType}> GetEnumerator() => _ordered.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FILLED EXAMPLE: OptionGroup (canonical extraction — Character.Identities/Abilities/Movements)
+# ─────────────────────────────────────────────────────────────────────────────
+
+public class OptionGroup : INotifyCollectionChanged, IEnumerable<IOption>
+{
+    private readonly Dictionary<string, IOption> _index = new();
+    private readonly List<IOption> _ordered = new();
+
+    public event NotifyCollectionChangedEventHandler? CollectionChanged;
+
+    public void Add(IOption option)
+    {
+        if (_index.ContainsKey(option.Key)) return;
+        _index[option.Key] = option;
+        _ordered.Add(option);
+        CollectionChanged?.Invoke(this,
+            new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, option));
+    }
+
+    public bool Remove(string key)
+    {
+        if (!_index.TryGetValue(key, out var opt)) return false;
+        _index.Remove(key);
+        _ordered.Remove(opt);
+        CollectionChanged?.Invoke(this,
+            new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, opt));
+        return true;
+    }
+
+    public IEnumerator<IOption> GetEnumerator() => _ordered.GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+}
+
+// Character.cs exposes concept as a direct property
+public class Character : ICharacter, INotifyPropertyChanged
+{
+    public OptionGroup Identities { get; } = new();
+    public OptionGroup Abilities  { get; } = new();
+    public OptionGroup Movements  { get; } = new();
+    // ... rest of Character
+}
+
+// IdentityEditorViewModel.cs — pass-through after extraction
+public class IdentityEditorViewModel : BindableBase
+{
+    private readonly Character _character;
+    public OptionGroup Identities => _character.Identities;  // direct — no copy
+
+    public DelegateCommand<IIdentity> AddIdentityCommand { get; }
+
+    public IdentityEditorViewModel(Character character)
+    {
+        _character = character;
+        AddIdentityCommand = new DelegateCommand<IIdentity>(
+            id => _character.Identities.Add(id));
+    }
+}
