@@ -1,0 +1,432 @@
+{
+  "$id": "16937",
+  "$type": "Module.HeroVirtualTabletop.Crowds.CrowdMemberModel, Module.HeroVirtualTabletop",
+  "Name": "Arachnos Locker (2)",
+  "defaultIdentity": {
+    "$id": "16938",
+    "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+    "Surface": "V_OO_Arachnos_Locker_01",
+    "Type": 0,
+    "AnimationOnLoad": null,
+    "Name": "V_OO_Arachnos_Locker_01",
+    "OptionTooltip": "V_OO_Arachnos_Locker_01"
+  },
+  "Order": 0,
+  "RosterCrowd": null,
+  "SavedPosition": {
+    "$id": "16939",
+    "$type": "Module.HeroVirtualTabletop.Library.ProcessCommunicator.Position, Module.HeroVirtualTabletop",
+    "X": 249.47,
+    "Y": 0.25,
+    "Z": -671.64,
+    "RotationMatrix": [
+      [
+        0.9998761,
+        1.18431653E-10,
+        0.0158109237
+      ],
+      [
+        -2.477658E-10,
+        1.0,
+        8.178006E-09
+      ],
+      [
+        -0.0158109237,
+        -8.18091E-09,
+        0.9998761
+      ]
+    ],
+    "Pointer": 0,
+    "TargetPointer": 0,
+    "IsReal": false
+  },
+  "OptionGroups": [
+    {
+      "$id": "16940",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 1,
+      "Count": 1,
+      "Name": "Powers",
+      "Options": [
+        {
+          "$id": "16941",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "16942",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.ReferenceAbility, Module.HeroVirtualTabletop",
+              "ReferenceType": 0,
+              "Reference": {
+                "$ref": "16706"
+              },
+              "Order": 1,
+              "Owner": null,
+              "Type": 3,
+              "PlayWithNext": false,
+              "DisplayName": "Dead",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "16943",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": "Dead",
+                "Value": null,
+                "Reference": {
+                  "$ref": "16706"
+                },
+                "Identity": null
+              },
+              "Name": "Reference - 1",
+              "OptionTooltip": "Reference - 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "16944",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Dead - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": null,
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "16945",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Dead - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Dead",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 1,
+          "Order": 1,
+          "Owner": {
+            "$ref": "16937"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "16946",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Dead"
+        }
+      ]
+    },
+    {
+      "$id": "16947",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 0,
+      "Count": 2,
+      "Name": "Identities",
+      "Options": [
+        {
+          "$ref": "16938"
+        },
+        {
+          "$id": "16948",
+          "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+          "Surface": "base",
+          "Type": 1,
+          "AnimationOnLoad": {
+            "$ref": "16941"
+          },
+          "Name": "Identity",
+          "OptionTooltip": "Identity"
+        }
+      ]
+    },
+    {
+      "$id": "16949",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 2,
+      "Count": 3,
+      "Name": "Movements",
+      "Options": [
+        {
+          "$id": "16950",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 75,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "16937"
+          },
+          "Movement": {
+            "$id": "16951",
+            "$type": "Module.HeroVirtualTabletop.Movements.Movement, Module.HeroVirtualTabletop",
+            "Name": "Walk",
+            "MovementMembers": [
+              {
+                "$id": "16952",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "10"
+                },
+                "MemberName": "Left",
+                "MovementDirection": 1
+              },
+              {
+                "$id": "16953",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2665"
+                },
+                "MemberName": "Right",
+                "MovementDirection": 0
+              },
+              {
+                "$id": "16954",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2668"
+                },
+                "MemberName": "Forward",
+                "MovementDirection": 2
+              },
+              {
+                "$id": "16955",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2671"
+                },
+                "MemberName": "Back",
+                "MovementDirection": 3
+              },
+              {
+                "$id": "16956",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2674"
+                },
+                "MemberName": "Up",
+                "MovementDirection": 4
+              },
+              {
+                "$id": "16957",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2677"
+                },
+                "MemberName": "Down",
+                "MovementDirection": 5
+              },
+              {
+                "$id": "16958",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2680"
+                },
+                "MemberName": "Still",
+                "MovementDirection": 6
+              }
+            ],
+            "HasGravity": true
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Walk(Alt + K)",
+          "Name": "Walk"
+        },
+        {
+          "$id": "16959",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 85,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "16937"
+          },
+          "Movement": {
+            "$id": "16960",
+            "$type": "Module.HeroVirtualTabletop.Movements.Movement, Module.HeroVirtualTabletop",
+            "Name": "Run",
+            "MovementMembers": [
+              {
+                "$id": "16961",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "925"
+                },
+                "MemberName": "Left",
+                "MovementDirection": 1
+              },
+              {
+                "$id": "16962",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "928"
+                },
+                "MemberName": "Right",
+                "MovementDirection": 0
+              },
+              {
+                "$id": "16963",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "931"
+                },
+                "MemberName": "Forward",
+                "MovementDirection": 2
+              },
+              {
+                "$id": "16964",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "934"
+                },
+                "MemberName": "Back",
+                "MovementDirection": 3
+              },
+              {
+                "$id": "16965",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "937"
+                },
+                "MemberName": "Up",
+                "MovementDirection": 4
+              },
+              {
+                "$id": "16966",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "940"
+                },
+                "MemberName": "Down",
+                "MovementDirection": 5
+              },
+              {
+                "$id": "16967",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "943"
+                },
+                "MemberName": "Still",
+                "MovementDirection": 6
+              }
+            ],
+            "HasGravity": false
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Run(Alt + U)",
+          "Name": "Run"
+        },
+        {
+          "$id": "16968",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 83,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "16937"
+          },
+          "Movement": {
+            "$id": "16969",
+            "$type": "Module.HeroVirtualTabletop.Movements.Movement, Module.HeroVirtualTabletop",
+            "Name": "Swim",
+            "MovementMembers": [
+              {
+                "$id": "16970",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "948"
+                },
+                "MemberName": "Left",
+                "MovementDirection": 1
+              },
+              {
+                "$id": "16971",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "951"
+                },
+                "MemberName": "Right",
+                "MovementDirection": 0
+              },
+              {
+                "$id": "16972",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "954"
+                },
+                "MemberName": "Forward",
+                "MovementDirection": 2
+              },
+              {
+                "$id": "16973",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "957"
+                },
+                "MemberName": "Back",
+                "MovementDirection": 3
+              },
+              {
+                "$id": "16974",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "960"
+                },
+                "MemberName": "Up",
+                "MovementDirection": 4
+              },
+              {
+                "$id": "16975",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "963"
+                },
+                "MemberName": "Down",
+                "MovementDirection": 5
+              },
+              {
+                "$id": "16976",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "966"
+                },
+                "MemberName": "Still",
+                "MovementDirection": 6
+              }
+            ],
+            "HasGravity": false
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Swim(Alt + S)",
+          "Name": "Swim"
+        }
+      ]
+    }
+  ],
+  "DefaultIdentity": {
+    "$ref": "16938"
+  },
+  "ActiveIdentity": {
+    "$ref": "16938"
+  },
+  "DefaultMovement": null,
+  "DefaultAbility": null
+}

@@ -1,0 +1,2068 @@
+{
+  "$id": "11528",
+  "$type": "Module.HeroVirtualTabletop.Crowds.CrowdMemberModel, Module.HeroVirtualTabletop",
+  "Name": "Martial Assault",
+  "defaultIdentity": {
+    "$id": "11529",
+    "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+    "Surface": "Batman",
+    "Type": 1,
+    "AnimationOnLoad": null,
+    "Name": "Base",
+    "OptionTooltip": "Base"
+  },
+  "Order": 0,
+  "RosterCrowd": null,
+  "SavedPosition": null,
+  "OptionGroups": [
+    {
+      "$id": "11530",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 1,
+      "Count": 9,
+      "Name": "Powers",
+      "Options": [
+        {
+          "$ref": "11512"
+        },
+        {
+          "$id": "11531",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "11532",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": null,
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "MA_KICK",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11533",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialArts"
+                ],
+                "Name": "MA_KICK",
+                "Value": "MA_KICK",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "11534",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF6495ED",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": null,
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "ThunderKick",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11535",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialArts"
+                ],
+                "Name": "ThunderKick.fx",
+                "Value": "/powers/MartialArts/ThunderKick.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "11536",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": null,
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "makick",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11537",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Powers"
+                ],
+                "Name": "makick",
+                "Value": "\\action\\powers\\makick.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "11538",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "11539",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFF0000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "THUNDERKICKHITS",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11540",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "HTHMartialArts"
+                  ],
+                  "Name": "THUNDERKICKHITS.fx",
+                  "Value": "/POWERS/MARTIALARTS/THUNDERKICKHITS.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "11541",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "C_HITQUICK_MID",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11542",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "HTH"
+                  ],
+                  "Name": "C_HITQUICK_MID",
+                  "Value": "C_HITQUICK_MID",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "11543",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "HitReact3",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11544",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "CombatHit"
+                  ],
+                  "Name": "HitReact3",
+                  "Value": "\\action\\combat\\HitReact3.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Thunder Kick - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "11528"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "11545",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Thunder Kick - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Thunder Kick",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "11528"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "11546",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Thunder Kick"
+        },
+        {
+          "$id": "11547",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "11548",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": null,
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "MAGICTHROW",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11549",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeBackHandThrow"
+                ],
+                "Name": "MAGICTHROW",
+                "Value": "MAGICTHROW",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "11550",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFFFFF",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": null,
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "TrickShot",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11551",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialAssaultProjectile"
+                ],
+                "Name": "TrickShot.fx",
+                "Value": "/CustomizeablePowers/MartialAssault/TrickShot.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "11552",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": null,
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "Clawspin",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11553",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Powers"
+                ],
+                "Name": "Clawspin",
+                "Value": "\\action\\powers\\Clawspin.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "11554",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1000,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": null,
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1000",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11555",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1000",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "11556",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "11557",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFFFFFF",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "CLAWSHIT4",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11558",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "CLAWS"
+                  ],
+                  "Name": "CLAWSHIT4.FX",
+                  "Value": "POWERS/CLAWS/CLAWSHIT4.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "11559",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "C_HITQUICK_MID",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "11527"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "11560",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "SpinHit",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11561",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "PowersSpin"
+                  ],
+                  "Name": "SpinHit",
+                  "Value": "\\action\\powers\\SpinHit.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Trick Shot - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "11528"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "11562",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Trick Shot - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Trick Shot",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "11528"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "11563",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Trick Shot"
+        },
+        {
+          "$id": "11564",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "11565",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": null,
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "MARTIALASSUALT_SPINNINGKICK",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11566",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialArts"
+                ],
+                "Name": "MARTIALASSUALT_SPINNINGKICK",
+                "Value": "MARTIALASSUALT_SPINNINGKICK",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "11567",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF6495ED",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": null,
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "StormKick",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11568",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialArts"
+                ],
+                "Name": "StormKick.fx",
+                "Value": "/powers/MartialArts/StormKick.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "11569",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": null,
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "Hookkick2",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11570",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersHookkick"
+                ],
+                "Name": "Hookkick2",
+                "Value": "\\action\\powers\\Hookkick2.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "11571",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": null,
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11572",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "11573",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "11574",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 1,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "C_HITQUICK_MID",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "11542"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "11575",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFF0000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 2,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "MAHITSLRG",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11576",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "MARTIALARTS"
+                  ],
+                  "Name": "MAHITSLRG.FX",
+                  "Value": "CUSTOMIZEABLEPOWERS/MARTIALARTS/MAHITSLRG.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "11577",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "makick",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "11537"
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Spinning Kick - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "11528"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "11578",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Spinning Kick - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Spinning Kick",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "11528"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "11579",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Spinning Kick"
+        },
+        {
+          "$id": "11580",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "11581",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": null,
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "BOOSTUP",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "9568"
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "11582",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFF0000",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": null,
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Aim",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11583",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowerUps"
+                ],
+                "Name": "Aim.fx",
+                "Value": "/V_COV/powers/BloodWidow/Aim/Aim.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "11584",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": null,
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "aim2",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11585",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersAim"
+                ],
+                "Name": "aim2",
+                "Value": "\\action\\powers\\aim2.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "11586",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (4) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": null,
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "11587",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (4) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Envenomed Blades",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "11528"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "11588",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Envenomed Blades"
+        },
+        {
+          "$id": "11589",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "11590",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": null,
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "MA_SWEEPKICK",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11591",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialArts"
+                ],
+                "Name": "MA_SWEEPKICK",
+                "Value": "MA_SWEEPKICK",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "11592",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF6495ED",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": null,
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "MonkeyKick",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11593",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialArts"
+                ],
+                "Name": "MonkeyKick.fx",
+                "Value": "/CustomizeablePowers/MartialArts/MonkeyKick.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "11594",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": null,
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "TW_DefensiveSweep_AttackFast_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11595",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersTW"
+                ],
+                "Name": "TW_DefensiveSweep_AttackFast_01",
+                "Value": "\\action\\powers\\TW_DefensiveSweep_AttackFast_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "11596",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "11597",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFF0000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "MONKEYKICKHITS",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11598",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "MARTIALARTS"
+                  ],
+                  "Name": "MONKEYKICKHITS.FX",
+                  "Value": "POWERS/MARTIALARTS/MONKEYKICKHITS.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "11599",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "GROUND_PUNCH_HIT",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11600",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "HTH"
+                  ],
+                  "Name": "GROUND_PUNCH_HIT",
+                  "Value": "GROUND_PUNCH_HIT",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "11601",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "Collapse_Fall_01",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11602",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "CombatCollapse"
+                  ],
+                  "Name": "Collapse_Fall_01",
+                  "Value": "\\action\\combat\\Collapse_Fall_01.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Dragon's Tail - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "11528"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "11603",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Dragon's Tail - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Dragon's Tail",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "11528"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "11604",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Dragon's Tail"
+        },
+        {
+          "$id": "11605",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "11606",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": null,
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "MAGICTHROW",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "11549"
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "11607",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFFFFF",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": null,
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "CaltropsThrow",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11608",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "WeaponsProjectile"
+                ],
+                "Name": "CaltropsThrow.fx",
+                "Value": "/CustomizeablePowers/Traps/CaltropsThrow.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "11609",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": null,
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "caltropstoss",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11610",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Powers"
+                ],
+                "Name": "caltropstoss",
+                "Value": "\\action\\powers\\caltropstoss.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "11611",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (6) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": null,
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "11612",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (6) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Caltrops",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "11528"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "11613",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Caltrops"
+        },
+        {
+          "$id": "11614",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "11615",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": null,
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "MASTERFUL_THROW_WINDUP",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11616",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialArts"
+                ],
+                "Name": "MASTERFUL_THROW_WINDUP",
+                "Value": "MASTERFUL_THROW_WINDUP",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "11617",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": null,
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "MA_MasterfulThrow_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11618",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersMA"
+                ],
+                "Name": "MA_MasterfulThrow_01",
+                "Value": "\\action\\powers\\MA_MasterfulThrow_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 2",
+              "OptionTooltip": "Sound Element 2"
+            },
+            {
+              "$id": "11619",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFFF00",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 3,
+              "Owner": null,
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "MasterfulThrow_Windup",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11620",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialAssaultProjectile"
+                ],
+                "Name": "MasterfulThrow_Windup.fx",
+                "Value": "/CustomizeablePowers/MartialAssault/MasterfulThrow_Windup.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 2",
+              "OptionTooltip": "FX Element 2"
+            },
+            {
+              "$id": "11621",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 3000,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": null,
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 3000",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11622",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "3000",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "11623",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 5,
+              "Owner": null,
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "MASTERFUL_THROW",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11624",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeThrow"
+                ],
+                "Name": "MASTERFUL_THROW",
+                "Value": "MASTERFUL_THROW",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 2",
+              "OptionTooltip": "Mov Element 2"
+            },
+            {
+              "$id": "11625",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFFF00",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 6,
+              "Owner": null,
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "MasterfulThrow",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11626",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialAssaultProjectile"
+                ],
+                "Name": "MasterfulThrow.fx",
+                "Value": "/CustomizeablePowers/MartialAssault/MasterfulThrow.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "11627",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "11628",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFFFFFF",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "ASSASSINSSTRIKE_HIT",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11629",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "HTHMartialArts"
+                  ],
+                  "Name": "ASSASSINSSTRIKE_HIT.fx",
+                  "Value": "/CUSTOMIZEABLEPOWERS/BRAWLING/ASSASSINSSTRIKE_HIT.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "11630",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "SHIELD_HITQUICK",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11631",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "WeaponsShieldCombat"
+                  ],
+                  "Name": "SHIELD_HITQUICK",
+                  "Value": "SHIELD_HITQUICK",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "11632",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "arrowhit",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11633",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Weapons"
+                  ],
+                  "Name": "arrowhit",
+                  "Value": "\\action\\weapons\\arrowhit.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 2",
+                "OptionTooltip": "Sound Element 2"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Masterful Throw - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "11528"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "11634",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Masterful Throw - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Masterful Throw",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 6,
+          "Order": 1,
+          "Owner": {
+            "$ref": "11528"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "11635",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Masterful Throw"
+        },
+        {
+          "$id": "11636",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "11637",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": null,
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "EXPLOSIVE_SHURIKEN",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11638",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "WeaponProjectile"
+                ],
+                "Name": "EXPLOSIVE_SHURIKEN",
+                "Value": "EXPLOSIVE_SHURIKEN",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "11639",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFA500",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": null,
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "ExplosiveShuriken",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11640",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTHMartialAssaultProjectile"
+                ],
+                "Name": "ExplosiveShuriken.fx",
+                "Value": "/CustomizeablePowers/MartialAssault/ExplosiveShuriken.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "11641",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": null,
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "mutationthrow",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11642",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Powers"
+                ],
+                "Name": "mutationthrow",
+                "Value": "\\action\\powers\\mutationthrow.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "11643",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1000,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": null,
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1000",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "11644",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1000",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "11645",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "11646",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFFA500",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "EXPLOSIVESHURIKEN_HIT",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11647",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "HTHMartialArts"
+                  ],
+                  "Name": "EXPLOSIVESHURIKEN_HIT.fx",
+                  "Value": "/CUSTOMIZEABLEPOWERS/MARTIALASSAULT/EXPLOSIVESHURIKEN_HIT.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "11648",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "SHIELD_HITQUICK",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "11631"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "11649",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "pbexplosive",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "11650",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Powers"
+                  ],
+                  "Name": "pbexplosive",
+                  "Value": "\\action\\powers\\pbexplosive.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Explosive Shuriken - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "11528"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "11651",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Explosive Shuriken - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Explosive Shuriken",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "11528"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "11652",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Explosive Shuriken"
+        }
+      ]
+    },
+    {
+      "$id": "11653",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 0,
+      "Count": 1,
+      "Name": "Identities",
+      "Options": [
+        {
+          "$ref": "11529"
+        }
+      ]
+    },
+    {
+      "$id": "11654",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 2,
+      "Count": 3,
+      "Name": "Movements",
+      "Options": [
+        {
+          "$id": "11655",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 75,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "11528"
+          },
+          "Movement": {
+            "$id": "11656",
+            "$type": "Module.HeroVirtualTabletop.Movements.Movement, Module.HeroVirtualTabletop",
+            "Name": "Walk",
+            "MovementMembers": [
+              {
+                "$id": "11657",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": null,
+                "MemberName": "Left",
+                "MovementDirection": 1
+              },
+              {
+                "$id": "11658",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2665"
+                },
+                "MemberName": "Right",
+                "MovementDirection": 0
+              },
+              {
+                "$id": "11659",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2668"
+                },
+                "MemberName": "Forward",
+                "MovementDirection": 2
+              },
+              {
+                "$id": "11660",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2671"
+                },
+                "MemberName": "Back",
+                "MovementDirection": 3
+              },
+              {
+                "$id": "11661",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2674"
+                },
+                "MemberName": "Up",
+                "MovementDirection": 4
+              },
+              {
+                "$id": "11662",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2677"
+                },
+                "MemberName": "Down",
+                "MovementDirection": 5
+              },
+              {
+                "$id": "11663",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "2680"
+                },
+                "MemberName": "Still",
+                "MovementDirection": 6
+              }
+            ],
+            "HasGravity": false
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Walk(Alt + K)",
+          "Name": "Walk"
+        },
+        {
+          "$id": "11664",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 85,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "11528"
+          },
+          "Movement": {
+            "$id": "11665",
+            "$type": "Module.HeroVirtualTabletop.Movements.Movement, Module.HeroVirtualTabletop",
+            "Name": "Run",
+            "MovementMembers": [
+              {
+                "$id": "11666",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "925"
+                },
+                "MemberName": "Left",
+                "MovementDirection": 1
+              },
+              {
+                "$id": "11667",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "928"
+                },
+                "MemberName": "Right",
+                "MovementDirection": 0
+              },
+              {
+                "$id": "11668",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "931"
+                },
+                "MemberName": "Forward",
+                "MovementDirection": 2
+              },
+              {
+                "$id": "11669",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "934"
+                },
+                "MemberName": "Back",
+                "MovementDirection": 3
+              },
+              {
+                "$id": "11670",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "937"
+                },
+                "MemberName": "Up",
+                "MovementDirection": 4
+              },
+              {
+                "$id": "11671",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "940"
+                },
+                "MemberName": "Down",
+                "MovementDirection": 5
+              },
+              {
+                "$id": "11672",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "943"
+                },
+                "MemberName": "Still",
+                "MovementDirection": 6
+              }
+            ],
+            "HasGravity": false
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Run(Alt + U)",
+          "Name": "Run"
+        },
+        {
+          "$id": "11673",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 83,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "11528"
+          },
+          "Movement": {
+            "$id": "11674",
+            "$type": "Module.HeroVirtualTabletop.Movements.Movement, Module.HeroVirtualTabletop",
+            "Name": "Swim",
+            "MovementMembers": [
+              {
+                "$id": "11675",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "948"
+                },
+                "MemberName": "Left",
+                "MovementDirection": 1
+              },
+              {
+                "$id": "11676",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "951"
+                },
+                "MemberName": "Right",
+                "MovementDirection": 0
+              },
+              {
+                "$id": "11677",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "954"
+                },
+                "MemberName": "Forward",
+                "MovementDirection": 2
+              },
+              {
+                "$id": "11678",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "957"
+                },
+                "MemberName": "Back",
+                "MovementDirection": 3
+              },
+              {
+                "$id": "11679",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "960"
+                },
+                "MemberName": "Up",
+                "MovementDirection": 4
+              },
+              {
+                "$id": "11680",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "963"
+                },
+                "MemberName": "Down",
+                "MovementDirection": 5
+              },
+              {
+                "$id": "11681",
+                "$type": "Module.HeroVirtualTabletop.Movements.MovementMember, Module.HeroVirtualTabletop",
+                "MemberAbility": {
+                  "$ref": "966"
+                },
+                "MemberName": "Still",
+                "MovementDirection": 6
+              }
+            ],
+            "HasGravity": false
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Swim(Alt + S)",
+          "Name": "Swim"
+        }
+      ]
+    }
+  ],
+  "DefaultIdentity": {
+    "$ref": "11529"
+  },
+  "ActiveIdentity": {
+    "$ref": "11529"
+  },
+  "DefaultMovement": null,
+  "DefaultAbility": null
+}

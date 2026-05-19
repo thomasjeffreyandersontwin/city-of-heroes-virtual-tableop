@@ -1,0 +1,101 @@
+{
+  "$id": "92821",
+  "$type": "Module.HeroVirtualTabletop.Crowds.CrowdMemberModel, Module.HeroVirtualTabletop",
+  "Name": "Spawn Chamber; Devouring Earth portal",
+  "defaultIdentity": {
+    "$id": "92822",
+    "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+    "Surface": "Destructible_Spawn_DevEarth",
+    "Type": 0,
+    "AnimationOnLoad": null,
+    "Name": "Destructible_Spawn_DevEarth",
+    "OptionTooltip": "Destructible_Spawn_DevEarth"
+  },
+  "Order": 0,
+  "RosterCrowd": null,
+  "SavedPosition": null,
+  "OptionGroups": [
+    {
+      "$id": "92823",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 0,
+      "Count": 1,
+      "Name": "Identities",
+      "Options": [
+        {
+          "$ref": "92822"
+        }
+      ]
+    },
+    {
+      "$id": "92824",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 1,
+      "Count": 0,
+      "Name": "Powers",
+      "Options": []
+    },
+    {
+      "$id": "92825",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 2,
+      "Count": 3,
+      "Name": "Movements",
+      "Options": [
+        {
+          "$id": "92826",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 75,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "92821"
+          },
+          "Movement": {
+            "$ref": "8"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Walk(Alt + K)",
+          "Name": "Walk"
+        },
+        {
+          "$id": "92827",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 85,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "92821"
+          },
+          "Movement": {
+            "$ref": "923"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Run(Alt + U)",
+          "Name": "Run"
+        },
+        {
+          "$id": "92828",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 83,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "92821"
+          },
+          "Movement": {
+            "$ref": "946"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Swim(Alt + S)",
+          "Name": "Swim"
+        }
+      ]
+    }
+  ],
+  "DefaultIdentity": {
+    "$ref": "92822"
+  },
+  "ActiveIdentity": {
+    "$ref": "92822"
+  },
+  "DefaultMovement": null,
+  "DefaultAbility": null
+}

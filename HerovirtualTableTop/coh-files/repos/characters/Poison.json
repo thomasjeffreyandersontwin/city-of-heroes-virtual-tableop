@@ -1,0 +1,3052 @@
+{
+  "$id": "72656",
+  "$type": "Module.HeroVirtualTabletop.Crowds.CrowdMemberModel, Module.HeroVirtualTabletop",
+  "Name": "Poison",
+  "defaultIdentity": {
+    "$id": "72657",
+    "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+    "Surface": "muck",
+    "Type": 1,
+    "AnimationOnLoad": null,
+    "Name": "Base",
+    "OptionTooltip": "Base"
+  },
+  "Order": 0,
+  "RosterCrowd": null,
+  "SavedPosition": null,
+  "OptionGroups": [
+    {
+      "$id": "72658",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 0,
+      "Count": 1,
+      "Name": "Identities",
+      "Options": [
+        {
+          "$ref": "72657"
+        }
+      ]
+    },
+    {
+      "$id": "72659",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 1,
+      "Count": 9,
+      "Name": "Powers",
+      "Options": [
+        {
+          "$id": "72660",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "72661",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "UNDERHAND",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72662",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "SuperStrength"
+                ],
+                "Name": "UNDERHAND",
+                "Value": "UNDERHAND",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "72663",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFD2691E",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "AlcaloidPoisonProjectile",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72664",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Poison"
+                ],
+                "Name": "AlcaloidPoisonProjectile.fx",
+                "Value": "/V_COV/powers/Poison/AlcaloidPoisonProjectile.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "72665",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 600,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 3,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 600",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72666",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "600",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "72667",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 4,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "poisonprojectile",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72668",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Powers"
+                ],
+                "Name": "poisonprojectile",
+                "Value": "\\action\\powers\\poisonprojectile.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "72669",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 5,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72670",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 2",
+              "OptionTooltip": "Pause Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "72671",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "72672",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFF7F50",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "alcaloideHeal",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72673",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Poison"
+                  ],
+                  "Name": "alcaloideHeal.fx",
+                  "Value": "/V_COV/powers/Poison/alcaloideHeal.fx",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "72674",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "DRAIN_REACT",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72675",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "RangeDrain"
+                  ],
+                  "Name": "DRAIN_REACT",
+                  "Value": "DRAIN_REACT",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "72676",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonGasExplo",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72677",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "PowersPoison"
+                  ],
+                  "Name": "PoisonGasExplo",
+                  "Value": "\\action\\powers\\PoisonGasExplo.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "72678",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 2000,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 4,
+                "Owner": null,
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 2000",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72679",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "2000",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 1",
+                "OptionTooltip": "Pause Element 1"
+              },
+              {
+                "$id": "72680",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFF4500",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 5,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "ALCALOID_SUBLTE_CONTINUING",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72681",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "ALCALOID_SUBLTE_CONTINUING"
+                  ],
+                  "Name": "ALCALOID_SUBLTE_CONTINUING.FX",
+                  "Value": "/V_COV/POWERS/POISON/ALCALOID_SUBLTE_CONTINUING.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 2",
+                "OptionTooltip": "FX Element 2"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Alkaloid - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 5,
+            "Order": 1,
+            "Owner": {
+              "$ref": "72656"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": true,
+            "Persistent": false,
+            "Resource": {
+              "$id": "72682",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Alkaloid - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Alkaloid",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 5,
+          "Order": 1,
+          "Owner": {
+            "$ref": "72656"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "72683",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Alkaloid"
+        },
+        {
+          "$id": "72684",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "72685",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SPIT",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72686",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeMouthSpit"
+                ],
+                "Name": "SPIT",
+                "Value": "SPIT",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "72687",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF228B22",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "PoisonLiquidProjectile",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72688",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Poison"
+                ],
+                "Name": "PoisonLiquidProjectile.fx",
+                "Value": "/V_COV/powers/Poison/PoisonLiquidProjectile.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "72689",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "poisonprojectile",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "72668"
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "72690",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72691",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "72692",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "72693",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF228B22",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "POISONHITQUICK",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72694",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Poison"
+                  ],
+                  "Name": "POISONHITQUICK.fx",
+                  "Value": "/V_COV/POWERS/POISON/POISONHITQUICK.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "72695",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "DRAIN_REACT",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72675"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "72696",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonPalmBlast",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72697",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "WeaponsPoison"
+                  ],
+                  "Name": "PoisonPalmBlast",
+                  "Value": "\\action\\weapons\\PoisonPalmBlast.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "72698",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 2000,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 4,
+                "Owner": null,
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 2000",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72699",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "2000",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 1",
+                "OptionTooltip": "Pause Element 1"
+              },
+              {
+                "$id": "72700",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF008000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 5,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "DEBUFFDEFCONTINUING",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72701",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "DEBUFFDEFCONTINUING"
+                  ],
+                  "Name": "DEBUFFDEFCONTINUING.FX",
+                  "Value": "/POWERS/MEDIEVALWEAPONS/SWORDSLICECHOGENERICCONTINUING/DEBUFFDEFCONTINUING.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 2",
+                "OptionTooltip": "FX Element 2"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Envenom - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 5,
+            "Order": 1,
+            "Owner": {
+              "$ref": "72656"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": true,
+            "Persistent": false,
+            "Resource": {
+              "$id": "72702",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Envenom - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Envenom",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "72656"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "72703",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Envenom"
+        },
+        {
+          "$id": "72704",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "72705",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SHIELD_STOP",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "3212"
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "72706",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF32CD32",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "PalmPoisonLiquidProjectile",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72707",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Poison"
+                ],
+                "Name": "PalmPoisonLiquidProjectile.fx",
+                "Value": "/V_COV/powers/Poison/PalmPoisonLiquidProjectile.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "72708",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "poisonprojectile",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "72668"
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "72709",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72710",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "72711",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "72712",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF32CD32",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "POISONHITQUICK",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72694"
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "72713",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonGasExplo",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72677"
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "72714",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "DRAIN_REACT",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72675"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "72715",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 2000,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 4,
+                "Owner": null,
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 2000",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72716",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "2000",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 1",
+                "OptionTooltip": "Pause Element 1"
+              },
+              {
+                "$id": "72717",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF00FF00",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 5,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "DEBUFFDAMAGECONTINUING",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "8314"
+                },
+                "Name": "FX Element 2",
+                "OptionTooltip": "FX Element 2"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Weaken - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 5,
+            "Order": 1,
+            "Owner": {
+              "$ref": "72656"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": true,
+            "Persistent": false,
+            "Resource": {
+              "$id": "72718",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Weaken - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Weaken",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "72656"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "72719",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Weaken"
+        },
+        {
+          "$id": "72720",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "72721",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "BLOW",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72722",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "HTH"
+                ],
+                "Name": "BLOW",
+                "Value": "BLOW",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "72723",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF32CD32",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "PoisonConeGasses",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72724",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Poison"
+                ],
+                "Name": "PoisonConeGasses.fx",
+                "Value": "/V_COV/powers/Poison/PoisonConeGasses.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "72725",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 600,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 3,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 600",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72726",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "600",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "72727",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 4,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "breathattack",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72728",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Powers"
+                ],
+                "Name": "breathattack",
+                "Value": "\\action\\powers\\breathattack.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "72729",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 5,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72730",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 2",
+              "OptionTooltip": "Pause Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "72731",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "72732",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF32CD32",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "POISONHITQUICK",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72694"
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "72733",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "DRAIN_REACT",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72675"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "72734",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonGasExplo",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72735",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "PowersPoison"
+                  ],
+                  "Name": "PoisonGasExplo",
+                  "Value": "\\action\\powers\\PoisonGasExplo.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "72736",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 2000,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 4,
+                "Owner": null,
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 2000",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72737",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "2000",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 1",
+                "OptionTooltip": "Pause Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Neurotoxic Breath - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 4,
+            "Order": 1,
+            "Owner": {
+              "$ref": "72656"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "72738",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Neurotoxic Breath - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Neurotoxic Breath",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 5,
+          "Order": 1,
+          "Owner": {
+            "$ref": "72656"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "72739",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Neurotoxic Breath"
+        },
+        {
+          "$id": "72740",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "72741",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SMOKEFLASH",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72742",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Smoke"
+                ],
+                "Name": "SMOKEFLASH",
+                "Value": "SMOKEFLASH",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "72743",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1000,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 2,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1000",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72744",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1000",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "72745",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "PoisonSpit2",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72746",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersPoison"
+                ],
+                "Name": "PoisonSpit2",
+                "Value": "\\action\\powers\\PoisonSpit2.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "72747",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72748",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 2",
+              "OptionTooltip": "Pause Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "72749",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "72750",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF32CD32",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonAOEGassesExplode",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72751",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Poison"
+                  ],
+                  "Name": "PoisonAOEGassesExplode.fx",
+                  "Value": "/V_COV/powers/Poison/PoisonAOEGassesExplode.fx",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "72752",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "HIT_BOOST_D",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72753",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Combat"
+                  ],
+                  "Name": "HIT_BOOST_D",
+                  "Value": "HIT_BOOST_D",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "72754",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 600,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 3,
+                "Owner": null,
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 600",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72755",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "600",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 1",
+                "OptionTooltip": "Pause Element 1"
+              },
+              {
+                "$id": "72756",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 4,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "poisonprojectile",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72668"
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "72757",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 2000,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 5,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 2000",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72758",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "2000",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 2",
+                "OptionTooltip": "Pause Element 2"
+              },
+              {
+                "$id": "72759",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF008000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 6,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "DEBUFFDAMAGECONTINUING",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72760",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "DEBUFFDAMAGECONTINUING"
+                  ],
+                  "Name": "DEBUFFDAMAGECONTINUING.FX",
+                  "Value": "/GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 2",
+                "OptionTooltip": "FX Element 2"
+              },
+              {
+                "$id": "72761",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 2000,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 7,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 2000",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72762",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "2000",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 3",
+                "OptionTooltip": "Pause Element 3"
+              },
+              {
+                "$id": "72763",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF008000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 8,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "NOXIOUSGASCONTINUING",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72764",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Poison"
+                  ],
+                  "Name": "NOXIOUSGASCONTINUING.fx",
+                  "Value": "/V_COV/POWERS/POISON/NOXIOUSGASCONTINUING.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 3",
+                "OptionTooltip": "FX Element 3"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Elixir of Life - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 8,
+            "Order": 1,
+            "Owner": {
+              "$ref": "72656"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": true,
+            "Persistent": false,
+            "Resource": {
+              "$id": "72765",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Elixir of Life - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Elixir of Life",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "72656"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "72766",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Elixir of Life"
+        },
+        {
+          "$id": "72767",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "72768",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "UNDERHAND",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "72662"
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "72769",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF32CD32",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "AlcaloidPoisonProjectile",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "72664"
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "72770",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "poisonprojectile",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "72668"
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "72771",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72772",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "72773",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "72774",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF32CD32",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "POISONHITQUICK",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72775",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Poison"
+                  ],
+                  "Name": "POISONHITQUICK.fx",
+                  "Value": "/V_COV/POWERS/POISON/POISONHITQUICK.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "72776",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "DRAIN_REACT",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72675"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "72777",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonGasExplo",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72677"
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "72778",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 2000,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 4,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 2000",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72779",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "2000",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 1",
+                "OptionTooltip": "Pause Element 1"
+              },
+              {
+                "$id": "72780",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF008000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 5,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "ANTIDOTECONTINUING",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72781",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "ANTIDOTECONTINUING"
+                  ],
+                  "Name": "ANTIDOTECONTINUING.FX",
+                  "Value": "/V_COV/POWERS/POISON/ANTIDOTECONTINUING.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 2",
+                "OptionTooltip": "FX Element 2"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Antidote - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 5,
+            "Order": 1,
+            "Owner": {
+              "$ref": "72656"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": true,
+            "Persistent": false,
+            "Resource": {
+              "$id": "72782",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Antidote - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Antidote",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "72656"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "72783",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Antidote"
+        },
+        {
+          "$id": "72784",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "72785",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "LEFTWRISTSHOOT",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72786",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeArmgunShotgun3"
+                ],
+                "Name": "LEFTWRISTSHOOT",
+                "Value": "LEFTWRISTSHOOT",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "72787",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 400,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 2,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 400",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72788",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "400",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "72789",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF6B8E23",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 3,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "PalmPoisonLiquidProjectile",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72790",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Poison"
+                ],
+                "Name": "PalmPoisonLiquidProjectile.fx",
+                "Value": "/CustomizeablePowers/Poison/PalmPoisonLiquidProjectile.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "72791",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 4,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "poisonprojectile",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "72668"
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "72792",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 5,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72793",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 2",
+              "OptionTooltip": "Pause Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "72794",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "72795",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF008000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonAOEGassesExplode",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72751"
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "72796",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "FREEZESTUN_CYCLE",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72797",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Ice"
+                  ],
+                  "Name": "FREEZESTUN_CYCLE",
+                  "Value": "FREEZESTUN_CYCLE",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "72798",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonGasExplo",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72735"
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "72799",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 2000,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 4,
+                "Owner": null,
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 2000",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72800",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "2000",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 1",
+                "OptionTooltip": "Pause Element 1"
+              },
+              {
+                "$id": "72801",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF00FF00",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 5,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "WEEKENCONTINUING",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72802",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Poison"
+                  ],
+                  "Name": "WEEKENCONTINUING.fx",
+                  "Value": "/V_COV/POWERS/POISON/WEEKENCONTINUING.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 2",
+                "OptionTooltip": "FX Element 2"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Paralytic Poison - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 5,
+            "Order": 1,
+            "Owner": {
+              "$ref": "72656"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "72803",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Paralytic Poison - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Paralytic Poison",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 5,
+          "Order": 1,
+          "Owner": {
+            "$ref": "72656"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "72804",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Paralytic Poison"
+        },
+        {
+          "$id": "72805",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "72806",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "MA_PLANTDEVICE_PRE",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72807",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Tech"
+                ],
+                "Name": "MA_PLANTDEVICE_PRE",
+                "Value": "MA_PLANTDEVICE_PRE",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "72808",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SequenceElement, Module.HeroVirtualTabletop",
+              "AnimationElements": [
+                {
+                  "$id": "72809",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                  "Order": 3,
+                  "Owner": {
+                    "$ref": "72656"
+                  },
+                  "Type": 1,
+                  "PlayWithNext": false,
+                  "DisplayName": "poisonGas2_loop",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "72810",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "WeaponsPoisonGas2"
+                    ],
+                    "Name": "poisonGas2_loop",
+                    "Value": "\\action\\weapons\\poisonGas2_loop.ogg",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "Sound Element 2",
+                  "OptionTooltip": "Sound Element 2"
+                },
+                {
+                  "$id": "72811",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                  "Order": 4,
+                  "Owner": {
+                    "$ref": "72656"
+                  },
+                  "Type": 1,
+                  "PlayWithNext": false,
+                  "DisplayName": "poisonGas1_loop",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "72812",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "WeaponsPoisonGas1"
+                    ],
+                    "Name": "poisonGas1_loop",
+                    "Value": "\\action\\weapons\\poisonGas1_loop.ogg",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "Sound Element 3",
+                  "OptionTooltip": "Sound Element 3"
+                }
+              ],
+              "SequenceType": 1,
+              "LastOrder": 4,
+              "Order": 2,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 4,
+              "PlayWithNext": false,
+              "DisplayName": "Sequence: Or",
+              "PlayOnTargeted": false,
+              "Persistent": true,
+              "Resource": {
+                "$id": "72813",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Seq Element 1",
+              "OptionTooltip": "Seq Element 1"
+            },
+            {
+              "$id": "72814",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF000000",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 3,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 2,
+              "PlayWithNext": true,
+              "DisplayName": "GasTrapGeom",
+              "PlayOnTargeted": false,
+              "Persistent": true,
+              "Resource": {
+                "$id": "72815",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "TechTraps"
+                ],
+                "Name": "GasTrapGeom.fx",
+                "Value": "/V_COV/powers/Traps/GasTrapGeom.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 3",
+              "OptionTooltip": "FX Element 3"
+            },
+            {
+              "$id": "72816",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF32CD32",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 4,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "GasTrap",
+              "PlayOnTargeted": false,
+              "Persistent": true,
+              "Resource": {
+                "$id": "72817",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "TechTraps"
+                ],
+                "Name": "GasTrap.fx",
+                "Value": "/V_COV/powers/Traps/GasTrap.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "72818",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 2500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 5,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 2500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72819",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "2500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "72820",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "72821",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF008000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonAOEGassesExplode",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72751"
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "72822",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "DRAIN_REACT",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72675"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "72823",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonGasExplo",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72735"
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "72824",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 2000,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 4,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 2000",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72825",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "2000",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 1",
+                "OptionTooltip": "Pause Element 1"
+              },
+              {
+                "$id": "72826",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF008000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 5,
+                "Owner": {
+                  "$ref": "72656"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "DEBUFFDAMRESCONTINUING",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72827",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "DEBUFFDAMRESCONTINUING"
+                  ],
+                  "Name": "DEBUFFDAMRESCONTINUING.FX",
+                  "Value": "/GENERICCONTINUING/DAMAGERESISTANCE/DEBUFFDAMRESCONTINUING.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 2",
+                "OptionTooltip": "FX Element 2"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (7) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 5,
+            "Order": 1,
+            "Owner": {
+              "$ref": "72656"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "72828",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (7) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Poison Trap",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 5,
+          "Order": 1,
+          "Owner": {
+            "$ref": "72656"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": true,
+          "Resource": {
+            "$id": "72829",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Poison Trap"
+        },
+        {
+          "$id": "72830",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "72831",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "RADIUSEFFECT_PRE",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "3306"
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "72832",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "PoisonGasRessurect",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72833",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersPoison"
+                ],
+                "Name": "PoisonGasRessurect",
+                "Value": "\\action\\powers\\PoisonGasRessurect.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "72834",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 3,
+              "Owner": {
+                "$ref": "72656"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "72835",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 2",
+              "OptionTooltip": "Pause Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "72836",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "72837",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF008000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "POISONAOEGASSESCONTINUING",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72838",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Poison"
+                  ],
+                  "Name": "POISONAOEGASSESCONTINUING.fx",
+                  "Value": "/V_COV/POWERS/POISON/POISONAOEGASSESCONTINUING.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "72839",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "CHOKESTUN",
+                "PlayOnTargeted": false,
+                "Persistent": true,
+                "Resource": {
+                  "$id": "72840",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Gas"
+                  ],
+                  "Name": "CHOKESTUN",
+                  "Value": "CHOKESTUN",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "72841",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "PoisonGasExplo",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "72735"
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "72842",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+                "Time": 2000,
+                "IsUnitPause": false,
+                "CloseDistanceDelay": 0,
+                "ShortDistanceDelay": 0,
+                "MediumDistanceDelay": 0,
+                "LongDistanceDelay": 0,
+                "Order": 4,
+                "Owner": null,
+                "Type": 5,
+                "PlayWithNext": false,
+                "DisplayName": "Pause 2000",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "72843",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "2000",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Pause Element 2",
+                "OptionTooltip": "Pause Element 2"
+              },
+              {
+                "$id": "72844",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 5,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "POISONCONTINUING",
+                "PlayOnTargeted": false,
+                "Persistent": true,
+                "Resource": {
+                  "$id": "72845",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Poison"
+                  ],
+                  "Name": "POISONCONTINUING.fx",
+                  "Value": "/V_COV/POWERS/POISON/POISONCONTINUING.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 3",
+                "OptionTooltip": "FX Element 3"
+              },
+              {
+                "$id": "72846",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 6,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "poisonGas1_loop",
+                "PlayOnTargeted": false,
+                "Persistent": true,
+                "Resource": {
+                  "$ref": "72812"
+                },
+                "Name": "Sound Element 2",
+                "OptionTooltip": "Sound Element 2"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Venomous Gas - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 6,
+            "Order": 1,
+            "Owner": {
+              "$ref": "72656"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": true,
+            "Persistent": true,
+            "Resource": {
+              "$id": "72847",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Venomous Gas - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Venomous Gas",
+          "IsAttack": true,
+          "IsAreaEffect": true,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "72656"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "72848",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Venomous Gas"
+        }
+      ]
+    },
+    {
+      "$id": "72849",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 2,
+      "Count": 3,
+      "Name": "Movements",
+      "Options": [
+        {
+          "$id": "72850",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 75,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "72656"
+          },
+          "Movement": {
+            "$ref": "8"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Walk(Alt + K)",
+          "Name": "Walk"
+        },
+        {
+          "$id": "72851",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 85,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "72656"
+          },
+          "Movement": {
+            "$ref": "923"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Run(Alt + U)",
+          "Name": "Run"
+        },
+        {
+          "$id": "72852",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 83,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "72656"
+          },
+          "Movement": {
+            "$ref": "946"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Swim(Alt + S)",
+          "Name": "Swim"
+        }
+      ]
+    }
+  ],
+  "DefaultIdentity": {
+    "$ref": "72657"
+  },
+  "ActiveIdentity": {
+    "$ref": "72657"
+  },
+  "DefaultMovement": null,
+  "DefaultAbility": null
+}

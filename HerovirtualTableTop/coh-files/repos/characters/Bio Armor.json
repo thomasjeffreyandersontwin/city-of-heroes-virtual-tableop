@@ -1,0 +1,1846 @@
+{
+  "$id": "21600",
+  "$type": "Module.HeroVirtualTabletop.Crowds.CrowdMemberModel, Module.HeroVirtualTabletop",
+  "Name": "Bio Armor",
+  "defaultIdentity": {
+    "$id": "21601",
+    "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+    "Surface": "Mold",
+    "Type": 1,
+    "AnimationOnLoad": null,
+    "Name": "Base",
+    "OptionTooltip": "Base"
+  },
+  "Order": 0,
+  "RosterCrowd": null,
+  "SavedPosition": null,
+  "OptionGroups": [
+    {
+      "$id": "21602",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 0,
+      "Count": 1,
+      "Name": "Identities",
+      "Options": [
+        {
+          "$ref": "21601"
+        }
+      ]
+    },
+    {
+      "$id": "21603",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 1,
+      "Count": 12,
+      "Name": "Powers",
+      "Options": [
+        {
+          "$id": "21604",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "21605",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "BOOSTUP",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "2601"
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "21606",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFFF00",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "BioArmor_01_Fem_Child",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21607",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "BioArmor_01_Fem_Child.fx",
+                "Value": "/powers/BioArmor/BioArmor_01_Fem_Child.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "21608",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "AblativeCarapace_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21609",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersAblativeCarapace"
+                ],
+                "Name": "AblativeCarapace_01",
+                "Value": "\\action\\powers\\AblativeCarapace_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "21610",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21611",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Hardened Carapace",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21612",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Hardened Carapace"
+        },
+        {
+          "$id": "21613",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "21614",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "WEAVE_PRE",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "2463"
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "21615",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF9ACD32",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Adapt_Offense",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21616",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "Adapt_Offense.fx",
+                "Value": "/CustomizeablePowers/BioArmor/Adapt_Offense.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "21617",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "OffensiveAdaptation_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21618",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersOffensiveAdaptation"
+                ],
+                "Name": "OffensiveAdaptation_01",
+                "Value": "\\action\\powers\\OffensiveAdaptation_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "21619",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (1) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21620",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (1) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Offensive Adaptation",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21621",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Offensive Adaptation"
+        },
+        {
+          "$id": "21622",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "21623",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SYMBIOTICARMOR_DEFENSIVE_ADAPTATION",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21624",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "SYMBIOTICARMOR_DEFENSIVE_ADAPTATION",
+                "Value": "SYMBIOTICARMOR_DEFENSIVE_ADAPTATION",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "21625",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFF5F5F5",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Adapt_Deffense",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21626",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "Adapt_Deffense.fx",
+                "Value": "/CustomizeablePowers/BioArmor/Adapt_Deffense.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "21627",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "DefensiveAdaptation_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21628",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersDefensiveAdaptation"
+                ],
+                "Name": "DefensiveAdaptation_01",
+                "Value": "\\action\\powers\\DefensiveAdaptation_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "21629",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (2) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21630",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (2) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Defensive Adaptation",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21631",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Defensive Adaptation"
+        },
+        {
+          "$id": "21632",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "21633",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "BOOSTUP",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "2601"
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "21634",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFFFFF",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Adapt_Efficient",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21635",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "Adapt_Efficient.fx",
+                "Value": "/CustomizeablePowers/BioArmor/Adapt_Efficient.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "21636",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "EfficientAdaptation_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21637",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersEfficientAdaptation"
+                ],
+                "Name": "EfficientAdaptation_01",
+                "Value": "\\action\\powers\\EfficientAdaptation_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "21638",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (3) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21639",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (3) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Efficient Adaptation",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21640",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Efficient Adaptation"
+        },
+        {
+          "$id": "21641",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [],
+          "OnHitAnimation": {
+            "$id": "21642",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (4) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21643",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (4) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Inexhaustible",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 0,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21644",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Inexhaustible"
+        },
+        {
+          "$id": "21645",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "21646",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "BOOST_D",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "19467"
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "21647",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF808000",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "BioArmor_02_Male_Child",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21648",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "BioArmor_02_Male_Child.fx",
+                "Value": "/powers/BioArmor/BioArmor_02_Male_Child.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "21649",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "AblativeCarapace_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "21609"
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "21650",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (5) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21651",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (5) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Environmental Modification",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21652",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Environmental Modification"
+        },
+        {
+          "$id": "21653",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [],
+          "OnHitAnimation": {
+            "$id": "21654",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (6) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21655",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (6) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Adaptation",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 0,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21656",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Adaptation"
+        },
+        {
+          "$id": "21657",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "21658",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SYMBIOTICRADIUSATTACK_NOROOT_PRE",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21659",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeRadius"
+                ],
+                "Name": "SYMBIOTICRADIUSATTACK_NOROOT_PRE",
+                "Value": "SYMBIOTICRADIUSATTACK_NOROOT_PRE",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "21660",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF008000",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Ablative_Carapace",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21661",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "Ablative_Carapace.fx",
+                "Value": "/CustomizeablePowers/BioArmor/Ablative_Carapace.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "21662",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "AblativeCarapace_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "21609"
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "21663",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (7) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21664",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (7) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Ablative Carapace",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21665",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Ablative Carapace"
+        },
+        {
+          "$id": "21666",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "21667",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "BOOSTAURA_FASTCAST_PRE_NOROOT",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21668",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowerUps"
+                ],
+                "Name": "BOOSTAURA_FASTCAST_PRE_NOROOT",
+                "Value": "BOOSTAURA_FASTCAST_PRE_NOROOT",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "21669",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF000000",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "BioArmor_03_Male_Child",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21670",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "BioArmor_03_Male_Child.fx",
+                "Value": "/CustomizeablePowers/BioArmor/BioArmor_03_Male_Child.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "21671",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "AblativeCarapace_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "21609"
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "21672",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (8) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21673",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (8) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Evolving Armor",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21674",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Evolving Armor"
+        },
+        {
+          "$id": "21675",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "21676",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "STEAL",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21677",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangePull"
+                ],
+                "Name": "STEAL",
+                "Value": "STEAL",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "21678",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFFF00",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "DnaSiphon",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21679",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "DnaSiphon.fx",
+                "Value": "/CustomizeablePowers/BioArmor/DnaSiphon.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "21680",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "DNASiphon_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21681",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersDNASiphon"
+                ],
+                "Name": "DNASiphon_01",
+                "Value": "\\action\\powers\\DNASiphon_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "21682",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1500,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1500",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21683",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1500",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "21684",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "21685",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 1,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "DRAIN_REACT",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "21686",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "RangeDrain"
+                  ],
+                  "Name": "DRAIN_REACT",
+                  "Value": "DRAIN_REACT",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "21687",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFE62121",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 2,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "DnaSiphon",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "21688",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "BioArmour"
+                  ],
+                  "Name": "DnaSiphon.fx",
+                  "Value": "/CustomizeablePowers/BioArmor/DnaSiphon.fx",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "DNA Siphon - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 2,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": true,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21689",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "DNA Siphon - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "DNA Siphon",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21690",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "DNA Siphon"
+        },
+        {
+          "$id": "21691",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "21692",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "RADIUSATTACK",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21693",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeSweepHandsOut"
+                ],
+                "Name": "RADIUSATTACK",
+                "Value": "RADIUSATTACK",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "21694",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 2000,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 2,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 2000",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21695",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "2000",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "21696",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFFF00",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 3,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "GeneticContamination",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21697",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "GeneticContamination.fx",
+                "Value": "/CustomizeablePowers/BioArmor/GeneticContamination.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "21698",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 4,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "GeneticContamination_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21699",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersGeneticContamination"
+                ],
+                "Name": "GeneticContamination_01",
+                "Value": "\\action\\powers\\GeneticContamination_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "21700",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "21701",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 1,
+                "Owner": null,
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "CHOKESTUN",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "21702",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Gas"
+                  ],
+                  "Name": "CHOKESTUN",
+                  "Value": "CHOKESTUN",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "21703",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFF00D0D",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 2,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "GeneticCorruption",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "21704",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "BioArmour"
+                  ],
+                  "Name": "GeneticCorruption.fx",
+                  "Value": "/CustomizeablePowers/BioArmor/GeneticCorruption.fx",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Genetic Contamination - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 2,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21705",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Genetic Contamination - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Genetic Contamination",
+          "IsAttack": true,
+          "IsAreaEffect": true,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21706",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Genetic Contamination"
+        },
+        {
+          "$id": "21707",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "21708",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "shield_wall",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21709",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "WeaponsShield"
+                ],
+                "Name": "shield_wall",
+                "Value": "shield_wall",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "21710",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFFF00",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "ParasiticAura",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21711",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "BioArmour"
+                ],
+                "Name": "ParasiticAura.fx",
+                "Value": "/CustomizeablePowers/BioArmor/ParasiticAura.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "21712",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "21600"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "ParasiticAura_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "21713",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersParasiticAura"
+                ],
+                "Name": "ParasiticAura_01",
+                "Value": "\\action\\powers\\ParasiticAura_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "21714",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability (2) - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "21600"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "21715",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability (2) - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Parasitic Aura",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "21600"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "21716",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Parasitic Aura"
+        }
+      ]
+    },
+    {
+      "$id": "21717",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 2,
+      "Count": 3,
+      "Name": "Movements",
+      "Options": [
+        {
+          "$id": "21718",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 75,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "21600"
+          },
+          "Movement": {
+            "$ref": "8"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Walk(Alt + K)",
+          "Name": "Walk"
+        },
+        {
+          "$id": "21719",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 85,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "21600"
+          },
+          "Movement": {
+            "$ref": "923"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Run(Alt + U)",
+          "Name": "Run"
+        },
+        {
+          "$id": "21720",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 83,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "21600"
+          },
+          "Movement": {
+            "$ref": "946"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Swim(Alt + S)",
+          "Name": "Swim"
+        }
+      ]
+    }
+  ],
+  "DefaultIdentity": {
+    "$ref": "21601"
+  },
+  "ActiveIdentity": {
+    "$ref": "21601"
+  },
+  "DefaultMovement": null,
+  "DefaultAbility": null
+}

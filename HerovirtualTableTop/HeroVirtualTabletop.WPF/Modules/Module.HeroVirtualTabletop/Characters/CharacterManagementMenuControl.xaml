@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="Module.HeroVirtualTabletop.Characters.CharacterManagementMenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Module.HeroVirtualTabletop.Characters"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Module.Shared;Component/Resources/ResourceDictionary/GeneralResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=IconButton}"></Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <WrapPanel>
+            <Button x:Name="btSave" Content="&#xF0C7;" ToolTip="Save Position (Ctrl+S)" Command="{Binding SavePositionCommand}"/>
+            <Button x:Name="btPlace" Content="&#xf041;" ToolTip="Place (Ctrl+P)" Command="{Binding PlaceCommand}"/>
+            <Button x:Name="btSpawn" Content="&#xf08e;" ToolTip="Spawn (Ctrl+Z)" Command="{Binding SpawnCommand}"/>
+            <Button x:Name="btTarget" Content="&#xf05b;" ToolTip="Toggle Target (Ctrl+T)" Command="{Binding ToggleTargetedCommand}"/>
+            <Button x:Name="btCamera" Content="&#xf030;" ToolTip="Maneuver with camera (Ctrl+M)" Command="{Binding ToggleManeuverWithCameraCommand}"/>
+            <Button x:Name="btCycle" Content="&#xf1da;" ToolTip="Cycle Commands (Ctrl+Y)" Command="{Binding CycleCommandsThroughCrowdCommand}">
+                <Button.Style >
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=IsCyclingCommandsThroughCrowd}" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                            <DataTrigger  Binding="{Binding Path=IsCyclingCommandsThroughCrowd}" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="btScanAndFixMemory" Content="&#xf26c;" ToolTip="Scan and Fix Memory (Ctrl+K)" Command="{Binding ScanAndFixMemoryCommand}"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1">
+            <Button x:Name="btMoveCameraToTarget" Content="&#xf064;" ToolTip="Move Camera to Target (Ctrl+F)" Command="{Binding TargetAndFollowCommand}"/>
+            <Button x:Name="btMoveTargetToCamera" Content="&#xf112;" ToolTip="Move Target to Camera (Ctrl+V)" Command="{Binding MoveTargetToCameraCommand}"/>
+            <Button x:Name="btTeleport" Content="&#xf122;" ToolTip="Teleport Target to Camera (Ctrl+L)" Command="{Binding TeleportTargetToCameraCommand}"/>
+            <Button x:Name="btActivate" Content="&#xf00c;" ToolTip="Activate Character (Ctrl+X)" Command="{Binding ActivateCharacterCommand}" />
+            <Button x:Name="btClearFromDesktop" Content="&#xf235;" ToolTip="Clear From Desktop (Ctrl+Minus/Del)" Command="{Binding ClearFromDesktopCommand}" />
+            <Button x:Name="btResetOrientation" Content="&#xf1ae;" ToolTip="Reset Orientation (Ctrl+O)" Command="{Binding ResetOrientationCommand}" />
+        </WrapPanel>
+        <WrapPanel Grid.Row="2">
+            <Button x:Name="btToggleTargetOnMouseHover" Content="&#xf140;" ToolTip="Toggle Target on Hover (Ctrl+H)" Command="{Binding ToggleTargetOnHoverCommand}">
+                <Button.Style >
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=TargetOnHover}" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                            <DataTrigger  Binding="{Binding Path=TargetOnHover}" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="btToggleGangMode" Content="&#xf1a0;" ToolTip="Toggle Gang Mode (Ctrl+U)" Command="{Binding ToggleGangModeCommand}">
+                <Button.Style >
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=IsGangModeActive}" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                            <DataTrigger  Binding="{Binding Path=IsGangModeActive}" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="btToggleRelativePositioning" Content="&#xf021;" ToolTip="Toggle Relative Positioning (Ctrl+R)" Command="{Binding ToggleRelativePositioningCommand}">
+                <Button.Style >
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=UseRelativePositioning}" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                            <DataTrigger  Binding="{Binding Path=UseRelativePositioning}" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="btToggleSpawnOnClick" Content="&#xf25a;" ToolTip="Toggle Spawn on Click (Ctrl+J)" Command="{Binding ToggleSpawnOnClickCommand}">
+                <Button.Style >
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=SpawnOnClick}" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                            <DataTrigger  Binding="{Binding Path=SpawnOnClick}" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="btToggleCloneSpawn" Content="&#xf0c5;" ToolTip="Toggle Clone and Spawn (Ctrl+C)" Command="{Binding ToggleCloneAndSpawnCommand}">
+                <Button.Style >
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=CloneAndSpawn}" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                            <DataTrigger  Binding="{Binding Path=CloneAndSpawn}" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                            </DataTrigger> 
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="btToggleOverheadMode" Content="&#xf03d;" ToolTip="Toggle Overhead Mode (Ctrl+B)" Command="{Binding ToggleOverheadModeCommand}">
+                <Button.Style >
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=OverheadMode}" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                            <DataTrigger  Binding="{Binding Path=OverheadMode}" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="btSequenceView" Content="&#xf28a;" ToolTip="Toggle Sequence View(Ctrl+>)" Command="{Binding ToggleSequenceViewCommand}">
+                <Button.Style >
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButton}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=IsSequenceViewActive}" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                            <DataTrigger  Binding="{Binding Path=IsSequenceViewActive}" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </WrapPanel>
+    </Grid>
+</UserControl>

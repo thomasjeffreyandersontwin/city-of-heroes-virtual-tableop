@@ -1,0 +1,5071 @@
+{
+  "$id": "9936",
+  "$type": "Module.HeroVirtualTabletop.Crowds.CrowdMemberModel, Module.HeroVirtualTabletop",
+  "Name": "Wizard",
+  "defaultIdentity": {
+    "$id": "9937",
+    "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+    "Surface": "Lord Abyss",
+    "Type": 1,
+    "AnimationOnLoad": null,
+    "Name": "Base",
+    "OptionTooltip": "Base"
+  },
+  "Order": 0,
+  "RosterCrowd": null,
+  "SavedPosition": null,
+  "OptionGroups": [
+    {
+      "$id": "9938",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 0,
+      "Count": 1,
+      "Name": "Identities",
+      "Options": [
+        {
+          "$ref": "9937"
+        }
+      ]
+    },
+    {
+      "$id": "9939",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 1,
+      "Count": 25,
+      "Name": "Powers",
+      "Options": [
+        {
+          "$id": "9940",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "9941",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF00FF7F",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "SoulStorm_Attack",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9942",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "SoulStorm_Attack.fx",
+                "Value": "/CustomizablePowers_Pools/Patron_SoulMastery/SoulStorm_Attack.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "9943",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "ARCANE_BOLT",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9944",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "ARCANE_BOLT",
+                "Value": "ARCANE_BOLT",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "9945",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "SoulStorm1",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9946",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersSoul"
+                ],
+                "Name": "SoulStorm1",
+                "Value": "\\action\\powers\\SoulStorm1.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "9947",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "9948",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFDC143C",
+                  "#FFF50A0A",
+                  "#FFDE1D0E",
+                  "#FFF70E0E"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "SoulStorm_Conditional",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "9949",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Magic"
+                  ],
+                  "Name": "SoulStorm_Conditional.fx",
+                  "Value": "/CustomizablePowers_Pools/Patron_SoulMastery/SoulStorm_Conditional.fx",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "9950",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "SoulTrap1",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "9951",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "PowersSoul"
+                  ],
+                  "Name": "SoulTrap1",
+                  "Value": "\\action\\powers\\SoulTrap1.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "9952",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "FEARSTUN_CYCLE",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "9953",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Psionics"
+                  ],
+                  "Name": "FEARSTUN_CYCLE",
+                  "Value": "FEARSTUN_CYCLE",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Soul Storm - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "9954",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Soul Storm - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Soul Storm",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "9955",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Soul Storm"
+        },
+        {
+          "$id": "9956",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "9957",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF7FFF00",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Summon_Attack",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9958",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "Summon_Attack.fx",
+                "Value": "/CustomizablePowers_Pools/Patron_SoulMastery/Summon_Attack.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "9959",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "magic",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9960",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "FrontEnd"
+                ],
+                "Name": "magic",
+                "Value": "\\interface\\FrontEnd\\magic.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "9961",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "ALT_CAST",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9962",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeMagic"
+                ],
+                "Name": "ALT_CAST",
+                "Value": "ALT_CAST",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 2",
+              "OptionTooltip": "Mov Element 2"
+            },
+            {
+              "$id": "9963",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 800,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 800",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9964",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "800",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "9965",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "9966",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "lightningbolt4",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "9967",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "PowersLightningbolt"
+                  ],
+                  "Name": "lightningbolt4",
+                  "Value": "\\action\\powers\\lightningbolt4.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 2",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "9968",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFFFF00",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 2,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "Summon_MuStriker_Resistance",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "9969",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Magic"
+                  ],
+                  "Name": "Summon_MuStriker_Resistance.fx",
+                  "Value": "/CustomizablePowers_Pools/Patron_MuMastery/Summon_MuStriker_Resistance.fx",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 2",
+                "OptionTooltip": "FX Element 2"
+              },
+              {
+                "$id": "9970",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "ELECTROSTUN_CYCLE",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "9971",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Electricity"
+                  ],
+                  "Name": "ELECTROSTUN_CYCLE",
+                  "Value": "ELECTROSTUN_CYCLE",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 2",
+                "OptionTooltip": "Mov Element 2"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Summon Lightning - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": true,
+            "Persistent": false,
+            "Resource": {
+              "$id": "9972",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Summon Lightning - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Summon Lightning",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "9973",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Summon Lightning"
+        },
+        {
+          "$id": "9974",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "9975",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SPAWN_PET",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9976",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "MagicAssemblefromSkeleton"
+                ],
+                "Name": "SPAWN_PET",
+                "Value": "SPAWN_PET",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "9977",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "DemonPrince_Spawn_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9978",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "DemonSummoningDemonPrince"
+                ],
+                "Name": "DemonPrince_Spawn_01",
+                "Value": "\\action\\powers\\DemonSummoning\\DemonPrince_Spawn_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "9979",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 3000,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 3000",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9980",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "3000",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "9981",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 4,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "HIT_BOOST_D",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9982",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Combat"
+                ],
+                "Name": "HIT_BOOST_D",
+                "Value": "HIT_BOOST_D",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 2",
+              "OptionTooltip": "Mov Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "9983",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "9984",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "From Hell",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "9985",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "From Hell"
+        },
+        {
+          "$id": "9986",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "9987",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SPELLCAST_CYCLE",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9988",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "SPELLCAST_CYCLE",
+                "Value": "SPELLCAST_CYCLE",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "9989",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 2200,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 2200",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9990",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "2200",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 2",
+              "OptionTooltip": "Pause Element 2"
+            },
+            {
+              "$id": "9991",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "BuildingExplo",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9992",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "ExplosionBuilding"
+                ],
+                "Name": "BuildingExplo",
+                "Value": "\\hazards\\explosion\\BuildingExplo.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "9993",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 2400,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 2400",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9994",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "2400",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "9995",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 5,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "READY2",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "9996",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "MovementRun"
+                ],
+                "Name": "READY2",
+                "Value": "READY2",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 2",
+              "OptionTooltip": "Mov Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "9997",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "9998",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "SPELLCASTFEAR",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "9999",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Magic"
+                  ],
+                  "Name": "SPELLCASTFEAR",
+                  "Value": "SPELLCASTFEAR",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "10000",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "fear",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10001",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Powers"
+                  ],
+                  "Name": "fear",
+                  "Value": "\\action\\powers\\fear.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Fear Bind - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 2,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10002",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Fear Bind - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Fear Bind",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 5,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10003",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Fear Bind"
+        },
+        {
+          "$id": "10004",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10005",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "SoulDrain2",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10006",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersSoul"
+                ],
+                "Name": "SoulDrain2",
+                "Value": "\\action\\powers\\SoulDrain2.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 2",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "10007",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "Telekinesis",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10008",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeBeamPause"
+                ],
+                "Name": "Telekinesis",
+                "Value": "Telekinesis",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 3",
+              "OptionTooltip": "Mov Element 3"
+            },
+            {
+              "$id": "10009",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF90EE90",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "SoulCatcher_Beam",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10010",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "SoulCatcher_Beam.fx",
+                "Value": "/powers/ItemsAndTempPowers/soulcatcher/SoulCatcher_Beam.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "10011",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 800,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 800",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10012",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "800",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 2",
+              "OptionTooltip": "Pause Element 2"
+            },
+            {
+              "$id": "10013",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 5,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "STEAL",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10014",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangePull"
+                ],
+                "Name": "STEAL",
+                "Value": "STEAL",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10015",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1800,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 6,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1800",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10016",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1800",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "10017",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 7,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SOULTAKE_RIP",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10018",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "SOULTAKE_RIP",
+                "Value": "SOULTAKE_RIP",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 2",
+              "OptionTooltip": "Mov Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10019",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "10020",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "SOULGIVE_SLEEP",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10021",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Magic"
+                  ],
+                  "Name": "SOULGIVE_SLEEP",
+                  "Value": "SOULGIVE_SLEEP",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Soul Steal - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 1,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10022",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Soul Steal - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Soul Steal",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 7,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10023",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Soul Steal"
+        },
+        {
+          "$id": "10024",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10025",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "BLUE_SPELLCAST_CYCLE2",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10026",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "BLUE_SPELLCAST_CYCLE2",
+                "Value": "BLUE_SPELLCAST_CYCLE2",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10027",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 8000,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 8000",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10028",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "8000",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "10029",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "SonicWave4",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10030",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersSonic"
+                ],
+                "Name": "SonicWave4",
+                "Value": "\\action\\powers\\SonicWave4.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10031",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "10032",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.ReferenceAbility, Module.HeroVirtualTabletop",
+                "ReferenceType": 0,
+                "Reference": {
+                  "$ref": "9812"
+                },
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 3,
+                "PlayWithNext": false,
+                "DisplayName": "Barrage - OnHit",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10033",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": "Barrage - OnHit",
+                  "Value": null,
+                  "Reference": {
+                    "$ref": "9812"
+                  },
+                  "Identity": null
+                },
+                "Name": "Ref Element 1",
+                "OptionTooltip": "Ref Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Blue Wave - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": true,
+            "SequenceType": 0,
+            "LastOrder": 1,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10034",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Blue Wave - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Blue Wave",
+          "IsAttack": true,
+          "IsAreaEffect": true,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10035",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Blue Wave"
+        },
+        {
+          "$id": "10036",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10037",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "EMOTE_COSTUMECHANGE_VANGUARDSIGIL_POST",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10038",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "EMOTE_COSTUMECHANGE_VANGUARDSIGIL_POST",
+                "Value": "EMOTE_COSTUMECHANGE_VANGUARDSIGIL_POST",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10039",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "Magic_shieldup",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10040",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersMagic"
+                ],
+                "Name": "Magic_shieldup",
+                "Value": "\\action\\powers\\Magic_shieldup.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10041",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10042",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Seal of protection",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 2,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10043",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Seal of protection"
+        },
+        {
+          "$ref": "9934"
+        },
+        {
+          "$id": "10044",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10045",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "ORACLEFLOAT_OUT",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10046",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "ORACLEFLOAT_OUT",
+                "Value": "ORACLEFLOAT_OUT",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10047",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10048",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Spirit Drop",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 1,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10049",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Spirit Drop"
+        },
+        {
+          "$id": "10050",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10051",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SHALICE_LEFT_CASTING_WALK_CYCLE",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10052",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "SHALICE_LEFT_CASTING_WALK_CYCLE",
+                "Value": "SHALICE_LEFT_CASTING_WALK_CYCLE",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 3",
+              "OptionTooltip": "Mov Element 3"
+            },
+            {
+              "$id": "10053",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "ALT_CAST",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10054",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "ALT_CAST",
+                "Value": "ALT_CAST",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10055",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "Emote_Cast_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10056",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "CostumeChangesEmote"
+                ],
+                "Name": "Emote_Cast_01",
+                "Value": "\\unnatural\\CostumeChanges\\Emote_Cast_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10057",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "10058",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "POSSSESSED_CONDUIT_FLOAT_IN",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10059",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Magic"
+                  ],
+                  "Name": "POSSSESSED_CONDUIT_FLOAT_IN",
+                  "Value": "POSSSESSED_CONDUIT_FLOAT_IN",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "10060",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "DC_Haunt_Spirit_Loop",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10061",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "PowersDC"
+                  ],
+                  "Name": "DC_Haunt_Spirit_Loop",
+                  "Value": "\\action\\powers\\DC_Haunt_Spirit_Loop.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Possess - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 2,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10062",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Possess - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Possess",
+          "IsAttack": true,
+          "IsAreaEffect": true,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10063",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Possess"
+        },
+        {
+          "$id": "10064",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10065",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SHALICE_TELEPORTIN_LOOKQUICK",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10066",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "SHALICE_TELEPORTIN_LOOKQUICK",
+                "Value": "SHALICE_TELEPORTIN_LOOKQUICK",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10067",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF000000",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Weapon_Invisible",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10068",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "invisibility"
+                ],
+                "Name": "Weapon_Invisible.fx",
+                "Value": "/Weapons/Weapon_Invisible.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "10069",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "CoL_TeleportOut_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10070",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersCoL"
+                ],
+                "Name": "CoL_TeleportOut_01",
+                "Value": "\\action\\powers\\CoL_TeleportOut_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10071",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10072",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Infernal Teleport Out",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10073",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Infernal Teleport Out"
+        },
+        {
+          "$id": "10074",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10075",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SHALICE_TELEPORTIN",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10076",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "SHALICE_TELEPORTIN",
+                "Value": "SHALICE_TELEPORTIN",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10077",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF000000",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "None",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10078",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "WeaponShield"
+                ],
+                "Name": "None.fx",
+                "Value": "/Weapons/CustomShields/None.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "10079",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "CoL_TeleportIn_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10080",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersCoL"
+                ],
+                "Name": "CoL_TeleportIn_01",
+                "Value": "\\action\\powers\\CoL_TeleportIn_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10081",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10082",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Infernal Teleport In",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10083",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Infernal Teleport In"
+        },
+        {
+          "$id": "10084",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10085",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SPIRIT_WARD",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10086",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeMagicToss"
+                ],
+                "Name": "SPIRIT_WARD",
+                "Value": "SPIRIT_WARD",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10087",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "SpellCast1",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10088",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersSpell"
+                ],
+                "Name": "SpellCast1",
+                "Value": "\\action\\powers\\SpellCast1.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10089",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "10090",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "MALAISE_COLLAPSE",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10091",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Magic"
+                  ],
+                  "Name": "MALAISE_COLLAPSE",
+                  "Value": "MALAISE_COLLAPSE",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "10092",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "tornado_loop",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10093",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "PowersTornado"
+                  ],
+                  "Name": "tornado_loop",
+                  "Value": "\\action\\powers\\tornado_loop.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Dark Wind - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 2,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10094",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Dark Wind - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Dark Wind",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 2,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10095",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Dark Wind"
+        },
+        {
+          "$id": "10096",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10097",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SequenceElement, Module.HeroVirtualTabletop",
+              "AnimationElements": [
+                {
+                  "$id": "10098",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                  "Order": 3,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 0,
+                  "PlayWithNext": false,
+                  "DisplayName": "KUJI_ZEN",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10099",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "Magic"
+                    ],
+                    "Name": "KUJI_ZEN",
+                    "Value": "KUJI_ZEN",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "Mov Element 2",
+                  "OptionTooltip": "Mov Element 2"
+                },
+                {
+                  "$id": "10100",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                  "Order": 4,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 0,
+                  "PlayWithNext": false,
+                  "DisplayName": "KUJI_RIN",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10101",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "Magic"
+                    ],
+                    "Name": "KUJI_RIN",
+                    "Value": "KUJI_RIN",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "Mov Element 1",
+                  "OptionTooltip": "Mov Element 1"
+                },
+                {
+                  "$id": "10102",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                  "Order": 5,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 0,
+                  "PlayWithNext": false,
+                  "DisplayName": "KUJI_SHA",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10103",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "Magic"
+                    ],
+                    "Name": "KUJI_SHA",
+                    "Value": "KUJI_SHA",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "Mov Element 3",
+                  "OptionTooltip": "Mov Element 3"
+                }
+              ],
+              "SequenceType": 1,
+              "LastOrder": 5,
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 4,
+              "PlayWithNext": false,
+              "DisplayName": "Sequence: Or",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10104",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Seq Element 3",
+              "OptionTooltip": "Seq Element 3"
+            },
+            {
+              "$id": "10105",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SequenceElement, Module.HeroVirtualTabletop",
+              "AnimationElements": [
+                {
+                  "$id": "10106",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                  "Colors": [
+                    "#FFDC143C",
+                    "#FF000000",
+                    "#FF000000",
+                    "#FF000000"
+                  ],
+                  "IsNonDirectional": false,
+                  "PlayOnTopOfPreviousFx": false,
+                  "PlayOnTopOfIdentityName": null,
+                  "Order": 2,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 2,
+                  "PlayWithNext": false,
+                  "DisplayName": "Fortune_Death_Activation",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10107",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "MagicTarotCards"
+                    ],
+                    "Name": "Fortune_Death_Activation.fx",
+                    "Value": "/powers/ItemsAndTempPowers/TarotCards/Fortune_Death_Activation.fx",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "FX Element 2",
+                  "OptionTooltip": "FX Element 2"
+                },
+                {
+                  "$id": "10108",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                  "Colors": [
+                    "#FF00FF00",
+                    "#FF000000",
+                    "#FF000000",
+                    "#FF000000"
+                  ],
+                  "IsNonDirectional": false,
+                  "PlayOnTopOfPreviousFx": false,
+                  "PlayOnTopOfIdentityName": null,
+                  "Order": 3,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 2,
+                  "PlayWithNext": false,
+                  "DisplayName": "Fortune_TheFool_Activation",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10109",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "MagicTarotCards"
+                    ],
+                    "Name": "Fortune_TheFool_Activation.fx",
+                    "Value": "/powers/ItemsAndTempPowers/TarotCards/Fortune_TheFool_Activation.fx",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "FX Element 1",
+                  "OptionTooltip": "FX Element 1"
+                },
+                {
+                  "$id": "10110",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                  "Colors": [
+                    "#FF00FFFF",
+                    "#FF000000",
+                    "#FF000000",
+                    "#FF000000"
+                  ],
+                  "IsNonDirectional": false,
+                  "PlayOnTopOfPreviousFx": false,
+                  "PlayOnTopOfIdentityName": null,
+                  "Order": 4,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 2,
+                  "PlayWithNext": false,
+                  "DisplayName": "Fortune_TheHermit_Activation",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10111",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "MagicTarotCards"
+                    ],
+                    "Name": "Fortune_TheHermit_Activation.fx",
+                    "Value": "/powers/ItemsAndTempPowers/TarotCards/Fortune_TheHermit_Activation.fx",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "FX Element 3",
+                  "OptionTooltip": "FX Element 3"
+                },
+                {
+                  "$id": "10112",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                  "Colors": [
+                    "#FFFF00FF",
+                    "#FF000000",
+                    "#FF000000",
+                    "#FF000000"
+                  ],
+                  "IsNonDirectional": false,
+                  "PlayOnTopOfPreviousFx": false,
+                  "PlayOnTopOfIdentityName": null,
+                  "Order": 5,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 2,
+                  "PlayWithNext": false,
+                  "DisplayName": "Fortune_TheLovers_Activation",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10113",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "MagicTarotCards"
+                    ],
+                    "Name": "Fortune_TheLovers_Activation.fx",
+                    "Value": "/powers/ItemsAndTempPowers/TarotCards/Fortune_TheLovers_Activation.fx",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "FX Element 4",
+                  "OptionTooltip": "FX Element 4"
+                },
+                {
+                  "$id": "10114",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                  "Colors": [
+                    "#FF9932CC",
+                    "#FF000000",
+                    "#FF000000",
+                    "#FF000000"
+                  ],
+                  "IsNonDirectional": false,
+                  "PlayOnTopOfPreviousFx": false,
+                  "PlayOnTopOfIdentityName": null,
+                  "Order": 6,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 2,
+                  "PlayWithNext": false,
+                  "DisplayName": "Fortune_TheMagician_Activation",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10115",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "MagicTarotCards"
+                    ],
+                    "Name": "Fortune_TheMagician_Activation.fx",
+                    "Value": "/powers/ItemsAndTempPowers/TarotCards/Fortune_TheMagician_Activation.fx",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "FX Element 5",
+                  "OptionTooltip": "FX Element 5"
+                },
+                {
+                  "$id": "10116",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                  "Colors": [
+                    "#FFFFFF00",
+                    "#FF000000",
+                    "#FF000000",
+                    "#FF000000"
+                  ],
+                  "IsNonDirectional": false,
+                  "PlayOnTopOfPreviousFx": false,
+                  "PlayOnTopOfIdentityName": null,
+                  "Order": 7,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 2,
+                  "PlayWithNext": false,
+                  "DisplayName": "Fortune_TheMoon_Activation",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10117",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "MagicTarotCards"
+                    ],
+                    "Name": "Fortune_TheMoon_Activation.fx",
+                    "Value": "/powers/ItemsAndTempPowers/TarotCards/Fortune_TheMoon_Activation.fx",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "FX Element 6",
+                  "OptionTooltip": "FX Element 6"
+                },
+                {
+                  "$id": "10118",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                  "Colors": [
+                    "#FFFFA500",
+                    "#FF000000",
+                    "#FF000000",
+                    "#FF000000"
+                  ],
+                  "IsNonDirectional": false,
+                  "PlayOnTopOfPreviousFx": false,
+                  "PlayOnTopOfIdentityName": null,
+                  "Order": 8,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 2,
+                  "PlayWithNext": false,
+                  "DisplayName": "Fortune_TheSun_Activation",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10119",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "MagicTarotCards"
+                    ],
+                    "Name": "Fortune_TheSun_Activation.fx",
+                    "Value": "/powers/ItemsAndTempPowers/TarotCards/Fortune_TheSun_Activation.fx",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "FX Element 7",
+                  "OptionTooltip": "FX Element 7"
+                },
+                {
+                  "$id": "10120",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                  "Colors": [
+                    "#FFF0F8FF",
+                    "#FF000000",
+                    "#FF000000",
+                    "#FF000000"
+                  ],
+                  "IsNonDirectional": false,
+                  "PlayOnTopOfPreviousFx": false,
+                  "PlayOnTopOfIdentityName": null,
+                  "Order": 9,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 2,
+                  "PlayWithNext": false,
+                  "DisplayName": "Fortune_TheTower_Activation",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10121",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "MagicTarotCards"
+                    ],
+                    "Name": "Fortune_TheTower_Activation.fx",
+                    "Value": "/powers/ItemsAndTempPowers/TarotCards/Fortune_TheTower_Activation.fx",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "FX Element 8",
+                  "OptionTooltip": "FX Element 8"
+                },
+                {
+                  "$id": "10122",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                  "Colors": [
+                    "#FF00FFFF",
+                    "#FF000000",
+                    "#FF000000",
+                    "#FF000000"
+                  ],
+                  "IsNonDirectional": false,
+                  "PlayOnTopOfPreviousFx": false,
+                  "PlayOnTopOfIdentityName": null,
+                  "Order": 10,
+                  "Owner": {
+                    "$ref": "9936"
+                  },
+                  "Type": 2,
+                  "PlayWithNext": false,
+                  "DisplayName": "Fortune_WheelOfFortune_Activation",
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "10123",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [
+                      "MagicTarotCards"
+                    ],
+                    "Name": "Fortune_WheelOfFortune_Activation.fx",
+                    "Value": "/powers/ItemsAndTempPowers/TarotCards/Fortune_WheelOfFortune_Activation.fx",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "FX Element 9",
+                  "OptionTooltip": "FX Element 9"
+                }
+              ],
+              "SequenceType": 1,
+              "LastOrder": 10,
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 4,
+              "PlayWithNext": false,
+              "DisplayName": "Sequence: Or",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10124",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Seq Element 2",
+              "OptionTooltip": "Seq Element 2"
+            },
+            {
+              "$id": "10125",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "SpellCast1",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10126",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersSpell"
+                ],
+                "Name": "SpellCast1",
+                "Value": "\\action\\powers\\SpellCast1.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10127",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10128",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Tarot Blessing",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10129",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Tarot Blessing"
+        },
+        {
+          "$id": "10130",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10131",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF00FA9A",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "TarotCards_Attack",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10132",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "MagicTarotCards"
+                ],
+                "Name": "TarotCards_Attack.fx",
+                "Value": "/powers/ItemsAndTempPowers/TarotCards/TarotCards_Attack.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "10133",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "magic",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10134",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "FrontEnd"
+                ],
+                "Name": "magic",
+                "Value": "\\interface\\FrontEnd\\magic.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "10135",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "LEVITATE",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10136",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeLift"
+                ],
+                "Name": "LEVITATE",
+                "Value": "LEVITATE",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10137",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 2000,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 2000",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10138",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "2000",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "10139",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 5,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "N_Origin_Magic",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10140",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "N_UIN"
+                ],
+                "Name": "N_Origin_Magic",
+                "Value": "\\interface\\N_UI\\N_Origin_Magic.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 2",
+              "OptionTooltip": "Sound Element 2"
+            },
+            {
+              "$id": "10141",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 6,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "ALT_CAST",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10142",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "ALT_CAST",
+                "Value": "ALT_CAST",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 2",
+              "OptionTooltip": "Mov Element 2"
+            },
+            {
+              "$id": "10143",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1000,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 7,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1000",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10144",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1000",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 2",
+              "OptionTooltip": "Pause Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10145",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "10146",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFFF0F5",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "CLAWSHIT1",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10147",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "CLAWS"
+                  ],
+                  "Name": "CLAWSHIT1.FX",
+                  "Value": "POWERS/CLAWS/CLAWSHIT1.FX",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "10148",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "HITQUICK",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10149",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "HTH"
+                  ],
+                  "Name": "HITQUICK",
+                  "Value": "HITQUICK",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Card Attack - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 2,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10150",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Card Attack - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Card Attack",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 7,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10151",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Card Attack"
+        },
+        {
+          "$id": "10152",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10153",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF000000",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Child_ProjectileCards",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10154",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "MagicTarotCards"
+                ],
+                "Name": "Child_ProjectileCards.fx",
+                "Value": "/powers/ItemsAndTempPowers/TarotCards/Child_ProjectileCards.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "10155",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "magic",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "10134"
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10156",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10157",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Card Field",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 2,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10158",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Card Field"
+        },
+        {
+          "$id": "10159",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10160",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "RuneCharge",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10161",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersRune"
+                ],
+                "Name": "RuneCharge",
+                "Value": "\\action\\powers\\RuneCharge.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 2",
+              "OptionTooltip": "Sound Element 2"
+            },
+            {
+              "$id": "10162",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFDC143C",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Rune_Blast",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10163",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "MagicRune"
+                ],
+                "Name": "Rune_Blast.fx",
+                "Value": "/powers/ItemsAndTempPowers/Rune_Blast.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "10164",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "ARCANE_BOLT",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10165",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "ARCANE_BOLT",
+                "Value": "ARCANE_BOLT",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10166",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1900,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1900",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10167",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1900",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "10168",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 5,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "RuneBlast1",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10169",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersRune"
+                ],
+                "Name": "RuneBlast1",
+                "Value": "\\action\\powers\\RuneBlast1.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10170",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "10171",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "HITQUICK",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "692"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              },
+              {
+                "$id": "10172",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FF00FFFF",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 2,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "Child_Overcharge_ChargeUp",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "559"
+                },
+                "Name": "FX Element 2",
+                "OptionTooltip": "FX Element 2"
+              },
+              {
+                "$id": "10173",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "RuneHit2",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10174",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "PowersRune"
+                  ],
+                  "Name": "RuneHit2",
+                  "Value": "\\action\\powers\\RuneHit2.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Rune Blast - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10175",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Rune Blast - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Rune Blast",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 5,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10176",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Rune Blast"
+        },
+        {
+          "$id": "10177",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10178",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFA500",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "OuroborosPortal",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10179",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "MagicOuroboros"
+                ],
+                "Name": "OuroborosPortal.fx",
+                "Value": "/powers/Ouroboros/Portal/OuroborosPortal.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "10180",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "WALLPOST",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10181",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeHold"
+                ],
+                "Name": "WALLPOST",
+                "Value": "WALLPOST",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10182",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "Hortha1_loop",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10183",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "AlienHortha1"
+                ],
+                "Name": "Hortha1_loop",
+                "Value": "\\unnatural\\alien\\Hortha1_loop.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "10184",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 2000,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 2000",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10185",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "2000",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10186",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10187",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Alien Power",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10188",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Alien Power"
+        },
+        {
+          "$id": "10189",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10190",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "TELE_MAGIC",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10191",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeBeamCombo"
+                ],
+                "Name": "TELE_MAGIC",
+                "Value": "TELE_MAGIC",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10192",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "Demon_Cast_01",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10193",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "DemonSummoningDemon"
+                ],
+                "Name": "Demon_Cast_01",
+                "Value": "\\action\\powers\\DemonSummoning\\Demon_Cast_01.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10194",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "10195",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFFF0000",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "LargeCrystal",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10196",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "MagicOuroboros"
+                  ],
+                  "Name": "LargeCrystal.fx",
+                  "Value": "/powers/Ouroboros/LargeCrystals/LargeCrystal.fx",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "10197",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "Fire_Small03_Loop",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10198",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "FireFire"
+                  ],
+                  "Name": "Fire_Small03_Loop",
+                  "Value": "\\hazards\\fire\\Fire_Small03_Loop.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "10199",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "FEARSTUN",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10200",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Psionics"
+                  ],
+                  "Name": "FEARSTUN",
+                  "Value": "FEARSTUN",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Flames of Faltour - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10201",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Flames of Faltour - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Flames of Faltour",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 2,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10202",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Flames of Faltour"
+        },
+        {
+          "$id": "10203",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10204",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFA500",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "SmallCrystalB",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10205",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "MagicOuroboros"
+                ],
+                "Name": "SmallCrystalB.fx",
+                "Value": "/powers/Ouroboros/SmallCrystals/SmallCrystalB.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "10206",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SHIELD_RADIUSEFFECT",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10207",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeArmsOutToSideShield"
+                ],
+                "Name": "SHIELD_RADIUSEFFECT",
+                "Value": "SHIELD_RADIUSEFFECT",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10208",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "luminaryhands2_loop",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10209",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersLuminaryhands2"
+                ],
+                "Name": "luminaryhands2_loop",
+                "Value": "\\action\\powers\\luminaryhands2_loop.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10210",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10211",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Angelic Defense",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 3,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10212",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Angelic Defense"
+        },
+        {
+          "$id": "10213",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10214",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "SHIELD_RADIUSEFFECT",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "10207"
+              },
+              "Name": "Mov Element 2",
+              "OptionTooltip": "Mov Element 2"
+            },
+            {
+              "$id": "10215",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1200,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1200",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10216",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1200",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            },
+            {
+              "$id": "10217",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "cotCrystHeal3_loop",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10218",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "SirenCotCrystHeal3"
+                ],
+                "Name": "cotCrystHeal3_loop",
+                "Value": "\\urban\\siren\\cotCrystHeal3_loop.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "10219",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFFFA500",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 4,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "TriangleBeaconHeal",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10220",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "TechnoMagic"
+                ],
+                "Name": "TriangleBeaconHeal.fx",
+                "Value": "/CustomizeablePowers/Pets/TriageBeacon/TriangleBeaconHeal.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 2",
+              "OptionTooltip": "FX Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10221",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10222",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Beacon ",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10223",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Beacon "
+        },
+        {
+          "$id": "10224",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10225",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "TELE_MAGIC2",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10226",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "RangeBeam2"
+                ],
+                "Name": "TELE_MAGIC2",
+                "Value": "TELE_MAGIC2",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10227",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "10228",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFDC143C",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "WitchSummon",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10229",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Magic"
+                  ],
+                  "Name": "WitchSummon.fx",
+                  "Value": "/powers/ItemsAndTempPowers/WitchSummon.fx",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "10230",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "Emote_Lightning_01",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "10231",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "ElectricityEmote"
+                  ],
+                  "Name": "Emote_Lightning_01",
+                  "Value": "\\hazards\\electricity\\Emote_Lightning_01.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              },
+              {
+                "$id": "10232",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 3,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "HITQUICK",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "10149"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Shock - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 3,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10233",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Shock - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Shock",
+          "IsAttack": true,
+          "IsAreaEffect": true,
+          "SequenceType": 0,
+          "LastOrder": 1,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10234",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Shock"
+        },
+        {
+          "$id": "10235",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10236",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFDC143C",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "SoulTentacles_Attack",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10237",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "SoulTentacles_Attack.fx",
+                "Value": "/CustomizablePowers_Pools/Patron_SoulMastery/SoulTentacles_Attack.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "10238",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "ALT_CAST",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$ref": "10142"
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10239",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+              "Order": 3,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 1,
+              "PlayWithNext": false,
+              "DisplayName": "SoulStorm1",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10240",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "PowersSoul"
+                ],
+                "Name": "SoulStorm1",
+                "Value": "\\action\\powers\\SoulStorm1.ogg",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Sound Element 1",
+              "OptionTooltip": "Sound Element 1"
+            },
+            {
+              "$id": "10241",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.PauseElement, Module.HeroVirtualTabletop",
+              "Time": 1600,
+              "IsUnitPause": false,
+              "CloseDistanceDelay": 0,
+              "ShortDistanceDelay": 0,
+              "MediumDistanceDelay": 0,
+              "LongDistanceDelay": 0,
+              "Order": 4,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 5,
+              "PlayWithNext": false,
+              "DisplayName": "Pause 1600",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10242",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "1600",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Pause Element 1",
+              "OptionTooltip": "Pause Element 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10243",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "10244",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+                "Order": 1,
+                "Owner": {
+                  "$ref": "9936"
+                },
+                "Type": 0,
+                "PlayWithNext": false,
+                "DisplayName": "HITQUICK",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$ref": "10149"
+                },
+                "Name": "Mov Element 1",
+                "OptionTooltip": "Mov Element 1"
+              }
+            ],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Soul Tentacles - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 1,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10245",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Soul Tentacles - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Soul Tentacles",
+          "IsAttack": true,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 4,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10246",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Soul Tentacles"
+        },
+        {
+          "$id": "10247",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10248",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFDC143C",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "LostCureWand",
+              "PlayOnTargeted": false,
+              "Persistent": true,
+              "Resource": {
+                "$id": "10249",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "LostCureWand.fx",
+                "Value": "/Weapons/LostCureWand.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 1",
+              "OptionTooltip": "FX Element 1"
+            },
+            {
+              "$id": "10250",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FF000000",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Blackwand",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10251",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Magic"
+                ],
+                "Name": "Blackwand.fx",
+                "Value": "/Weapons/Blackwand.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 2",
+              "OptionTooltip": "FX Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10252",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10253",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Wand",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 2,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": true,
+          "Resource": {
+            "$id": "10254",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Wand"
+        },
+        {
+          "$id": "10255",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "10256",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.MOVElement, Module.HeroVirtualTabletop",
+              "Order": 1,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 0,
+              "PlayWithNext": false,
+              "DisplayName": "ELECTRO_REACT",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10257",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "Electricity"
+                ],
+                "Name": "ELECTRO_REACT",
+                "Value": "ELECTRO_REACT",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Mov Element 1",
+              "OptionTooltip": "Mov Element 1"
+            },
+            {
+              "$id": "10258",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+              "Colors": [
+                "#FFF0FFFF",
+                "#FF000000",
+                "#FF000000",
+                "#FF000000"
+              ],
+              "IsNonDirectional": false,
+              "PlayOnTopOfPreviousFx": false,
+              "PlayOnTopOfIdentityName": null,
+              "Order": 2,
+              "Owner": {
+                "$ref": "9936"
+              },
+              "Type": 2,
+              "PlayWithNext": false,
+              "DisplayName": "Death_Fire_Demonling",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "10259",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [
+                  "MagicDemonSummoning"
+                ],
+                "Name": "Death_Fire_Demonling.fx",
+                "Value": "/V_COV/powers/DemonSummoning/Death_Fire_Demonling.fx",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "FX Element 2",
+              "OptionTooltip": "FX Element 2"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "10260",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Ability - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "9936"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "10261",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Ability - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Ability",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 2,
+          "Order": 1,
+          "Owner": {
+            "$ref": "9936"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "10262",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Ability"
+        }
+      ]
+    },
+    {
+      "$id": "10263",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 2,
+      "Count": 3,
+      "Name": "Movements",
+      "Options": [
+        {
+          "$id": "10264",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 75,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "9936"
+          },
+          "Movement": {
+            "$ref": "8"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Walk(Alt + K)",
+          "Name": "Walk"
+        },
+        {
+          "$id": "10265",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 85,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "9936"
+          },
+          "Movement": {
+            "$ref": "923"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Run(Alt + U)",
+          "Name": "Run"
+        },
+        {
+          "$id": "10266",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 83,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "9936"
+          },
+          "Movement": {
+            "$ref": "946"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Swim(Alt + S)",
+          "Name": "Swim"
+        }
+      ]
+    },
+    {
+      "$id": "10267",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.OptionGroups.CharacterOption, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 3,
+      "Count": 4,
+      "Name": "Soul Wizardry",
+      "Options": [
+        {
+          "$ref": "9940"
+        },
+        {
+          "$ref": "10004"
+        },
+        {
+          "$ref": "9974"
+        },
+        {
+          "$ref": "10235"
+        }
+      ]
+    },
+    {
+      "$id": "10268",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.OptionGroups.CharacterOption, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 3,
+      "Count": 3,
+      "Name": "Spirit Magic",
+      "Options": [
+        {
+          "$ref": "9934"
+        },
+        {
+          "$ref": "10044"
+        },
+        {
+          "$ref": "10050"
+        }
+      ]
+    },
+    {
+      "$id": "10269",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.OptionGroups.CharacterOption, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 3,
+      "Count": 2,
+      "Name": "Magic Portal",
+      "Options": [
+        {
+          "$ref": "10064"
+        },
+        {
+          "$ref": "10074"
+        }
+      ]
+    },
+    {
+      "$id": "10270",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.OptionGroups.CharacterOption, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 3,
+      "Count": 3,
+      "Name": "Tarot Magic",
+      "Options": [
+        {
+          "$ref": "10130"
+        },
+        {
+          "$ref": "10152"
+        },
+        {
+          "$ref": "10096"
+        }
+      ]
+    },
+    {
+      "$id": "10271",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.OptionGroups.CharacterOption, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 3,
+      "Count": 9,
+      "Name": "Other",
+      "Options": [
+        {
+          "$ref": "10084"
+        },
+        {
+          "$ref": "10024"
+        },
+        {
+          "$ref": "10036"
+        },
+        {
+          "$ref": "9986"
+        },
+        {
+          "$ref": "10224"
+        },
+        {
+          "$ref": "10159"
+        },
+        {
+          "$ref": "10189"
+        },
+        {
+          "$ref": "10247"
+        },
+        {
+          "$ref": "9956"
+        }
+      ]
+    },
+    {
+      "$id": "10272",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.OptionGroups.CharacterOption, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 3,
+      "Count": 3,
+      "Name": "Rune",
+      "Options": [
+        {
+          "$ref": "10159"
+        },
+        {
+          "$ref": "10177"
+        },
+        {
+          "$ref": "10213"
+        }
+      ]
+    }
+  ],
+  "DefaultIdentity": {
+    "$ref": "9937"
+  },
+  "ActiveIdentity": {
+    "$ref": "9937"
+  },
+  "DefaultMovement": null,
+  "DefaultAbility": null
+}

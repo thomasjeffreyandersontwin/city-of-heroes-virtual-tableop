@@ -1,0 +1,203 @@
+﻿<UserControl x:Class="Module.HeroVirtualTabletop.OptionGroups.OptionGroupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Module.HeroVirtualTabletop.OptionGroups"
+             xmlns:ability="clr-namespace:Module.HeroVirtualTabletop.AnimatedAbilities"
+             xmlns:extensions="clr-namespace:Framework.WPF.Extensions;assembly=Framework.WPF"
+             xmlns:behaviors="clr-namespace:Framework.WPF.Behaviors;assembly=Framework.WPF"
+             xmlns:converters="clr-namespace:Module.Shared.Converters;assembly=Module.Shared"
+             xmlns:bindings="clr-namespace:Framework.WPF.Binding;assembly=Framework.WPF"
+             mc:Ignorable="d" MinWidth="300" behaviors:CommandBehavior.Event="Loaded" behaviors:CommandBehavior.Command="{Binding RenameNewOptionGroupCommand}" behaviors:CommandBehavior.CommandParameter="{Binding RelativeSource={RelativeSource Self}}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Module.Shared;Component/Resources/ResourceDictionary/GeneralResources.xaml" />
+                <ResourceDictionary>
+                    <converters:CharacterOptionComparerConverter x:Key="CharOptComparer"></converters:CharacterOptionComparerConverter>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <bindings:BindingProxy x:Key="BindingProxy" Data="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:OptionGroupView}, Path=DataContext}"/>
+            <ContextMenu x:Key="optionListBoxMenu">
+                <MenuItem Header="Set as Default" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.SetDefaultOptionCommand}"></MenuItem>
+                <MenuItem Header="Edit" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.EditOptionCommand}"></MenuItem>
+                <MenuItem Header="Play" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.PlayOptionCommand}"></MenuItem>
+                <MenuItem Header="Stop" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.StopOptionCommand}"></MenuItem>
+                <MenuItem Header="Combat Movement" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.SetNonCombatMovementCommand}" Visibility="{Binding Source={StaticResource BindingProxy}, Path=Data.IsCombatMovementSelected, Converter={StaticResource BooleanToVisibilityInvertConverter}}"></MenuItem>
+                <MenuItem Header="Non-combat Movement" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.SetNonCombatMovementCommand}" CommandParameter="Combat" Visibility="{Binding Source={StaticResource BindingProxy}, Path=Data.IsNonCombatMovementSelected, Converter={StaticResource BooleanToVisibilityInvertConverter}}"></MenuItem>
+            </ContextMenu>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Expander Style="{StaticResource HorizontalExpanderStyle}"
+                  OverridesDefaultStyle="True"
+                  Header="{Binding Path=OptionGroup.Name}"
+                  IsExpanded="{Binding ShowOptions}"
+                  >
+        <Border Background="Transparent">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{Binding Path=OptionGroupWidth, RelativeSource={RelativeSource Self}}"/>
+                </Grid.ColumnDefinitions>
+
+                <ToggleButton Name="toggleButton" Grid.Column="1" Style="{StaticResource ToggleButtonSmallStyle}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 10 5 0" IsChecked="{Binding ElementName=ExpanderOptionGroup, Path=IsExpanded}" 
+                                  Background="Transparent" BorderBrush="Transparent">
+                </ToggleButton>
+                <GroupBox Header="{Binding Path=OptionGroup.Name}" x:Name="grpBoxOptionGroup" Style="{StaticResource GroupBoxWithBlueBorderStyle}"
+                  AllowDrop="True" PreviewDrop="GroupBox_PreviewDrop" PreviewDragOver="grpBoxOptionGroup_PreviewDragOver" PreviewDragLeave="GroupBox_PreviewDragLeave" PreviewMouseMove="groupbox_PreviewMouseMove" extensions:DragDropExtension.ScrollOnDragDrop="True">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock x:Name="textBlockName" Text="{Binding}" FontFamily="{StaticResource ParagonCity}" Foreground="White" PreviewMouseLeftButtonDown="textBlockName_PreviewMouseLeftButtonDown">
+                                    <TextBlock.InputBindings>
+                                        <MouseBinding Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:OptionGroupView}, Path=DataContext.EnterEditModeCommand}" MouseAction="LeftDoubleClick" CommandParameter="{Binding ElementName=textBlockName}"/>
+                                    </TextBlock.InputBindings>
+                                </TextBlock>
+                                <TextBox Name="textBoxName" Visibility="Collapsed" Text="{Binding DataContext, RelativeSource={RelativeSource Self}, UpdateSourceTrigger=Explicit}">
+                                    <behaviors:CommandBehaviorCollection.Behaviors>
+                                        <behaviors:BehaviorBinding Event="LostFocus" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:OptionGroupView}, Path=DataContext.SubmitOptionGroupRenameCommand}" CommandParameter="{Binding ElementName=textBoxName}"/>
+                                    </behaviors:CommandBehaviorCollection.Behaviors>
+                                    <TextBox.InputBindings>
+                                        <KeyBinding Key="Enter" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:OptionGroupView}, Path=DataContext.SubmitOptionGroupRenameCommand}" CommandParameter="{Binding ElementName=textBoxName}"/>
+                                        <KeyBinding Key="Escape" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:OptionGroupView}, Path=DataContext.CancelEditModeCommand}" CommandParameter="{Binding ElementName=textBoxName}"/>
+                                    </TextBox.InputBindings>
+                                </TextBox>
+                            </Grid>
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Expander Name="ExpanderOptionGroup" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource ExpanderWithoutToggleButtonStyle}"
+                  OverridesDefaultStyle="True" IsExpanded="{Binding ShowOptions}" VerticalAlignment="Top"
+                  >
+                            <Grid VerticalAlignment="Top">
+                                <local:OptionListBox x:Name="optionListBox" ItemsSource="{Binding Path=OptionGroup}" SelectedItem="{Binding Path=SelectedOption}"
+                            DefaultOption="{Binding Path=DefaultOption}"
+                            ActiveOption="{Binding Path=ActiveOption}"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                            SelectionMode="Single"  
+                            MinHeight="30"
+                            MaxHeight="150" 
+                            Background="Transparent" BorderThickness="0" ItemContainerStyle="{StaticResource ListBoxtemStyleNoHighlighting}" Width="{Binding Path=OptionListBoxWidth, RelativeSource={RelativeSource FindAncestor, AncestorType=local:OptionGroupView}}">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="{Binding Path=NumberOfOptionsPerRow, RelativeSource={RelativeSource FindAncestor, AncestorType=local:OptionGroupView}}" />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Name="optGrid" IsEnabled="{Binding IsEnabled}"
+                            ContextMenu="{StaticResource optionListBoxMenu}">
+                                                <Ellipse Name="optionEllipse"  Width="40" Height="40" ToolTip="{Binding Path=OptionTooltip}" behaviors:CommandBehavior.Event="MouseLeftButtonUp" behaviors:CommandBehavior.Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:OptionGroupView}, Path=DataContext.TogglePlayOptionCommand}" behaviors:CommandBehavior.CommandParameter="{Binding ElementName=optionEllipse, Path=DataContext}">
+                                                    <Ellipse.Style>
+                                                        <Style TargetType="{x:Type Ellipse}">
+                                                            <Setter Property="Fill" Value="Transparent" />
+                                                            <Setter Property="Stroke" Value="#FF3377FF" />
+                                                            <Setter Property="StrokeThickness" Value="2" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Value="True">
+                                                                    <DataTrigger.Binding>
+                                                                        <MultiBinding Converter="{StaticResource ResourceKey=CharOptComparer}">
+                                                                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionListBox}}" Path="SelectedItem"></Binding>
+                                                                            <Binding RelativeSource="{RelativeSource Self}" Path="DataContext"></Binding>
+                                                                        </MultiBinding>
+                                                                    </DataTrigger.Binding>
+                                                                    <Setter Property="Fill" Value="{StaticResource SelectedColorBrush}"></Setter>
+                                                                </DataTrigger>
+                                                                <DataTrigger Value="False">
+                                                                    <DataTrigger.Binding>
+                                                                        <Binding Path="IsEnabled"/>
+                                                                    </DataTrigger.Binding>
+                                                                    <Setter Property="Stroke" Value="{StaticResource DisabledBorderBrush}"></Setter>
+                                                                    <Setter Property="Opacity" Value="0.1"></Setter>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Ellipse.Style>
+                                                    <Ellipse.InputBindings>
+                                                        <!--<MouseBinding Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:OptionGroupView}, Path=DataContext.TogglePlayOptionCommand}" CommandParameter="{Binding ElementName=optionEllipse, Path=DataContext}" MouseAction="LeftClick"/>-->
+                                                        <MouseBinding Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:OptionGroupView}, Path=DataContext.EditOptionCommand}" MouseAction="LeftDoubleClick"/>
+                                                    </Ellipse.InputBindings>
+                                                </Ellipse>
+
+                                                <Ellipse Name="silverEllipse" Width="40" Height="40" StrokeThickness="2" Stroke="Silver">
+                                                    <Ellipse.Style>
+                                                        <Style TargetType="Ellipse">
+                                                            <Setter Property="Visibility" Value="Hidden"></Setter>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Value="True">
+                                                                    <DataTrigger.Binding>
+                                                                        <MultiBinding Converter="{StaticResource ResourceKey=CharOptComparer}">
+                                                                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionListBox}}" Path="DefaultOption"></Binding>
+                                                                            <Binding RelativeSource="{RelativeSource Self}" Path="DataContext"></Binding>
+                                                                        </MultiBinding>
+                                                                    </DataTrigger.Binding>
+                                                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Ellipse.Style>
+                                                </Ellipse>
+
+                                                <Ellipse Name="redEllipse" Width="44" Height="44" StrokeThickness="2" Stroke="Red">
+                                                    <Ellipse.Style>
+                                                        <Style TargetType="Ellipse">
+                                                            <Setter Property="Visibility" Value="Hidden"></Setter>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Value="True">
+                                                                    <DataTrigger.Binding>
+                                                                        <MultiBinding Converter="{StaticResource ResourceKey=CharOptComparer}">
+                                                                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type local:OptionListBox}}" Path="ActiveOption"></Binding>
+                                                                            <Binding RelativeSource="{RelativeSource Self}" Path="DataContext"></Binding>
+                                                                        </MultiBinding>
+                                                                    </DataTrigger.Binding>
+                                                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                                                </DataTrigger>
+                                                                <DataTrigger Value="True">
+                                                                    <DataTrigger.Binding>
+                                                                        <Binding RelativeSource="{RelativeSource Self}" Path="DataContext.IsActive"></Binding>
+                                                                    </DataTrigger.Binding>
+                                                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Ellipse.Style>
+                                                </Ellipse>
+
+                                                <TextBlock Name="OptionNameTextBlock" Text="{Binding Path=Name}" TextTrimming="CharacterEllipsis" Width="40" VerticalAlignment="Center" TextAlignment="Center" Foreground="White" Panel.ZIndex="-1"/>
+                                            </Grid>
+                                            <DataTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="optionEllipse" Property="Fill" Value="{StaticResource HighlightBackgroundBrush}"/>
+                                                </Trigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </local:OptionListBox>
+                                <StackPanel Visibility="{Binding IsReadOnlyMode, Converter={StaticResource BooleanToVisibilityInvertConverter}}" HorizontalAlignment="Right" Margin="0,15,0,0" Height="Auto" VerticalAlignment="Top">
+                                    <Button Visibility="{Binding IsStandardOptionGroup, Converter={StaticResource BooleanToVisibilityConverter}}" Style="{StaticResource AddButtonStyle}" ToolTip="{Binding AddOptionTooltip}" Command="{Binding AddOptionCommand}"/>
+                                    <Button  Style="{StaticResource RemoveButtonStyle}" ToolTip="{Binding RemoveOptionTooltip}" Command="{Binding RemoveOptionCommand}"/>
+                                </StackPanel>
+                            </Grid>
+                            <behaviors:CommandBehaviorCollection.Behaviors>
+                                <behaviors:BehaviorBinding Event="Expanded" Command="{Binding ShowHideCharacterOptionCommand}"/>
+                                <behaviors:BehaviorBinding Event="Collapsed" Command="{Binding ShowHideCharacterOptionCommand}"/>
+                            </behaviors:CommandBehaviorCollection.Behaviors>
+                        </Expander>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </Border>
+    </Expander>
+</UserControl>

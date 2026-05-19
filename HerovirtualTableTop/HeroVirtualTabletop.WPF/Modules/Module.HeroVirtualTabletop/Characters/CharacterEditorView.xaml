@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="Module.HeroVirtualTabletop.Characters.CharacterEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Module.HeroVirtualTabletop.Characters"
+             xmlns:crowd="clr-namespace:Module.HeroVirtualTabletop.Crowds"
+             xmlns:behaviors="clr-namespace:Framework.WPF.Behaviors;assembly=Framework.WPF"
+             xmlns:extensions="clr-namespace:Framework.WPF.Extensions;assembly=Framework.WPF"
+             xmlns:optiongroups="clr-namespace:Module.HeroVirtualTabletop.OptionGroups"
+             xmlns:prism="http://www.codeplex.com/prism"
+             xmlns:common="clr-namespace:Module.Shared;assembly=Module.Shared"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Module.Shared;Component/Resources/ResourceDictionary/GeneralResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Text="{Binding Path=EditedCharacter.Name, UpdateSourceTrigger=PropertyChanged}" LostFocus="SaveCharacter"></TextBox>
+        </Grid>
+        <GridSplitter Grid.Row="1"></GridSplitter>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Grid HorizontalAlignment="Right" Margin="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource AddButtonStyle}" ToolTip="Add Option Group (Ctrl+Plus)" Command="{Binding AddOptionGroupCommand}"/>
+                <Button Grid.Column="1" Style="{StaticResource RemoveButtonStyle}" ToolTip="Remove Option Group (Ctrl+Minus/Del)" Command="{Binding RemoveOptionGroupCommand}"/>
+            </Grid>
+            <ListView Grid.Row="1" x:Name="listViewOptionGroup"
+                    ItemsSource="{Binding OptionGroups, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedValuePath="OptionGroup" AllowDrop="True" 
+                      PreviewMouseMove="ListView_PreviewMouseMove" PreviewDragOver="ListView_PreviewDragOver" PreviewDrop="ListView_PreviewDrop" PreviewMouseLeftButtonUp="ListView_PreviewMouseLeftButtonUp"
+                      extensions:DragDropExtension.ScrollOnDragDrop="True"
+                    SelectedValue="{Binding SelectedOptionGroup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{StaticResource ListViewtemStyleNoHighlighting}">
+                <ListView.Style>
+                    <Style TargetType="ListView">
+                        <Setter Property="Background" Value="Transparent"></Setter>
+                        <Setter Property="BorderThickness" Value="0"></Setter>
+                    </Style>
+                </ListView.Style>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <optiongroups:OptionGroupView OptionGroupWidth="300" OptionListBoxWidth="280" NumberOfOptionsPerRow="6">
+
+                        </optiongroups:OptionGroupView>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </Grid>
+
+    </Grid>
+</UserControl>

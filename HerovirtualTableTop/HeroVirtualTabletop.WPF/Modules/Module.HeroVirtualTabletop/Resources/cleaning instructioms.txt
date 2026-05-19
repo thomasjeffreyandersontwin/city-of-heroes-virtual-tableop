@@ -1,0 +1,30 @@
+kill power title
+([A-Z][a-z]+|_[A-Z][a-z]+|.[A-Z][a-z]+)
+
+remove powerset def
+\n\DEFS.+
+
+one off cleanups
+_of
+\n.\n
+.FX. -> .FX
+\n\w+\n
+\n\.
+kill orphan FX
+\n\w+\.FX 
+\ncur\.
+\n\W -> \n
+mod\.\n
+\n\W+ -> \n
+\n\d+-.\n
+\n\w+\n ->\n
+\ntarget.owner\n
+remove dups in excel
+
+
+parse to csv long
+\n(\w+)(\/)(\w+)(\/)(\w+\.FX)
+
+parse to csv short
+
+\{\n\t "$id": "9999",\n\t"$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",\n\t"Tags": \[\n\t\t"$3"\n\t\],\n\t"Name": "$3$4",\n\t"Value": "/$2$3$4",\n\t"Reference": null\n\}

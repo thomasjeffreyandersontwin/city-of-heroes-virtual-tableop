@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="Module.HeroVirtualTabletop.AnimatedAbilities.AttackTargetSelectionView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:behaviors="clr-namespace:Framework.WPF.Behaviors;assembly=Framework.WPF"
+             xmlns:abilities="clr-namespace:Module.HeroVirtualTabletop.AnimatedAbilities"             
+             xmlns:enumerations="clr-namespace:Module.HeroVirtualTabletop.Library.Enumerations"
+             xmlns:bindings="clr-namespace:Framework.WPF.Binding;assembly=Framework.WPF"
+             xmlns:converters="clr-namespace:Module.Shared.Converters;assembly=Module.Shared"
+             xmlns:localconverters="clr-namespace:Module.HeroVirtualTabletop.Library.Converters"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Module.Shared;Component/Resources/ResourceDictionary/GeneralResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <converters:BooleanToVisibilityInvertConverter x:Key="BooleanToVisibilityInvertConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <GroupBox Header="Select Attack Targets" Foreground="White" Style="{StaticResource GroupBoxWithBlueBorderStyle}">
+        <Border Background="Transparent">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <ListView Grid.Row="1" Margin="1" Name="lvAttackTargets" ItemsSource="{Binding AttackTargets}" Background="Transparent" BorderBrush="Transparent" ItemContainerStyle="{StaticResource ListBoxtemStyleNoHighlighting}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <CheckBox Grid.Row="0" Grid.Column="0" Content="{Binding Defender.Name}" 
+                                                      IsChecked="{Binding Path=Targeted}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2">
+                    <Button x:Name="btnOk"  Margin="2" Content="OK" Command="{Binding ConfirmAttackTargetsCommand}" Style="{StaticResource ButtonDefaultStyle}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </GroupBox>
+</UserControl>

@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Module.HeroVirtualTabletop.Crowds.CrowdFromModelsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Module.HeroVirtualTabletop.Crowds"
+             xmlns:behaviors="clr-namespace:Framework.WPF.Behaviors;assembly=Framework.WPF"
+             xmlns:enumerations="clr-namespace:Module.HeroVirtualTabletop.Library.Enumerations"
+             xmlns:convertes="clr-namespace:Module.HeroVirtualTabletop.Library.Converters"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:library="clr-namespace:Framework.WPF.Library;assembly=Framework.WPF"
+             mc:Ignorable="d"
+             Visibility="{Binding Visibility}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Module.Shared;Component/Resources/ResourceDictionary/GeneralResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel>
+            <Grid HorizontalAlignment="Stretch">
+                <WrapPanel>
+                    <WrapPanel.Resources>
+                        <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=IconButton}"></Style>
+                    </WrapPanel.Resources>
+                    <Button x:Name="btSpawn" Content="&#xf08e;" ToolTip="Spawn Preview (Ctrl+N)" Command="{Binding SpawnModelsCommand}"/>
+                    <Button x:Name="btSave" Content="&#xF0C7;" ToolTip="Save (Ctrl+S)" Command="{Binding SaveCrowdCommand}"/>
+                    <Button x:Name="btClearFromDesktop" Content="&#xf235;" ToolTip="Clear From Desktop (Ctrl+Minus/Del)" Command="{Binding ClearFromDesktopCommand}" />
+                </WrapPanel>
+                <Button x:Name="closeBtn" Content="&#xf00d;" ToolTip="Close" Command="{Binding CloseEditorCommand}" Margin="2,0,2,5" Style="{StaticResource CloseButtonStyle}"/>
+            </Grid>
+            
+            <Grid Grid.Column="1" VerticalAlignment="Center" Margin="5">
+                <TextBox x:Name="textBlockName" Text="{Binding Path=EditedCrowd.Name}" Style="{StaticResource SelectableTextBlockLikeStyle}">
+                    <TextBox.InputBindings>
+                        <MouseBinding Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:CrowdFromModelsView}, Path=DataContext.EnterEditModeCommand}" MouseAction="LeftDoubleClick" CommandParameter="{Binding ElementName=textBlockName}"/>
+                        <KeyBinding Key="Space" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:CrowdFromModelsView}, Path=DataContext.EnterEditModeCommand}" CommandParameter="{Binding ElementName=textBlockName}"/>
+                    </TextBox.InputBindings>
+                </TextBox>
+                <TextBox Name="textBoxName" Visibility="Hidden" Text="{Binding Path=EditedCrowd.Name, UpdateSourceTrigger=Explicit}">
+                    <behaviors:CommandBehaviorCollection.Behaviors>
+                        <behaviors:BehaviorBinding Event="LostFocus" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:CrowdFromModelsView}, Path=DataContext.SubmitCrowdRenameCommand}" CommandParameter="{Binding ElementName=textBoxName}"/>
+                    </behaviors:CommandBehaviorCollection.Behaviors>
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:CrowdFromModelsView}, Path=DataContext.SubmitCrowdRenameCommand}" CommandParameter="{Binding ElementName=textBoxName}"/>
+                        <KeyBinding Key="Escape" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=local:CrowdFromModelsView}, Path=DataContext.CancelEditModeCommand}" CommandParameter="{Binding ElementName=textBoxName}"/>
+                    </TextBox.InputBindings>
+                </TextBox>
+            </Grid>
+            <TextBox Name="FilterTextBox" Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
+            
+            <GroupBox x:Name="listGroup" Header="Models" Margin="5" Style="{StaticResource GroupBoxWithBlueBorderStyle}">
+                <GroupBox.Resources>
+                    <Style TargetType="{x:Type ListBox}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="TextElement.Foreground" Value="White"/>
+                    </Style>
+                </GroupBox.Resources>
+                <library:MultiSelectListBox x:Name="listBoxModels" 
+                    ItemsSource="{Binding ModelsCVS.View}" MaxHeight="300" Width="300"
+                    SelectionMode="Extended" Background="Transparent" TextElement.Foreground="White" 
+                    SelectedItemsList="{Binding SelectedModels, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ListBox.Resources>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="TextElement.Foreground" Value="White"/>
+                        </Style>
+                    </ListBox.Resources>
+                </library:MultiSelectListBox>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

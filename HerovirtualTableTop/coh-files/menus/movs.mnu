@@ -1,0 +1,680 @@
+// POPMENU File for MOV's
+//
+Menu "MOV"
+{	
+  	Menu "Movement"
+	{
+		Menu "Upright"
+		{
+Option "Get Up from Being on Back" "mov GETUP_BACK$$costume_save storemov.mov-GETUP_BACK"
+Option "Run in Place" "mov RUNCYCLE$$costume_save storemov.mov-RUNCYCLE"
+Option "Run in Place, Fleeing" "mov F_RUNCYCLE$$costume_save storemov.mov-F_RUNCYCLE"
+Option "Straighten Up After Bending Down" "mov GETUP_BACK2$$costume_save storemov.mov-GETUP_BACK2"
+Option "Strut, Body Forward" "mov PLAYER_WALK_FORWARD$$costume_save storemov.mov-PLAYER_WALK_FORWARD"
+Option "Strut, Body Tilted Left" "mov WALK_LEFT_FORWARD_CYCLE$$costume_save storemov.mov-WALK_LEFT_FORWARD_CYCLE"
+Option "Strut, Body Turned Left" "mov WALK_LEFT_CYCLE$$costume_save storemov.mov-WALK_LEFT_CYCLE"
+Option "Strut, Body Tilted Right" "mov WALK_RIGHT_CYCLE$$costume_save storemov.mov-WALK_RIGHT_CYCLE"
+Option "Strut, Body Turned Right" "mov WALK_RIGHT_FORWARD_CYCLE$$costume_save storemov.mov-WALK_RIGHT_FORWARD_CYCLE"
+Option "Swim in Place" "mov SWIMCYCLE$$costume_save storemov.mov-SWIMCYCLE"
+Option "Walk in Place Looking Side to Side" "mov SNEAK_PATROL_CYCLE$$costume_save storemov.mov-SNEAK_PATROL_CYCLE"
+Option "Walk in Place Quicker" "mov IDLE_WALK_CYCLE$$costume_save storemov.mov-IDLE_WALK_CYCLE"
+Option "Walk in Place" "mov WALKCYCLE$$costume_save storemov.mov-WALKCYCLE"
+		}	
+		Menu "Falling"
+		{
+Option "Fall Small Distance, Land on Face" "mov AIR_DEATH_IMPACT$$costume_save storemov.mov-AIR_DEATH_IMPACT"
+Option "Swoon and Fall on Back" "mov EMOTE_COLLAPSE_PRE$$costume_save storemov.mov-EMOTE_COLLAPSE_PRE"
+Option "Swoon and Fall on Face" "mov EMOTE_SWOON_PRE$$costume_save storemov.mov-EMOTE_SWOON_PRE"
+		}
+		Menu "Mid-Air"
+		{
+Option "Alternate Hover and Fall Poses" "mov FAKE_C_FLYCYCLE_HALF$$costume_save storemov.mov-FAKE_C_FLYCYCLE_HALF"
+Option "Fly in Place" "mov FLY$$costume_save storemov.mov-FLY"
+Option "Hop and Stop Mid-Air" "mov HOP$$costume_save storemov.mov-HOP"
+Option "Hover in Place" "mov FAKE_C_FLYCYCLE$$costume_save storemov.mov-FAKE_C_FLYCYCLE"
+Option "Idle Hover" "mov COMBAT2FLYREADY$$costume_save storemov.mov-COMBAT2FLYREADY"
+Option "Jump and Stop Mid-Air" "mov JUMPAPEX$$costume_save storemov.mov-JUMPAPEX"
+Option "Land from Jump or Hop" "mov JUMPEND$$costume_save storemov.mov-JUMPEND"
+		}
+		Menu "With Props"
+		{
+Option "Walk with Barrel Bomb on Hand Cart" "mov HANDCART_WALK$$costume_save storemov.mov-HANDCART_WALK"
+Option "Walk with Body Bag" "mov BODYBAG_WALK_CYCLE$$costume_save storemov.mov-BODYBAG_WALK_CYCLE"
+Option "Walk with Crate" "mov CRATEWALK_CYCLE$$costume_save storemov.mov-CRATEWALK_CYCLE"
+Option "Walk with TNT" "mov TNT_CRATEWALK_CYCLE$$costume_save storemov.mov-TNT_CRATEWALK_CYCLE"
+Option "Walk with Torch" "mov TORCHWALK_CYCLE$$costume_save storemov.mov-TORCHWALK_CYCLE"
+		}
+	}				
+
+	Menu "Stance"
+	{
+		Menu "Alignment Loyalty"
+		{
+Option "Hero" "mov EMOTE_HERO_LOYALTY$$costume_save storemov.mov-EMOTE_HERO_LOYALTY"
+Option "Rogue" "mov EMOTE_ROGUE_LOYALTY$$costume_save storemov.mov-EMOTE_ROGUE_LOYALTY"
+Option "Vigilante" "mov EMOTE_VIGILANTE_LOYALTY$$costume_save storemov.mov-EMOTE_VIGILANTE_LOYALTY"
+Option "Villain" "mov EMOTE_VILLAIN_LOYALTY$$costume_save storemov.mov-EMOTE_VILLAIN_LOYALTY"
+		}
+
+		Menu "Standing"
+		{
+Option "Arms Immobilized in Front" "mov PRAETORIAN_PEACE_STAND_CYCLE$$costume_save storemov.mov-PRAETORIAN_PEACE_STAND_CYCLE"
+Option "Be Held by Spell" "mov SPELLCASTFEAR$$costume_save storemov.mov-SPELLCASTFEAR"
+Option "Cross Arms" "mov EMOTE_XARMS$$costume_save storemov.mov-EMOTE_XARMS"
+Option "Examine Ground" "mov ENCOUNTER_EXAMINEGROUND$$costume_save storemov.mov-ENCOUNTER_EXAMINEGROUND"
+Option "Frozen" "mov FREEZESTUN_HIT$$costume_save storemov.mov-FREEZESTUN_HIT"
+Option "Hands on Hips" "mov EMOTE_HANDSONHIPS$$costume_save storemov.mov-EMOTE_HANDSONHIPS"
+Option "Held Hostage" "mov HOSTAGE$$costume_save storemov.mov-HOSTAGE"
+Option "Heroic Stance 1" "mov EMOTE_STANCE_HEROIC01$$costume_save storemov.mov-EMOTE_STANCE_HEROIC01"
+Option "Heroic Stance 2" "mov EMOTE_STANCE_HEROIC02$$costume_save storemov.mov-EMOTE_STANCE_HEROIC02"
+Option "Idle" "mov IDLE_CYCLE$$costume_save storemov.mov-IDLE_CYCLE"
+Option "Keep Warm 1" "mov LOITER_A1$$costume_save storemov.mov-LOITER_A1"
+Option "Keep Warm 2" "mov LOITER_B1$$costume_save storemov.mov-LOITER_B1"
+Option "Keep Warm 3" "mov LOITER_C1$$costume_save storemov.mov-LOITER_C1"
+Option "Lean on Wall 1" "mov EMOTE_WALL_LEAN_1$$costume_save storemov.mov-EMOTE_WALL_LEAN_1"
+Option "Lean on Wall 2" "mov EMOTE_WALL_LEAN_3$$costume_save storemov.mov-EMOTE_WALL_LEAN_3"
+Option "Lookout for Trouble 1" "mov LOITER_READYA$$costume_save storemov.mov-LOITER_READYA"
+Option "Lookout for Trouble 2" "mov LOOKOUT_A$$costume_save storemov.mov-LOOKOUT_A"
+Option "Observe" "mov OBSERVE$$costume_save storemov.mov-OBSERVE"
+Option "Peer In" "mov EMOTE_PEER_IN$$costume_save storemov.mov-EMOTE_PEER_IN"
+Option "Ponder" "mov EMOTE_PLOTTING$$costume_save storemov.mov-EMOTE_PLOTTING"
+Option "Raise Hand" "mov EMOTE_RAISEHAND$$costume_save storemov.mov-EMOTE_RAISEHAND"
+Option "Slide" "mov SLIDE$$costume_save storemov.mov-SLIDE"
+Option "Stand Still and Turned to Side" "mov EMOTE_IDLE1$$costume_save storemov.mov-EMOTE_IDLE1"
+Option "Stand Still Looking Forward" "mov EMOTE_IDLE2$$costume_save storemov.mov-EMOTE_IDLE2"
+Option "Vendor" "mov NOCARTVENDOR_POINT$$costume_save storemov.mov-NOCARTVENDOR_POINT"
+Option "Villain Stance 1" "mov EMOTE_STANCE_VILLAINOUS01$$costume_save storemov.mov-EMOTE_STANCE_VILLAINOUS01"
+Option "Villain Stance 2" "mov EMOTE_STANCE_VILLAINOUS02$$costume_save storemov.mov-EMOTE_STANCE_VILLAINOUS02"
+Option "Wait" "mov EMOTE_WAITING_PRE$$costume_save storemov.mov-EMOTE_WAITING_PRE"
+		}
+
+		Menu "Sitting or Kneeling"
+		{
+			Menu "Chair"
+			{
+Option "Lounge on Sofa" "mov BOBCAT_ONCOUCH$$costume_save storemov.mov-BOBCAT_ONCOUCH"
+Option "Sitting Pose 1" "mov EMOTE_SITTING_POSE1_PRE$$costume_save storemov.mov-EMOTE_SITTING_POSE1_PRE"
+Option "Sitting Pose 2" "mov EMOTE_SITTING_POSE2_INTRO$$costume_save storemov.mov-EMOTE_SITTING_POSE2_INTRO"
+Option "Sitting Pose 3" "mov EMOTE_SITTING_POSE3_INTRO$$costume_save storemov.mov-EMOTE_SITTING_POSE3_INTRO"
+Option "Sitting Pose 4" "mov EMOTE_SITTING_POSE4_INTRO$$costume_save storemov.mov-EMOTE_SITTING_POSE4_INTRO"
+Option "Sitting Pose 5" "mov EMOTE_SITTING_POSE5_INTRO$$costume_save storemov.mov-EMOTE_SITTING_POSE5_INTRO"
+Option "Sitting Pose 6" "mov EMOTE_SITTING_POSE6_INTRO$$costume_save storemov.mov-EMOTE_SITTING_POSE6_INTRO"
+Option "Sitting Pose 7" "mov EMOTE_SITTING_POSE7_INTRO$$costume_save storemov.mov-EMOTE_SITTING_POSE7_INTRO"
+Option "Sitting Pose 8" "mov EMOTE_SITTING_POSE8_INTRO$$costume_save storemov.mov-EMOTE_SITTING_POSE8_INTRO"
+Option "Sitting Pose 9" "mov EMOTE_SITTING_POSE9_INTRO$$costume_save storemov.mov-EMOTE_SITTING_POSE9_INTRO"
+Option "Sitting Pose 10" "mov EMOTE_SITTING_POSE10_INTRO$$costume_save storemov.mov-EMOTE_SITTING_POSE10_INTRO"
+			}
+			Menu "Ledge"
+			{
+Option "Ledge Sitting Pose 1A" "mov LEDGESIT_VAR1A$$costume_save storemov.mov-LEDGESIT_VAR1A"
+Option "Ledge Sitting Pose 1B" "mov LEDGESIT_VAR1B$$costume_save storemov.mov-LEDGESIT_VAR1B"
+Option "Ledge Sitting Pose 1C" "mov LEDGESIT_VAR1C$$costume_save storemov.mov-LEDGESIT_VAR1C"
+Option "Ledge Sitting Pose 2A" "mov LEDGESIT_VAR2A$$costume_save storemov.mov-LEDGESIT_VAR2A"
+Option "Ledge Sitting Pose 2B" "mov LEDGESIT_VAR2B$$costume_save storemov.mov-LEDGESIT_VAR2B"
+Option "Ledge Sitting Pose 3A" "mov LEDGESIT_VAR3A$$costume_save storemov.mov-LEDGESIT_VAR3A"
+Option "Ledge Sitting Pose 3B" "mov LEDGESIT_VAR3B$$costume_save storemov.mov-LEDGESIT_VAR3B"
+Option "Ledge Sitting Pose 4A" "mov LEDGESIT_VAR4A$$costume_save storemov.mov-LEDGESIT_VAR4A"
+Option "Ledge Sitting Pose 4B" "mov LEDGESIT_VAR4B$$costume_save storemov.mov-LEDGESIT_VAR4B"
+			}
+			Menu "High"
+			{
+Option "Float in Air in Lotus Pose" "mov ENC_FLOATLOTUS$$costume_save storemov.mov-ENC_FLOATLOTUS"
+Option "Sit High" "mov SIT_HIGH_A$$costume_save storemov.mov-SIT_HIGH_A"
+Option "Sit on a Box" "mov SIT_HIGH_B$$costume_save storemov.mov-SIT_HIGH_B"
+Option "Sit on a Stack of Dry Wall" "mov SIT_HIGH_C$$costume_save storemov.mov-SIT_HIGH_C"
+			}
+			Menu "Kneel or Sit on Ground"
+			{
+Option "Dojo Kneel and Meditate" "mov DOJOMEDITATE$$costume_save storemov.mov-DOJOMEDITATE"
+Option "Dojo Kneel with Head Bowed" "mov DOJOKNEEL_LOW$$costume_save storemov.mov-DOJOKNEEL_LOW"
+Option "Dojo Kneel" "mov DOJOKNEEL$$costume_save storemov.mov-DOJOKNEEL"
+Option "Get Up From Dojo Kneel" "mov DOJOKNEEL_GETUP$$costume_save storemov.mov-DOJOKNEEL_GETUP"
+Option "Get Up from Sitting on Ground" "mov SIT_LOW_GETUP$$costume_save storemov.mov-SIT_LOW_GETUP"
+Option "Kneel on Bended Knee" "mov ENCOUNTER_KNEEL$$costume_save storemov.mov-ENCOUNTER_KNEEL"
+Option "Sit Cross-Legged" "mov SIT_MEDITATE$$costume_save storemov.mov-SIT_MEDITATE"
+Option "Sit on Ground 1" "mov SIT_LOW_A$$costume_save storemov.mov-SIT_LOW_A"
+Option "Sit on Ground 2" "mov SIT_LOW_B$$costume_save storemov.mov-SIT_LOW_B"
+Option "Sit on Ground 3" "mov SIT_LOW_C$$costume_save storemov.mov-SIT_LOW_C"
+			}
+		}
+		
+		Menu "Sleep or Slump"
+		{
+Option "Bum Sleep 1" "mov BUM_SLEEP1$$costume_save storemov.mov-BUM_SLEEP1"
+Option "Bum Sleep 2" "mov BUM_SLEEP2$$costume_save storemov.mov-BUM_SLEEP2"
+Option "Bum Sleep 3" "mov BUM_SLEEP3$$costume_save storemov.mov-BUM_SLEEP3"
+Option "Bum Sleep 4" "mov BUM_SLEEP4$$costume_save storemov.mov-BUM_SLEEP4"
+Option "Bum Sleep 5" "mov BUM_SLEEP5$$costume_save storemov.mov-BUM_SLEEP5"
+Option "Get up From Prone Sleep" "mov PRONESLEEP_GETUP$$costume_save storemov.mov-PRONESLEEP_GETUP"
+Option "Sleep Prone 1" "mov PRONESLEEP$$costume_save storemov.mov-PRONESLEEP"
+Option "Sleep Prone 2" "mov PRONESLEEP2$$costume_save storemov.mov-PRONESLEEP2"
+Option "Sleep Prone 3" "mov PRONESLEEP3$$costume_save storemov.mov-PRONESLEEP3"
+Option "Sleep" "mov SLEEP_CYCLE$$costume_save storemov.mov-SLEEP_CYCLE"
+Option "Stun" "mov STUN$$costume_save storemov.mov-STUN"
+Option "Zzz" "mov EMOTE_SLEEP$$costume_save storemov.mov-EMOTE_SLEEP"
+		}
+		Menu "Academic"
+		{
+Option "Invent" "mov INVENTION$$costume_save storemov.mov-INVENTION"
+Option "Read a Book" "mov READBOOK_READBOOK01$$costume_save storemov.mov-READBOOK_READBOOK01"
+Option "Read a Scroll" "mov SCROLL$$costume_save storemov.mov-SCROLL"
+Option "Read Blueprints" "mov READ_BLUEPRINTS_LOOP$$costume_save storemov.mov-READ_BLUEPRINTS_LOOP"
+Option "Read Floating Books" "mov FLOATBOOKS$$costume_save storemov.mov-FLOATBOOKS"
+Option "Research with Book" "mov EMOTE_BOOK_RESEARCH$$costume_save storemov.mov-EMOTE_BOOK_RESEARCH"
+Option "Research with Book, Kneeling" "mov EMOTE_BOOK_RESEARCH_LOW$$costume_save storemov.mov-EMOTE_BOOK_RESEARCH_LOW"
+Option "Type (No Laptop)" "mov EMOTE_LAPTOPTYPE$$costume_save storemov.mov-EMOTE_LAPTOPTYPE"
+Option "Type on Portable Laptop" "mov PORTABLE_LAPTOP$$costume_save storemov.mov-PORTABLE_LAPTOP"
+Option "Write on Chalkboard" "mov EMOTE_CHALKBOARD$$costume_save storemov.mov-EMOTE_CHALKBOARD"
+Option "Write on Clipboard" "mov EMOTE_CLIPBOARD$$costume_save storemov.mov-EMOTE_CLIPBOARD"
+
+		}	
+		Menu "Media"
+		{
+Option "Hand Out Pamplet for the CDEC" "mov ENCOUNTER_CDEC_PRAETORIAN_PAMPHLET$$costume_save storemov.mov-ENCOUNTER_CDEC_PRAETORIAN_PAMPHLET"
+Option "Hand Out Pamplet" "mov EMOTE_PAMPHLET_PRE$$costume_save storemov.mov-EMOTE_PAMPHLET_PRE"
+Option "Handout Pamplet for Studio 55" "mov ENCOUNTER_STUDIO55_PRAETORIAN_PAMPHLET$$costume_save storemov.mov-ENCOUNTER_STUDIO55_PRAETORIAN_PAMPHLET"
+Option "Handout Praetorian Pamplet" "mov ENCOUNTER_PRAETORIAN_PAMPHLET$$costume_save storemov.mov-ENCOUNTER_PRAETORIAN_PAMPHLET"
+Option "Newspaper Vendor (Paragon Times)" "mov NEWSIE_POINT$$costume_save storemov.mov-NEWSIE_POINT"
+Option "Newspaper Vendor (TPN)" "mov PRAETORIAN_NEWSIE_POINT$$costume_save storemov.mov-PRAETORIAN_NEWSIE_POINT"
+Option "Read Paragon Times" "mov ENC_NEWSPAPER$$costume_save storemov.mov-ENC_NEWSPAPER"
+Option "Read TPN Newspaper" "mov ENC_PRAETORIAN_NEWSPAPER$$costume_save storemov.mov-ENC_PRAETORIAN_NEWSPAPER"
+			
+		}	
+
+		Menu "Military"
+		{
+
+Option "At Ease" "mov ATEASE$$costume_save storemov.mov-ATEASE"
+Option "Kata" "mov EMOTE_KUNGFUTRAIN$$costume_save storemov.mov-EMOTE_KUNGFUTRAIN"
+Option "Listen to Police Band Radio" "mov LISTENPOLICEBAND_INTRO$$costume_save storemov.mov-LISTENPOLICEBAND_INTRO"
+Option "Praetorian Salute and Hold" "mov PRATORIANSALUTE$$costume_save storemov.mov-PRATORIANSALUTE"
+Option "Praetorian Style At Ease" "mov PRATORIANSALUTE_ATEASE_CYCLE$$costume_save storemov.mov-PRATORIANSALUTE_ATEASE_CYCLE"
+Option "Salute and Hold" "mov MILITARYSALUTE$$costume_save storemov.mov-MILITARYSALUTE"
+Option "Talk in Walkie-Talkie" "mov WALKIETALKIE_IDLE$$costume_save storemov.mov-WALKIETALKIE_IDLE"
+Option "Talk in Walkie-Talkie, Kneeling" "mov PRAETORIAN_WALKIETALKIE$$costume_save storemov.mov-PRAETORIAN_WALKIETALKIE"
+		}
+
+		Menu "Getting Arrested"
+		{
+Option "Arrested by a Psychic, Keeling" "mov EMOTE_CITIZENS_DROP_TO_KNEES_REACT_POSTCYCLE$$costume_save storemov.mov-EMOTE_CITIZENS_DROP_TO_KNEES_REACT_POSTCYCLE"
+Option "Arrested by a Psychic, Standing" "mov EMOTE_CITIZENS_STAND_TO_REACT$$costume_save storemov.mov-EMOTE_CITIZENS_STAND_TO_REACT"
+Option "Hands Behind Head 1" "mov HANDSONHEAD$$costume_save storemov.mov-HANDSONHEAD"
+Option "Hands Behind Head 2" "mov HANDSONHEAD_02$$costume_save storemov.mov-HANDSONHEAD_02"
+Option "Hands Behind Head 3" "mov HANDSONHEAD_03$$costume_save storemov.mov-HANDSONHEAD_03"
+Option "Hands Behind Head, Kneeling 1" "mov HANDSONHEAD_KNEES$$costume_save storemov.mov-HANDSONHEAD_KNEES"
+Option "Hands Behind Head, Kneeling 2" "mov HANDSONHEAD_KNEES_02$$costume_save storemov.mov-HANDSONHEAD_KNEES_02"
+Option "Hands Behind Head, Kneeling 3" "mov HANDSONHEAD_KNEES_03$$costume_save storemov.mov-HANDSONHEAD_KNEES_03"
+Option "Hands on Wall 1" "mov ASSUME_POSITION_1$$costume_save storemov.mov-ASSUME_POSITION_1"
+Option "Hands on Wall 2" "mov ASSUME_POSITION_2$$costume_save storemov.mov-ASSUME_POSITION_2"
+Option "Hands on Wall, Look Left" "mov ASSUME_POSITION_3$$costume_save storemov.mov-ASSUME_POSITION_3"
+Option "Hands on Wall, Look Right" "mov ASSUME_POSITION_4$$costume_save storemov.mov-ASSUME_POSITION_4"
+Option "Hands Up 1" "mov HANDSUP$$costume_save storemov.mov-HANDSUP"
+Option "Hands Up 2" "mov HANDSUP_02$$costume_save storemov.mov-HANDSUP_02"
+Option "Hands Up 3" "mov HANDSUP_03$$costume_save storemov.mov-HANDSUP_03"
+Option "Hands Up 4" "mov HANDSUP_04$$costume_save storemov.mov-HANDSUP_04"
+Option "Hands Up 5" "mov HANDSUP_05$$costume_save storemov.mov-HANDSUP_05"
+Option "Hands Up 6" "mov HANDSUP_06$$costume_save storemov.mov-HANDSUP_06"
+Option "Hands Up, Kneeling 1" "mov HANDSUP_KNEES$$costume_save storemov.mov-HANDSUP_KNEES"
+Option "Hands Up, Kneeling 2" "mov HANDSUP_KNEES_02$$costume_save storemov.mov-HANDSUP_KNEES_02"
+		}
+		Menu "With Props"
+		{
+Option "Go Fishing" "mov EMOTE_FISHING_PRE$$costume_save storemov.mov-EMOTE_FISHING_PRE"
+Option "Hold Torch" "mov EMOTE_HOLD_TORCH$$costume_save storemov.mov-EMOTE_HOLD_TORCH"
+Option "Look Around with Binoculars" "mov BINOCULAR_IDLE$$costume_save storemov.mov-BINOCULAR_IDLE"
+Option "Shine Flashlight Down" "mov FLASHLIGHT_DOWN$$costume_save storemov.mov-FLASHLIGHT_DOWN"
+Option "Shine Flashlight Up" "mov FLASHLIGHT_UP$$costume_save storemov.mov-FLASHLIGHT_UP"
+Option "Shine Flashlight" "mov FLASHLIGHT$$costume_save storemov.mov-FLASHLIGHT"
+Option "Stand with Body Bag" "mov BODYBAG_READY$$costume_save storemov.mov-BODYBAG_READY"
+Option "Stand with Bomb on Handcart" "mov HANDCART_READY$$costume_save storemov.mov-HANDCART_READY"
+Option "Stand with Briefcase" "mov ENC_BRIEFCASE$$costume_save storemov.mov-ENC_BRIEFCASE"
+Option "Talk on Classic Cellphone" "mov ENC_CELLPHONE$$costume_save storemov.mov-ENC_CELLPHONE"
+Option "Talk on New-fangled Cellphone" "mov EMOTE_SMARTPHONE_PRE$$costume_save storemov.mov-EMOTE_SMARTPHONE_PRE"
+Option "Vendor with Cart" "mov VENDOR_SWEEP$$costume_save storemov.mov-VENDOR_SWEEP"
+			
+		}	
+	}
+			
+	Menu "Emotion"
+	{
+		Menu "Positive"
+		{
+Option "Amused 1" "mov AMUSED_B$$costume_save storemov.mov-AMUSED_B"
+Option "Amused 2" "mov AMUSED_C$$costume_save storemov.mov-AMUSED_C"
+Option "Amused 3" "mov AMUSED_D$$costume_save storemov.mov-AMUSED_D"
+Option "Amused 4" "mov AMUSED_E$$costume_save storemov.mov-AMUSED_E"
+Option "Big Laugh" "mov EMOTE_LAUGH$$costume_save storemov.mov-EMOTE_LAUGH"
+Option "Laugh" "mov EMOTE_LAUGHTWO$$costume_save storemov.mov-EMOTE_LAUGHTWO"
+		}
+		
+		Menu "Neutral"
+		{
+
+Option "Out of Breath" "mov EMOTE_CATCH_BREATH$$costume_save storemov.mov-EMOTE_CATCH_BREATH"
+Option "Shrug" "mov EMOTE_WHAT$$costume_save storemov.mov-EMOTE_WHAT"
+Option "Shucks" "mov EMOTE_SHUCKS$$costume_save storemov.mov-EMOTE_SHUCKS"
+		}
+		Menu "Negative"
+		{
+
+Option "Afraid" "mov EMOTE_FEAR$$costume_save storemov.mov-EMOTE_FEAR"
+Option "Argue" "mov ARGUE$$costume_save storemov.mov-ARGUE"
+Option "Comedic Angry" "mov EMOTE_HOT_TEMPER_PRE$$costume_save storemov.mov-EMOTE_HOT_TEMPER_PRE"
+Option "Disagree" "mov ARGUE_DISAGREE$$costume_save storemov.mov-ARGUE_DISAGREE"
+Option "Drat" "mov EMOTE_DRAT$$costume_save storemov.mov-EMOTE_DRAT"
+Option "Frustrated" "mov EMOTE_FRUSTRATED$$costume_save storemov.mov-EMOTE_FRUSTRATED"
+Option "Greedy" "mov GREEDY$$costume_save storemov.mov-GREEDY"
+Option "Grief" "mov EMOTE_GRIEF$$costume_save storemov.mov-EMOTE_GRIEF"
+Option "Mad" "mov EMOTE_MAD$$costume_save storemov.mov-EMOTE_MAD"
+Option "Reason" "mov ARGUE_REASON$$costume_save storemov.mov-ARGUE_REASON"
+Option "Scheme" "mov SCHEME$$costume_save storemov.mov-SCHEME"
+Option "Scream" "mov SCREAM$$costume_save storemov.mov-SCREAM"
+Option "Temper Tantrum" "mov EMOTE_GHOUL_TEMPER_TANTRUM_PRE$$costume_save storemov.mov-EMOTE_GHOUL_TEMPER_TANTRUM_PRE"
+		}
+	}
+
+	Menu "Action"
+	{
+		Menu "Without Props"
+		{
+Option "Alakazam!" "mov EMOTE_ALAKAZAM$$costume_save storemov.mov-EMOTE_ALAKAZAM"
+Option "Alakazam! React" "mov EMOTE_ALAKAZAM_REACT$$costume_save storemov.mov-EMOTE_ALAKAZAM_REACT"
+Option "Beam Me Down" "'mov WARP_RUNOUT'$$costume_save storemov.'mov-WARP_RUNOUT'"
+Option "Briefly Point" "mov EMOTE_POINT$$costume_save storemov.mov-EMOTE_POINT"
+Option "Burp" "mov EMOTE_BURP$$costume_save storemov.mov-EMOTE_BURP"
+Option "Casting, Arms Spread" "mov BLINDING$$costume_save storemov.mov-BLINDING"
+Option "Dust Off" "mov DUSTOFF$$costume_save storemov.mov-DUSTOFF"
+Option "Facepalm" "mov FACEPALM$$costume_save storemov.mov-FACEPALM"
+Option "Fade Out" "mov WARP_RUNIN$$costume_save storemov.mov-WARP_RUNIN"
+Option "Get Inspired" "mov EMOTE_INSPIRATION$$costume_save storemov.mov-EMOTE_INSPIRATION"
+Option "Glory" "mov GLORY$$costume_save storemov.mov-GLORY"
+Option "Jump In" "mov TRUCK_JUMP_IN$$costume_save storemov.mov-TRUCK_JUMP_IN"
+Option "Jump Out" "mov TRUCK_JUMP_OUT$$costume_save storemov.mov-TRUCK_JUMP_OUT"
+Option "Magic Warp In" "mov FAERIEWARP_RUNOUT$$costume_save storemov.mov-FAERIEWARP_RUNOUT"
+Option "Magic Warp Out" "mov FAERIEWARP_RUNIN$$costume_save storemov.mov-FAERIEWARP_RUNIN"
+Option "Motion Upwards Like Lifting" "mov LEVITATE$$costume_save storemov.mov-LEVITATE"
+Option "Sneak Forward" "mov LOITER_SNEAK_FORWARD$$costume_save storemov.mov-LOITER_SNEAK_FORWARD"
+Option "Sniff" "mov EMOTE_SNIFF$$costume_save storemov.mov-EMOTE_SNIFF"
+Option "Stop Something" "mov STOP_CYCLE$$costume_save storemov.mov-STOP_CYCLE"
+Option "Teleport In" "mov PRAETORIAN_TELEPORTIN$$costume_save storemov.mov-PRAETORIAN_TELEPORTIN"
+Option "The Wave" "mov EMOTE_THEWAVE$$costume_save storemov.mov-EMOTE_THEWAVE"
+Option "Ultimate Power" "mov EMOTE_ULTIMATE_POWER$$costume_save storemov.mov-EMOTE_ULTIMATE_POWER"
+Option "Use Large Touchscreen" "mov TOUCHSCREEN$$costume_save storemov.mov-TOUCHSCREEN"
+Option "Vomit" "mov ENC_BARF_A$$costume_save storemov.mov-ENC_BARF_A"
+Option "Whistle" "mov EMOTE_WHISTLE$$costume_save storemov.mov-EMOTE_WHISTLE"
+		}
+
+		Menu "Music and Dance"
+		{
+Option "Air Guitar" "mov EMOTE_AIR_GUITAR_CYCLE$$costume_save storemov.mov-EMOTE_AIR_GUITAR_CYCLE"
+Option "Bongo Drums" "mov DRUM_LOW$$costume_save storemov.mov-DRUM_LOW"
+Option "Breakdance" "mov EYE_OF_STORM$$costume_save storemov.mov-EYE_OF_STORM"
+Option "Dance Funky" "mov DANCE6$$costume_save storemov.mov-DANCE6"
+Option "Dance Jump" "mov DANCE5$$costume_save storemov.mov-DANCE5"
+Option "Dance Raise the Roof" "mov DANCE2$$costume_save storemov.mov-DANCE2"
+Option "Dance Side to Side" "mov DANCE1$$costume_save storemov.mov-DANCE1"
+Option "Dance Sway" "mov DANCE4$$costume_save storemov.mov-DANCE4"
+Option "Dance Washing Machine" "mov DANCE3$$costume_save storemov.mov-DANCE3"
+Option "Disco" "mov EMOTE_DISCO_DANCE_CYCLE$$costume_save storemov.mov-EMOTE_DISCO_DANCE_CYCLE"
+Option "Kung Fu Dance" "mov EMOTE_KARATE_DANCE_CYCLE_TWO$$costume_save storemov.mov-EMOTE_KARATE_DANCE_CYCLE_TWO"
+Option "Large Drum with Bones" "mov DRUM_HIGH$$costume_save storemov.mov-DRUM_HIGH"
+Option "Monkey Dance" "mov EMOTE_MONKEY_DANCE$$costume_save storemov.mov-EMOTE_MONKEY_DANCE"
+Option "Pop Dance" "mov EMOTE_DANCE_BILLYJEANS$$costume_save storemov.mov-EMOTE_DANCE_BILLYJEANS"
+Option "The Robot" "mov DANCEROBOT_CYCLE$$costume_save storemov.mov-DANCEROBOT_CYCLE"
+Option "Tribal Dance" "mov EMOTE_TRIBAL_DANCE$$costume_save storemov.mov-EMOTE_TRIBAL_DANCE"
+			Menu "Boom Box"
+			{
+Option "Song 1" "mov BOOMBOX_1$$costume_save storemov.mov-BOOMBOX_1"
+Option "Song 2" "mov BOOMBOX_2$$costume_save storemov.mov-BOOMBOX_2"
+Option "Song 3" "mov BOOMBOX_3$$costume_save storemov.mov-BOOMBOX_3"
+Option "Song 4" "mov BOOMBOX_4$$costume_save storemov.mov-BOOMBOX_4"
+Option "Song 5" "mov BOOMBOX_5$$costume_save storemov.mov-BOOMBOX_5"
+Option "Song 6" "mov BOOMBOX_6$$costume_save storemov.mov-BOOMBOX_6"
+Option "Song 7" "mov BOOMBOX_7$$costume_save storemov.mov-BOOMBOX_7"
+Option "Song 8" "mov BOOMBOX_8$$costume_save storemov.mov-BOOMBOX_8"
+Option "Song 9" "mov BOOMBOX_9$$costume_save storemov.mov-BOOMBOX_9"
+Option "Song 10" "mov BOOMBOX_10$$costume_save storemov.mov-BOOMBOX_10"
+Option "Song 11" "mov BOOMBOX_11$$costume_save storemov.mov-BOOMBOX_11"
+Option "Song 12" "mov BOOMBOX_12$$costume_save storemov.mov-BOOMBOX_12"
+Option "Song 13" "mov BOOMBOX_13$$costume_save storemov.mov-BOOMBOX_13"
+Option "Song 14" "mov BOOMBOX_14$$costume_save storemov.mov-BOOMBOX_14"
+Option "Song 15" "mov BOOMBOX_15$$costume_save storemov.mov-BOOMBOX_15"
+Option "Song 16" "mov BOOMBOX_16$$costume_save storemov.mov-BOOMBOX_16"
+Option "Song 17" "mov BOOMBOX_17$$costume_save storemov.mov-BOOMBOX_17"
+Option "Song 18" "mov BOOMBOX_18$$costume_save storemov.mov-BOOMBOX_18"
+Option "Song 19" "mov BOOMBOX_19$$costume_save storemov.mov-BOOMBOX_19"
+Option "Song 20" "mov BOOMBOX_20$$costume_save storemov.mov-BOOMBOX_20"
+Option "Song 21" "mov BOOMBOX_21$$costume_save storemov.mov-BOOMBOX_21"
+Option "Song 22" "mov BOOMBOX_22$$costume_save storemov.mov-BOOMBOX_22"
+			}
+		}
+
+		Menu "Food and Drink"
+		{
+Option "Drink Enriche" "mov PRAETORIAN_ENRICHE_DRINK$$costume_save storemov.mov-PRAETORIAN_ENRICHE_DRINK"
+Option "Drink" "mov DRINKER1_IDLE$$costume_save storemov.mov-DRINKER1_IDLE"
+Option "Dunk Teabag" "mov TEABAG_PRE$$costume_save storemov.mov-TEABAG_PRE"
+Option "Eat a Donut" "mov EAT_DONUT_LOOP1$$costume_save storemov.mov-EAT_DONUT_LOOP1"
+Option "Eat Food" "mov EAT_FOOD_LOOP1$$costume_save storemov.mov-EAT_FOOD_LOOP1"
+		}	
+		
+		Menu "Show Off"
+		{
+
+Option "Backflip" "mov EMOTE_BACKFLIP$$costume_save storemov.mov-EMOTE_BACKFLIP"
+Option "Boast" "mov EMOTE_BOAST$$costume_save storemov.mov-EMOTE_BOAST"
+Option "Flex 1" "mov FLEX_A$$costume_save storemov.mov-FLEX_A"
+Option "Flex 2" "mov FLEX_B$$costume_save storemov.mov-FLEX_B"
+Option "Flex 3" "mov FLEX_C$$costume_save storemov.mov-FLEX_C"
+Option "I'm a Champion" "mov EMOTE_CHAMPION$$costume_save storemov.mov-EMOTE_CHAMPION"
+Option "Push-ups" "mov EMOTE_PUSHUP_INTRO$$costume_save storemov.mov-EMOTE_PUSHUP_INTRO"
+Option "Series of Flips" "mov LEAPKICK$$costume_save storemov.mov-LEAPKICK"
+Option "Victory" "mov EMOTE_VICTORY$$costume_save storemov.mov-EMOTE_VICTORY"
+		}
+		Menu "Clockwork Actions"
+		{
+Option "Blow Trash off Sidewalk" "mov CLOCKWORK_STREETCLEAN$$costume_save storemov.mov-CLOCKWORK_STREETCLEAN"
+Option "Diagnose Itself" "mov CLOCKWORK_DIAGNOSTIC$$costume_save storemov.mov-CLOCKWORK_DIAGNOSTIC"
+Option "Siphon Energy" "mov CLOCKWORKSIPHON$$costume_save storemov.mov-CLOCKWORKSIPHON"
+Option "Siphon Energy Low" "mov CLOCKWORKSIPHON_LOW$$costume_save storemov.mov-CLOCKWORKSIPHON_LOW"
+Option "Wash Walls" "mov CLOCKWORK_WASHWALL_PRE$$costume_save storemov.mov-CLOCKWORK_WASHWALL_PRE"
+Option "Weld Low" "mov CLOCKWORK_WELDING_LOW_PRE$$costume_save storemov.mov-CLOCKWORK_WELDING_LOW_PRE"
+Option "Weld" "mov CLOCKWORK_WELDING_PRE$$costume_save storemov.mov-CLOCKWORK_WELDING_PRE"
+		}
+		Menu "Costume Change [Emotes Only]"
+		{
+Option "Dimension Shift" "mov EMOTE_DIMENSION_SHIFT_PRE$$costume_save storemov.mov-EMOTE_DIMENSION_SHIFT_PRE"
+Option "Drink Formula" "mov EMOTE_COSTUMECHANGE_DRINKFORMULA_PRE$$costume_save storemov.mov-EMOTE_COSTUMECHANGE_DRINKFORMULA_PRE"
+Option "Energy Morph" "mov EMOTE_COSTUMECHANGE_POD_PERSON_PRE$$costume_save storemov.mov-EMOTE_COSTUMECHANGE_POD_PERSON_PRE"
+Option "Inject Serum" "mov EMOTE_COSTUMECHANGE_INJECTSERUM_PRE$$costume_save storemov.mov-EMOTE_COSTUMECHANGE_INJECTSERUM_PRE"
+Option "Lightning" "mov EMOTE_COSTUMECHANGE_LIGHTNING$$costume_save storemov.mov-EMOTE_COSTUMECHANGE_LIGHTNING"
+Option "Murder of Crows" "mov EMOTE_COSTUMECHANGE_MURDEROFCROWS$$costume_save storemov.mov-EMOTE_COSTUMECHANGE_MURDEROFCROWS"
+Option "Nuke" "mov EMOTE_COSTUMECHANGE_NUKE_PRE$$costume_save storemov.mov-EMOTE_COSTUMECHANGE_NUKE_PRE"
+Option "Oil Strike" "mov EMOTE_COSTUMECHANGE_OIL_STRIKE_PRE$$costume_save storemov.mov-EMOTE_COSTUMECHANGE_OIL_STRIKE_PRE"
+Option "Pressure Release" "mov EMOTE_COSTUMECHANGE_PRESSURE_RELEASE_PRE$$costume_save storemov.mov-EMOTE_COSTUMECHANGE_PRESSURE_RELEASE_PRE"
+Option "Rapid Boil" "mov EMOTE_COSTUMECHANGE_RAPIDBOIL_PRE$$costume_save storemov.mov-EMOTE_COSTUMECHANGE_RAPIDBOIL_PRE"
+		}
+		Menu "With Props"
+		{
+Option "Dig (Throw Dirt Over Head)" "mov EMOTE_DIGHOLE_PRE$$costume_save storemov.mov-EMOTE_DIGHOLE_PRE"
+Option "Dig (Throw Dirt to the Side)" "mov SHOVEL_DIG$$costume_save storemov.mov-SHOVEL_DIG"
+Option "Fire Marshal" "mov FIREMARSHALL_A$$costume_save storemov.mov-FIREMARSHALL_A"
+Option "Flipping a Coin" "mov ENCOUNTER_FLIPPINGCOIN$$costume_save storemov.mov-ENCOUNTER_FLIPPINGCOIN"
+Option "Jackhammer" "mov EMOTE_JACKHAMMER$$costume_save storemov.mov-EMOTE_JACKHAMMER"
+Option "Juggle Magic" "mov EMOTE_JUGGLE_MAGIC$$costume_save storemov.mov-EMOTE_JUGGLE_MAGIC"
+Option "Juggle" "mov EMOTE_JUGGLE$$costume_save storemov.mov-EMOTE_JUGGLE"
+Option "Mix Formula" "mov EMOTE_MIXFORMULA$$costume_save storemov.mov-EMOTE_MIXFORMULA"
+Option "Play with Basketball" "mov EMOTE_BASKETBALL_AROUND_WAIST_PRE$$costume_save storemov.mov-EMOTE_BASKETBALL_AROUND_WAIST_PRE"
+Option "Play with Soccerball 1" "mov ENCOUNTER_SOCCER_PRE$$costume_save storemov.mov-ENCOUNTER_SOCCER_PRE"
+Option "Play with Soccerball 2" "mov ENCOUNTER_SOCCER_TALK_PRE$$costume_save storemov.mov-ENCOUNTER_SOCCER_TALK_PRE"
+Option "Take Pictures" "mov EMOTE_CAMERA_PRE$$costume_save storemov.mov-EMOTE_CAMERA_PRE"
+Option "Train Whistle" "mov EMOTE_TRAIN_WHISTLE$$costume_save storemov.mov-EMOTE_TRAIN_WHISTLE"
+Option "Three Card Monty" "mov PL_THREECARDMONTY_LOOP$$costume_save storemov.mov-PL_THREECARDMONTY_LOOP"
+Option "Write on Clipboard and Look Up" "mov PRAETORIAN_CLIPBOARD_WRITE$$costume_save storemov.mov-PRAETORIAN_CLIPBOARD_WRITE"
+		}	
+	}
+
+
+	Menu "Interaction"
+	{
+		Menu "Talking"
+		{
+Option "Call Over" "mov PRAETORIAN_PACE_TALK_CYCLE$$costume_save storemov.mov-PRAETORIAN_PACE_TALK_CYCLE"
+Option "Give Speech" "mov SPEECH_NOBOX$$costume_save storemov.mov-SPEECH_NOBOX"
+Option "Psychic Mind Control" "mov INDOCTRINATE_A$$costume_save storemov.mov-INDOCTRINATE_A"
+Option "Sit and Talk 1" "mov EMOTE_SIT_TALK_01$$costume_save storemov.mov-EMOTE_SIT_TALK_01"
+Option "Sit and Talk 2" "mov EMOTE_SIT_TALK_02$$costume_save storemov.mov-EMOTE_SIT_TALK_02"
+Option "Sit and Talk, Looking Left 1" "mov EMOTE_SIT_TALK_LEFT_01$$costume_save storemov.mov-EMOTE_SIT_TALK_LEFT_01"
+Option "Sit and Talk, Looking Left 2" "mov EMOTE_SIT_TALK_LEFT_02$$costume_save storemov.mov-EMOTE_SIT_TALK_LEFT_02"
+Option "Sit and Talk, Looking Right 1" "mov EMOTE_SIT_TALK_RIGHT_01$$costume_save storemov.mov-EMOTE_SIT_TALK_RIGHT_01"
+Option "Sit and Talk, Looking Right 2" "mov EMOTE_SIT_TALK_RIGHT_02$$costume_save storemov.mov-EMOTE_SIT_TALK_RIGHT_02"
+Option "Stand on Soap Box" "mov SPEECH$$costume_save storemov.mov-SPEECH"
+Option "Talking 1" "mov TALK01$$costume_save storemov.mov-TALK01"
+Option "Talking 2" "mov TALK02$$costume_save storemov.mov-TALK02"
+Option "Talking 3" "mov TALK03$$costume_save storemov.mov-TALK03"
+		}
+		Menu "Listening"
+		{
+Option "Listen to Speech 1" "mov LISTEN_SPEECH$$costume_save storemov.mov-LISTEN_SPEECH"
+Option "Listen to Speech 2" "mov LISTEN_SPEECH_B$$costume_save storemov.mov-LISTEN_SPEECH_B"
+Option "Listen to Speech 3" "mov LISTEN_SPEECH_C$$costume_save storemov.mov-LISTEN_SPEECH_C"
+Option "Listen to Speech 4" "mov LISTEN_SPEECH_C2$$costume_save storemov.mov-LISTEN_SPEECH_C2"
+Option "Look Up and Listen to Speech 1" "mov LISTEN_SPEECH_HIGH$$costume_save storemov.mov-LISTEN_SPEECH_HIGH"
+Option "Look Up and Listen to Speech 2" "mov LISTEN_SPEECH_HIGHB$$costume_save storemov.mov-LISTEN_SPEECH_HIGHB"
+Option "Look Up and Listen to Speech 3" "mov LISTEN_SPEECH_HIGHC$$costume_save storemov.mov-LISTEN_SPEECH_HIGHC"
+Option "Sit and Listen 1" "mov EMOTE_SIT_LISTEN_01$$costume_save storemov.mov-EMOTE_SIT_LISTEN_01"
+Option "Sit and Listen 2" "mov EMOTE_SIT_LISTEN_02$$costume_save storemov.mov-EMOTE_SIT_LISTEN_02"
+Option "Sit and Listen Looking Left" "mov EMOTE_SIT_LISTEN_LEFT_01$$costume_save storemov.mov-EMOTE_SIT_LISTEN_LEFT_01"
+Option "Sit and Listen Looking Right" "mov EMOTE_SIT_LISTEN_RIGHT_01$$costume_save storemov.mov-EMOTE_SIT_LISTEN_RIGHT_01"
+		}
+		Menu "Cheering and Clapping"
+		{
+Option "Chant 1" "mov CHANT_A$$costume_save storemov.mov-CHANT_A"
+Option "Chant 2" "mov CHANT_B$$costume_save storemov.mov-CHANT_B"
+Option "Cheer 1" "mov CHEER_A$$costume_save storemov.mov-CHEER_A"
+Option "Cheer 2" "mov CHEER_B$$costume_save storemov.mov-CHEER_B"
+Option "Cheer 3" "mov CHEER_C$$costume_save storemov.mov-CHEER_C"
+Option "Cheer and Chant" "mov CHEERCHANT_C$$costume_save storemov.mov-CHEERCHANT_C"
+Option "Clapping" "mov CLAPPING$$costume_save storemov.mov-CLAPPING"
+Option "Drill" "mov DRILL_YELL$$costume_save storemov.mov-DRILL_YELL"
+		}
+		Menu "Bowing"
+		{
+Option "Bow to Floor" "mov BOWING_B$$costume_save storemov.mov-BOWING_B"
+Option "Fancy Bow" "mov EMOTE_FANCY_BOW$$costume_save storemov.mov-EMOTE_FANCY_BOW"
+Option "Honor Bow" "mov BOW_REVERANT$$costume_save storemov.mov-BOW_REVERANT"
+Option "Kowtow" "mov BOWING_A$$costume_save storemov.mov-BOWING_A"
+		}
+		Menu "Gesturing"
+		{
+Option "Attack" "mov EMOTE_ATTACK$$costume_save storemov.mov-EMOTE_ATTACK"
+Option "Beg for Change" "mov BUM_CUP_BEG_L$$costume_save storemov.mov-BUM_CUP_BEG_L"
+Option "Come Here" "mov EMOTE_COMEHERE$$costume_save storemov.mov-EMOTE_COMEHERE"
+Option "Don't Attack" "mov EMOTE_DONTATTACK$$costume_save storemov.mov-EMOTE_DONTATTACK"
+Option "Hi" "mov EMOTE_HI$$costume_save storemov.mov-EMOTE_HI"
+Option "Jingle Change Cup" "mov BUM_CUP_JINGLE$$costume_save storemov.mov-BUM_CUP_JINGLE"
+Option "Nod" "mov EMOTE_NOD$$costume_save storemov.mov-EMOTE_NOD"
+Option "Over Here" "mov EMOTE_OVERHERE$$costume_save storemov.mov-EMOTE_OVERHERE"
+Option "Quick Salute" "mov EMOTE_SALUTE$$costume_save storemov.mov-EMOTE_SALUTE"
+Option "Stop" "mov STOP$$costume_save storemov.mov-STOP"
+Option "Thank You" "mov EMOTE_THANKYOU_SM$$costume_save storemov.mov-EMOTE_THANKYOU_SM"
+Option "Thumbs Up" "mov EMOTE_THUMBSUP$$costume_save storemov.mov-EMOTE_THUMBSUP"
+Option "Welcome" "mov EMOTE_WELCOME$$costume_save storemov.mov-EMOTE_WELCOME"
+Option "You're Welcome" "mov EMOTE_YOURWELCOME$$costume_save storemov.mov-EMOTE_YOURWELCOME"
+		}
+
+		Menu "Give a Score"
+		{
+Option "1" "mov EMOTE_JUDGE_1$$costume_save storemov.mov-EMOTE_JUDGE_1"
+Option "2" "mov EMOTE_JUDGE_2$$costume_save storemov.mov-EMOTE_JUDGE_2"
+Option "3" "mov EMOTE_JUDGE_3$$costume_save storemov.mov-EMOTE_JUDGE_3"
+Option "4" "mov EMOTE_JUDGE_4$$costume_save storemov.mov-EMOTE_JUDGE_4"
+Option "5" "mov EMOTE_JUDGE_5$$costume_save storemov.mov-EMOTE_JUDGE_5"
+Option "6" "mov EMOTE_JUDGE_6$$costume_save storemov.mov-EMOTE_JUDGE_6"
+Option "7" "mov EMOTE_JUDGE_7$$costume_save storemov.mov-EMOTE_JUDGE_7"
+Option "8" "mov EMOTE_JUDGE_8$$costume_save storemov.mov-EMOTE_JUDGE_8"
+Option "9" "mov EMOTE_JUDGE_9$$costume_save storemov.mov-EMOTE_JUDGE_9"
+Option "10" "mov EMOTE_JUDGE_10$$costume_save storemov.mov-EMOTE_JUDGE_10"
+		}
+
+		Menu "Make Decisions"
+		{
+			Menu "Roll Dice"
+			{
+Option "1" "mov 1_ROLLDICE_PRE$$costume_save storemov.mov-1_ROLLDICE_PRE"
+Option "2" "mov 2_ROLLDICE_PRE$$costume_save storemov.mov-2_ROLLDICE_PRE"
+Option "3" "mov 3_ROLLDICE_PRE$$costume_save storemov.mov-3_ROLLDICE_PRE"
+Option "4" "mov 4_ROLLDICE_PRE$$costume_save storemov.mov-4_ROLLDICE_PRE"
+Option "5" "mov 5_ROLLDICE_PRE$$costume_save storemov.mov-5_ROLLDICE_PRE"
+Option "6" "mov 6_ROLLDICE_PRE$$costume_save storemov.mov-6_ROLLDICE_PRE"
+Option "7 :)" "mov 7_ROLLDICE_PRE$$costume_save storemov.mov-7_ROLLDICE_PRE"
+			}
+			Menu "Rock, Paper, Scissor"
+			{
+
+Option "Rock" "mov RPS_ROCK_PRE$$costume_save storemov.mov-RPS_ROCK_PRE"
+Option "Paper" "mov RPS_PAPER_PRE$$costume_save storemov.mov-RPS_PAPER_PRE"
+Option "Scissors" "mov RPS_SCISSOR_PRE$$costume_save storemov.mov-RPS_SCISSOR_PRE"
+			}
+			Menu "Flip a Coin"
+			{
+Option "Heads" "mov FLIPCOIN_HEADS$$costume_save storemov.mov-FLIPCOIN_HEADS"
+Option "Tails" "mov FLIPCOIN_TAILS$$costume_save storemov.mov-FLIPCOIN_TAILS"
+			}
+		}
+
+
+		Menu "Holiday"
+		{
+			Menu "Fireworks"
+			{
+Option "Bloom" "mov EMOTE_FIREWORK_BLOOM$$costume_save storemov.mov-EMOTE_FIREWORK_BLOOM"
+Option "Rocket" "mov EMOTE_FIREWORK_ROCKET$$costume_save storemov.mov-EMOTE_FIREWORK_ROCKET"
+Option "Sparkle" "mov EMOTE_FIREWORK_SPARKLE$$costume_save storemov.mov-EMOTE_FIREWORK_SPARKLE"
+			}
+			Menu "Christmas"
+			{
+Option "Offer Gift" "mov EMOTE_OFFER_GIFT_PRE$$costume_save storemov.mov-EMOTE_OFFER_GIFT_PRE"
+Option "Receive Gift" "mov EMOTE_RECEIVE_GIFT_PRE$$costume_save storemov.mov-EMOTE_RECEIVE_GIFT_PRE"
+Option "Open Gift" "mov EMOTE_OPEN_HOLIDAY_GIFT$$costume_save storemov.mov-EMOTE_OPEN_HOLIDAY_GIFT"
+Option "Throw Snowflakes" "mov EMOTE_THROWSNOWFLAKES$$costume_save storemov.mov-EMOTE_THROWSNOWFLAKES"
+			}
+			Menu "Wedding"
+			{
+Option "Propose Marriage" "mov EMOTE_MARRIAGEPROPOSAL_PRE$$costume_save storemov.mov-EMOTE_MARRIAGEPROPOSAL_PRE"
+Option "Throw Confetti" "mov EMOTE_THROWCONFETTI$$costume_save storemov.mov-EMOTE_THROWCONFETTI"
+Option "Throw Rice" "mov EMOTE_THROWRICE$$costume_save storemov.mov-EMOTE_THROWRICE"
+Option "Throw Rose Petals" "mov EMOTE_THROWROSEPETALS$$costume_save storemov.mov-EMOTE_THROWROSEPETALS"
+			}
+            
+		}
+	}
+	
+ 	Menu "Hostile"
+	{ 
+	    Menu "Protest"
+	    { 
+Option "Protest Sign 1" "mov PROTEST_SIGN$$costume_save storemov.mov-PROTEST_SIGN"
+Option "Protest Sign 2" "mov PROTEST_SIGN2$$costume_save storemov.mov-PROTEST_SIGN2"
+Option "Protest Sign 3" "mov PROTEST_SIGN3$$costume_save storemov.mov-PROTEST_SIGN3"
+Option "Angrily Protest Sign 1" "mov PROTEST_SIGN_ANGRY_A$$costume_save storemov.mov-PROTEST_SIGN_ANGRY_A"
+Option "Angrily Protest Alternate Sign" "mov PROTEST_SIGN_ANGRY_ALT$$costume_save storemov.mov-PROTEST_SIGN_ANGRY_ALT"
+Option "Angrily Protest Sign 2" "mov PROTEST_SIGN_ANGRY_B$$costume_save storemov.mov-PROTEST_SIGN_ANGRY_B"
+Option "Angrily Protest Sign 3" "mov PROTEST_SIGN_ANGRY_C$$costume_save storemov.mov-PROTEST_SIGN_ANGRY_C"
+Option "Protest Against the Praetorian Government 1" "mov PROTEST_SIGN_LOYALISTS$$costume_save storemov.mov-PROTEST_SIGN_LOYALISTS"
+Option "Protest Against the Praetorian Government 2" "mov PROTEST_SIGN2_LOYALISTS$$costume_save storemov.mov-PROTEST_SIGN2_LOYALISTS"
+Option "Protest Against the Praetorian Government 3" "mov PROTEST_SIGN3_LOYALISTS$$costume_save storemov.mov-PROTEST_SIGN3_LOYALISTS"
+Option "Protest Against the Praetorian Resistance 1" "mov PROTEST_SIGN_RESISTANCE$$costume_save storemov.mov-PROTEST_SIGN_RESISTANCE"
+Option "Protest Against the Praetorian Resistance 2" "mov PROTEST_SIGN2_RESISTANCE$$costume_save storemov.mov-PROTEST_SIGN2_RESISTANCE"
+		} 
+		 Menu "Act Hostile to Someone"
+	    {
+			     
+Option "Beat Chest" "mov EMOTE_BEATCHEST$$costume_save storemov.mov-EMOTE_BEATCHEST"
+Option "Call them Chicken" "mov EMOTE_CHICKEN$$costume_save storemov.mov-EMOTE_CHICKEN"
+Option "Crack Knuckles" "mov EMOTE_CRACKKNUCKLES$$costume_save storemov.mov-EMOTE_CRACKKNUCKLES"
+Option "Crazy Menace" "mov CRAZYMENACE_A$$costume_save storemov.mov-CRAZYMENACE_A"
+Option "Crouch" "mov EMOTE_CROUCH_PRE$$costume_save storemov.mov-EMOTE_CROUCH_PRE"
+Option "Curse You" "mov EMOTE_CURSEYOU$$costume_save storemov.mov-EMOTE_CURSEYOU"
+Option "Ghoul Flex and Growl" "mov EMOTE_GHOUL_FLEX_CYCLE$$costume_save storemov.mov-EMOTE_GHOUL_FLEX_CYCLE"
+Option "Growl" "mov EMOTE_GROWL$$costume_save storemov.mov-EMOTE_GROWL"
+Option "Hiss" "mov EMOTE_HISS$$costume_save storemov.mov-EMOTE_HISS"
+Option "Howl" "mov ENCOUNTER_HOWL$$costume_save storemov.mov-ENCOUNTER_HOWL"
+Option "Jeer" "mov JEERING_A$$costume_save storemov.mov-JEERING_A"
+Option "Taunt" "mov TAUNTB_PRE$$costume_save storemov.mov-TAUNTB_PRE"
+Option "Spit" "mov SPIT$$costume_save storemov.mov-SPIT"
+Option "Take a Swipe, Left Hand" "mov EMOTE_GROWL_3$$costume_save storemov.mov-EMOTE_GROWL_3"
+Option "Take a Swipe, Right Hand" "mov EMOTE_GROWL_2$$costume_save storemov.mov-EMOTE_GROWL_2"
+Option "Talk to the Hand" "mov EMOTE_TALKTOHAND$$costume_save storemov.mov-EMOTE_TALKTOHAND"
+Option "Tell Them to Bow Down" "mov EMOTE_BOW_DOWN$$costume_save storemov.mov-EMOTE_BOW_DOWN"
+Option "Tell Them to Bring It" "mov EMOTE_BRING_IT$$costume_save storemov.mov-EMOTE_BRING_IT"
+Option "Tell Them to Go Away" "mov EMOTE_GOAWAY$$costume_save storemov.mov-EMOTE_GOAWAY"
+Option "Tell Them to Kiss Your Butt" "mov EMOTE_KISSMYBUTT$$costume_save storemov.mov-EMOTE_KISSMYBUTT"
+Option "Threaten to Slash Throat" "mov EMOTE_SLASHTHROAT$$costume_save storemov.mov-EMOTE_SLASHTHROAT"
+Option "Threaten to Smack Them" "mov EMOTE_SMACKTHREAT$$costume_save storemov.mov-EMOTE_SMACKTHREAT"
+Option "Villain Laugh" "mov EMOTE_VILLAINLAUGH$$costume_save storemov.mov-EMOTE_VILLAINLAUGH"
+Option "Yata Yata Yata" "mov EMOTE_YATAYATA$$costume_save storemov.mov-EMOTE_YATAYATA"
+		} 
+		Menu "False Attacks"
+		{
+Option "Be Pushed Around" "mov PUSHAROUND_VICTIM$$costume_save storemov.mov-PUSHAROUND_VICTIM"
+Option "Brawl With Uppercut" "mov RUMBLE_DIZZY_B$$costume_save storemov.mov-RUMBLE_DIZZY_B"
+Option "Cast a Spell" "mov CAST$$costume_save storemov.mov-CAST"
+Option "Cast Spells (with FX)" "mov SPELLCAST_CYCLE$$costume_save storemov.mov-SPELLCAST_CYCLE"
+Option "Fake Combat Cycle 1" "mov FAKE_COMBATCYCLE$$costume_save storemov.mov-FAKE_COMBATCYCLE"
+Option "Fake Combat Cycle 2" "mov FAKE_COMBATCYCLE_HALF$$costume_save storemov.mov-FAKE_COMBATCYCLE_HALF"
+Option "Flurry of Blows" "mov FLURRY$$costume_save storemov.mov-FLURRY"
+Option "Foot Stomp" "mov STOMP$$costume_save storemov.mov-STOMP"
+Option "Gut Punch" "mov GUTPUNCH$$costume_save storemov.mov-GUTPUNCH"
+Option "Jacob's Ladder" "mov JACOBSLADDER$$costume_save storemov.mov-JACOBSLADDER"
+Option "Punch the Ground" "mov GEYSER$$costume_save storemov.mov-GEYSER"
+Option "Punchdrunk Brawl" "mov RUMBLE_DIZZY_A$$costume_save storemov.mov-RUMBLE_DIZZY_A"
+Option "Push Around" "mov PUSHAROUND$$costume_save storemov.mov-PUSHAROUND"
+Option "React to Being Slapped" "mov EMOTE_SLAP_REACT$$costume_save storemov.mov-EMOTE_SLAP_REACT"
+Option "Rumble 1" "mov RUMBLE_A$$costume_save storemov.mov-RUMBLE_A"
+Option "Rumble 2" "mov RUMBLE_B$$costume_save storemov.mov-RUMBLE_B"
+Option "Slap" "mov EMOTE_SLAP$$costume_save storemov.mov-EMOTE_SLAP"
+Option "Smack" "mov EMOTE_SMACK$$costume_save storemov.mov-EMOTE_SMACK"
+Option "Spinning Melee Attack" "mov TWIRL$$costume_save storemov.mov-TWIRL"
+Option "Steal" "mov STEAL$$costume_save storemov.mov-STEAL"
+		}
+		Menu "With Props"
+		{
+			Menu "Bat"
+			{
+Option "Be Hit by Bat" "mov EMOTE_BAT_SMASH_REACT$$costume_save storemov.mov-EMOTE_BAT_SMASH_REACT"
+				{Menu "Be Hit by Bat"
+					{
+Option "x2" "target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$costume_save storemov.target_custom_next-alive$$mov"
+Option "x4" "target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$costume_save storemov.target_custom_next-alive$$mov"
+Option "x8" "target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$target_custom_next alive$$mov EMOTE_BAT_SMASH_REACT$$costume_save storemov.target_custom_next-alive$$mov"
+					}
+Option "Cheer with Bat 1" "mov BATCHEER_A$$costume_save storemov.mov-BATCHEER_A"
+Option "Cheer with Bat 2" "mov BATCHEER_B$$costume_save storemov.mov-BATCHEER_B"
+Option "Lookout with Bat 1" "mov BATLOOKOUT_A$$costume_save storemov.mov-BATLOOKOUT_A"
+Option "Lookout with Bat 2" "mov BATLOOKOUT_B$$costume_save storemov.mov-BATLOOKOUT_B"
+Option "Menace with Bat 1" "mov BAT_MENACE_A$$costume_save storemov.mov-BAT_MENACE_A"
+Option "Menace with Bat 2" "mov BAT_MENACE_B$$costume_save storemov.mov-BAT_MENACE_B"
+Option "Smash with a Bat" "mov EMOTE_BAT_SMASH$$costume_save storemov.mov-EMOTE_BAT_SMASH"
+			}
+			Menu "Knife"
+			{
+Option "Cheer with Knife" "mov KNIFECHEER_A$$costume_save storemov.mov-KNIFECHEER_A"
+Option "Knife Fight, Stab" "mov RUMBLE_KNIFE_A$$costume_save storemov.mov-RUMBLE_KNIFE_A"
+Option "Knife Fight, Swing" "mov RUMBLE_KNIFE_B$$costume_save storemov.mov-RUMBLE_KNIFE_B"
+Option "Menace with Knife 1" "mov KNIFE_MENACE_A$$costume_save storemov.mov-KNIFE_MENACE_A"
+Option "Menace with Knife 2" "mov KNIFE_MENACE_B$$costume_save storemov.mov-KNIFE_MENACE_B"
+Option "Menace with Knife 3" "mov KNIFE_MENACE_C$$costume_save storemov.mov-KNIFE_MENACE_C"
+			}
+			Menu "Gun"
+			{
+Option "Aim Rifle High" "mov SHOTGUN_ALERT_B$$costume_save storemov.mov-SHOTGUN_ALERT_B"
+Option "Aim Rifle Low" "mov SHOTGUN_ALERT_A$$costume_save storemov.mov-SHOTGUN_ALERT_A"
+Option "Aim Sniper Rifle" "mov SHOTGUN_POINT$$costume_save storemov.mov-SHOTGUN_POINT"
+Option "Cheer with Gun 1" "mov PISTOLCHEER_A$$costume_save storemov.mov-PISTOLCHEER_A"
+Option "Cheer with Gun 2" "mov PISTOLCHEER_B$$costume_save storemov.mov-PISTOLCHEER_B"
+Option "Lookout with Gun 1" "mov GUNLOOKOUT_A$$costume_save storemov.mov-GUNLOOKOUT_A"
+Option "Lookout with Gun 2" "mov GUNLOOKOUT_B$$costume_save storemov.mov-GUNLOOKOUT_B"
+Option "Lookout with Shotgun High" "mov SHOTGUNLOOKOUT$$costume_save storemov.mov-SHOTGUNLOOKOUT"
+Option "Lookout with Shotgun Low" "mov SHOTGUNOBSERVE$$costume_save storemov.mov-SHOTGUNOBSERVE"
+Option "Menace with Gun 1" "mov GUN_MENACE_A$$costume_save storemov.mov-GUN_MENACE_A"
+Option "Menace with Gun 2" "mov GUN_MENACE_B$$costume_save storemov.mov-GUN_MENACE_B"
+Option "Menace with Gun 3" "mov GUN_MENACE_C$$costume_save storemov.mov-GUN_MENACE_C"
+Option "Ready a Shotgun" "mov SHOTGUNREADY$$costume_save storemov.mov-SHOTGUNREADY"
+Option "Threaten with Gun" "mov GUN_THREAT_A$$costume_save storemov.mov-GUN_THREAT_A"
+			}
+			Menu "Other"
+			{
+Option "Kneel and Hit with Hammer" "mov EMOTE_VANDALIZE$$costume_save storemov.mov-EMOTE_VANDALIZE"
+Option "Lookout with Pipe" "mov PIPELOOKOUT_A$$costume_save storemov.mov-PIPELOOKOUT_A"
+Option "Pry with Very Large Prybar" "mov PL_PRYBARBIG$$costume_save storemov.mov-PL_PRYBARBIG"
+Option "Steal a Purse" "mov PL_PURSEMUGTOSS$$costume_save storemov.mov-PL_PURSEMUGTOSS"
+Option "Spraypaint Wall" "mov EMOTE_SPRAYPAINT_PRE$$costume_save storemov.mov-EMOTE_SPRAYPAINT_PRE"
+Option "Spraypaint while Kneeling" "mov EMOTE_SPRAYPAINT_KNEEL_PRE$$costume_save storemov.mov-EMOTE_SPRAYPAINT_KNEEL_PRE"
+Option "Throw a Crate" "mov TOSS_CRATE_A1$$costume_save storemov.mov-TOSS_CRATE_A1"
+Option "Throw Molotov Cocktail" "mov ENC_MOLOTOV_A$$costume_save storemov.mov-ENC_MOLOTOV_A"
+Option "Throw Some Junk" "mov 1H_THROW_JUNK_A1$$costume_save storemov.mov-1H_THROW_JUNK_A1"
+			}
+		}
+	}
+}

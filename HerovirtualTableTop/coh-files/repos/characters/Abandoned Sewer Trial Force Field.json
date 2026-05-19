@@ -1,0 +1,934 @@
+{
+  "$id": "12707",
+  "$type": "Module.HeroVirtualTabletop.Crowds.CrowdMemberModel, Module.HeroVirtualTabletop",
+  "Name": "Abandoned Sewer Trial Force Field",
+  "defaultIdentity": {
+    "$id": "12708",
+    "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+    "Surface": "Hydra_Pod",
+    "Type": 0,
+    "AnimationOnLoad": null,
+    "Name": "Hydra_Pod",
+    "OptionTooltip": "Hydra_Pod"
+  },
+  "Order": 0,
+  "RosterCrowd": null,
+  "SavedPosition": null,
+  "OptionGroups": [
+    {
+      "$id": "12709",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 0,
+      "Count": 2,
+      "Name": "Identities",
+      "Options": [
+        {
+          "$ref": "12708"
+        },
+        {
+          "$id": "12710",
+          "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+          "Surface": "base",
+          "Type": 1,
+          "AnimationOnLoad": {
+            "$id": "12711",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+            "AnimationElements": [
+              {
+                "$id": "12712",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                "Colors": [
+                  "#FFDBED0F",
+                  "#FF000000",
+                  "#FF000000",
+                  "#FF000000"
+                ],
+                "IsNonDirectional": false,
+                "PlayOnTopOfPreviousFx": false,
+                "PlayOnTopOfIdentityName": null,
+                "Order": 1,
+                "Owner": null,
+                "Type": 2,
+                "PlayWithNext": false,
+                "DisplayName": "Explosion_RiktiHeavyAssaultSuit",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "12713",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "Explosions"
+                  ],
+                  "Name": "Explosion_RiktiHeavyAssaultSuit.fx",
+                  "Value": "/Explosions/VehicleExplosion/Explosion_RiktiHeavyAssaultSuit.fx",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "FX Element 1",
+                "OptionTooltip": "FX Element 1"
+              },
+              {
+                "$id": "12714",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                "Order": 2,
+                "Owner": null,
+                "Type": 1,
+                "PlayWithNext": false,
+                "DisplayName": "fireexplo7",
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "12715",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [
+                    "ExplosionFireexplo"
+                  ],
+                  "Name": "fireexplo7",
+                  "Value": "\\hazards\\explosion\\fireexplo7.ogg",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Sound Element 1",
+                "OptionTooltip": "Sound Element 1"
+              }
+            ],
+            "OnHitAnimation": {
+              "$id": "12716",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+              "AnimationElements": [],
+              "ActivateOnKey": 0,
+              "OptionTooltip": "Ability - OnHit",
+              "IsAttack": false,
+              "IsAreaEffect": false,
+              "SequenceType": 0,
+              "LastOrder": 0,
+              "Order": 1,
+              "Owner": null,
+              "Type": 4,
+              "PlayWithNext": false,
+              "DisplayName": null,
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "12717",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": null,
+                "Value": "",
+                "Reference": null,
+                "Identity": null
+              },
+              "Name": "Ability - OnHit"
+            },
+            "AttackEffect": null,
+            "IsExecutionInProgress": false,
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Dead",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 2,
+            "Order": 1,
+            "Owner": {
+              "$ref": "12707"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "12718",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Dead"
+          },
+          "Name": "Identity",
+          "OptionTooltip": "Identity"
+        }
+      ]
+    },
+    {
+      "$id": "12719",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 1,
+      "Count": 1,
+      "Name": "Powers",
+      "Options": [
+        {
+          "$id": "12720",
+          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+          "AnimationElements": [
+            {
+              "$id": "12721",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.ReferenceAbility, Module.HeroVirtualTabletop",
+              "ReferenceType": 0,
+              "Reference": {
+                "$id": "12722",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+                "AnimationElements": [
+                  {
+                    "$id": "12723",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.ReferenceAbility, Module.HeroVirtualTabletop",
+                    "ReferenceType": 0,
+                    "Reference": {
+                      "$id": "12724",
+                      "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+                      "AnimationElements": [
+                        {
+                          "$id": "12725",
+                          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                          "Colors": [
+                            "#FFDBED0F",
+                            "#FF000000",
+                            "#FF000000",
+                            "#FF000000"
+                          ],
+                          "IsNonDirectional": false,
+                          "PlayOnTopOfPreviousFx": false,
+                          "PlayOnTopOfIdentityName": null,
+                          "Order": 1,
+                          "Owner": {
+                            "$id": "12726",
+                            "$type": "Module.HeroVirtualTabletop.Crowds.CrowdMemberModel, Module.HeroVirtualTabletop",
+                            "Name": "Large generator",
+                            "defaultIdentity": {
+                              "$id": "12727",
+                              "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+                              "Surface": "OO_strg_gen_lrg01_100",
+                              "Type": 0,
+                              "AnimationOnLoad": null,
+                              "Name": "OO_strg_gen_lrg01_100",
+                              "OptionTooltip": "OO_strg_gen_lrg01_100"
+                            },
+                            "Order": 0,
+                            "RosterCrowd": null,
+                            "SavedPosition": null,
+                            "OptionGroups": [
+                              {
+                                "$id": "12728",
+                                "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+                                "Type": 0,
+                                "Count": 2,
+                                "Name": "Identities",
+                                "Options": [
+                                  {
+                                    "$ref": "12727"
+                                  },
+                                  {
+                                    "$id": "12729",
+                                    "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+                                    "Surface": "base",
+                                    "Type": 1,
+                                    "AnimationOnLoad": {
+                                      "$ref": "12724"
+                                    },
+                                    "Name": "Identity",
+                                    "OptionTooltip": "Identity"
+                                  }
+                                ]
+                              },
+                              {
+                                "$id": "12730",
+                                "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+                                "Type": 1,
+                                "Count": 1,
+                                "Name": "Powers",
+                                "Options": [
+                                  {
+                                    "$ref": "12724"
+                                  }
+                                ]
+                              },
+                              {
+                                "$id": "12731",
+                                "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+                                "Type": 2,
+                                "Count": 3,
+                                "Name": "Movements",
+                                "Options": [
+                                  {
+                                    "$id": "12732",
+                                    "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+                                    "ActivationKey": 75,
+                                    "MovementSpeed": 1.0,
+                                    "Character": {
+                                      "$ref": "12726"
+                                    },
+                                    "Movement": {
+                                      "$ref": "8"
+                                    },
+                                    "CharactersToMove": null,
+                                    "OptionTooltip": "Walk(Alt + K)",
+                                    "Name": "Walk"
+                                  },
+                                  {
+                                    "$id": "12733",
+                                    "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+                                    "ActivationKey": 85,
+                                    "MovementSpeed": 1.0,
+                                    "Character": {
+                                      "$ref": "12726"
+                                    },
+                                    "Movement": {
+                                      "$ref": "923"
+                                    },
+                                    "CharactersToMove": null,
+                                    "OptionTooltip": "Run(Alt + U)",
+                                    "Name": "Run"
+                                  },
+                                  {
+                                    "$id": "12734",
+                                    "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+                                    "ActivationKey": 83,
+                                    "MovementSpeed": 1.0,
+                                    "Character": {
+                                      "$ref": "12726"
+                                    },
+                                    "Movement": {
+                                      "$ref": "946"
+                                    },
+                                    "CharactersToMove": null,
+                                    "OptionTooltip": "Swim(Alt + S)",
+                                    "Name": "Swim"
+                                  }
+                                ]
+                              }
+                            ],
+                            "DefaultIdentity": {
+                              "$ref": "12727"
+                            },
+                            "ActiveIdentity": {
+                              "$ref": "12729"
+                            },
+                            "DefaultMovement": null,
+                            "DefaultAbility": null
+                          },
+                          "Type": 2,
+                          "PlayWithNext": false,
+                          "DisplayName": "Explosion_RiktiHeavyAssaultSuit",
+                          "PlayOnTargeted": false,
+                          "Persistent": false,
+                          "Resource": {
+                            "$ref": "12713"
+                          },
+                          "Name": "FX Element 1",
+                          "OptionTooltip": "FX Element 1"
+                        },
+                        {
+                          "$id": "12735",
+                          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                          "Order": 2,
+                          "Owner": {
+                            "$ref": "12726"
+                          },
+                          "Type": 1,
+                          "PlayWithNext": false,
+                          "DisplayName": "fireexplo7",
+                          "PlayOnTargeted": false,
+                          "Persistent": false,
+                          "Resource": {
+                            "$ref": "12715"
+                          },
+                          "Name": "Sound Element 1",
+                          "OptionTooltip": "Sound Element 1"
+                        }
+                      ],
+                      "OnHitAnimation": {
+                        "$id": "12736",
+                        "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+                        "AnimationElements": [],
+                        "ActivateOnKey": 0,
+                        "OptionTooltip": "Ability - OnHit",
+                        "IsAttack": false,
+                        "IsAreaEffect": false,
+                        "SequenceType": 0,
+                        "LastOrder": 0,
+                        "Order": 1,
+                        "Owner": {
+                          "$ref": "12726"
+                        },
+                        "Type": 4,
+                        "PlayWithNext": false,
+                        "DisplayName": null,
+                        "PlayOnTargeted": false,
+                        "Persistent": false,
+                        "Resource": {
+                          "$id": "12737",
+                          "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                          "Tags": [],
+                          "Name": null,
+                          "Value": "",
+                          "Reference": null,
+                          "Identity": null
+                        },
+                        "Name": "Ability - OnHit"
+                      },
+                      "AttackEffect": null,
+                      "IsExecutionInProgress": false,
+                      "ActivateOnKey": 0,
+                      "OptionTooltip": "Dead",
+                      "IsAttack": false,
+                      "IsAreaEffect": false,
+                      "SequenceType": 0,
+                      "LastOrder": 2,
+                      "Order": 1,
+                      "Owner": {
+                        "$ref": "12726"
+                      },
+                      "Type": 4,
+                      "PlayWithNext": false,
+                      "DisplayName": null,
+                      "PlayOnTargeted": false,
+                      "Persistent": false,
+                      "Resource": {
+                        "$id": "12738",
+                        "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                        "Tags": [],
+                        "Name": null,
+                        "Value": "",
+                        "Reference": null,
+                        "Identity": null
+                      },
+                      "Name": "Dead"
+                    },
+                    "Order": 1,
+                    "Owner": {
+                      "$id": "12739",
+                      "$type": "Module.HeroVirtualTabletop.Crowds.CrowdMemberModel, Module.HeroVirtualTabletop",
+                      "Name": "Hi-tech generator",
+                      "defaultIdentity": {
+                        "$id": "12740",
+                        "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+                        "Surface": "V_Destructible_Props_Tech_Generator",
+                        "Type": 0,
+                        "AnimationOnLoad": null,
+                        "Name": "V_Destructible_Props_Tech_Generator",
+                        "OptionTooltip": "V_Destructible_Props_Tech_Generator"
+                      },
+                      "Order": 0,
+                      "RosterCrowd": null,
+                      "SavedPosition": null,
+                      "OptionGroups": [
+                        {
+                          "$id": "12741",
+                          "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+                          "Type": 0,
+                          "Count": 2,
+                          "Name": "Identities",
+                          "Options": [
+                            {
+                              "$ref": "12740"
+                            },
+                            {
+                              "$id": "12742",
+                              "$type": "Module.HeroVirtualTabletop.Identities.Identity, Module.HeroVirtualTabletop",
+                              "Surface": "base",
+                              "Type": 1,
+                              "AnimationOnLoad": {
+                                "$id": "12743",
+                                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+                                "AnimationElements": [
+                                  {
+                                    "$id": "12744",
+                                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.FXEffectElement, Module.HeroVirtualTabletop",
+                                    "Colors": [
+                                      "#FFDBED0F",
+                                      "#FF000000",
+                                      "#FF000000",
+                                      "#FF000000"
+                                    ],
+                                    "IsNonDirectional": false,
+                                    "PlayOnTopOfPreviousFx": false,
+                                    "PlayOnTopOfIdentityName": null,
+                                    "Order": 1,
+                                    "Owner": null,
+                                    "Type": 2,
+                                    "PlayWithNext": false,
+                                    "DisplayName": "Explosion_RiktiHeavyAssaultSuit",
+                                    "PlayOnTargeted": false,
+                                    "Persistent": false,
+                                    "Resource": {
+                                      "$ref": "12713"
+                                    },
+                                    "Name": "FX Element 1",
+                                    "OptionTooltip": "FX Element 1"
+                                  },
+                                  {
+                                    "$id": "12745",
+                                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.SoundElement, Module.HeroVirtualTabletop",
+                                    "Order": 2,
+                                    "Owner": null,
+                                    "Type": 1,
+                                    "PlayWithNext": false,
+                                    "DisplayName": "fireexplo7",
+                                    "PlayOnTargeted": false,
+                                    "Persistent": false,
+                                    "Resource": {
+                                      "$ref": "12715"
+                                    },
+                                    "Name": "Sound Element 1",
+                                    "OptionTooltip": "Sound Element 1"
+                                  }
+                                ],
+                                "OnHitAnimation": {
+                                  "$id": "12746",
+                                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+                                  "AnimationElements": [],
+                                  "ActivateOnKey": 0,
+                                  "OptionTooltip": "Ability - OnHit",
+                                  "IsAttack": false,
+                                  "IsAreaEffect": false,
+                                  "SequenceType": 0,
+                                  "LastOrder": 0,
+                                  "Order": 1,
+                                  "Owner": null,
+                                  "Type": 4,
+                                  "PlayWithNext": false,
+                                  "DisplayName": null,
+                                  "PlayOnTargeted": false,
+                                  "Persistent": false,
+                                  "Resource": {
+                                    "$id": "12747",
+                                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                                    "Tags": [],
+                                    "Name": null,
+                                    "Value": "",
+                                    "Reference": null,
+                                    "Identity": null
+                                  },
+                                  "Name": "Ability - OnHit"
+                                },
+                                "AttackEffect": null,
+                                "IsExecutionInProgress": false,
+                                "ActivateOnKey": 0,
+                                "OptionTooltip": "Dead",
+                                "IsAttack": false,
+                                "IsAreaEffect": false,
+                                "SequenceType": 0,
+                                "LastOrder": 2,
+                                "Order": 1,
+                                "Owner": {
+                                  "$ref": "12739"
+                                },
+                                "Type": 4,
+                                "PlayWithNext": false,
+                                "DisplayName": null,
+                                "PlayOnTargeted": false,
+                                "Persistent": false,
+                                "Resource": {
+                                  "$id": "12748",
+                                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                                  "Tags": [],
+                                  "Name": null,
+                                  "Value": "",
+                                  "Reference": null,
+                                  "Identity": null
+                                },
+                                "Name": "Dead"
+                              },
+                              "Name": "Identity",
+                              "OptionTooltip": "Identity"
+                            }
+                          ]
+                        },
+                        {
+                          "$id": "12749",
+                          "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+                          "Type": 1,
+                          "Count": 2,
+                          "Name": "Powers",
+                          "Options": [
+                            {
+                              "$ref": "12722"
+                            },
+                            {
+                              "$id": "12750",
+                              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.Attack, Module.HeroVirtualTabletop",
+                              "AnimationElements": [
+                                {
+                                  "$id": "12751",
+                                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.ReferenceAbility, Module.HeroVirtualTabletop",
+                                  "ReferenceType": 0,
+                                  "Reference": {
+                                    "$ref": "12722"
+                                  },
+                                  "Order": 1,
+                                  "Owner": {
+                                    "$ref": "12739"
+                                  },
+                                  "Type": 3,
+                                  "PlayWithNext": false,
+                                  "DisplayName": "Dead",
+                                  "PlayOnTargeted": false,
+                                  "Persistent": false,
+                                  "Resource": {
+                                    "$id": "12752",
+                                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                                    "Tags": [],
+                                    "Name": "Dead",
+                                    "Value": null,
+                                    "Reference": {
+                                      "$ref": "12722"
+                                    },
+                                    "Identity": null
+                                  },
+                                  "Name": "Reference - 1",
+                                  "OptionTooltip": "Reference - 1"
+                                }
+                              ],
+                              "OnHitAnimation": {
+                                "$id": "12753",
+                                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+                                "AnimationElements": [],
+                                "ActivateOnKey": 0,
+                                "OptionTooltip": "Dead (1) - OnHit",
+                                "IsAttack": false,
+                                "IsAreaEffect": false,
+                                "SequenceType": 0,
+                                "LastOrder": 0,
+                                "Order": 1,
+                                "Owner": {
+                                  "$ref": "12739"
+                                },
+                                "Type": 4,
+                                "PlayWithNext": false,
+                                "DisplayName": null,
+                                "PlayOnTargeted": false,
+                                "Persistent": false,
+                                "Resource": {
+                                  "$id": "12754",
+                                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                                  "Tags": [],
+                                  "Name": null,
+                                  "Value": "",
+                                  "Reference": null,
+                                  "Identity": null
+                                },
+                                "Name": "Dead (1) - OnHit"
+                              },
+                              "AttackEffect": null,
+                              "IsExecutionInProgress": false,
+                              "ActivateOnKey": 0,
+                              "OptionTooltip": "Dead (1)",
+                              "IsAttack": false,
+                              "IsAreaEffect": false,
+                              "SequenceType": 0,
+                              "LastOrder": 1,
+                              "Order": 1,
+                              "Owner": {
+                                "$ref": "12739"
+                              },
+                              "Type": 4,
+                              "PlayWithNext": false,
+                              "DisplayName": null,
+                              "PlayOnTargeted": false,
+                              "Persistent": false,
+                              "Resource": {
+                                "$id": "12755",
+                                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                                "Tags": [],
+                                "Name": null,
+                                "Value": "",
+                                "Reference": null,
+                                "Identity": null
+                              },
+                              "Name": "Dead (1)"
+                            }
+                          ]
+                        },
+                        {
+                          "$id": "12756",
+                          "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+                          "Type": 2,
+                          "Count": 3,
+                          "Name": "Movements",
+                          "Options": [
+                            {
+                              "$id": "12757",
+                              "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+                              "ActivationKey": 75,
+                              "MovementSpeed": 1.0,
+                              "Character": {
+                                "$ref": "12739"
+                              },
+                              "Movement": {
+                                "$ref": "8"
+                              },
+                              "CharactersToMove": null,
+                              "OptionTooltip": "Walk(Alt + K)",
+                              "Name": "Walk"
+                            },
+                            {
+                              "$id": "12758",
+                              "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+                              "ActivationKey": 85,
+                              "MovementSpeed": 1.0,
+                              "Character": {
+                                "$ref": "12739"
+                              },
+                              "Movement": {
+                                "$ref": "923"
+                              },
+                              "CharactersToMove": null,
+                              "OptionTooltip": "Run(Alt + U)",
+                              "Name": "Run"
+                            },
+                            {
+                              "$id": "12759",
+                              "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+                              "ActivationKey": 83,
+                              "MovementSpeed": 1.0,
+                              "Character": {
+                                "$ref": "12739"
+                              },
+                              "Movement": {
+                                "$ref": "946"
+                              },
+                              "CharactersToMove": null,
+                              "OptionTooltip": "Swim(Alt + S)",
+                              "Name": "Swim"
+                            }
+                          ]
+                        }
+                      ],
+                      "DefaultIdentity": {
+                        "$ref": "12740"
+                      },
+                      "ActiveIdentity": {
+                        "$ref": "12740"
+                      },
+                      "DefaultMovement": null,
+                      "DefaultAbility": null
+                    },
+                    "Type": 3,
+                    "PlayWithNext": false,
+                    "DisplayName": "Dead",
+                    "PlayOnTargeted": false,
+                    "Persistent": false,
+                    "Resource": {
+                      "$id": "12760",
+                      "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                      "Tags": [],
+                      "Name": "Dead",
+                      "Value": null,
+                      "Reference": {
+                        "$ref": "12724"
+                      },
+                      "Identity": null
+                    },
+                    "Name": "Reference - 1",
+                    "OptionTooltip": "Reference - 1"
+                  }
+                ],
+                "OnHitAnimation": {
+                  "$id": "12761",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+                  "AnimationElements": [],
+                  "ActivateOnKey": 0,
+                  "OptionTooltip": "Dead - OnHit",
+                  "IsAttack": false,
+                  "IsAreaEffect": false,
+                  "SequenceType": 0,
+                  "LastOrder": 0,
+                  "Order": 1,
+                  "Owner": {
+                    "$ref": "12739"
+                  },
+                  "Type": 4,
+                  "PlayWithNext": false,
+                  "DisplayName": null,
+                  "PlayOnTargeted": false,
+                  "Persistent": false,
+                  "Resource": {
+                    "$id": "12762",
+                    "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                    "Tags": [],
+                    "Name": null,
+                    "Value": "",
+                    "Reference": null,
+                    "Identity": null
+                  },
+                  "Name": "Dead - OnHit"
+                },
+                "AttackEffect": null,
+                "IsExecutionInProgress": false,
+                "ActivateOnKey": 0,
+                "OptionTooltip": "Dead",
+                "IsAttack": false,
+                "IsAreaEffect": false,
+                "SequenceType": 0,
+                "LastOrder": 1,
+                "Order": 1,
+                "Owner": {
+                  "$ref": "12739"
+                },
+                "Type": 4,
+                "PlayWithNext": false,
+                "DisplayName": null,
+                "PlayOnTargeted": false,
+                "Persistent": false,
+                "Resource": {
+                  "$id": "12763",
+                  "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                  "Tags": [],
+                  "Name": null,
+                  "Value": "",
+                  "Reference": null,
+                  "Identity": null
+                },
+                "Name": "Dead"
+              },
+              "Order": 1,
+              "Owner": {
+                "$ref": "12707"
+              },
+              "Type": 3,
+              "PlayWithNext": false,
+              "DisplayName": "Dead",
+              "PlayOnTargeted": false,
+              "Persistent": false,
+              "Resource": {
+                "$id": "12764",
+                "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+                "Tags": [],
+                "Name": "Dead",
+                "Value": null,
+                "Reference": {
+                  "$ref": "12722"
+                },
+                "Identity": null
+              },
+              "Name": "Reference - 1",
+              "OptionTooltip": "Reference - 1"
+            }
+          ],
+          "OnHitAnimation": {
+            "$id": "12765",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimatedAbility, Module.HeroVirtualTabletop",
+            "AnimationElements": [],
+            "ActivateOnKey": 0,
+            "OptionTooltip": "Dead - OnHit",
+            "IsAttack": false,
+            "IsAreaEffect": false,
+            "SequenceType": 0,
+            "LastOrder": 0,
+            "Order": 1,
+            "Owner": {
+              "$ref": "12707"
+            },
+            "Type": 4,
+            "PlayWithNext": false,
+            "DisplayName": null,
+            "PlayOnTargeted": false,
+            "Persistent": false,
+            "Resource": {
+              "$id": "12766",
+              "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+              "Tags": [],
+              "Name": null,
+              "Value": "",
+              "Reference": null,
+              "Identity": null
+            },
+            "Name": "Dead - OnHit"
+          },
+          "AttackEffect": null,
+          "IsExecutionInProgress": false,
+          "ActivateOnKey": 0,
+          "OptionTooltip": "Dead",
+          "IsAttack": false,
+          "IsAreaEffect": false,
+          "SequenceType": 0,
+          "LastOrder": 1,
+          "Order": 1,
+          "Owner": {
+            "$ref": "12707"
+          },
+          "Type": 4,
+          "PlayWithNext": false,
+          "DisplayName": null,
+          "PlayOnTargeted": false,
+          "Persistent": false,
+          "Resource": {
+            "$id": "12767",
+            "$type": "Module.HeroVirtualTabletop.AnimatedAbilities.AnimationResource, Module.HeroVirtualTabletop",
+            "Tags": [],
+            "Name": null,
+            "Value": "",
+            "Reference": null,
+            "Identity": null
+          },
+          "Name": "Dead"
+        }
+      ]
+    },
+    {
+      "$id": "12768",
+      "$type": "Module.HeroVirtualTabletop.OptionGroups.OptionGroup`1[[Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop]], Module.HeroVirtualTabletop",
+      "Type": 2,
+      "Count": 3,
+      "Name": "Movements",
+      "Options": [
+        {
+          "$id": "12769",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 75,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "12707"
+          },
+          "Movement": {
+            "$ref": "8"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Walk(Alt + K)",
+          "Name": "Walk"
+        },
+        {
+          "$id": "12770",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 85,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "12707"
+          },
+          "Movement": {
+            "$ref": "923"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Run(Alt + U)",
+          "Name": "Run"
+        },
+        {
+          "$id": "12771",
+          "$type": "Module.HeroVirtualTabletop.Movements.CharacterMovement, Module.HeroVirtualTabletop",
+          "ActivationKey": 83,
+          "MovementSpeed": 1.0,
+          "Character": {
+            "$ref": "12707"
+          },
+          "Movement": {
+            "$ref": "946"
+          },
+          "CharactersToMove": null,
+          "OptionTooltip": "Swim(Alt + S)",
+          "Name": "Swim"
+        }
+      ]
+    }
+  ],
+  "DefaultIdentity": {
+    "$ref": "12708"
+  },
+  "ActiveIdentity": {
+    "$ref": "12708"
+  },
+  "DefaultMovement": null,
+  "DefaultAbility": null
+}
