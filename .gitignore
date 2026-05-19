@@ -1,0 +1,64 @@
+# ---------------------------------------------------------------------------
+# city-of-heroes/  (game install moved into the workspace)
+# Track only the data files; everything else is game binaries / runtime junk.
+# ---------------------------------------------------------------------------
+
+# Binaries and runtime artifacts at the install root
+/city-of-heroes/*.exe
+/city-of-heroes/*.dll
+/city-of-heroes/*.pdb
+/city-of-heroes/*.bat
+/city-of-heroes/*.config
+/city-of-heroes/*.manifest
+/city-of-heroes/*.ini
+/city-of-heroes/*.html
+/city-of-heroes/*.texture
+/city-of-heroes/*.xlsx
+/city-of-heroes/*.log
+/city-of-heroes/*.cs
+/city-of-heroes/*.ps1
+/city-of-heroes/*.bak
+
+# Bulky / runtime subfolders inside the install
+/city-of-heroes/.vs/
+/city-of-heroes/piggs/
+/city-of-heroes/sound/
+/city-of-heroes/qt_plugins/
+/city-of-heroes/Log/
+/city-of-heroes/logs/
+/city-of-heroes/backup_*/
+
+# Historical / backup variants of the data files (keep the live ones only)
+/city-of-heroes/data/Backup/
+/city-of-heroes/data/backup_*/
+/city-of-heroes/data/*.bak
+/city-of-heroes/data/*.full
+/city-of-heroes/data/*.cache
+/city-of-heroes/data/*.log
+/city-of-heroes/data/CrowdRepo_*.bak
+/city-of-heroes/data/CrowdRepo.data.backup_*
+
+# ---------------------------------------------------------------------------
+# Cursor IDE — skills, agents, rules, and commands are managed by the
+# agilebydesign-skills repo and deployed here as junctions/hard links.
+# ---------------------------------------------------------------------------
+.cursor/
+
+# ---------------------------------------------------------------------------
+# Secrets — never commit credentials or API keys
+# ---------------------------------------------------------------------------
+.secrets
+.secrets.*
+*.secrets
+conf/.secrets
+
+# ---------------------------------------------------------------------------
+# Workspace-level junk
+# ---------------------------------------------------------------------------
+hooklog.txt
+test-results-full.txt
+.drawio-ux-state.json
+
+# Python bytecode (scanners / helpers)
+__pycache__/
+*.pyc
