@@ -561,7 +561,8 @@ namespace Module.HeroVirtualTabletop.Crowds
             dialog.Title = "Open Crowd File(s)";
             dialog.Filter = "Crowd files (*.data)|*.data|All files (*.*)|*.*";
             dialog.Multiselect = true;
-            string crowdsFolder = System.IO.Path.Combine(Module.Shared.Settings.Default.CityOfHeroesGameDirectory, Module.Shared.Constants.GAME_DATA_FOLDERNAME, Module.Shared.Constants.GAME_CROWDS_FOLDERNAME);
+            string projectRoot = System.IO.Path.GetDirectoryName(Module.Shared.Settings.Default.CityOfHeroesGameDirectory);
+            string crowdsFolder = System.IO.Path.Combine(projectRoot, Module.Shared.Constants.GAME_DATA_FOLDERNAME, Module.Shared.Constants.GAME_CROWDS_FOLDERNAME);
             if (System.IO.Directory.Exists(crowdsFolder))
                 dialog.InitialDirectory = crowdsFolder;
             bool? result = dialog.ShowDialog();

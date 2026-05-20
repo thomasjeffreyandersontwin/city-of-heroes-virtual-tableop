@@ -344,7 +344,9 @@ namespace Module.HeroVirtualTabletop.Crowds
 
         public CrowdRepository()
         {
-            DataDirectory = Path.Combine(Settings.Default.CityOfHeroesGameDirectory, Constants.GAME_DATA_FOLDERNAME);
+            // active-crowds.json lives one level above the CoH game folder, in <project-root>\data
+            string projectRoot = Path.GetDirectoryName(Settings.Default.CityOfHeroesGameDirectory);
+            DataDirectory = Path.Combine(projectRoot, Constants.GAME_DATA_FOLDERNAME);
         }
 
         public List<CrowdModel> LoadDefaultCrowdMembers()
