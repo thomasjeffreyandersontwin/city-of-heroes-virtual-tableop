@@ -3,15 +3,10 @@ using Module.Shared;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Module.HeroVirtualTabletop.Crowds
 {
@@ -30,168 +25,326 @@ namespace Module.HeroVirtualTabletop.Crowds
         List<CrowdModel> LoadDefaultCrowdMembers();
     }
 
+    /// <summary>
+    /// Summary returned by <see cref="CrowdRepository.SaveDirtyCrowds"/>.
+    /// </summary>
+    public class SaveSummary
+    {
+        public SaveSummary()
+        {
+            FailedPaths = new List<string>();
+            CrowdsNeedingNewFile = new List<CrowdModel>();
+        }
+
+        public int SavedCount { get; set; }
+        public int FailedCount { get; set; }
+        public int SkippedCount { get; set; }
+        public List<string> FailedPaths { get; set; }
+        /// <summary>Top-level crowds that have no source file and need a Save-As dialog.</summary>
+        public List<CrowdModel> CrowdsNeedingNewFile { get; set; }
+    }
+
     public class CrowdRepository : ICrowdRepository
     {
-        List<Mutex> mutexes;
-        List<AutoResetEvent> events;
+        // ── Active-Crowds mode ─────────────────────────────────────────────────
 
-        private string crowdRepositoryPath;
-        public string CrowdRepositoryPath
+        private string _dataDirectory;
+
+        public string DataDirectory
         {
-            get { return crowdRepositoryPath; }
-            set { crowdRepositoryPath = value; }
+            get { return _dataDirectory; }
+            set
+            {
+                _dataDirectory = value;
+                _inMemoryCrowds = new List<CrowdModel>();
+            }
         }
 
-        private string crowdsFolderPath;
-        public string CrowdsFolderPath
+        private List<CrowdModel> _inMemoryCrowds;
+
+        private string ActiveCrowdListPath
         {
-            get { return crowdsFolderPath; }
-            set { crowdsFolderPath = value; }
+            get { return Path.Combine(_dataDirectory, "active-crowds.json"); }
         }
 
-        private bool IsFolderMode
+        private List<string> ReadActiveCrowdList()
         {
-            get { return !string.IsNullOrEmpty(crowdsFolderPath); }
-        }
-
-        private string CachePath { get { return crowdRepositoryPath + ".cache"; } }
-
-        private bool IsCacheFresh()
-        {
+            if (!File.Exists(ActiveCrowdListPath))
+                return new List<string>();
             try
             {
-                return File.Exists(CachePath) &&
-                       File.GetLastWriteTimeUtc(CachePath) >= File.GetLastWriteTimeUtc(crowdRepositoryPath);
+                return Helper.GetDeserializedJSONFromFile<List<string>>(ActiveCrowdListPath)
+                       ?? new List<string>();
             }
-            catch { return false; }
+            catch { return new List<string>(); }
         }
 
-        // ── Folder-mode helpers ───────────────────────────────────────────────
-
-        private List<CrowdModel> LoadAllCrowdsFromFolder()
+        private void WriteActiveCrowdList(List<string> paths)
         {
-            var all = new List<CrowdModel>();
-            if (!Directory.Exists(crowdsFolderPath))
-                return all;
-            foreach (string file in Directory.GetFiles(crowdsFolderPath, "*.data"))
-            {
-                var crowds = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(file);
-                if (crowds != null)
-                    all.AddRange(crowds);
-            }
-            return all;
+            Helper.SerializeObjectAsJSONToFile(ActiveCrowdListPath, paths);
         }
 
-        private void SaveAllCrowdsToFolder(List<CrowdModel> crowdCollection)
+        /// <summary>Adds a crowd to the in-memory aggregate (active-crowds mode).</summary>
+        public void AddCrowd(CrowdModel crowd)
         {
-            if (!Directory.Exists(crowdsFolderPath))
-                Directory.CreateDirectory(crowdsFolderPath);
-
-            var crowdNames = new HashSet<string>(crowdCollection.Select(c => c.Name));
-
-            foreach (var crowd in crowdCollection)
-            {
-                string filePath = Path.Combine(crowdsFolderPath, crowd.Name + ".data");
-                Helper.SerializeObjectAsJSONToFile(filePath, new List<CrowdModel> { crowd });
-            }
-
-            foreach (string file in Directory.GetFiles(crowdsFolderPath, "*.data"))
-            {
-                string name = Path.GetFileNameWithoutExtension(file);
-                if (!crowdNames.Contains(name))
-                    File.Delete(file);
-            }
+            if (_inMemoryCrowds == null) _inMemoryCrowds = new List<CrowdModel>();
+            _inMemoryCrowds.Add(crowd);
         }
 
-        // ── Repository operations ─────────────────────────────────────────────
+        // ── Load Active Crowd Files on Startup ─────────────────────────────────
 
-        private Action<List<CrowdModel>> getCrowdCollectionCompleted;
-        public void GetCrowdCollection(Action<List<CrowdModel>> GetCrowdCollectionCompleted)
+        public void LoadActiveCrowdFiles(Action<IList<CrowdModel>> callback)
         {
-            this.getCrowdCollectionCompleted = GetCrowdCollectionCompleted;
-
             ThreadPool.QueueUserWorkItem(_ =>
             {
-                List<CrowdModel> crowdCollection;
+                List<string> activePaths = ReadActiveCrowdList();
+                var loaded = new List<CrowdModel>();
+                var malformedPaths = new List<string>();
 
-                if (IsFolderMode)
+                foreach (string path in activePaths)
                 {
-                    crowdCollection = LoadAllCrowdsFromFolder();
-                }
-                else
-                {
-                    crowdCollection = null;
+                    if (!File.Exists(path))
+                        continue; // missing file: skip, leave in list for GM action
 
-                    if (IsCacheFresh())
+                    List<CrowdModel> crowds = null;
+                    try { crowds = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(path); }
+                    catch { crowds = null; }
+
+                    if (crowds == null)
                     {
-                        try { crowdCollection = Helper.GetDeserializedJSONFromCacheFile<List<CrowdModel>>(CachePath); }
-                        catch { crowdCollection = null; }
+                        // Malformed file: remove from active list so it is not retried on next startup
+                        malformedPaths.Add(path);
+                        continue;
                     }
 
-                    if (crowdCollection == null)
+                    foreach (CrowdModel crowd in crowds)
                     {
-                        crowdCollection = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(crowdRepositoryPath);
-                        if (crowdCollection == null)
-                            crowdCollection = new List<CrowdModel>();
-                        Helper.SerializeObjectAsCacheFile(CachePath, crowdCollection);
+                        crowd.SourceFilePath = path;
+                        crowd.IsDirty = false;
                     }
-
-                    ThreadPool.QueueUserWorkItem(__ => TakeBackup());
+                    loaded.AddRange(crowds);
                 }
 
-                this.getCrowdCollectionCompleted(crowdCollection);
+                // Persist the cleaned list only when malformed entries were actually removed
+                if (malformedPaths.Count > 0)
+                {
+                    foreach (string bad in malformedPaths)
+                        activePaths.Remove(bad);
+                    WriteActiveCrowdList(activePaths);
+                }
+
+                _inMemoryCrowds = loaded;
+                callback(loaded);
             });
         }
 
-        private object lockObj = new object();
+        // ── Browse and Activate ────────────────────────────────────────────────
 
-        private Action saveCrowdCollectionCompleted;
-        public void SaveCrowdCollection(Action SaveCrowdCollectionCompleted, List<CrowdModel> crowdCollection)
+        public void BrowseAndActivate(string[] selectedPaths, Action<IList<CrowdModel>> callback)
         {
-            this.saveCrowdCollectionCompleted = SaveCrowdCollectionCompleted;
-
             ThreadPool.QueueUserWorkItem(_ =>
             {
-                lock (lockObj)
+                List<string> activeList = ReadActiveCrowdList();
+                var newlyLoaded = new List<CrowdModel>();
+
+                foreach (string path in selectedPaths)
                 {
-                    if (IsFolderMode)
+                    if (activeList.Contains(path, StringComparer.OrdinalIgnoreCase))
                     {
-                        SaveAllCrowdsToFolder(crowdCollection);
+                        CrowdModel clone = CloneActiveCrowdFile(path, activeList);
+                        if (clone != null)
+                        {
+                            newlyLoaded.Add(clone);
+                            if (_inMemoryCrowds != null) _inMemoryCrowds.Add(clone);
+                        }
                     }
                     else
                     {
-                        Helper.SerializeObjectAsJSONToFile(crowdRepositoryPath, crowdCollection);
-                        Helper.SerializeObjectAsCacheFile(CachePath, crowdCollection);
+                        List<CrowdModel> crowds = null;
+                        try { crowds = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(path); }
+                        catch { crowds = null; }
+
+                        if (crowds == null) continue;
+
+                        foreach (CrowdModel crowd in crowds)
+                        {
+                            crowd.SourceFilePath = path;
+                            crowd.IsDirty = false;
+                        }
+                        newlyLoaded.AddRange(crowds);
+                        if (_inMemoryCrowds != null) _inMemoryCrowds.AddRange(crowds);
+                        activeList.Add(path);
                     }
-                    this.saveCrowdCollectionCompleted();
                 }
+
+                WriteActiveCrowdList(activeList);
+                callback(newlyLoaded);
             });
         }
 
-        public void WaitCompletion()
+        private CrowdModel CloneActiveCrowdFile(string originalPath, List<string> activeList)
         {
-            WaitHandle.WaitAll(events.ToArray());
+            List<CrowdModel> original = null;
+            try { original = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(originalPath); }
+            catch { return null; }
+            if (original == null || original.Count == 0) return null;
+
+            string dir = Path.GetDirectoryName(originalPath);
+            string stem = Path.GetFileNameWithoutExtension(originalPath);
+            string ext = Path.GetExtension(originalPath);
+
+            // Find lowest available integer suffix
+            int n = 2;
+            while (true)
+            {
+                string candidate = Path.Combine(dir, stem + " (" + n + ")" + ext);
+                if (!File.Exists(candidate) && !activeList.Contains(candidate, StringComparer.OrdinalIgnoreCase))
+                    break;
+                n++;
+            }
+
+            string clonePath = Path.Combine(dir, stem + " (" + n + ")" + ext);
+            var cloned = new List<CrowdModel>();
+            foreach (CrowdModel c in original)
+            {
+                List<CrowdModel> reloaded = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(originalPath);
+                CrowdModel copy = reloaded != null ? reloaded.FirstOrDefault(x => x.Name == c.Name) : null;
+                if (copy == null) continue;
+                copy.Name = copy.Name + " (" + n + ")"; // suffix only top-level name
+                copy.SourceFilePath = clonePath;
+                copy.IsDirty = false;
+                cloned.Add(copy);
+            }
+
+            Helper.SerializeObjectAsJSONToFile(clonePath, cloned);
+            activeList.Add(clonePath);
+            return cloned.FirstOrDefault();
+        }
+
+        // ── Save Dirty Crowds ──────────────────────────────────────────────────
+
+        public void SaveDirtyCrowds(Action<SaveSummary> callback)
+        {
+            ThreadPool.QueueUserWorkItem(_ =>
+            {
+                var summary = new SaveSummary();
+                if (_inMemoryCrowds == null) { callback(summary); return; }
+
+                foreach (CrowdModel crowd in _inMemoryCrowds.ToList())
+                {
+                    if (!IsDeepDirty(crowd))
+                    {
+                        summary.SkippedCount++;
+                        continue;
+                    }
+
+                    if (string.IsNullOrEmpty(crowd.SourceFilePath))
+                    {
+                        summary.CrowdsNeedingNewFile.Add(crowd);
+                        continue;
+                    }
+
+                    try
+                    {
+                        WriteDailyBackup(crowd.SourceFilePath);
+                        var payload = new List<CrowdModel> { crowd };
+                        Helper.SerializeObjectAsJSONToFile(crowd.SourceFilePath, payload);
+                        crowd.IsDirty = false;
+                        ClearDeepDirty(crowd);
+                        summary.SavedCount++;
+                    }
+                    catch
+                    {
+                        summary.FailedCount++;
+                        summary.FailedPaths.Add(crowd.SourceFilePath);
+                    }
+                }
+
+                callback(summary);
+            });
+        }
+
+        private static bool IsDeepDirty(CrowdModel crowd)
+        {
+            if (crowd.IsDirty) return true;
+            return crowd.CrowdMemberCollection.OfType<CrowdModel>().Any(IsDeepDirty);
+        }
+
+        private static void ClearDeepDirty(CrowdModel crowd)
+        {
+            crowd.IsDirty = false;
+            foreach (CrowdModel nested in crowd.CrowdMemberCollection.OfType<CrowdModel>())
+                ClearDeepDirty(nested);
+        }
+
+        private static void WriteDailyBackup(string filePath)
+        {
+            if (!File.Exists(filePath)) return;
+            string dir = Path.GetDirectoryName(filePath);
+            string stem = Path.GetFileNameWithoutExtension(filePath);
+            string today = DateTime.Today.ToString("yyyyMMdd");
+            string backupPath = Path.Combine(dir, string.Format("{0}.{1}.bak", stem, today));
+            if (!File.Exists(backupPath))
+                File.Copy(filePath, backupPath);
+        }
+
+        // ── Save Crowd to New File ─────────────────────────────────────────────
+
+        public void SaveCrowdToNewFile(CrowdModel crowd, string filePath, Action onSaved,
+            Action onRejected = null)
+        {
+            ThreadPool.QueueUserWorkItem(_ =>
+            {
+                // Reject nested crowds — only reference-equal top-level crowds are accepted
+                bool isTopLevel = _inMemoryCrowds != null &&
+                                  _inMemoryCrowds.Contains(crowd);
+                if (!isTopLevel)
+                {
+                    if (onRejected != null) onRejected();
+                    if (onSaved != null) onSaved();
+                    return;
+                }
+
+                var payload = new List<CrowdModel> { crowd };
+                Helper.SerializeObjectAsJSONToFile(filePath, payload);
+
+                string oldSource = crowd.SourceFilePath;
+                crowd.SourceFilePath = filePath;
+                crowd.IsDirty = false;
+                ClearDeepDirty(crowd);
+
+                // Update active crowd list: remove old path (if any), add new path
+                List<string> activeList = ReadActiveCrowdList();
+                if (!string.IsNullOrEmpty(oldSource))
+                    activeList.Remove(oldSource);
+                if (!activeList.Contains(filePath, StringComparer.OrdinalIgnoreCase))
+                    activeList.Add(filePath);
+                WriteActiveCrowdList(activeList);
+
+                if (onSaved != null) onSaved();
+            });
+        }
+
+        // ── ICrowdRepository — not used in active-crowds mode ─────────────────
+
+        public string CrowdRepositoryPath { get { return null; } set { } }
+        public string CrowdsFolderPath { get { return null; } set { } }
+
+        // ── Repository operations ─────────────────────────────────────────────
+
+        public void GetCrowdCollection(Action<List<CrowdModel>> GetCrowdCollectionCompleted)
+        {
+            LoadActiveCrowdFiles(loaded => GetCrowdCollectionCompleted(new List<CrowdModel>(loaded)));
+        }
+
+        public void SaveCrowdCollection(Action SaveCrowdCollectionCompleted, List<CrowdModel> crowdCollection)
+        {
+            SaveDirtyCrowds(_ => SaveCrowdCollectionCompleted());
         }
 
         public CrowdRepository()
         {
-            crowdRepositoryPath = Path.Combine(Settings.Default.CityOfHeroesGameDirectory, Constants.GAME_DATA_FOLDERNAME, Constants.GAME_CROWD_REPOSITORY_FILENAME);
-            crowdsFolderPath = Path.Combine(Settings.Default.CityOfHeroesGameDirectory, Constants.GAME_DATA_FOLDERNAME, Constants.GAME_CROWDS_FOLDERNAME);
-            mutexes = new List<Mutex>();
-            events = new List<AutoResetEvent>();
-        }
-
-        private void TakeBackup()
-        {
-            string backupDir = Path.Combine(Module.Shared.Settings.Default.CityOfHeroesGameDirectory, Constants.GAME_DATA_FOLDERNAME, Constants.GAME_DATA_BACKUP_FOLDERNAME);
-            if (!Directory.Exists(backupDir))
-                Directory.CreateDirectory(backupDir);
-            string backupFilePath = Path.Combine(backupDir, "CrowdRepository_Backup" + String.Format("{0:MMddyyyy}", DateTime.Today) + ".data");
-            if(!File.Exists(backupFilePath))
-            {
-                File.Copy(crowdRepositoryPath, backupFilePath, true);
-            }
-
+            DataDirectory = Path.Combine(Settings.Default.CityOfHeroesGameDirectory, Constants.GAME_DATA_FOLDERNAME);
         }
 
         public List<CrowdModel> LoadDefaultCrowdMembers()

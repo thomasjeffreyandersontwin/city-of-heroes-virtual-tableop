@@ -190,6 +190,7 @@ namespace Module.HeroVirtualTabletop.Library.Utility
             catch (Exception)
             {
                 try { if (File.Exists(tempFile)) File.Delete(tempFile); } catch { }
+                throw;
             }
         }
 

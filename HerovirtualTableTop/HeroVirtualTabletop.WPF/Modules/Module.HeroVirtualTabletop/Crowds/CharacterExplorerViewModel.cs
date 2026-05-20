@@ -297,6 +297,7 @@ namespace Module.HeroVirtualTabletop.Crowds
         public DelegateCommand<object> RemoveAllActionsCommand { get; private set; }
         public DelegateCommand<object> CheckRosterConsistencyCommand { get; private set; }
         public DelegateCommand MigrateRepositoryCommand { get; private set; }
+        public DelegateCommand BrowseCrowdFilesCommand { get; private set; }
 
         #endregion
 
@@ -334,6 +335,7 @@ namespace Module.HeroVirtualTabletop.Crowds
         {
             this.LoadCrowdCollectionCommand = new DelegateCommand<object>(this.LoadCrowdCollection);
             this.CheckRosterConsistencyCommand = new DelegateCommand<object>(this.CheckRosterConsistency);
+            this.BrowseCrowdFilesCommand = new DelegateCommand(this.BrowseCrowdFiles);
             this.AddCrowdCommand = new DelegateCommand<object>(this.AddCrowd);
             this.AddCharacterCommand = new DelegateCommand<object>(this.AddCharacter);
             this.SaveCommand = new DelegateCommand<object>(this.SaveCrowdCollection);
@@ -551,6 +553,41 @@ namespace Module.HeroVirtualTabletop.Crowds
             {
 
             }         
+        }
+
+        private void BrowseCrowdFiles()
+        {
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.Title = "Open Crowd File(s)";
+            dialog.Filter = "Crowd files (*.data)|*.data|All files (*.*)|*.*";
+            dialog.Multiselect = true;
+            string crowdsFolder = System.IO.Path.Combine(Module.Shared.Settings.Default.CityOfHeroesGameDirectory, Module.Shared.Constants.GAME_DATA_FOLDERNAME, Module.Shared.Constants.GAME_CROWDS_FOLDERNAME);
+            if (System.IO.Directory.Exists(crowdsFolder))
+                dialog.InitialDirectory = crowdsFolder;
+            bool? result = dialog.ShowDialog();
+            if (result != true || dialog.FileNames.Length == 0)
+                return;
+
+            this.BusyService.ShowBusy(new string[] { containerWindowName });
+            var repository = this.crowdRepository as Module.HeroVirtualTabletop.Crowds.CrowdRepository;
+            if (repository == null)
+            {
+                this.BusyService.HideBusy();
+                return;
+            }
+
+            repository.BrowseAndActivate(dialog.FileNames, newCrowds =>
+            {
+                Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    foreach (CrowdModel crowd in newCrowds)
+                    {
+                        if (this.CrowdCollection != null && !this.CrowdCollection.Contains(crowd))
+                            this.CrowdCollection.Add(crowd);
+                    }
+                    this.BusyService.HideBusy();
+                }));
+            });
         }
 
         private async void CheckRosterConsistency(object state)

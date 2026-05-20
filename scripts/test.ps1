@@ -2,7 +2,7 @@ $root = Split-Path $PSScriptRoot -Parent
 $wpf = "$root\HerovirtualTableTop\HeroVirtualTabletop.WPF"
 $msbuild = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"
 $slnDir = "$wpf\"
-$runner = "c:\hero-desktop\test-runner\runner.exe"
+$runner = "$root\test-runner\runner.exe"
 $testDll = "$wpf\Modules\Module.UnitTest\bin\Debug\Module.UnitTest.dll"
 $results = "c:\hero-desktop\test-results-full.txt"
 

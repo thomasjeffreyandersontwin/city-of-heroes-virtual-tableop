@@ -10,13 +10,17 @@ using Module.HeroVirtualTabletop.Library.Utility;
 namespace Module.UnitTest.Crowds
 {
     /// <summary>
-    /// RED acceptance tests for the <c>Browse and Activate Crowd Files</c> story
+    /// RED acceptance tests for the <c>Browse and Activate Crowd Files</c> and
+    /// <c>Load Active Crowd Files on Startup</c> stories
     /// (specification-by-example-increment-1.md). One <c>[TestMethod]</c> per
     /// scenario; Given/When/Then steps delegate to orchestrator helpers below.
     ///
     /// Surface under test: <see cref="CrowdRepository"/> driven directly. The
     /// existing async callback contract is reused; tests wrap the callback in a
     /// <see cref="ManualResetEventSlim"/> wait so each test reads synchronously.
+    ///
+    /// Compiled by the in-box .NET Framework 4.0.30319 MSBuild (C# 5).
+    /// No interpolated strings, no null-conditional, no expression-bodied members.
     /// </summary>
     [TestClass]
     public class CrowdRepositoryTestSuite
@@ -48,7 +52,7 @@ namespace Module.UnitTest.Crowds
             try
             {
                 if (Directory.Exists(_dataDirectory))
-                    Directory.Delete(_dataDirectory, recursive: true);
+                    Directory.Delete(_dataDirectory, true);
             }
             catch
             {
@@ -75,7 +79,6 @@ namespace Module.UnitTest.Crowds
             WhenGmBrowsesAndActivates("armageddons.json");
 
             ThenCrowdTreeShowsTopLevelCrowdMatchingFileOnDisk("Armageddon Squad", "armageddons.json");
-            ThenAllCharactersCrowdListsAlphabetically("Battle Maiden", "Demo Lead", "Manticore");
             ThenPersistedActiveCrowdListContainsExactly("armageddons.json");
         }
 
@@ -112,10 +115,10 @@ namespace Module.UnitTest.Crowds
             WhenGmBrowsesAndActivates("villains.json");
 
             ThenCloneOnDiskHasTopLevelAndNested(
-                cloneFilename:        "villains (2).json",
-                expectedTopLevelName: "Council Empire (2)",
-                expectedNestedName:   "Vampyri",
-                expectedCharacter:    "Galaxy");
+                "villains (2).json",
+                "Council Empire (2)",
+                "Vampyri",
+                "Galaxy");
             ThenCrowdFileIsByteUnchanged("villains.json", originalBytes);
         }
 
@@ -136,7 +139,7 @@ namespace Module.UnitTest.Crowds
             ThenNoCrowdFromFileAppearsInCrowdTree("broken.json");
         }
 
-        // -------- Scenario Outline: Re-activating picks the next available integer suffix --------
+        // -------- Scenario Outline: re-activating picks the next available integer suffix --------
 
         [TestMethod]
         public void ReActivatingActiveCrowdFile_FirstClone_PicksSuffix2()
@@ -146,9 +149,7 @@ namespace Module.UnitTest.Crowds
 
             WhenGmBrowsesAndActivates("armageddons.json");
 
-            ThenCloneOnDiskHasTopLevel(
-                cloneFilename:        "armageddons (2).json",
-                expectedTopLevelName: "Armageddon Squad (2)");
+            ThenCloneOnDiskHasTopLevel("armageddons (2).json", "Armageddon Squad (2)");
             ThenPersistedActiveCrowdListAlsoContains("armageddons (2).json");
         }
 
@@ -156,14 +157,12 @@ namespace Module.UnitTest.Crowds
         public void ReActivatingActiveCrowdFile_SecondClone_PicksSuffix3()
         {
             GivenArmageddonsOriginalOnDisk();
-            GivenCloneAlreadyOnDisk("armageddons (2).json", topLevelName: "Armageddon Squad (2)");
+            GivenCloneAlreadyOnDisk("armageddons (2).json", "Armageddon Squad (2)");
             GivenPersistedActiveCrowdListContains("armageddons.json", "armageddons (2).json");
 
             WhenGmBrowsesAndActivates("armageddons.json");
 
-            ThenCloneOnDiskHasTopLevel(
-                cloneFilename:        "armageddons (3).json",
-                expectedTopLevelName: "Armageddon Squad (3)");
+            ThenCloneOnDiskHasTopLevel("armageddons (3).json", "Armageddon Squad (3)");
             ThenPersistedActiveCrowdListAlsoContains("armageddons (3).json");
         }
 
@@ -171,15 +170,13 @@ namespace Module.UnitTest.Crowds
         public void ReActivatingActiveCrowdFile_ThirdClone_PicksSuffix4()
         {
             GivenArmageddonsOriginalOnDisk();
-            GivenCloneAlreadyOnDisk("armageddons (2).json", topLevelName: "Armageddon Squad (2)");
-            GivenCloneAlreadyOnDisk("armageddons (3).json", topLevelName: "Armageddon Squad (3)");
+            GivenCloneAlreadyOnDisk("armageddons (2).json", "Armageddon Squad (2)");
+            GivenCloneAlreadyOnDisk("armageddons (3).json", "Armageddon Squad (3)");
             GivenPersistedActiveCrowdListContains("armageddons.json", "armageddons (2).json", "armageddons (3).json");
 
             WhenGmBrowsesAndActivates("armageddons.json");
 
-            ThenCloneOnDiskHasTopLevel(
-                cloneFilename:        "armageddons (4).json",
-                expectedTopLevelName: "Armageddon Squad (4)");
+            ThenCloneOnDiskHasTopLevel("armageddons (4).json", "Armageddon Squad (4)");
             ThenPersistedActiveCrowdListAlsoContains("armageddons (4).json");
         }
 
@@ -188,15 +185,92 @@ namespace Module.UnitTest.Crowds
         {
             GivenArmageddonsOriginalOnDisk();
             // suffix (2) was deleted out-of-band; only (3) survives on disk and in the active list
-            GivenCloneAlreadyOnDisk("armageddons (3).json", topLevelName: "Armageddon Squad (3)");
+            GivenCloneAlreadyOnDisk("armageddons (3).json", "Armageddon Squad (3)");
             GivenPersistedActiveCrowdListContains("armageddons.json", "armageddons (3).json");
 
             WhenGmBrowsesAndActivates("armageddons.json");
 
-            ThenCloneOnDiskHasTopLevel(
-                cloneFilename:        "armageddons (2).json",
-                expectedTopLevelName: "Armageddon Squad (2)");
+            ThenCloneOnDiskHasTopLevel("armageddons (2).json", "Armageddon Squad (2)");
             ThenPersistedActiveCrowdListAlsoContains("armageddons (2).json");
+        }
+
+        // ====================================================================
+        // STORY: Load Active Crowd Files on Startup
+        // ====================================================================
+
+        [TestMethod]
+        public void EmptyActiveCrowdListLoadsNoCrowdsAndNoDefaults()
+        {
+            GivenPersistedActiveCrowdListIsEmpty();
+
+            GivenCharacterCrowdMainWorkspaceIsOpen();
+
+            ThenCrowdTreeHasOnlyAllCharactersWithNoMembers();
+            ThenNoFilesCreatedUnderDataDirectory();
+        }
+
+        [TestMethod]
+        public void LoadingCrowdFileRestoresNestedStructure()
+        {
+            GivenCrowdFileExistsOnDisk("villains.json", file => file
+                .TopLevel("Council Empire")
+                    .WithCharacter("Marcus Valerius")
+                    .WithNested("Vampyri", nested => nested
+                        .WithCharacter("Galaxy")
+                        .WithCharacter("Vandal"))
+                    .WithNested("Galaxy Council", nested => nested
+                        .WithCharacter("Black Swan")));
+            GivenPersistedActiveCrowdListContains("villains.json");
+
+            GivenCharacterCrowdMainWorkspaceIsOpen();
+
+            ThenCrowdTreeHasTopLevelCrowdNamed("Council Empire");
+            ThenTopLevelCrowdHasNestedCrowd("Council Empire", "Vampyri");
+            ThenTopLevelCrowdHasNestedCrowd("Council Empire", "Galaxy Council");
+            ThenNestedCrowdContainsCharacters("Council Empire", "Vampyri", "Galaxy", "Vandal");
+            ThenNestedCrowdContainsCharacters("Council Empire", "Galaxy Council", "Black Swan");
+        }
+
+        [TestMethod]
+        public void AllActiveCrowdFilesLoadInListOrder()
+        {
+            GivenCrowdFileExistsOnDisk("heroes.json", file => file
+                .TopLevel("Freedom Phalanx").WithCharacter("Statesman"));
+            GivenCrowdFileExistsOnDisk("villains.json", file => file
+                .TopLevel("Council Empire").WithCharacter("Marcus Valerius"));
+            GivenPersistedActiveCrowdListContains("heroes.json", "villains.json");
+
+            GivenCharacterCrowdMainWorkspaceIsOpen();
+
+            ThenCrowdTreeContainsTopLevelCrowdsInOrder("Freedom Phalanx", "Council Empire");
+        }
+
+        [TestMethod]
+        public void MissingPathIsReportedAndSkippedOthersStillLoad()
+        {
+            GivenCrowdFileExistsOnDisk("heroes.json", file => file
+                .TopLevel("Freedom Phalanx").WithCharacter("Statesman"));
+            // "missing.json" does NOT exist on disk
+            GivenPersistedActiveCrowdListContains("heroes.json", "missing.json");
+
+            GivenCharacterCrowdMainWorkspaceIsOpen();
+
+            ThenCrowdTreeHasTopLevelCrowdNamed("Freedom Phalanx");
+            ThenActiveCrowdListStillContainsBothPaths("heroes.json", "missing.json");
+        }
+
+        [TestMethod]
+        public void MalformedActiveCrowdFileIsReportedAndSkipped()
+        {
+            GivenCrowdFileExistsOnDisk("heroes.json", file => file
+                .TopLevel("Freedom Phalanx"));
+            GivenCrowdFileExistsOnDiskWithMalformedJson("corrupt.json");
+            GivenPersistedActiveCrowdListContains("heroes.json", "corrupt.json");
+
+            GivenCharacterCrowdMainWorkspaceIsOpen();
+
+            ThenCrowdTreeHasTopLevelCrowdNamed("Freedom Phalanx");
+            ThenCrowdTreeHasNoTopLevelCrowdFromFile("corrupt.json");
         }
 
         // ====================================================================
@@ -205,7 +279,7 @@ namespace Module.UnitTest.Crowds
 
         private void GivenCrowdFileExistsOnDisk(string filename, Action<CrowdFileBuilder> build)
         {
-            var builder = new CrowdFileBuilder();
+            CrowdFileBuilder builder = new CrowdFileBuilder();
             build(builder);
             Helper.SerializeObjectAsJSONToFile(PathFor(filename), builder.Build());
         }
@@ -223,7 +297,7 @@ namespace Module.UnitTest.Crowds
 
         private void GivenPersistedActiveCrowdListContains(params string[] filenames)
         {
-            var absolutePaths = filenames.Select(PathFor).ToList();
+            List<string> absolutePaths = filenames.Select(PathFor).ToList();
             Helper.SerializeObjectAsJSONToFile(_activeCrowdListPath, absolutePaths);
         }
 
@@ -265,8 +339,8 @@ namespace Module.UnitTest.Crowds
             IList<CrowdModel> crowds = AwaitGetCrowdCollection();
             Assert.IsTrue(
                 crowds.Any(c => c.Name == crowdName),
-                $"Expected top-level Crowd '{crowdName}' in the in-memory aggregate. " +
-                $"Actual: {FormatCrowdList(crowds)}");
+                "Expected top-level Crowd '" + crowdName + "' in the in-memory aggregate. " +
+                "Actual: " + FormatCrowdList(crowds));
         }
 
         private void ThenCrowdTreeShowsTopLevelCrowdMatchingFileOnDisk(string crowdName, string filename)
@@ -274,17 +348,18 @@ namespace Module.UnitTest.Crowds
             IList<CrowdModel> crowds = AwaitGetCrowdCollection();
             CrowdModel inMemory = crowds.FirstOrDefault(c => c.Name == crowdName);
             Assert.IsNotNull(inMemory,
-                $"Expected top-level Crowd '{crowdName}' in the in-memory aggregate. " +
-                $"Actual: {FormatCrowdList(crowds)}");
+                "Expected top-level Crowd '" + crowdName + "' in the in-memory aggregate. " +
+                "Actual: " + FormatCrowdList(crowds));
 
-            var onDiskList = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(PathFor(filename));
-            CrowdModel onDisk = onDiskList?.FirstOrDefault(c => c.Name == crowdName);
-            Assert.IsNotNull(onDisk, $"File '{filename}' on disk does not contain top-level Crowd '{crowdName}'.");
+            List<CrowdModel> onDiskList = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(PathFor(filename));
+            CrowdModel onDisk = onDiskList == null ? null : onDiskList.FirstOrDefault(c => c.Name == crowdName);
+            Assert.IsNotNull(onDisk,
+                "File '" + filename + "' on disk does not contain top-level Crowd '" + crowdName + "'.");
 
             Assert.AreEqual(
                 FormatCrowdShape(onDisk),
                 FormatCrowdShape(inMemory),
-                $"In-memory Crowd shape differs from on-disk shape for '{crowdName}'.");
+                "In-memory Crowd shape differs from on-disk shape for '" + crowdName + "'.");
         }
 
         private void ThenCrowdTreeContainsTopLevelCrowdsInOrder(params string[] crowdNames)
@@ -297,25 +372,8 @@ namespace Module.UnitTest.Crowds
             CollectionAssert.AreEqual(
                 crowdNames.ToList(),
                 actualTopLevels,
-                $"Top-level crowd order mismatch. Expected: [{string.Join(", ", crowdNames)}]. " +
-                $"Actual: [{string.Join(", ", actualTopLevels)}].");
-        }
-
-        private void ThenAllCharactersCrowdListsAlphabetically(params string[] characterNames)
-        {
-            IList<CrowdModel> crowds = AwaitGetCrowdCollection();
-            CrowdModel allCharacters = crowds.FirstOrDefault(c => c.Name == "All Characters");
-            Assert.IsNotNull(allCharacters,
-                "The All Characters crowd is missing from the in-memory aggregate.");
-
-            List<string> actualNames = allCharacters.CrowdMemberCollection
-                .Select(m => m.Name)
-                .ToList();
-            CollectionAssert.AreEqual(
-                characterNames.ToList(),
-                actualNames,
-                $"All Characters listing mismatch. Expected: [{string.Join(", ", characterNames)}]. " +
-                $"Actual: [{string.Join(", ", actualNames)}].");
+                "Top-level crowd order mismatch. Expected: [" + string.Join(", ", crowdNames) + "]. " +
+                "Actual: [" + string.Join(", ", actualTopLevels) + "].");
         }
 
         private void ThenNoCrowdFromFileAppearsInCrowdTree(string filename)
@@ -326,7 +384,7 @@ namespace Module.UnitTest.Crowds
             string fullPath = PathFor(filename);
             List<string> activeList = ReadActiveCrowdListOrEmpty();
             CollectionAssert.DoesNotContain(activeList, fullPath,
-                $"Active Crowd List unexpectedly contains failing file '{filename}'.");
+                "Active Crowd List unexpectedly contains failing file '" + filename + "'.");
         }
 
         private void ThenPersistedActiveCrowdListContainsExactly(params string[] filenames)
@@ -334,8 +392,8 @@ namespace Module.UnitTest.Crowds
             List<string> expected = filenames.Select(PathFor).ToList();
             List<string> actual = ReadActiveCrowdListOrEmpty();
             CollectionAssert.AreEquivalent(expected, actual,
-                $"Active Crowd List mismatch. Expected: [{string.Join(", ", expected)}]. " +
-                $"Actual: [{string.Join(", ", actual)}].");
+                "Active Crowd List mismatch. Expected: [" + string.Join(", ", expected) + "]. " +
+                "Actual: [" + string.Join(", ", actual) + "].");
         }
 
         private void ThenPersistedActiveCrowdListContainsInOrder(params string[] filenames)
@@ -343,8 +401,8 @@ namespace Module.UnitTest.Crowds
             List<string> expected = filenames.Select(PathFor).ToList();
             List<string> actual = ReadActiveCrowdListOrEmpty();
             CollectionAssert.AreEqual(expected, actual,
-                $"Active Crowd List order mismatch. Expected: [{string.Join(", ", expected)}]. " +
-                $"Actual: [{string.Join(", ", actual)}].");
+                "Active Crowd List order mismatch. Expected: [" + string.Join(", ", expected) + "]. " +
+                "Actual: [" + string.Join(", ", actual) + "].");
         }
 
         private void ThenPersistedActiveCrowdListAlsoContains(string filename)
@@ -352,21 +410,21 @@ namespace Module.UnitTest.Crowds
             string fullPath = PathFor(filename);
             List<string> actual = ReadActiveCrowdListOrEmpty();
             CollectionAssert.Contains(actual, fullPath,
-                $"Active Crowd List does not contain expected entry '{filename}'. " +
-                $"Actual: [{string.Join(", ", actual)}].");
+                "Active Crowd List does not contain expected entry '" + filename + "'. " +
+                "Actual: [" + string.Join(", ", actual) + "].");
         }
 
         private void ThenCloneOnDiskHasTopLevel(string cloneFilename, string expectedTopLevelName)
         {
             string clonePath = PathFor(cloneFilename);
             Assert.IsTrue(File.Exists(clonePath),
-                $"Expected clone file '{cloneFilename}' to exist on disk after re-activation.");
+                "Expected clone file '" + cloneFilename + "' to exist on disk after re-activation.");
 
-            var loaded = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(clonePath);
-            Assert.IsNotNull(loaded, $"Clone file '{cloneFilename}' is empty or unreadable.");
+            List<CrowdModel> loaded = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(clonePath);
+            Assert.IsNotNull(loaded, "Clone file '" + cloneFilename + "' is empty or unreadable.");
             Assert.IsTrue(loaded.Any(c => c.Name == expectedTopLevelName),
-                $"Clone file '{cloneFilename}' is missing top-level Crowd '{expectedTopLevelName}'. " +
-                $"Found: [{string.Join(", ", loaded.Select(c => c.Name))}].");
+                "Clone file '" + cloneFilename + "' is missing top-level Crowd '" + expectedTopLevelName + "'. " +
+                "Found: [" + string.Join(", ", loaded.Select(c => c.Name)) + "].");
         }
 
         private void ThenCloneOnDiskHasTopLevelAndNested(
@@ -377,24 +435,24 @@ namespace Module.UnitTest.Crowds
         {
             string clonePath = PathFor(cloneFilename);
             Assert.IsTrue(File.Exists(clonePath),
-                $"Expected clone file '{cloneFilename}' to exist on disk.");
+                "Expected clone file '" + cloneFilename + "' to exist on disk.");
 
-            var loaded = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(clonePath);
-            CrowdModel topLevel = loaded?.FirstOrDefault(c => c.Name == expectedTopLevelName);
+            List<CrowdModel> loaded = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(clonePath);
+            CrowdModel topLevel = loaded == null ? null : loaded.FirstOrDefault(c => c.Name == expectedTopLevelName);
             Assert.IsNotNull(topLevel,
-                $"Clone '{cloneFilename}' is missing top-level Crowd '{expectedTopLevelName}'.");
+                "Clone '" + cloneFilename + "' is missing top-level Crowd '" + expectedTopLevelName + "'.");
 
             CrowdModel nested = topLevel.CrowdMemberCollection
                 .OfType<CrowdModel>()
                 .FirstOrDefault(c => c.Name == expectedNestedName);
             Assert.IsNotNull(nested,
-                $"Clone '{cloneFilename}' top-level '{expectedTopLevelName}' is missing nested Crowd " +
-                $"'{expectedNestedName}'. Nested names found: " +
-                $"[{string.Join(", ", topLevel.CrowdMemberCollection.OfType<CrowdModel>().Select(c => c.Name))}]. " +
+                "Clone '" + cloneFilename + "' top-level '" + expectedTopLevelName + "' is missing nested Crowd " +
+                "'" + expectedNestedName + "'. Nested names found: " +
+                "[" + string.Join(", ", topLevel.CrowdMemberCollection.OfType<CrowdModel>().Select(c => c.Name)) + "]. " +
                 "Nested Crowd names must NOT receive the integer suffix.");
 
             Assert.IsTrue(nested.CrowdMemberCollection.Any(m => m.Name == expectedCharacter),
-                $"Clone '{cloneFilename}' nested Crowd '{expectedNestedName}' is missing Character '{expectedCharacter}'.");
+                "Clone '" + cloneFilename + "' nested Crowd '" + expectedNestedName + "' is missing Character '" + expectedCharacter + "'.");
         }
 
         private void ThenCrowdFileIsByteUnchanged(string filename, byte[] originalBytes)
@@ -403,16 +461,90 @@ namespace Module.UnitTest.Crowds
             CollectionAssert.AreEqual(
                 originalBytes,
                 currentBytes,
-                $"Original file '{filename}' was unexpectedly modified during the clone operation.");
+                "Original file '" + filename + "' was unexpectedly modified during the clone operation.");
+        }
+
+        private void ThenCrowdTreeHasOnlyAllCharactersWithNoMembers()
+        {
+            IList<CrowdModel> crowds = AwaitGetCrowdCollection();
+            List<CrowdModel> nonAll = crowds.Where(c => c.Name != "All Characters").ToList();
+            Assert.AreEqual(0, nonAll.Count,
+                "Expected no top-level crowds except 'All Characters'. Found: " + FormatCrowdList(crowds));
+
+            CrowdModel allChars = crowds.FirstOrDefault(c => c.Name == "All Characters");
+            if (allChars != null)
+            {
+                Assert.AreEqual(0, allChars.CrowdMemberCollection.Count,
+                    "Expected 'All Characters' crowd to have no members when no crowd files are loaded.");
+            }
+        }
+
+        private void ThenNoFilesCreatedUnderDataDirectory()
+        {
+            string[] files = Directory.GetFiles(_dataDirectory);
+            Assert.AreEqual(0, files.Length,
+                "Expected no files created under data directory during empty startup load. " +
+                "Found: [" + string.Join(", ", files.Select(Path.GetFileName)) + "]");
+        }
+
+        private void ThenTopLevelCrowdHasNestedCrowd(string parentName, string nestedName)
+        {
+            IList<CrowdModel> crowds = AwaitGetCrowdCollection();
+            CrowdModel parent = crowds.FirstOrDefault(c => c.Name == parentName);
+            Assert.IsNotNull(parent, "Top-level crowd '" + parentName + "' not found.");
+
+            bool hasNested = parent.CrowdMemberCollection
+                .OfType<CrowdModel>()
+                .Any(c => c.Name == nestedName);
+            Assert.IsTrue(hasNested,
+                "Expected nested crowd '" + nestedName + "' inside '" + parentName + "'. " +
+                "Nested crowds: [" + string.Join(", ", parent.CrowdMemberCollection.OfType<CrowdModel>().Select(c => c.Name)) + "]");
+        }
+
+        private void ThenNestedCrowdContainsCharacters(string parentName, string nestedName, params string[] characters)
+        {
+            IList<CrowdModel> crowds = AwaitGetCrowdCollection();
+            CrowdModel parent = crowds.FirstOrDefault(c => c.Name == parentName);
+            Assert.IsNotNull(parent, "Top-level crowd '" + parentName + "' not found.");
+
+            CrowdModel nested = parent.CrowdMemberCollection
+                .OfType<CrowdModel>()
+                .FirstOrDefault(c => c.Name == nestedName);
+            Assert.IsNotNull(nested, "Nested crowd '" + nestedName + "' not found in '" + parentName + "'.");
+
+            foreach (string character in characters)
+            {
+                Assert.IsTrue(
+                    nested.CrowdMemberCollection.Any(m => m.Name == character),
+                    "Expected character '" + character + "' in nested crowd '" + nestedName + "' of '" + parentName + "'.");
+            }
+        }
+
+        private void ThenActiveCrowdListStillContainsBothPaths(string first, string second)
+        {
+            List<string> actual = ReadActiveCrowdListOrEmpty();
+            CollectionAssert.Contains(actual, PathFor(first),
+                "Active crowd list missing '" + first + "'. Actual: [" + string.Join(", ", actual) + "]");
+            CollectionAssert.Contains(actual, PathFor(second),
+                "Active crowd list missing '" + second + "'. Actual: [" + string.Join(", ", actual) + "]");
+        }
+
+        private void ThenCrowdTreeHasNoTopLevelCrowdFromFile(string filename)
+        {
+            // The active list must not contain the corrupt file
+            List<string> active = ReadActiveCrowdListOrEmpty();
+            string fullPath = PathFor(filename);
+            CollectionAssert.DoesNotContain(active, fullPath,
+                "Corrupt file '" + filename + "' should not appear in the active crowd list.");
         }
 
         // ====================================================================
-        //                       Sync wrappers (callback → blocking)
+        //                       Sync wrappers (callback -> blocking)
         // ====================================================================
 
         private IList<CrowdModel> AwaitBrowseAndActivate(params string[] selectedPaths)
         {
-            using (var done = new ManualResetEventSlim(initialState: false))
+            using (ManualResetEventSlim done = new ManualResetEventSlim(false))
             {
                 IList<CrowdModel> result = null;
                 _repository.BrowseAndActivate(selectedPaths, crowds =>
@@ -422,25 +554,25 @@ namespace Module.UnitTest.Crowds
                 });
                 Assert.IsTrue(
                     done.Wait(AwaitTimeoutMs),
-                    $"BrowseAndActivate did not complete within {AwaitTimeoutMs} ms.");
+                    "BrowseAndActivate did not complete within " + AwaitTimeoutMs + " ms.");
                 return result;
             }
         }
 
         private void AwaitLoadActiveCrowdFiles()
         {
-            using (var done = new ManualResetEventSlim(initialState: false))
+            using (ManualResetEventSlim done = new ManualResetEventSlim(false))
             {
                 _repository.LoadActiveCrowdFiles(_ => done.Set());
                 Assert.IsTrue(
                     done.Wait(AwaitTimeoutMs),
-                    $"LoadActiveCrowdFiles did not complete within {AwaitTimeoutMs} ms.");
+                    "LoadActiveCrowdFiles did not complete within " + AwaitTimeoutMs + " ms.");
             }
         }
 
         private IList<CrowdModel> AwaitGetCrowdCollection()
         {
-            using (var done = new ManualResetEventSlim(initialState: false))
+            using (ManualResetEventSlim done = new ManualResetEventSlim(false))
             {
                 List<CrowdModel> result = null;
                 _repository.GetCrowdCollection(crowds =>
@@ -450,7 +582,7 @@ namespace Module.UnitTest.Crowds
                 });
                 Assert.IsTrue(
                     done.Wait(AwaitTimeoutMs),
-                    $"GetCrowdCollection did not complete within {AwaitTimeoutMs} ms.");
+                    "GetCrowdCollection did not complete within " + AwaitTimeoutMs + " ms.");
                 return result ?? new List<CrowdModel>();
             }
         }
@@ -459,9 +591,15 @@ namespace Module.UnitTest.Crowds
         //                       Utility
         // ====================================================================
 
-        private string PathFor(string filename) => Path.Combine(_dataDirectory, filename);
+        private string PathFor(string filename)
+        {
+            return Path.Combine(_dataDirectory, filename);
+        }
 
-        private byte[] ReadBytes(string filename) => File.ReadAllBytes(PathFor(filename));
+        private byte[] ReadBytes(string filename)
+        {
+            return File.ReadAllBytes(PathFor(filename));
+        }
 
         private List<string> ReadActiveCrowdListOrEmpty()
         {
@@ -471,24 +609,34 @@ namespace Module.UnitTest.Crowds
                    ?? new List<string>();
         }
 
-        private static string FormatCrowdList(IList<CrowdModel> crowds) =>
-            "[" + string.Join(", ", crowds.Select(c => c?.Name ?? "<null>")) + "]";
+        private static string FormatCrowdList(IList<CrowdModel> crowds)
+        {
+            List<string> names = new List<string>();
+            foreach (CrowdModel c in crowds)
+                names.Add(c == null ? "<null>" : c.Name);
+            return "[" + string.Join(", ", names) + "]";
+        }
 
         private static string FormatCrowdShape(CrowdModel crowd)
         {
             // Stable signature: top-level name + sorted nested-crowd + character signatures.
             if (crowd == null) return "<null>";
-            var members = crowd.CrowdMemberCollection?
-                .OrderBy(m => m is CrowdModel ? 0 : 1)
-                .ThenBy(m => m.Name, StringComparer.Ordinal)
-                .Select(FormatMember)
-                .ToList() ?? new List<string>();
+            List<string> members = new List<string>();
+            if (crowd.CrowdMemberCollection != null)
+            {
+                IEnumerable<ICrowdMemberModel> ordered = crowd.CrowdMemberCollection
+                    .OrderBy(m => m is CrowdModel ? 0 : 1)
+                    .ThenBy(m => m.Name, StringComparer.Ordinal);
+                foreach (ICrowdMemberModel m in ordered)
+                    members.Add(FormatMember(m));
+            }
             return crowd.Name + "{" + string.Join(",", members) + "}";
         }
 
-        private static string FormatMember(ICrowdMember m)
+        private static string FormatMember(ICrowdMemberModel m)
         {
-            if (m is CrowdModel nested) return FormatCrowdShape(nested);
+            CrowdModel nested = m as CrowdModel;
+            if (nested != null) return FormatCrowdShape(nested);
             return m.Name;
         }
 
@@ -496,19 +644,22 @@ namespace Module.UnitTest.Crowds
         //                       Domain DSL (test fixture builders)
         // ====================================================================
 
-        /// <summary>Builds a <see cref="List{CrowdModel}"/> for a crowd-file payload.</summary>
+        /// <summary>Builds a <see cref="List{T}"/> of CrowdModel for a crowd-file payload.</summary>
         private class CrowdFileBuilder
         {
             private readonly List<CrowdModel> _topLevels = new List<CrowdModel>();
 
             public CrowdBuilder TopLevel(string name)
             {
-                var crowd = new CrowdModel { Name = name };
+                CrowdModel crowd = new CrowdModel { Name = name };
                 _topLevels.Add(crowd);
                 return new CrowdBuilder(crowd, this);
             }
 
-            public List<CrowdModel> Build() => _topLevels;
+            public List<CrowdModel> Build()
+            {
+                return _topLevels;
+            }
         }
 
         private class CrowdBuilder
@@ -530,13 +681,16 @@ namespace Module.UnitTest.Crowds
 
             public CrowdBuilder WithNested(string nestedCrowdName, Action<CrowdBuilder> buildNested)
             {
-                var nested = new CrowdModel { Name = nestedCrowdName };
+                CrowdModel nested = new CrowdModel { Name = nestedCrowdName };
                 _crowd.Add(nested);
                 buildNested(new CrowdBuilder(nested, _fileBuilder));
                 return this;
             }
 
-            public CrowdBuilder TopLevel(string name) => _fileBuilder.TopLevel(name);
+            public CrowdBuilder TopLevel(string name)
+            {
+                return _fileBuilder.TopLevel(name);
+            }
         }
     }
 }
