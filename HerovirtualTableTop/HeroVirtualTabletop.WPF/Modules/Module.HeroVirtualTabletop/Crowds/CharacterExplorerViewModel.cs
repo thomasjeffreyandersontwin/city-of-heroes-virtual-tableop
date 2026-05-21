@@ -1,4 +1,4 @@
-﻿extern alias HVTRefactored;
+extern alias HVTRefactored;
 using Framework.WPF.Behaviors;
 using Framework.WPF.Library;
 using Framework.WPF.Services.BusyService;
@@ -298,6 +298,7 @@ namespace Module.HeroVirtualTabletop.Crowds
         public DelegateCommand<object> CheckRosterConsistencyCommand { get; private set; }
         public DelegateCommand MigrateRepositoryCommand { get; private set; }
         public DelegateCommand BrowseCrowdFilesCommand { get; private set; }
+        public DelegateCommand<object> AutomationRenameCommand { get; private set; }
 
         #endregion
 
@@ -342,6 +343,7 @@ namespace Module.HeroVirtualTabletop.Crowds
             this.DeleteCharacterCrowdCommand = new DelegateCommand<object>(this.DeleteCharacterCrowd, this.CanDeleteCharacterCrowd);
             this.EnterEditModeCommand = new DelegateCommand<object>(this.EnterEditMode, this.CanEnterEditMode);
             this.SubmitCharacterCrowdRenameCommand = new DelegateCommand<object>(this.SubmitCharacterCrowdRename);
+            this.AutomationRenameCommand = new DelegateCommand<object>(this.AutomationRename);
             this.CancelEditModeCommand = new DelegateCommand<object>(this.CancelEditMode);
             this.CloneCharacterCrowdCommand = new DelegateCommand<object>(this.CloneCharacterCrowd, this.CanCloneCharacterCrowd);
             this.CutCharacterCrowdCommand = new DelegateCommand<object>(this.CutCharacterCrowd, this.CanCutCharacterCrowd);
@@ -448,6 +450,27 @@ namespace Module.HeroVirtualTabletop.Crowds
             OnEditModeLeave(state, null);
         }
 
+        // E2E test-automation entry point: CommandParameter is the TextBox whose Text is
+        // "CurrentCrowdName|NewCrowdName".  Finds the crowd by name and renames it using the
+        // same RenameCharacterCrowd path used by the normal UI rename flow.
+        private void AutomationRename(object state)
+        {
+            string text = Helper.GetTextFromControlObject(state);
+            if (string.IsNullOrEmpty(text)) return;
+            int sep = text.IndexOf('|');
+            if (sep < 0) return;
+            string currentName = text.Substring(0, sep);
+            string newName = text.Substring(sep + 1);
+            if (string.IsNullOrEmpty(currentName) || string.IsNullOrEmpty(newName)) return;
+            if (!this.CrowdCollection.ContainsKey(currentName)) return;
+            CrowdModel crowd = this.CrowdCollection[currentName] as CrowdModel;
+            if (crowd == null) return;
+            this.SelectedCrowdModel = crowd;
+            this.OriginalName = currentName;
+            this.IsUpdatingCharacter = false;
+            this.RenameCharacterCrowd(newName);
+        }
+
         private void RenameCharacterCrowd(string updatedName)
         {
             if (this.OriginalName == updatedName)
@@ -545,14 +568,19 @@ namespace Module.HeroVirtualTabletop.Crowds
             Application.Current.Dispatcher.BeginInvoke(d);
             
             this.eventAggregator.GetEvent<ListenForTargetChanged>().Publish(null);
-            try
+            // Sort must run on the UI thread: SortableObservableCollection.ApplySort fires
+            // CollectionChanged(Reset) which WPF silently ignores on background threads,
+            // leaving the TreeView empty even though the backing Items list has items.
+            Application.Current.Dispatcher.BeginInvoke(new Action(() =>
             {
-                this.CrowdCollection.Sort(ListSortDirection.Ascending, new CrowdMemberModelComparer());
-            }
-            catch(Exception ex)
-            {
-
-            }         
+                try
+                {
+                    this.CrowdCollection.Sort(ListSortDirection.Ascending, new CrowdMemberModelComparer());
+                }
+                catch (Exception)
+                {
+                }
+            }));
         }
 
         private void BrowseCrowdFiles()

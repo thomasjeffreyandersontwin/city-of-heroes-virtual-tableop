@@ -37,6 +37,11 @@
         (S) System --> Save Crowd Collection to Repository
         (S) System --> Back Up Repository on Load
         (S) System --> Load Default Crowd Members from Embedded Resource
+        (S) System --> Load Active Crowd Files on Startup
+        (S) GM --> Browse and Activate Crowd Files
+        (S) System --> Track Source File per Crowd
+        (S) GM --> Save Dirty Crowds to Source Files
+        (S) GM --> Save Crowd to New File
     (E) Manage Characters within Crowds
         (S) GM --> Create Character in Crowd
         (S) GM --> Rename Character

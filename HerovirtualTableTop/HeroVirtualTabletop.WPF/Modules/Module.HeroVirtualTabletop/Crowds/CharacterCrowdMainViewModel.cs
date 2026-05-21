@@ -180,6 +180,8 @@ namespace Module.HeroVirtualTabletop.Crowds
         {
             this.eventAggregator = eventAggregator;
             InitializeCommands();
+            // Character Explorer is the primary panel and should be open on startup.
+            isCharacterExplorerExpanded = true;
             this.eventAggregator.GetEvent<AddToRosterEvent>().Subscribe((IEnumerable<CrowdMemberModel> models) =>{ this.IsRosterExplorerExpanded = true; });
             this.eventAggregator.GetEvent<EditCharacterEvent>().Subscribe((Tuple<ICrowdMemberModel, IEnumerable<ICrowdMemberModel>> tuple) => { this.IsCharacterEditorExpanded = true; });
             this.eventAggregator.GetEvent<EditIdentityEvent>().Subscribe((Tuple<Identity, Character> tuple) => { this.IsIdentityEditorExpanded = true; });

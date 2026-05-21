@@ -1,0 +1,102 @@
+{
+  "_source": "docs/increment-1/crc-increment-1.md — Increment 1: Character and Crowd Library",
+  "_note": "terms[] lists every valid table column name for this concept. The concept name itself is always the first term. is_a names the direct base concept, or null for top-level concepts. Subtypes inherit their base's terms; only delta terms are listed here.",
+  "concepts": {
+    "ApplicationShell": {
+      "is_a": null,
+      "terms": ["applicationShell"]
+    },
+    "PrismModule": {
+      "is_a": null,
+      "terms": ["prismModule"]
+    },
+    "GameDirectoryPrompt": {
+      "is_a": null,
+      "terms": ["gameDirectoryPrompt", "acceptedDirectoryPath"]
+    },
+    "COHGameDirectory": {
+      "is_a": null,
+      "terms": ["cohGameDirectory", "storedConfigurationPath", "cohDataDirectoryRoot"]
+    },
+    "Character": {
+      "is_a": null,
+      "terms": ["character", "characterName", "optionGroups"]
+    },
+    "OptionGroup": {
+      "is_a": null,
+      "terms": ["optionGroup", "canonicalGroupName", "orderedNameKeyedOptions"]
+    },
+    "Crowd": {
+      "is_a": null,
+      "terms": [
+        "crowd",
+        "crowdName",
+        "crowdMembers",
+        "sourceFile",
+        "dirtyFlag",
+        "conceptTag",
+        "groupType",
+        "cohFactionTag"
+      ]
+    },
+    "NestedCrowd": {
+      "is_a": "Crowd",
+      "terms": ["nestedCrowd", "parentCrowd"]
+    },
+    "AllCharactersCrowd": {
+      "is_a": "Crowd",
+      "terms": ["allCharactersCrowd", "aggregatedCharacterPopulation"]
+    },
+    "CrowdMember": {
+      "is_a": null,
+      "terms": ["crowdMember", "wrappedNode", "containingCrowd", "expanded"]
+    },
+    "LinkedMember": {
+      "is_a": "CrowdMember",
+      "terms": ["linkedMember", "sharedCharacterIdentity"]
+    },
+    "CrowdTree": {
+      "is_a": null,
+      "terms": [
+        "crowdTree",
+        "topLevelCrowdMembers",
+        "activeBrowseMode",
+        "activeNameFilter",
+        "linkedMemberIndicator",
+        "activeCharacterTab"
+      ]
+    },
+    "NameFilter": {
+      "is_a": null,
+      "terms": ["nameFilter", "activeFilterText"]
+    },
+    "Clipboard": {
+      "is_a": null,
+      "terms": ["clipboard", "heldCrowdMember"]
+    },
+    "CrowdRepository": {
+      "is_a": null,
+      "terms": ["crowdRepository", "inMemoryAggregate"]
+    },
+    "CrowdFile": {
+      "is_a": null,
+      "terms": ["crowdFile", "absoluteFilePath", "topLevelCrowdsItContains"]
+    },
+    "ActiveCrowdList": {
+      "is_a": null,
+      "terms": ["activeCrowdList", "persistedListOfCrowdFilePaths"]
+    },
+    "DailyBackup": {
+      "is_a": null,
+      "terms": ["dailyBackup", "dateStampedBackupFile"]
+    },
+    "DefaultCrowdCollection": {
+      "is_a": null,
+      "terms": ["defaultCrowdCollection", "embeddedStarterCrowdsAndCharacters"]
+    }
+  },
+  "aliases": {
+    "scenario": "*",
+    "visible": "*"
+  }
+}

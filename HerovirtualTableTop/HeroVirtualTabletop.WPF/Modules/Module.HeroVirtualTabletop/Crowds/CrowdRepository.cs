@@ -1,4 +1,4 @@
-﻿using Module.HeroVirtualTabletop.Library.Utility;
+using Module.HeroVirtualTabletop.Library.Utility;
 using Module.Shared;
 using Newtonsoft.Json;
 using System;
@@ -107,19 +107,38 @@ namespace Module.HeroVirtualTabletop.Crowds
                         continue; // missing file: skip, leave in list for GM action
 
                     List<CrowdModel> crowds = null;
+                    Exception loadError = null;
                     try { crowds = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(path); }
-                    catch { crowds = null; }
+                    catch (Exception ex) { crowds = null; loadError = ex; }
 
                     if (crowds == null)
                     {
+                        // Log to file for diagnostics
+                        try
+                        {
+                            string logPath = System.IO.Path.Combine(_dataDirectory, "crowd-load-error.log");
+                            string msg = string.Format("[{0}] FAILED: {1}\n  Error: {2}\n",
+                                System.DateTime.Now, path,
+                                loadError != null ? loadError.ToString() : "returned null");
+                            System.IO.File.AppendAllText(logPath, msg);
+                        }
+                        catch { }
                         // Malformed file: remove from active list so it is not retried on next startup
                         malformedPaths.Add(path);
                         continue;
                     }
 
+                    // Assign Order based on the position in the loaded list so that
+                    // the top-level crowd sort in the ViewModel preserves the list order
+                    // (active-crowds.json order) rather than re-sorting alphabetically.
+                    // IsDirty = false must come AFTER Order is set: the Order setter fires
+                    // PropertyChanged("Order") which CrowdModel_SelfPropertyChanged turns into
+                    // IsDirty = true, so we must reset to false afterwards.
+                    int startOrder = loaded.Count;
                     foreach (CrowdModel crowd in crowds)
                     {
                         crowd.SourceFilePath = path;
+                        crowd.Order = startOrder++;
                         crowd.IsDirty = false;
                     }
                     loaded.AddRange(crowds);
