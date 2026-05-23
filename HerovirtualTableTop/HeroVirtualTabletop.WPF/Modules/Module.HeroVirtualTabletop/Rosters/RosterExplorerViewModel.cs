@@ -1256,7 +1256,7 @@ namespace Module.HeroVirtualTabletop.Roster
                 member.UpdateDistanceCount();
             }
             var kgFinalize = new KeyBindsGenerator();
-            kgFinalize.CompleteEvent();
+            kgFinalize.ExecutePendingWithoutPersistingToBindFile();
             SelectNextCharacterInCrowdCycle();
             Commands_RaiseCanExecuteChanged();
         }
@@ -1288,7 +1288,7 @@ namespace Module.HeroVirtualTabletop.Roster
                 member.UpdateDistanceCount();
             }
             var kgFinalizeSpawn = new KeyBindsGenerator();
-            kgFinalizeSpawn.CompleteEvent();
+            kgFinalizeSpawn.ExecutePendingWithoutPersistingToBindFile();
             SelectNextCharacterInCrowdCycle();
             Commands_RaiseCanExecuteChanged();
         }

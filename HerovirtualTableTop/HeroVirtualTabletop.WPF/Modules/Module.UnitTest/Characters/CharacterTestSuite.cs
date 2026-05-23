@@ -41,6 +41,7 @@ namespace Module.UnitTest.Characters
         [TestInitialize]
         public void TestInitialize()
         {
+            SafeDeleteBindFile();
             ResetKeyBindGeneratorStatics();
             InitializeDefaultList();
             InitializeCrowdRepositoryMockWithDefaultList();

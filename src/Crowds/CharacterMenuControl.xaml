@@ -1,0 +1,42 @@
+<UserControl x:Class="HeroVTT.Crowds.CharacterMenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Module.Shared;Component/Resources/ResourceDictionary/GeneralResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=IconButton}"></Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">          
+            <Button x:Name="btClone" Content="&#xf0c5;" ToolTip="Clone (Ctrl+C)" Command="{Binding CloneCharacterCrowdCommand}"/>
+            <Button x:Name="btCut" Content="&#xf0c4;" ToolTip="Cut (Ctrl+X)" Command="{Binding CutCharacterCrowdCommand}"/>
+            <Button x:Name="btLink" Content="&#xf0c1;" ToolTip="Link (Ctrl+L)" Command="{Binding LinkCharacterCrowdCommand}"/>
+            <Button x:Name="btCloneMemberships" Content="&#xf24d;" ToolTip="Clone Memberships (Ctrl+M)" Command="{Binding CloneMembershipsCommand}"/>
+            <Button x:Name="btFlatten" Content="&#xf0ca;" ToolTip="Flatten and Copy (Ctrl+F)" Command="{Binding FlattenCrowdCopyCommand}"/>
+            <Button x:Name="btNumberedFlatten" Content="&#xf0cb;" ToolTip="Numbered Flatten and Copy (Ctrl+N)" Command="{Binding NumberedFlattenCrowdCopyCommand}"/>
+            <Button x:Name="btPaste" Content="&#xf0ea;" ToolTip="Paste (Ctrl+V)" Command="{Binding PasteCharacterCrowdCommand}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button x:Name="btAddCrowd" Content="&#xf0c0;" ToolTip="Add Crowd (Ctrl+Shift+Plus)" Command="{Binding AddCrowdCommand}"/>
+            <Button x:Name="btAddCharacter" Content="&#xf234;" ToolTip="Add Character (Ctrl+Plus)" Command="{Binding AddCharacterCommand}"/>
+            <Button x:Name="btRemove" Content="&#xf235;" ToolTip="Remove (Ctrl+Minus/Del)" Command="{Binding DeleteCharacterCrowdCommand}" />
+            <Button x:Name="btEdit" Content="&#xf044;" ToolTip="Edit (Ctrl+E)" Command="{Binding EditCharacterCommand}"/>
+            <Button x:Name="btAddToRoster" Content="&#xf090;" ToolTip="Add to Roster (Ctrl+R)" Command="{Binding AddToRosterCommand}" /> 
+            <Button x:Name="btSave" Content="&#xf0c7;" ToolTip="Save (Ctrl+S)" Command="{Binding SaveCommand}" />
+            <Button x:Name="btBrowse" Content="&#xf07c;" ToolTip="Browse Crowd Files..." Command="{Binding BrowseCrowdFilesCommand}" />
+            <Button x:Name="btMigrate" Content="&#xf04e;" ToolTip="Migrate Repository" Command="{Binding MigrateRepositoryCommand}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

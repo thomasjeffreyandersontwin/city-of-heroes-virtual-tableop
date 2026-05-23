@@ -256,11 +256,17 @@ namespace Module.HeroVirtualTabletop.Characters
         {
             get
             {
-                return (Position as Position).GetModelMatrix();
+                Position pos = Position as Position;
+                if (pos == null)
+                    return Microsoft.Xna.Framework.Matrix.Identity;
+                return pos.GetModelMatrix();
             }
             set
             {
-                (Position as Position).SetModelMatrix(value);
+                Position pos = Position as Position;
+                if (pos == null)
+                    return;
+                pos.SetModelMatrix(value);
             }
         }
 
@@ -269,11 +275,21 @@ namespace Module.HeroVirtualTabletop.Characters
         {
             get
             {
-                return Helper.GetRoundedVector((Position as Position).GetPositionVector(), 2);
+                if (Position == null)
+                    return Vector3.Zero;
+                Position pos = Position as Position;
+                if (pos == null)
+                    return Vector3.Zero;
+                return Helper.GetRoundedVector(pos.GetPositionVector(), 2);
             }
             set
             {
-                (Position as Position).SetPosition(value);
+                if (Position == null)
+                    return;
+                Position pos = Position as Position;
+                if (pos == null)
+                    return;
+                pos.SetPosition(value);
                 this.UpdateDistanceCount();
             }
         }
@@ -821,7 +837,7 @@ namespace Module.HeroVirtualTabletop.Characters
                 }
                 if (!this.GhostShadow.HasBeenSpawned)
                     this.GhostShadow.Spawn();
-                this.Target();
+                this.Target(false);
                 AlignGhost();
             }
         }
@@ -842,6 +858,15 @@ namespace Module.HeroVirtualTabletop.Characters
             //this.GhostShadow = new Character(ghostShadowName, "Director Solair", IdentityType.Costume);
             CreateGhostCostumeFileForThisCharacter();
             this.GhostShadow = new Character(ghostShadowName, ghostShadowName, IdentityType.Costume);
+            // Guarantee the ghost has a Costume-type identity even when the costume file is absent
+            // (e.g. in tests).  Without this the ghost falls back to the Model_Statesman default,
+            // which causes SuperImposeGhost to recurse infinitely.
+            if (!this.GhostShadow.AvailableIdentities.ContainsKey(ghostShadowName))
+            {
+                Identity ghostIdentity = new Identity(ghostShadowName, IdentityType.Costume, ghostShadowName);
+                this.GhostShadow.AvailableIdentities.Add(ghostIdentity);
+            }
+            this.GhostShadow.ActiveIdentity = this.GhostShadow.AvailableIdentities[ghostShadowName];
             CreateGhostMovements();
         }
 

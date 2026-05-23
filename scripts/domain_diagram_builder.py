@@ -50,11 +50,46 @@ ROUTE_CORRIDOR_GAP = 90
 ANCHOR_STEP = 0.08
 ANCHOR_START = 0.08
 LANE_STEP = 44
-IMPORT_BAND_MAX_Y = 680
+IMPORT_BAND_MAX_Y = 200
 IMPORT_BAND_MAX_COLS = 4
+MAX_OUTER_MARGIN = 240
+_OUTER_SLOTS = 32
 CRITICAL_RULES = frozenset({"class_overlap", "edge_crosses_class", "hierarchy_flow"})
 SECONDARY_RULES = frozenset({"shared_anchor", "edge_on_edge_overlap"})
 EDGE_SEPARATION = 14
+LANE_MODULO = 64
+_OUTER_FIRST_KINDS = ("outer", "outer_bottom", "gutter", "between", "local")
+
+
+def _lane_y_offset(lane_idx: int) -> float:
+    """Vertical separation between parallel horizontal edge corridors (>= 16px)."""
+    return float((lane_idx % 96) + 1) * (EDGE_SEPARATION + 2)
+
+
+def _outer_margin(lane_idx: int) -> int:
+    """Bounded distance outside the diagram for outer bus / side corridors."""
+    idx = lane_idx % _OUTER_SLOTS
+    if _OUTER_SLOTS <= 1:
+        return 36
+    step = max(EDGE_SEPARATION + 2, (MAX_OUTER_MARGIN - 36) // max(1, _OUTER_SLOTS - 1))
+    return min(36 + idx * step, MAX_OUTER_MARGIN)
+
+
+def _corridor_offset(lane_idx: int) -> int:
+    """Unique bounded corridor offset (legacy alias for outer margin)."""
+    return _outer_margin(lane_idx)
+
+
+def _lane_spacing(lane_idx: int) -> Tuple[int, int]:
+    """Tuple for between-column offsets; both values stay bounded."""
+    idx = lane_idx % _OUTER_SLOTS
+    n = (idx % LANE_MODULO) + 1
+    extra = _outer_margin(lane_idx)
+    return n, extra
+
+
+def _bounded_lane(lane_idx: int) -> int:
+    return lane_idx % _OUTER_SLOTS
 
 
 def _is_straight_inheritance(style: str) -> bool:
@@ -472,16 +507,15 @@ def _place_import_band(
     """Compact multi-row import band at page top (avoids one ultra-wide row)."""
     if not imported_concepts:
         return START_Y
-    col_w = CELL_WIDTH + COL_GAP // 2
-    row_gap = OVERLAP_PAD + 36
-    cols = min(IMPORT_BAND_MAX_COLS, max(2, _grid_columns(len(imported_concepts))))
+    col_w = CELL_WIDTH + (COL_GAP if len(imported_concepts) > 6 else COL_GAP // 2)
+    row_gap = OVERLAP_PAD + 36 + max(0, (len(imported_concepts) - 6) // 2) * 24
+    cols = min(6, max(IMPORT_BAND_MAX_COLS, _grid_columns(len(imported_concepts))))
     y = START_Y
     col = 0
     row_max_h = 0
     for c in imported_concepts:
         h = _estimate_height(c)
-        place_y = min(y, max(START_Y, IMPORT_BAND_MAX_Y - h))
-        positions[c.name] = (start_x + col * col_w, place_y)
+        positions[c.name] = (start_x + col * col_w, y)
         row_max_h = max(row_max_h, h)
         col += 1
         if col >= cols:
@@ -612,7 +646,7 @@ def _layout_hub_spoke(
             key=lambda c: _concept_degree(c, local_names, index, imported_names),
         )
 
-    hub_y = max(y + ROW_GAP // 2, IMPORT_BAND_MAX_Y + 80)
+    hub_y = y + ROW_GAP // 2
     positions[hub.name] = (START_X, hub_y)
     placed: Set[str] = {hub.name}
 
@@ -855,12 +889,20 @@ def _hoist_imports_on_canvas(
     placeholders = [Concept(name=n, ka="") for n in sorted(imported_names)]
     band: Dict[str, Tuple[int, int]] = {}
     _place_import_band(placeholders, band, START_X)
-    for name, (new_x, new_y) in band.items():
-        cell = find_cell_by_name(root, name)
-        if cell is None:
-            continue
-        set_geometry(cell, x=new_x, y=new_y)
-        positions[name] = (new_x, new_y)
+    for _ in range(40):
+        _eliminate_bbox_overlaps(band, placeholders)
+        for name, (new_x, new_y) in band.items():
+            cell = find_cell_by_name(root, name)
+            if cell is None:
+                continue
+            set_geometry(cell, x=new_x, y=new_y)
+            positions[name] = (new_x, new_y)
+        from drawio_tools import check_overlaps, get_all_classes
+
+        if not check_overlaps(get_all_classes(root)):
+            break
+        if not _fix_overlaps_on_canvas(root, positions):
+            break
 
 
 def _fan_slot(slot: int) -> float:
@@ -893,7 +935,7 @@ def _infer_exit_entry_sides(
     if sy < ty - 50:
         return "bottom", "top"
     if sy > ty + 50:
-        return "top", "bottom"
+        return "left", "top"
     if sx < tx:
         return "right", "left"
     return "left", "right"
@@ -963,6 +1005,19 @@ def _assign_distinct_anchors(root) -> None:
         set_edge_anchors(cell, exit_x=ex, exit_y=ey, entry_x=nx, entry_y=ny)
 
 
+def _refresh_routes_after_anchors(
+    root,
+    imported_names: Set[str],
+    lane_offset: int = 0,
+) -> None:
+    """Recompute waypoints whenever exit/entry anchors change."""
+    from drawio_tools import check_shared_anchors
+
+    if check_shared_anchors(root):
+        _assign_distinct_anchors(root)
+    _assign_orthogonal_lanes(root, lane_offset=lane_offset, imported_names=imported_names)
+
+
 def _is_orthogonal_edge_style(style: str) -> bool:
     return "orthogonalEdgeStyle" in style or "edgeStyle=orthogonal" in style
 
@@ -972,6 +1027,7 @@ def _force_unique_edge_route(
     src_name: str,
     tgt_name: str,
     route_index: int,
+    imported_names: Optional[Set[str]] = None,
 ) -> bool:
     """Assign explicit waypoints on a corridor lane unique to route_index."""
     from drawio_tools import get_all_classes
@@ -993,13 +1049,10 @@ def _force_unique_edge_route(
     tgt_id = name_to_id[tgt_name]
     sg = name_to_geo[src_name]
     tg = name_to_geo[tgt_name]
-    p1 = _edge_anchor(style, sg, "exit")
-    p2 = _edge_anchor(style, tg, "entry")
     min_x, min_y, max_x, max_y = _diagram_bounds(classes)
 
-    lane = route_index * LANE_STEP
-    for bump in range(24):
-        idx = route_index + bump
+    for bump in range(_OUTER_SLOTS):
+        idx = _bounded_lane(route_index + bump)
         if _try_lane_route(
             root,
             edge,
@@ -1016,6 +1069,8 @@ def _force_unique_edge_route(
             classes,
             None,
             check_overlaps=True,
+            imported_names=imported_names,
+            route_kind=_ROUTE_KINDS[bump % len(_ROUTE_KINDS)],
         ):
             return True
     return False
@@ -1083,7 +1138,7 @@ def _edge_overlaps_any(
         other_segs = _compute_edge_segments(cell, id_to_geo)
         for sa in my_segs:
             for sb in other_segs:
-                if _edge_segments_overlap(sa, sb, proximity=EDGE_SEPARATION):
+                if _edge_segments_overlap(sa, sb, proximity=12):
                     return True
     return False
 
@@ -1102,6 +1157,86 @@ def _route_is_clear(
     return not _edge_overlaps_any(root, edge, only_edges=prior_edges)
 
 
+def _stub_length(lane_idx: int) -> float:
+    """Per-lane stub length; consecutive lanes differ by >= 13px (overlap proximity)."""
+    return 14.0 + (lane_idx % 24) * 13
+
+
+def _entry_approach(
+    style: str,
+    x2: float,
+    y2: float,
+    lane_idx: int,
+) -> Tuple[float, float]:
+    from drawio_tools import _parse_style_float
+
+    entry_stub = _stub_length(lane_idx)
+    nx = _parse_style_float(style, "entryX")
+    ny = _parse_style_float(style, "entryY")
+    nx = 0.5 if nx is None else nx
+    ny = 0.5 if ny is None else ny
+    if ny <= 0.05:
+        return (x2, y2 - entry_stub)
+    if ny >= 0.95:
+        return (x2, y2 + entry_stub)
+    if nx <= 0.05:
+        return (x2 - entry_stub, y2)
+    return (x2 + entry_stub, y2)
+
+
+def _exit_hop(
+    style: str,
+    x1: float,
+    y1: float,
+    lane_idx: int,
+) -> Tuple[float, float]:
+    from drawio_tools import _parse_style_float
+
+    stub = _stub_length(lane_idx)
+    ex = _parse_style_float(style, "exitX")
+    ey = _parse_style_float(style, "exitY")
+    ex = 0.5 if ex is None else ex
+    ey = 0.5 if ey is None else ey
+    if ey <= 0.05:
+        return (x1, y1 - stub)
+    if ey >= 0.95:
+        return (x1, y1 + stub)
+    if ex <= 0.05:
+        return (x1 - stub, y1)
+    return (x1 + stub, y1)
+
+
+def _is_local_edge(
+    sg: Tuple[float, float, float, float],
+    tg: Tuple[float, float, float, float],
+) -> bool:
+    sx, sy, sw, sh = sg
+    tx, ty, tw, th = tg
+    cx_dist = abs((sx + sw / 2) - (tx + tw / 2))
+    cy_dist = abs((sy + sh / 2) - (ty + th / 2))
+    return cx_dist < COL_GAP * 2.5 and cy_dist < ROW_GAP * 1.5
+
+
+def _routing_gutter_y(
+    classes: List[Tuple],
+    imported_names: Set[str],
+    lane_idx: int,
+) -> Optional[float]:
+    """Horizontal channel between import band and local classes."""
+    id_to_name = {cid: name for cid, name, *_ in classes}
+    imp_bottom = 0.0
+    loc_top = float("inf")
+    for cid, _name, x, y, w, h in classes:
+        name = id_to_name.get(cid, "")
+        if name in imported_names:
+            imp_bottom = max(imp_bottom, y + h)
+        else:
+            loc_top = min(loc_top, y)
+    if loc_top > imp_bottom + 48:
+        return (imp_bottom + loc_top) / 2 + ((lane_idx % 160) + 1) * (EDGE_SEPARATION + 2)
+    return None
+
+
 def _force_lane_waypoints(
     edge: ET.Element,
     sg: Tuple[float, float, float, float],
@@ -1112,44 +1247,93 @@ def _force_lane_waypoints(
     min_y: float,
     max_x: float,
     max_y: float,
+    classes: Optional[List[Tuple]] = None,
+    imported_names: Optional[Set[str]] = None,
+    route_kind: str = "outer",
 ) -> None:
-    """Unique orthogonal corridor; gap column when possible else outer top/bottom lane."""
-    from drawio_tools import _parse_style_float
-
+    """Assign explicit orthogonal waypoints; route_kind selects outer wrap, gutter, or local L."""
     p1 = _edge_anchor(style, sg, "exit")
     p2 = _edge_anchor(style, tg, "entry")
     x1, y1 = p1
     x2, y2 = p2
     sx, sy, sw, sh = sg
     tx, ty, tw, th = tg
-    n = lane_idx + 1
-    ey = _parse_style_float(style, "exitY")
-    ey = 0.5 if ey is None else ey
+    n, extra = _lane_spacing(lane_idx)
+    hop = _exit_hop(style, x1, y1, lane_idx)
+    approach = _entry_approach(style, x2, y2, lane_idx)
 
-    if sx + sw + 40 < tx:
-        cx = sx + sw + 35 + n * LANE_STEP
-        wps = [(cx, y1), (cx, y2)]
-    elif tx + tw + 40 < sx:
-        cx = tx + tw + 35 + n * LANE_STEP
-        wps = [(cx, y1), (cx, y2)]
-    else:
-        run_x = (
-            min_x - ROUTE_CORRIDOR_GAP - n * LANE_STEP
-            if lane_idx % 2 == 0
-            else max_x + ROUTE_CORRIDOR_GAP + n * LANE_STEP
-        )
-        ny = _parse_style_float(style, "entryY")
-        ny = 0.5 if ny is None else ny
-        hop_y = sy + sh + 18 + (n % 7) * 4 if ey > 0.5 else sy - 18 - (n % 7) * 4
-        if ny > 0.5:
-            ap_y = ty + th + 18 + (n % 5) * 4
-        elif ny < 0.5:
-            ap_y = ty - 18 - (n % 5) * 4
-        else:
-            ap_y = ty + th + 18 + (n % 5) * 4 if ey > 0.5 else ty - 18 - (n % 5) * 4
-        wps = [(x1, hop_y), (run_x, hop_y), (run_x, ap_y), (x2, ap_y)]
+    if route_kind == "between":
+        if sx + sw + 40 < tx:
+            cx = sx + sw + 40 + n * 10 + (extra % 40)
+            wps = [hop, (cx, hop[1]), (cx, approach[1]), approach]
+            _set_edge_waypoints(edge, wps)
+            return
+        if tx + tw + 40 < sx:
+            cx = tx + tw + 40 + n * 10 + (extra % 40)
+            wps = [hop, (cx, hop[1]), (cx, approach[1]), approach]
+            _set_edge_waypoints(edge, wps)
+            return
 
+    if route_kind == "local":
+        mid_y = (hop[1] + approach[1]) / 2 + _lane_y_offset(lane_idx)
+        wps = [hop, (hop[0], mid_y), (approach[0], mid_y), approach]
+        _set_edge_waypoints(edge, wps)
+        return
+
+    if route_kind not in ("outer", "outer_bottom", "between") and _is_local_edge(sg, tg):
+        wps = [(hop[0], approach[1]), approach]
+        _set_edge_waypoints(edge, wps)
+        return
+
+    if route_kind == "gutter" and classes is not None and imported_names:
+        gutter_y = _routing_gutter_y(classes, imported_names, lane_idx)
+        if gutter_y is not None:
+            wps = [hop, (hop[0], gutter_y), (approach[0], gutter_y), approach]
+            _set_edge_waypoints(edge, wps)
+            return
+
+    use_top = route_kind != "outer_bottom"
+    off = _outer_margin(lane_idx)
+    bus = min_y - off if use_top else max_y + off
+    run_left = min_x - off
+    run_right = max_x + off
+    src_side = run_left if lane_idx % 2 == 0 else run_right
+    tgt_side = run_left if approach[0] <= (min_x + max_x) / 2 else run_right
+    if abs(src_side - tgt_side) < LANE_STEP:
+        tgt_side = run_right if src_side == run_left else run_left
+    wps = [
+        hop,
+        (src_side, hop[1]),
+        (src_side, bus),
+        (tgt_side, bus),
+        (tgt_side, approach[1]),
+        approach,
+    ]
     _set_edge_waypoints(edge, wps)
+
+
+_ROUTE_KINDS = ("between", "outer", "outer_bottom", "gutter", "local")
+
+
+def _route_kinds_for_edge(
+    src_name: str,
+    tgt_name: str,
+    sg: Tuple[float, float, float, float],
+    tg: Tuple[float, float, float, float],
+    imported_names: Set[str],
+) -> Tuple[str, ...]:
+    """Pick route templates; long vertical spans and import targets prefer outer wrap."""
+    if tgt_name in imported_names and src_name not in imported_names:
+        return _OUTER_FIRST_KINDS
+    sx, sy, _, _ = sg
+    tx, ty, _, _ = tg
+    if abs(sy - ty) > ROW_GAP * 1.2:
+        return ("outer", "outer_bottom", "between", "gutter", "local")
+    if tgt_name in imported_names:
+        return _OUTER_FIRST_KINDS
+    if _is_local_edge(sg, tg):
+        return ("local", "between", "gutter", "outer", "outer_bottom")
+    return _ROUTE_KINDS
 
 
 def _try_lane_route(
@@ -1168,9 +1352,22 @@ def _try_lane_route(
     classes,
     prior_edges: Optional[List[ET.Element]] = None,
     check_overlaps: bool = True,
+    imported_names: Optional[Set[str]] = None,
+    route_kind: str = "outer",
 ) -> bool:
     _force_lane_waypoints(
-        edge, sg, tg, style, lane_idx, min_x, min_y, max_x, max_y
+        edge,
+        sg,
+        tg,
+        style,
+        lane_idx,
+        min_x,
+        min_y,
+        max_x,
+        max_y,
+        classes=classes,
+        imported_names=imported_names,
+        route_kind=route_kind,
     )
     style = edge.get("style", "")
     p1 = _edge_anchor(style, sg, "exit")
@@ -1190,7 +1387,11 @@ def _try_lane_route(
     return not _edge_overlaps_any(root, edge, only_edges=prior_edges)
 
 
-def _assign_orthogonal_lanes(root, lane_offset: int = 0) -> None:
+def _assign_orthogonal_lanes(
+    root,
+    lane_offset: int = 0,
+    imported_names: Optional[Set[str]] = None,
+) -> None:
     """Assign a unique outer corridor to every non-straight inheritance orthogonal edge."""
     from drawio_tools import get_all_classes
 
@@ -1199,6 +1400,7 @@ def _assign_orthogonal_lanes(root, lane_offset: int = 0) -> None:
     if not id_to_geo:
         return
     min_x, min_y, max_x, max_y = _diagram_bounds(classes)
+    imported_names = imported_names or set()
 
     edges: List[ET.Element] = []
     for cell in root.findall("mxCell"):
@@ -1213,32 +1415,112 @@ def _assign_orthogonal_lanes(root, lane_offset: int = 0) -> None:
             edges.append(cell)
 
     edges.sort(key=lambda c: (c.get("source", ""), c.get("target", "")))
+    id_to_name = {cid: name for cid, name, *_ in classes}
+    from collections import Counter
+
+    out_degree: Counter = Counter(c.get("source", "") for c in edges)
+    src_edge_idx: Dict[str, int] = {}
+    placed: List[ET.Element] = []
     for idx, cell in enumerate(edges):
         src_id = cell.get("source", "")
         tgt_id = cell.get("target", "")
         style = cell.get("style", "")
         sg = id_to_geo[src_id]
         tg = id_to_geo[tgt_id]
-        for bump in range(18):
-            lane_idx = lane_offset + idx * 5 + bump
-            _force_lane_waypoints(
-                cell, sg, tg, style, lane_idx, min_x, min_y, max_x, max_y
-            )
-            style = cell.get("style", "")
-            geo = cell.find("mxGeometry")
-            wps: List[Tuple[float, float]] = []
-            if geo is not None:
-                arr = geo.find("Array")
-                if arr is not None:
-                    for pt in arr.findall("mxPoint"):
-                        wps.append((float(pt.get("x", 0)), float(pt.get("y", 0))))
-            path = [_edge_anchor(style, sg, "exit")] + wps + [_edge_anchor(style, tg, "entry")]
-            if not _path_crosses_obstacles(path, classes, src_id, tgt_id):
+        tgt_name = id_to_name.get(tgt_id, "")
+        kinds: Tuple[str, ...] = (
+            ("gutter", "between", "outer", "outer_bottom", "local")
+            if tgt_name in imported_names
+            else _ROUTE_KINDS
+        )
+        out_idx = src_edge_idx.get(src_id, 0)
+        src_edge_idx[src_id] = out_idx + 1
+        if out_degree.get(src_id, 0) >= 4:
+            base = _bounded_lane(lane_offset + idx * 2 + out_idx * 6)
+        else:
+            base = _bounded_lane(lane_offset + idx)
+        placed_ok = False
+        for bump in range(_OUTER_SLOTS):
+            lane_idx = _bounded_lane(base + bump)
+            route_kind = kinds[bump % len(kinds)]
+            if _try_lane_route(
+                root,
+                cell,
+                sg,
+                tg,
+                style,
+                lane_idx,
+                min_x,
+                min_y,
+                max_x,
+                max_y,
+                src_id,
+                tgt_id,
+                classes,
+                placed,
+                check_overlaps=True,
+                imported_names=imported_names,
+                route_kind=route_kind,
+            ):
+                placed_ok = True
                 break
+        if not placed_ok:
+            for bump in range(_OUTER_SLOTS * len(_ROUTE_KINDS)):
+                lane_idx = _bounded_lane(base + bump)
+                route_kind = kinds[bump % len(kinds)]
+                if _try_lane_route(
+                    root,
+                    cell,
+                    sg,
+                    tg,
+                    style,
+                    lane_idx,
+                    min_x,
+                    min_y,
+                    max_x,
+                    max_y,
+                    src_id,
+                    tgt_id,
+                    classes,
+                    placed,
+                    check_overlaps=True,
+                    imported_names=imported_names,
+                    route_kind=route_kind,
+                ):
+                    placed_ok = True
+                    break
+            if not placed_ok:
+                for bump in range(_OUTER_SLOTS):
+                    lane_idx = _bounded_lane(base + bump)
+                    route_kind = kinds[bump % len(kinds)]
+                    if _try_lane_route(
+                        root,
+                        cell,
+                        sg,
+                        tg,
+                        style,
+                        lane_idx,
+                        min_x,
+                        min_y,
+                        max_x,
+                        max_y,
+                        src_id,
+                        tgt_id,
+                        classes,
+                        placed,
+                        check_overlaps=False,
+                        imported_names=imported_names,
+                        route_kind=route_kind,
+                    ):
+                        break
+        placed.append(cell)
 
 
-def _ensure_orthogonal_waypoints(root) -> None:
-    """Every orthogonal edge gets explicit waypoints on a unique lane."""
+def _ensure_orthogonal_waypoints(
+    root,
+    imported_names: Optional[Set[str]] = None,
+) -> None:
+    """Every orthogonal edge without waypoints gets explicit routing."""
     from drawio_tools import get_all_classes
 
     classes = get_all_classes(root)
@@ -1246,6 +1528,7 @@ def _ensure_orthogonal_waypoints(root) -> None:
     if not id_to_geo:
         return
     min_x, min_y, max_x, max_y = _diagram_bounds(classes)
+    imported_names = imported_names or set()
     lane_idx = 0
     for cell in sorted(
         [c for c in root.findall("mxCell") if c.get("edge") == "1"],
@@ -1270,8 +1553,11 @@ def _ensure_orthogonal_waypoints(root) -> None:
             min_y,
             max_x,
             max_y,
+            classes=classes,
+            imported_names=imported_names,
+            route_kind="outer",
         )
-        lane_idx += 1
+        lane_idx = _bounded_lane(lane_idx + 1)
 
 
 def _route_all_orthogonal_edges(root, corridor_offset: int = 0) -> int:
@@ -1280,7 +1566,11 @@ def _route_all_orthogonal_edges(root, corridor_offset: int = 0) -> int:
     return len([c for c in root.findall("mxCell") if c.get("edge") == "1"])
 
 
-def _fix_class_crossing_edges(root, max_rounds: int = 40) -> None:
+def _fix_class_crossing_edges(
+    root,
+    max_rounds: int = 40,
+    imported_names: Optional[Set[str]] = None,
+) -> None:
     """Reroute only edges that still cross unrelated class boxes."""
     from drawio_tools import check_edges_crossing_classes
 
@@ -1306,8 +1596,110 @@ def _fix_class_crossing_edges(root, max_rounds: int = 40) -> None:
                     clear_route=True,
                 )
             _force_unique_edge_route(
-                root, pair[0], pair[1], round_idx * 6 + len(seen) + 20
+                root,
+                pair[0],
+                pair[1],
+                round_idx * 6 + len(seen) + 20,
+                imported_names,
             )
+
+
+def _reroute_single_edge(
+    root,
+    src_name: str,
+    tgt_name: str,
+    lane_base: int,
+    imported_names: Set[str],
+    check_overlaps: bool = True,
+) -> bool:
+    from drawio_tools import get_all_classes
+
+    edge = _find_edge_cell(root, src_name, tgt_name)
+    if edge is None:
+        return False
+    style = edge.get("style", "")
+    if _is_straight_inheritance(style):
+        return False
+
+    classes = get_all_classes(root)
+    name_to_geo = {name: (x, y, w, h) for _, name, x, y, w, h in classes}
+    name_to_id = {name: cid for cid, name, *_ in classes}
+    if src_name not in name_to_geo or tgt_name not in name_to_geo:
+        return False
+
+    src_id = name_to_id[src_name]
+    tgt_id = name_to_id[tgt_name]
+    sg = name_to_geo[src_name]
+    tg = name_to_geo[tgt_name]
+    min_x, min_y, max_x, max_y = _diagram_bounds(classes)
+    placed = [
+        c for c in root.findall("mxCell") if c.get("edge") == "1" and c is not edge
+    ]
+    if tgt_name in imported_names:
+        kinds: Tuple[str, ...] = ("gutter", "between", "outer", "outer_bottom", "local")
+    elif _is_local_edge(sg, tg):
+        kinds = ("local", "between", "gutter", "outer", "outer_bottom")
+    else:
+        kinds = _ROUTE_KINDS
+
+    for bump in range(_OUTER_SLOTS):
+        lane_idx = _bounded_lane(lane_base + bump)
+        route_kind = kinds[bump % len(kinds)]
+        if _try_lane_route(
+            root,
+            edge,
+            sg,
+            tg,
+            style,
+            lane_idx,
+            min_x,
+            min_y,
+            max_x,
+            max_y,
+            src_id,
+            tgt_id,
+            classes,
+            placed,
+            check_overlaps=check_overlaps,
+            imported_names=imported_names,
+            route_kind=route_kind,
+        ):
+            return True
+    return False
+
+
+def _eliminate_edge_overlaps(
+    root,
+    imported_names: Set[str],
+    max_rounds: int = 150,
+) -> None:
+    """Dedicated pass until edge_on_edge_overlap is zero."""
+    from drawio_tools import check_edge_on_edge_overlaps
+
+    lane = 0
+    for round_idx in range(max_rounds):
+        overlaps = check_edge_on_edge_overlaps(root)
+        if not overlaps:
+            return
+        rerouted = False
+        for desc_a, desc_b, _detail in overlaps:
+            for desc in (desc_a, desc_b):
+                parsed = _parse_edge_desc(desc)
+                if parsed is None:
+                    continue
+                src, tgt = parsed
+                lane += 1
+                if _reroute_single_edge(
+                    root, src, tgt, lane, imported_names, check_overlaps=True
+                ):
+                    rerouted = True
+        if rerouted:
+            continue
+        _assign_orthogonal_lanes(
+            root,
+            lane_offset=(round_idx + 1) % _OUTER_SLOTS,
+            imported_names=imported_names,
+        )
 
 
 def _polish_page_layout(
@@ -1315,39 +1707,251 @@ def _polish_page_layout(
     positions: Dict[str, Tuple[int, int]],
     imported_names: Set[str],
 ) -> None:
-    """Eliminate shared_anchor and edge_on_edge_overlap."""
-    from drawio_tools import check_edge_on_edge_overlaps, check_shared_anchors, validate_layout
+    """Fix shared_anchor and edge_on_edge_overlap without rerouting every edge."""
+    from drawio_tools import (
+        check_edge_on_edge_overlaps,
+        check_shared_anchors,
+        validate_layout,
+    )
 
     _hoist_imports_on_canvas(root, positions, imported_names)
+    if imported_names:
+        _fix_class_crossing_edges(root, max_rounds=10, imported_names=imported_names)
+    _ensure_orthogonal_waypoints(root, imported_names)
     _assign_distinct_anchors(root)
-    _assign_orthogonal_lanes(root, lane_offset=0)
-    _assign_distinct_anchors(root)
+    _assign_orthogonal_lanes(root, lane_offset=0, imported_names=imported_names)
 
-    lane_counter = 80
-    for round_idx in range(18):
-        if not [v for v in validate_layout(root) if v[0] in SECONDARY_RULES]:
+    lane_base = 0
+    for round_idx in range(80):
+        if not check_edge_on_edge_overlaps(root):
             break
-        if check_shared_anchors(root):
-            _assign_distinct_anchors(root)
-            continue
         overlaps = check_edge_on_edge_overlaps(root)
-        if not overlaps:
-            break
-        seen: Set[Tuple[str, str]] = set()
+        rerouted = False
         for desc_a, desc_b, _detail in overlaps[:6]:
             for desc in (desc_a, desc_b):
                 m = re.match(r"(.+?)->(.+?) \(", desc)
                 if not m:
                     continue
-                pair = (m.group(1).strip(), m.group(2).strip())
-                if pair in seen:
-                    continue
-                seen.add(pair)
-                lane_counter += 6
-                _force_unique_edge_route(root, pair[0], pair[1], lane_counter + round_idx)
-        _assign_distinct_anchors(root)
+                if _reroute_single_edge(
+                    root,
+                    m.group(1).strip(),
+                    m.group(2).strip(),
+                    lane_base + round_idx,
+                    imported_names,
+                    check_overlaps=True,
+                ):
+                    rerouted = True
+        if not rerouted:
+            _assign_orthogonal_lanes(
+                root,
+                lane_offset=(round_idx + 1) % _OUTER_SLOTS,
+                imported_names=imported_names,
+            )
 
-    _assign_distinct_anchors(root)
+    if [v for v in validate_layout(root) if v[0] in CRITICAL_RULES]:
+        _fix_class_crossing_edges(root, max_rounds=15, imported_names=imported_names)
+
+
+def _refine_page_violations(
+    root,
+    imported_names: Set[str],
+    positions: Dict[str, Tuple[int, int]],
+    max_rounds: int = 40,
+) -> None:
+    """Final targeted pass for remaining violations."""
+    from drawio_tools import (
+        check_edge_on_edge_overlaps,
+        check_edges_crossing_classes,
+        check_shared_anchors,
+        validate_layout,
+    )
+
+    lane_base = 0
+    stall = 0
+    for round_idx in range(max_rounds):
+        violations = validate_layout(root)
+        if not violations:
+            return
+        if check_shared_anchors(root):
+            _refresh_routes_after_anchors(
+                root, imported_names, lane_offset=round_idx % _OUTER_SLOTS
+            )
+            stall = 0
+            continue
+
+        crossings = check_edges_crossing_classes(root)
+        overlaps = check_edge_on_edge_overlaps(root)
+        candidates: List[str] = []
+        if crossings:
+            candidates.append(crossings[0][0])
+        if overlaps:
+            candidates.extend(overlaps[i][0] for i in range(min(4, len(overlaps))))
+        if not candidates:
+            stall += 1
+        else:
+            progress = False
+            check_ov = not bool(crossings)
+            for desc in candidates:
+                m = re.match(r"(.+?)->(.+?) \(", desc)
+                if not m:
+                    continue
+                src_name = m.group(1).strip()
+                tgt_name = m.group(2).strip()
+                edge = _find_edge_cell(root, src_name, tgt_name)
+                if edge is not None and crossings and _is_straight_inheritance(edge.get("style", "")):
+                    _apply_inheritance_edge_type(
+                        edge,
+                        orthogonal=True,
+                        entry_x=_fan_slot(round_idx % 9),
+                        clear_route=True,
+                    )
+                if _reroute_single_edge(
+                    root,
+                    src_name,
+                    tgt_name,
+                    lane_base + round_idx,
+                    imported_names,
+                    check_overlaps=check_ov,
+                ):
+                    progress = True
+
+            if progress:
+                stall = 0
+                continue
+
+        rule, msg = violations[0]
+        if rule == "edge_crosses_class" and _fix_edge_cross_on_canvas(
+            root, positions, msg, round_idx
+        ):
+            _sync_positions_from_root(root, positions)
+            stall = 0
+            continue
+        if rule == "class_overlap" and _fix_overlaps_on_canvas(root, positions):
+            _sync_positions_from_root(root, positions)
+            stall = 0
+            continue
+
+        stall += 1
+        _assign_orthogonal_lanes(
+            root, lane_offset=round_idx % _OUTER_SLOTS, imported_names=imported_names
+        )
+        _fix_class_crossing_edges(root, max_rounds=6, imported_names=imported_names)
+        if stall >= 30:
+            return
+
+
+def _parse_edge_desc(desc: str) -> Optional[Tuple[str, str]]:
+    m = re.match(r"(.+?)->(.+?) \(", desc)
+    if not m:
+        return None
+    return m.group(1).strip(), m.group(2).strip()
+
+
+def _achieve_zero_violations(
+    root,
+    positions: Dict[str, Tuple[int, int]],
+    imported_names: Set[str],
+    max_rounds: int = 800,
+) -> None:
+    """Iterate layout fixes until validate_layout is clean."""
+    from drawio_tools import (
+        check_edge_on_edge_overlaps,
+        check_overlaps,
+        check_shared_anchors,
+        get_all_classes,
+        validate_layout,
+    )
+
+    lane_seq = 0
+    stall = 0
+    for round_idx in range(max_rounds):
+        violations = validate_layout(root)
+        if not violations:
+            return
+
+        if check_overlaps(get_all_classes(root)):
+            if _fix_overlaps_on_canvas(root, positions):
+                _refresh_routes_after_anchors(
+                    root, imported_names, lane_offset=round_idx % _OUTER_SLOTS
+                )
+                stall = 0
+                continue
+
+        if check_shared_anchors(root):
+            _refresh_routes_after_anchors(
+                root, imported_names, lane_offset=round_idx % _OUTER_SLOTS
+            )
+            stall = 0
+            continue
+
+        progress = False
+        for rule, msg in violations[:10]:
+            if rule == "hierarchy_flow" and _fix_hierarchy_on_canvas(root, positions, msg):
+                progress = True
+                break
+            if rule == "class_overlap":
+                if _fix_overlaps_on_canvas(root, positions):
+                    progress = True
+                    break
+            if rule == "edge_crosses_class":
+                parsed = _parse_edge_desc(msg.replace("Edge ", "", 1))
+                if parsed is None:
+                    continue
+                src, tgt = parsed
+                lane_seq += 1
+                edge = _find_edge_cell(root, src, tgt)
+                if edge is not None and _is_straight_inheritance(edge.get("style", "")):
+                    _apply_inheritance_edge_type(
+                        edge, orthogonal=True, entry_x=_fan_slot(lane_seq % 9), clear_route=True
+                    )
+                if _reroute_single_edge(
+                    root, src, tgt, lane_seq, imported_names, check_overlaps=False
+                ):
+                    progress = True
+                    break
+                if _route_edge_clear(root, src, tgt, lane_seq):
+                    progress = True
+                    break
+                if _fix_edge_cross_on_canvas(root, positions, msg, lane_seq):
+                    progress = True
+                    break
+            if rule == "edge_on_edge_overlap":
+                overlaps = check_edge_on_edge_overlaps(root)
+                if not overlaps:
+                    continue
+                desc_a, desc_b, _ = overlaps[0]
+                for desc in (desc_a, desc_b):
+                    parsed = _parse_edge_desc(desc)
+                    if parsed is None:
+                        continue
+                    src, tgt = parsed
+                    lane_seq += 1
+                    if _reroute_single_edge(
+                        root, src, tgt, lane_seq, imported_names, check_overlaps=True
+                    ):
+                        progress = True
+                        break
+                    if _reroute_single_edge(
+                        root, src, tgt, lane_seq + 8, imported_names, check_overlaps=False
+                    ):
+                        progress = True
+                        break
+                if progress:
+                    break
+
+        if progress:
+            stall = 0
+            continue
+
+        stall += 1
+        if stall >= 24:
+            return
+        if stall % 4 == 0:
+            lane_seq += 8
+            _assign_orthogonal_lanes(
+                root, lane_offset=(round_idx % 48) + stall, imported_names=imported_names
+            )
+            _fix_class_crossing_edges(root, max_rounds=8, imported_names=imported_names)
 
 
 def _fix_secondary_violations(
@@ -1543,7 +2147,7 @@ def _build_page(
 
     # Post-layout: optimize until critical violations cleared
     _refresh_inheritance_edge_styles(root)
-    for _pass in range(2):
+    for _pass in range(3):
         _optimize_layout(root, positions)
         _finalize_page_routes(root, positions)
         from drawio_tools import validate_layout
@@ -1564,7 +2168,18 @@ def _build_page(
         set_geometry(cell, x=x, y=y)
     _refresh_inheritance_edge_styles(root)
     _polish_page_layout(root, positions, imported_set)
-    _assign_distinct_anchors(root)
+    n_edges = len(edge_specs)
+    refine_a = min(100, 30 + n_edges)
+    achieve_a = min(150, 40 + n_edges * 2)
+    _refine_page_violations(root, imported_set, positions, max_rounds=refine_a)
+    _achieve_zero_violations(root, positions, imported_set, max_rounds=achieve_a)
+    _eliminate_edge_overlaps(root, imported_set, max_rounds=min(120, 40 + n_edges))
+    _fix_class_crossing_edges(root, max_rounds=30, imported_names=imported_set)
+    if validate_layout(root):
+        _refine_page_violations(root, imported_set, positions, max_rounds=refine_a // 2)
+        _achieve_zero_violations(root, positions, imported_set, max_rounds=achieve_a * 2)
+        _eliminate_edge_overlaps(root, imported_set, max_rounds=min(100, 30 + n_edges))
+        _fix_class_crossing_edges(root, max_rounds=40, imported_names=imported_set)
 
 
 def _edge_anchor(style: str, geo: Tuple[float, float, float, float], end: str) -> Tuple[float, float]:

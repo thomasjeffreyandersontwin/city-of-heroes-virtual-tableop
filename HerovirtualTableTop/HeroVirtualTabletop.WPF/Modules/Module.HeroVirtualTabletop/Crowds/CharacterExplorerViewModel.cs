@@ -129,6 +129,7 @@ namespace Module.HeroVirtualTabletop.Crowds
             set
             {
                 crowdCollection = value;
+                allCharactersCrowd = null;
                 OnPropertyChanged("CrowdCollection");
             }
         }
@@ -1422,7 +1423,26 @@ namespace Module.HeroVirtualTabletop.Crowds
 
         private void AddCharacterToAllCharactersCrowd(Character character)
         {
-            AllCharactersCrowd.Add(character as CrowdMemberModel);                                                                        
+            CrowdMemberModel member = character as CrowdMemberModel;
+            if (member == null) return;
+            // Ensure the All Characters CrowdModel exists in the collection
+            CrowdModel allCharsModel = this.CrowdCollection
+                .FirstOrDefault(cm => cm.Name == Constants.ALL_CHARACTER_CROWD_NAME);
+            if (allCharsModel == null)
+            {
+                allCharsModel = new CrowdModel { Name = Constants.ALL_CHARACTER_CROWD_NAME, Order = -1 };
+                this.CrowdCollection.Add(allCharsModel);
+                this.CrowdCollection.Sort(ListSortDirection.Ascending, new CrowdMemberModelComparer());
+                allCharactersCrowd = null; // force flat-list rebuild now that collection changed
+            }
+            // Add to the CrowdModel so CrowdMemberCollection reflects additions
+            if (!allCharsModel.CrowdMemberCollection.ContainsKey(member.Name))
+            {
+                allCharsModel.Add(member);
+            }
+            // Keep the flat list in sync for fast name-uniqueness checks
+            if (!AllCharactersCrowd.Contains(member))
+                AllCharactersCrowd.Add(member);
         }
         private void AddCrowdToAllCharactersCrowd(Crowd crowd)
         {
@@ -1694,14 +1714,16 @@ namespace Module.HeroVirtualTabletop.Crowds
 
         private void SaveCrowdCollectionCallback()
         {
-            
             Action d =
                delegate()
                {
                    this.BusyService.HideBusy();
                    this.eventAggregator.GetEvent<SaveCrowdCompletedEvent>().Publish(null);
                };
-            Application.Current.Dispatcher.BeginInvoke(d);
+            if (Application.Current != null)
+                Application.Current.Dispatcher.BeginInvoke(d);
+            else
+                d();
         }
 
         #endregion
@@ -2242,25 +2264,24 @@ namespace Module.HeroVirtualTabletop.Crowds
                         crowdMemberModel.RosterCrowd = crowdModel;
                         rosterCharacters.Add(crowdMemberModel);
                     }
-                    else
+                    else if (crowdMemberModel != null)
                     {
-                        //////NO NEED TO CLONE - REQUIREMENT WITHDRAWN
-                        //// This character is already added to roster under another crowd, so need to make a clone first
-                        //CrowdMemberModel clonedModel = crowdMemberModel.Clone() as CrowdMemberModel;
-                        ////EliminateDuplicateName(clonedModel);
-                        //clonedModel.Name = GetAppropriateCharacterName(clonedModel.Name);
-                        //this.AddCharacterToAllCharactersCrowd(clonedModel);
-                        //this.AddCharacterToCrowd(clonedModel, crowdModel);
-                        //// Now send to roster the cloned character
-                        //clonedModel.RosterCrowd = crowdModel;
-                        //rosterCharacters.Add(clonedModel);
+                        // Character already in roster under a different crowd — create a clone
+                        CrowdMemberModel clonedModel = crowdMemberModel.Clone() as CrowdMemberModel;
+                        clonedModel.Name = GetAppropriateCharacterName(clonedModel.Name);
+                        this.AddCharacterToAllCharactersCrowd(clonedModel);
+                        this.AddCharacterToCrowd(clonedModel, crowdModel);
+                        clonedModel.RosterCrowd = crowdModel;
+                        rosterCharacters.Add(clonedModel);
                     }
                 }
             }
 
             if (rosterCharacters.Count > 0)
+            {
                 eventAggregator.GetEvent<AddToRosterEvent>().Publish(rosterCharacters);
-                //this.SaveCrowdCollection();
+                this.SaveCrowdCollection();
+            }
         }
 
         public void ConstructRosterCrowdCharacterMembershipKeys(CrowdModel crowdModel)

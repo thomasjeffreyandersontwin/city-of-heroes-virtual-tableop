@@ -1,0 +1,171 @@
+<UserControl x:Class="HeroVTT.Crowds.CharacterExplorerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:crowd="clr-namespace:Module.HeroVirtualTabletop.Crowds;assembly=Module.HeroVirtualTabletop"
+             xmlns:managedcharacter="clr-namespace:Module.HeroVirtualTabletop.Characters;assembly=Module.HeroVirtualTabletop"
+             xmlns:behaviors="clr-namespace:Framework.WPF.Behaviors;assembly=Framework.WPF"
+             xmlns:extensions="clr-namespace:Framework.WPF.Extensions;assembly=Framework.WPF"
+             xmlns:bindings="clr-namespace:Framework.WPF.Binding;assembly=Framework.WPF"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:convertes="clr-namespace:Module.Shared.Converters;assembly=Module.Shared"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Loaded="CharacterExplorerView_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Module.Shared;Component/Resources/ResourceDictionary/GeneralResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <bindings:BindingProxy x:Key="BindingProxy" Data="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext}"/>
+            <ContextMenu x:Key="CharExplorerMenu">
+                <MenuItem Header="Add Character" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.AddCharacterCommand}"></MenuItem>
+                <MenuItem Header="Add Crowd" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.AddCrowdCommand}"></MenuItem>
+                <MenuItem Header="Add Crowd From Models" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.AddCrowdFromModelsCommand}"></MenuItem>
+            </ContextMenu>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid ContextMenu="{StaticResource ResourceKey=CharExplorerMenu}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <crowd:CharacterMenuControl Grid.Row="0"/>
+        <Grid Grid.Row="1" x:Name="gridFlattenNumber" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Take every # character:" Foreground="White" Margin="3 2 0 0" />
+            <xctk:IntegerUpDown x:Name="intUpDownFlattenNum" Grid.Column="1" Increment="1" DefaultValue="0" Minimum="0" Value="{Binding FlattenNumber}"/>
+        </Grid>
+        <TreeView x:Name="treeViewCrowd" Grid.Row="2" ItemsSource="{Binding CrowdCollection}" Style="{StaticResource ResourceKey=SearchableTreeView}" AllowDrop="True"
+                  Margin="0"  HorizontalAlignment="Stretch" PreviewMouseDown="treeViewCrowd_OnPreviewMouseDown" PreviewKeyUp="treeViewCrowd_PreviewKeyUp" 
+                  PreviewMouseMove="treeViewCrowd_PreviewMouseMove" PreviewDragEnter="treeViewCrowd_PreviewDragEnter" PreviewDrop="treeViewCrowd_PreviewDrop"
+                  extensions:DragDropExtension.ScrollOnDragDrop="True"
+                  >
+            <TreeView.Resources>
+                <bindings:BindingProxy x:Key="BindingProxy" Data="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext}"/>
+                <ContextMenu x:Key="CharExplorerMenu">
+                    <MenuItem Header="Add to Roster" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.AddToRosterCommand}"></MenuItem>
+                    <MenuItem Header="Clone" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.CloneCharacterCrowdCommand}"></MenuItem>
+                    <MenuItem Header="Cut" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.CutCharacterCrowdCommand}"></MenuItem>
+                    <MenuItem Header="Link" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.LinkCharacterCrowdCommand}"></MenuItem>
+                    <MenuItem Header="Paste" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.PasteCharacterCrowdCommand}"></MenuItem>
+                    <MenuItem Header="Add Character" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.AddCharacterCommand}"></MenuItem>
+                    <MenuItem Header="Add Crowd" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.AddCrowdCommand}"></MenuItem>
+                    <MenuItem Header="Edit Character" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.EditCharacterCommand}"></MenuItem>
+                    <MenuItem Header="Remove" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.DeleteCharacterCrowdCommand}"></MenuItem>
+                    <MenuItem Header="Add Crowd From Models" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.AddCrowdFromModelsCommand}"></MenuItem>
+                    <MenuItem Header="Copy All Actions" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.CopyAllActionsCommand}"></MenuItem>
+                    <MenuItem Header="Paste Actions as References" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.PasteActionsAsReferencesCommand}"></MenuItem>
+                    <MenuItem Header="Remove all Actions" Command="{Binding Source={StaticResource BindingProxy}, Path=Data.RemoveAllActionsCommand}"></MenuItem>
+                </ContextMenu>
+                <HierarchicalDataTemplate DataType="{x:Type crowd:CrowdModel}"
+                                    ItemsSource="{Binding CrowdMemberCollection}"
+                                    >
+                    <Grid ContextMenu="{StaticResource ResourceKey=CharExplorerMenu}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" FontFamily="{StaticResource FontFamily_FontAwesome}" Text="&#xf0c0;" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        </TextBlock>
+                        <Grid Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0">
+                            <TextBox x:Name="textBlockCrowd" Text="{Binding Path=Name}" Style="{StaticResource SelectableTextBlockLikeStyle}" PreviewDragEnter="textBlockCrowdMember_PreviewDragEnter" PreviewDragOver="textBlockCrowdMember_PreviewDragOver" PreviewDrop="textBlockCrowdMember_PreviewDrop">
+                                <TextBox.InputBindings>
+                                    <MouseBinding Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.EnterEditModeCommand}" MouseAction="LeftDoubleClick" CommandParameter="{Binding ElementName=textBlockCrowd}"/>
+                                    <KeyBinding Key="Space" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.EnterEditModeCommand}" CommandParameter="{Binding ElementName=textBlockCrowd}"/>
+                                    <KeyBinding Key="Delete" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.DeleteCharacterCrowdCommand}"/>
+                                    <KeyBinding Key="Escape" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.UpdateSelectedCrowdMemberCommand}"/>
+                                </TextBox.InputBindings>
+                            </TextBox>
+                            <TextBox x:Name="textBoxCrowd" Visibility="Hidden" MinWidth="100"
+                                         Text="{Binding Name, UpdateSourceTrigger=Explicit}">
+
+                                <behaviors:CommandBehaviorCollection.Behaviors>
+                                    <behaviors:BehaviorBinding Event="LostFocus" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.SubmitCharacterCrowdRenameCommand}" CommandParameter="{Binding ElementName=textBoxCrowd}"/>
+                                </behaviors:CommandBehaviorCollection.Behaviors>
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Enter" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.SubmitCharacterCrowdRenameCommand}" CommandParameter="{Binding ElementName=textBoxCrowd}"/>
+                                    <KeyBinding Key="Escape" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.CancelEditModeCommand}" CommandParameter="{Binding ElementName=textBoxCrowd}"/>
+                                </TextBox.InputBindings>
+                            </TextBox>
+                        </Grid>
+                    </Grid>
+                </HierarchicalDataTemplate>
+
+                <DataTemplate DataType="{x:Type managedcharacter:Character}" >
+                    <Grid ContextMenu="{StaticResource ResourceKey=CharExplorerMenu}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" FontFamily="{StaticResource FontFamily_FontAwesome}" Text="&#xf007;" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Grid Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0">
+                            <TextBox x:Name="textBlockCharacter" Text="{Binding Path=Name}" Style="{StaticResource SelectableTextBlockLikeStyle}" PreviewDragEnter="textBlockCrowdMember_PreviewDragEnter" PreviewDragOver="textBlockCrowdMember_PreviewDragOver" PreviewDrop="textBlockCrowdMember_PreviewDrop"
+                                              >
+                                <TextBox.InputBindings>
+                                    <MouseBinding Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.EnterEditModeCommand}" MouseAction="LeftDoubleClick" CommandParameter="{Binding ElementName=textBlockCharacter}"/>
+                                    <KeyBinding Key="Space" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.EnterEditModeCommand}" CommandParameter="{Binding ElementName=textBlockCharacter}"/>
+                                    <KeyBinding Key="Delete" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.DeleteCharacterCrowdCommand}"/>
+                                    <KeyBinding Key="Escape" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.UpdateSelectedCrowdMemberCommand}"/>
+                                </TextBox.InputBindings>
+                            </TextBox>
+                            <TextBox x:Name="textBoxCharacter" Visibility="Hidden" MinWidth="100" 
+                                             Text="{Binding Path=Name, UpdateSourceTrigger=Explicit}">
+                                <behaviors:CommandBehaviorCollection.Behaviors>
+                                    <behaviors:BehaviorBinding Event="LostFocus" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.SubmitCharacterCrowdRenameCommand}" CommandParameter="{Binding ElementName=textBoxCharacter}"/>
+                                </behaviors:CommandBehaviorCollection.Behaviors>
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Enter" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.SubmitCharacterCrowdRenameCommand}" CommandParameter="{Binding ElementName=textBoxCharacter}"/>
+                                    <KeyBinding Key="Escape" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.CancelEditModeCommand}" CommandParameter="{Binding ElementName=textBoxCharacter}"/>
+                                </TextBox.InputBindings>
+                            </TextBox>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </TreeView.Resources>
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem" BasedOn="{StaticResource searchableTreeViewItem}">
+                    <Style.Resources>
+                        <convertes:BooleanToVisibilityConverter x:Key="boolToVisibility"></convertes:BooleanToVisibilityConverter>
+                    </Style.Resources>
+                    <Setter Property="Visibility" Value="{Binding Path=IsMatched, Mode=OneWay, Converter={StaticResource ResourceKey=boolToVisibility}}"/>
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <behaviors:CommandBehaviorCollection.Behaviors>
+                <behaviors:BehaviorBinding Event="SelectedItemChanged" Command="{Binding UpdateSelectedCrowdMemberCommand}" CommandParameter="{Binding ElementName=treeViewCrowd}"/>
+            </behaviors:CommandBehaviorCollection.Behaviors>
+            <TreeView.InputBindings>
+                <KeyBinding Key="Escape" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.UpdateSelectedCrowdMemberCommand}"/>
+            </TreeView.InputBindings>
+        </TreeView>
+        <!-- E2E test-automation rename hook: not visible in production UI.
+             AppDriver sets automationRenameInput.Text = "CurrentName|NewName" then invokes automationRenameBtn.
+             Visibility="Visible" with Opacity=0 and Width/Height=1 keeps element in UIA tree. -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0" Height="1" IsHitTestVisible="False">
+            <TextBox x:Name="automationRenameInput"
+                     AutomationProperties.AutomationId="automationRenameInput"
+                     Width="1" IsTabStop="False" />
+            <Button x:Name="automationRenameBtn"
+                    AutomationProperties.AutomationId="automationRenameBtn"
+                    Width="1" Height="1" IsTabStop="False"
+                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=crowd:CharacterExplorerView}, Path=DataContext.AutomationRenameCommand}"
+                    CommandParameter="{Binding ElementName=automationRenameInput}" />
+        </StackPanel>
+        <Border Grid.Row="2"  Style="{StaticResource SearchBox}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="4 4 20 4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="pack://application:,,,/Module.Shared;Component/Resources/Images/Search.png" Height="24" VerticalAlignment="Bottom"/>
+                <!--The following text binding won't work, will need to modify it later-->
+                <TextBox Name="txtFilter" Grid.Column="1"                           
+                         Text="{Binding Path=Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

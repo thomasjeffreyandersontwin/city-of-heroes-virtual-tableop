@@ -363,9 +363,55 @@ namespace Module.HeroVirtualTabletop.Crowds
             set { _crowdRepositoryPath = value; }
         }
 
-        public string CrowdsFolderPath { get { return null; } set { } }
+        private string _crowdsFolderPath;
+        public string CrowdsFolderPath
+        {
+            get { return _crowdsFolderPath; }
+            set { _crowdsFolderPath = value; }
+        }
 
-        private bool UseLegacyMode { get { return string.IsNullOrEmpty(_dataDirectory) && !string.IsNullOrEmpty(_crowdRepositoryPath); } }
+        private bool UseFolderMode { get { return !string.IsNullOrEmpty(_crowdsFolderPath); } }
+
+        private bool UseLegacyMode { get { return string.IsNullOrEmpty(_dataDirectory) && !string.IsNullOrEmpty(_crowdRepositoryPath) && !UseFolderMode; } }
+
+        private List<CrowdModel> LoadFromFolder()
+        {
+            var result = new List<CrowdModel>();
+            if (!Directory.Exists(_crowdsFolderPath))
+                return result;
+            foreach (string file in Directory.GetFiles(_crowdsFolderPath, "*.data"))
+            {
+                List<CrowdModel> crowds = null;
+                try { crowds = Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(file); }
+                catch { crowds = null; }
+                if (crowds != null)
+                    result.AddRange(crowds);
+            }
+            return result;
+        }
+
+        private void SaveToFolder(List<CrowdModel> crowds)
+        {
+            if (!Directory.Exists(_crowdsFolderPath))
+                Directory.CreateDirectory(_crowdsFolderPath);
+
+            var crowdNames = new HashSet<string>(crowds.Select(c => c.Name), StringComparer.OrdinalIgnoreCase);
+
+            // Delete files for crowds that were removed from the collection
+            foreach (string file in Directory.GetFiles(_crowdsFolderPath, "*.data"))
+            {
+                string nameFromFile = Path.GetFileNameWithoutExtension(file);
+                if (!crowdNames.Contains(nameFromFile))
+                    File.Delete(file);
+            }
+
+            // Write one file per top-level crowd
+            foreach (CrowdModel crowd in crowds)
+            {
+                string filePath = Path.Combine(_crowdsFolderPath, crowd.Name + ".data");
+                Helper.SerializeObjectAsJSONToFile(filePath, new List<CrowdModel> { crowd });
+            }
+        }
 
         private List<CrowdModel> LoadFromLegacyFile()
         {
@@ -385,6 +431,15 @@ namespace Module.HeroVirtualTabletop.Crowds
 
         public void GetCrowdCollection(Action<List<CrowdModel>> GetCrowdCollectionCompleted)
         {
+            if (UseFolderMode)
+            {
+                ThreadPool.QueueUserWorkItem(_ =>
+                {
+                    var crowds = LoadFromFolder();
+                    GetCrowdCollectionCompleted(crowds);
+                });
+                return;
+            }
             if (UseLegacyMode)
             {
                 ThreadPool.QueueUserWorkItem(_ =>
@@ -404,6 +459,15 @@ namespace Module.HeroVirtualTabletop.Crowds
 
         public void SaveCrowdCollection(Action SaveCrowdCollectionCompleted, List<CrowdModel> crowdCollection)
         {
+            if (UseFolderMode)
+            {
+                ThreadPool.QueueUserWorkItem(_ =>
+                {
+                    SaveToFolder(crowdCollection);
+                    SaveCrowdCollectionCompleted();
+                });
+                return;
+            }
             if (UseLegacyMode)
             {
                 ThreadPool.QueueUserWorkItem(_ =>

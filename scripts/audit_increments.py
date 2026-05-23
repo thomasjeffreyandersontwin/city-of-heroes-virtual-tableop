@@ -41,8 +41,14 @@ def audit_increment(inc: int) -> bool:
 
 
 def main() -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--increment", type=int, action="append", dest="increments")
+    args = parser.parse_args()
+    incs = tuple(args.increments) if args.increments else (4, 5, 6)
     ok = True
-    for inc in (4, 5, 6):
+    for inc in incs:
         if not audit_increment(inc):
             ok = False
     print("ALL PASS" if ok else "FAILURES REMAIN")
