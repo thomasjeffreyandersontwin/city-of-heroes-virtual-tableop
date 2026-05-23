@@ -1,0 +1,19 @@
+10:57:25.313 === HVT Migration ===
+10:57:25.320 COH dir: c:\hero-desktop\City Of Heroes
+10:57:25.321 Loading Module.HeroVirtualTabletop.dll...
+10:57:25.692 Creating CrowdRepository...
+10:57:25.693 CrowdRepository created. Data dir: c:\hero-desktop\City Of Heroes\data
+10:57:25.693 Running MigrateToSplitFormat()... (this will take several minutes for the 106MB file)
+10:57:26.468   [resolve] Module.HeroVirtualTabletop.dll
+10:57:26.469   [resolve] Module.HeroVirtualTabletop.dll
+11:10:02.015 ERROR: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.IO.IOException: There is not enough space on the disk.
+
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Module.HeroVirtualTabletop.Crowds.CrowdRepository.MigrateToSplitFormat() in c:\hero-desktop\hero-original\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\Crowds\CrowdRepository.cs:line 190
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Migrate.Main(String[] args)

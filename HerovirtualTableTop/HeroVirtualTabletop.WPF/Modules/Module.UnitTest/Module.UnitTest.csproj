@@ -132,6 +132,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <HintPath>..\..\lib\Microsoft.Xna.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
       <HintPath>..\..\lib\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
       <Private>True</Private>
@@ -157,18 +160,52 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="AnimatedAbilities\AnimatedAbilityTestSuite.cs" />
+    <Compile Include="CharacterMovement\CharacterMovementTestSuite.cs" />
+    <Compile Include="Library\FakeMemoryInstance.cs" />
+    <Compile Include="AnimatedAbilities\TestCreateAnimatedAbility.cs" />
+    <Compile Include="AnimatedAbilities\TestEditAnimatedAbility.cs" />
+    <Compile Include="AnimatedAbilities\TestDeleteAnimatedAbility.cs" />
+    <Compile Include="AnimatedAbilities\TestSetAbilityActivationKey.cs" />
+    <Compile Include="AnimatedAbilities\TestToggleAbilityPersistence.cs" />
+    <Compile Include="AnimatedAbilities\TestSetDefaultAbility.cs" />
+    <Compile Include="AnimatedAbilities\TestPlayAnimatedAbility.cs" />
+    <Compile Include="AnimatedAbilities\TestStopActiveAbility.cs" />
+    <Compile Include="AnimatedAbilities\TestAbilityActivationEligibility.cs" />
+    <Compile Include="AnimatedAbilities\TestMaintainPersistentAbility.cs" />
+    <Compile Include="AnimatedAbilities\TestAddDefaultAbilitiesToCharacter.cs" />
+    <Compile Include="AnimatedAbilities\TestAnimationElementSubtypes.cs" />
+    <Compile Include="AnimatedAbilities\TestReorderAnimationElements.cs" />
+    <Compile Include="AnimatedAbilities\TestAnimationSequence.cs" />
+    <Compile Include="Characters\CharacterOptionGroupTests.cs" />
     <Compile Include="Characters\CharacterTestSuite.cs" />
     <Compile Include="Crowds\BaseCrowdTest.cs" />
+    <Compile Include="Crowds\BrowseAndActivateCrowdFilesTests.cs" />
+    <Compile Include="Crowds\CharacterExplorerViewModelTier2Tests.cs" />
+    <Compile Include="Crowds\CrowdDirtyFlagTests.cs" />
     <Compile Include="Crowds\CrowdRepositorySaveTests.cs" />
     <Compile Include="Crowds\CrowdRepositoryTestSuite.cs" />
     <Compile Include="Crowds\CrowdTestSuite.cs" />
+    <Compile Include="Crowds\DailyBackupTests.cs" />
+    <Compile Include="Crowds\LoadActiveCrowdFilesTests.cs" />
     <Compile Include="GameCommunicator\GameCommandTestAssemblyHooks.cs" />
     <Compile Include="GameCommunicator\KeyBindsGeneratorTest.cs" />
     <Compile Include="Identities\AnimatedCharacterTestSuite.cs" />
+    <Compile Include="Identities\Increment2IdentityOptionGroupDomainTests.cs" />
+    <Compile Include="Identities\GameBridgeInitializationDomainTests.cs" />
+    <Compile Include="Identities\Increment2IdentityOptionGroupViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Library\BaseTest.cs" />
     <Compile Include="Roster\RosterTestSuite.cs" />
+    <Compile Include="Roster\RosterEntryDomainTests.cs" />
+    <Compile Include="Roster\ActiveCharacterDomainTests.cs" />
+    <Compile Include="Roster\GangModeDomainTests.cs" />
+    <Compile Include="Roster\RosterViewModelTests.cs" />
     <Compile Include="ArchitectureExample\SkinnyViewModelExample.cs" />
+    <Compile Include="CrowdOrchestration\CrowdMoveTests.cs" />
+    <Compile Include="CrowdOrchestration\AttackConfigurationTests.cs" />
+    <Compile Include="CrowdOrchestration\CombatExecutionTests.cs" />
+    <Compile Include="CrowdOrchestration\CombatGeometryTests.cs" />
+    <Compile Include="CrowdOrchestration\HCSIntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Refactored\" />

@@ -312,7 +312,7 @@ namespace Module.HeroVirtualTabletop.Crowds
             this.messageBoxService = messageBoxService;
             this.desktopKeyEventHandler = keyEventHandler;
             InitializeCommands();
-            //this.eventAggregator.GetEvent<SaveCrowdEvent>().Subscribe(this.SaveCrowdCollection);
+            this.eventAggregator.GetEvent<SaveCrowdEvent>().Subscribe(this.SaveCrowdCollection);
             this.eventAggregator.GetEvent<AddToRosterThruCharExplorerEvent>().Subscribe(this.AddToRoster);
             this.eventAggregator.GetEvent<StopAllActiveAbilitiesEvent>().Subscribe(this.StopAllActiveAbilities);
             this.eventAggregator.GetEvent<AttackInitiatedEvent>().Subscribe(this.AttackInitiated);
@@ -430,7 +430,7 @@ namespace Module.HeroVirtualTabletop.Crowds
                 {
                     RenameCharacterCrowd(updatedName);
                     OnEditModeLeave(state, null);
-                    //this.SaveCrowdCollection();
+                    this.SaveCrowdCollection();
                 }
                 else
                 {
@@ -1218,7 +1218,7 @@ namespace Module.HeroVirtualTabletop.Crowds
             // Add the new Model
             this.AddNewCrowdModel(crowdModel);
             // Update Repository asynchronously
-            //this.SaveCrowdCollection();
+            this.SaveCrowdCollection();
             // UnLock character crowd Tree from updating;
             this.LockModelAndMemberUpdate(false);
             // Update character crowd if necessary
@@ -1318,11 +1318,8 @@ namespace Module.HeroVirtualTabletop.Crowds
 
         private void AddCrowdToCrowdCollection(CrowdModel crowdModel)
         {
-            if (this.SelectedCrowdModel == null || (this.SelectedCrowdModel != null && this.SelectedCrowdModel.Name == Constants.ALL_CHARACTER_CROWD_NAME))
-            {
-                this.CrowdCollection.Add(crowdModel);
-                this.CrowdCollection.Sort(ListSortDirection.Ascending, new CrowdMemberModelComparer()); 
-            }
+            this.CrowdCollection.Add(crowdModel);
+            this.CrowdCollection.Sort(ListSortDirection.Ascending, new CrowdMemberModelComparer()); 
         }
 
         private void AddCrowdToSelectedCrowd(CrowdModel crowdModel)
@@ -1350,7 +1347,7 @@ namespace Module.HeroVirtualTabletop.Crowds
             // Add default movements
             character.AddDefaultMovements();
             // Update Repository asynchronously
-            //this.SaveCrowdCollection();
+            this.SaveCrowdCollection();
             // Enter edit mode for the added character
             OnEditNeeded(character, null); 
         }
@@ -1451,8 +1448,13 @@ namespace Module.HeroVirtualTabletop.Crowds
             bool canDeleteCharacterOrCrowd = false;
             if (SelectedCrowdModel != null && !Helper.GlobalVariables_IsPlayingAttack)
             {
-                if (SelectedCrowdModel.Name != Constants.SYSTEM_CROWD_NAME)
+                if (SelectedCrowdModel.Name != Constants.SYSTEM_CROWD_NAME && SelectedCrowdModel.Name != Constants.ALL_CHARACTER_CROWD_NAME)
                     canDeleteCharacterOrCrowd = true;
+                else if (SelectedCrowdModel.Name == Constants.ALL_CHARACTER_CROWD_NAME)
+                {
+                    if (SelectedCrowdMemberModel != null)
+                        canDeleteCharacterOrCrowd = true;
+                }
                 else
                 {
                     if (SelectedCrowdMemberModel != null)
@@ -1476,10 +1478,28 @@ namespace Module.HeroVirtualTabletop.Crowds
             // Determine if Character or Crowd is to be deleted
             if (SelectedCrowdMemberModel != null) // Delete Character
             {
-                if (SelectedCrowdMemberModel.RosterCrowd != null && SelectedCrowdMemberModel.RosterCrowd.Name == SelectedCrowdModel.Name)
-                    rosterMember = SelectedCrowdMemberModel;
-                // Delete the Character from all occurances of this crowd
-                DeleteCrowdMemberFromCrowdModelByName(SelectedCrowdModel, SelectedCrowdMemberModel.Name);
+                if (SelectedCrowdModel.Name == Constants.ALL_CHARACTER_CROWD_NAME)
+                {
+                    // Prompt user before removing from all characters (permanent removal from system)
+                    MessageBoxResult result = messageBoxService.ShowDialog(
+                        Messages.DELETE_CHARACTER_FROM_ALL_CHARACTERS_CONFIRMATION_MESSAGE,
+                        Messages.DELETE_CHARACTER_CAPTION,
+                        System.Windows.MessageBoxButton.YesNo,
+                        System.Windows.MessageBoxImage.Warning);
+                    if (result == System.Windows.MessageBoxResult.Yes)
+                    {
+                        if (SelectedCrowdMemberModel.RosterCrowd != null)
+                            rosterMember = SelectedCrowdMemberModel;
+                        DeleteCrowdMemberFromAllCrowdsByName(SelectedCrowdMemberModel.Name);
+                    }
+                }
+                else
+                {
+                    if (SelectedCrowdMemberModel.RosterCrowd != null && SelectedCrowdMemberModel.RosterCrowd.Name == SelectedCrowdModel.Name)
+                        rosterMember = SelectedCrowdMemberModel;
+                    // Delete the Character from all occurances of this crowd
+                    DeleteCrowdMemberFromCrowdModelByName(SelectedCrowdModel, SelectedCrowdMemberModel.Name);
+                }
             }
             else // Delete Crowd
             {
@@ -1489,12 +1509,29 @@ namespace Module.HeroVirtualTabletop.Crowds
                     string nameOfDeletingCrowdModel = SelectedCrowdModel.Name;
                     DeleteNestedCrowdFromCrowdModelByName(SelectedCrowdParent, nameOfDeletingCrowdModel);
                 }
-                // Check if there are containing characters. If so, prompt
-                else
+                else // Top-level crowd: prompt user about contained characters
                 {
-                    List<ICrowdMemberModel> crowdSpecificCharacters = FindCrowdSpecificCrowdMembers(this.SelectedCrowdModel);
+                    MessageBoxResult result = messageBoxService.ShowDialog(
+                        Messages.DELETE_CONTAINING_CHARACTERS_FROM_CROWD_PROMPT_MESSAGE,
+                        Messages.DELETE_CROWD_CAPTION,
+                        System.Windows.MessageBoxButton.YesNoCancel,
+                        System.Windows.MessageBoxImage.Warning);
+                    if (result == System.Windows.MessageBoxResult.Cancel)
+                    {
+                        this.LockModelAndMemberUpdate(false);
+                        return;
+                    }
                     string nameOfDeletingCrowdModel = SelectedCrowdModel.Name;
-                    DeleteCrowdMembersFromAllCrowdsByList(crowdSpecificCharacters);
+                    if (result == System.Windows.MessageBoxResult.Yes)
+                    {
+                        // Delete ALL characters in this crowd from ALL crowds
+                        List<ICrowdMemberModel> allCharactersInCrowd = GetFlattenedMemberList(
+                            SelectedCrowdModel.CrowdMemberCollection.ToList())
+                            .Where(m => m is CrowdMemberModel).ToList();
+                        foreach (var character in allCharactersInCrowd)
+                            DeleteCrowdMemberFromAllCrowdsByName(character.Name);
+                    }
+                    // No: just delete the crowd, keep characters
                     DeleteNestedCrowdFromAllCrowdsByName(nameOfDeletingCrowdModel);
                     DeleteCrowdFromCrowdCollectionByName(nameOfDeletingCrowdModel);
                     rosterMember = SelectedCrowdModel;
@@ -1504,8 +1541,8 @@ namespace Module.HeroVirtualTabletop.Crowds
             // Update ability collections
             //this.eventAggregator.GetEvent<NeedAbilityCollectionRetrievalEvent>().Publish(null);
             this.eventAggregator.GetEvent<NeedIdentityCollectionRetrievalEvent>().Publish(null);
-            // Finally save repository
-            //this.SaveCrowdCollection();
+            // Save repository
+            this.SaveCrowdCollection();
             // UnLock character crowd Tree from updating;
             this.LockModelAndMemberUpdate(false);
             // Update character crowd if necessary
@@ -1968,7 +2005,8 @@ namespace Module.HeroVirtualTabletop.Crowds
                                     else
                                     {
                                         member.Name = GetAppropriateCrowdName(member.Name);
-                                        this.AddCrowdToAllCharactersCrowd(member as CrowdModel);          
+                                        this.AddCrowdToAllCharactersCrowd(member as CrowdModel);
+                                        this.AddCrowdToCrowdCollection(member as CrowdModel);          
                                     }
                                 } 
                             }
@@ -2110,8 +2148,8 @@ namespace Module.HeroVirtualTabletop.Crowds
                         break;
                     }
             }
-            //if(saveNeeded)
-            //    this.SaveCrowdCollection();
+            if (saveNeeded)
+                this.SaveCrowdCollection();
             if (SelectedCrowdModel != null)
             {
                 OnExpansionUpdateNeeded(this.SelectedCrowdModel, new CustomEventArgs<ExpansionUpdateEvent> { Value = ExpansionUpdateEvent.Paste});

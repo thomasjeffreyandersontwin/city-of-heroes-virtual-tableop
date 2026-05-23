@@ -1,0 +1,1712 @@
+<mxfile host="drawio_tools.py">
+  <diagram id="page_crowd_move" name="Crowd Move">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Crowd&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Roster Entry»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Roster Entry&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="236" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Gang Mode»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Gang Mode&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Movement Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Movement Execution&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="236" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Gang Leader»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Gang Leader&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Crowd Move&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ positioning strategy : Relative Positioning, Optimal Spread Positioning&lt;br/&gt;+ target crowd members : Crowd, Roster Entry&lt;br/&gt;+ issue movement commands : Movement Execution&lt;br/&gt;+ apply facing after move : Facing Destination, Gang Leader Facing, Gang Mode&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="760" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Relative Positioning&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ displacement vector&lt;br/&gt;+ preserve spatial offsets : Group Formation&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="670" y="760" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Optimal Spread Positioning&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ computed spread slots&lt;br/&gt;+ assign slots to members : Roster Entry, Movement Execution&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1574" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Group Formation&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ relative spatial offsets&lt;br/&gt;+ capture at move start : Crowd Move&lt;br/&gt;+ re-apply at move end : Crowd Move&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="960" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Facing Destination&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ facing vector&lt;br/&gt;+ apply after move completion : Crowd Move, Movement Execution&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1174" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Gang Leader Facing&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ leader facing vector : Gang Leader, Gang Mode&lt;br/&gt;+ apply to all gang members : Roster Entry, Movement Execution&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1374" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="726" />
+              <mxPoint x="-1130" y="726" />
+              <mxPoint x="-1130" y="174" />
+              <mxPoint x="80" y="174" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="35247" y="870" />
+              <mxPoint x="35247" y="1174" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="35511" y="870" />
+              <mxPoint x="35511" y="1374" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12631" y="760" />
+              <mxPoint x="12631" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="122" y="718" />
+              <mxPoint x="3746" y="718" />
+              <mxPoint x="3746" y="366" />
+              <mxPoint x="80" y="366" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="35775" y="870" />
+              <mxPoint x="35775" y="1574" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=1.0;exitY=0.08;exitDx=0;exitDy=0;entryX=0.0;entryY=0.08;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1983" y="768" />
+              <mxPoint x="1983" y="766" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12675" y="760" />
+              <mxPoint x="12675" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="11" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12719" y="1174" />
+              <mxPoint x="12719" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="13123" y="1374" />
+              <mxPoint x="13123" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1515" y="1374" />
+              <mxPoint x="1515" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12807" y="1374" />
+              <mxPoint x="12807" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1023" y="1374" />
+              <mxPoint x="1023" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.32;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="10" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="36303" y="960" />
+              <mxPoint x="36303" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.32;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12851" y="1574" />
+              <mxPoint x="12851" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2739" y="1574" />
+              <mxPoint x="2739" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.16;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2857" y="840" />
+              <mxPoint x="2857" y="960" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_attack_configuration" name="Attack Configuration">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Combat Execution&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ pair resolution sequence : Attacker-Defender Pair&lt;br/&gt;+ play attack animation : Attack Animation, Attacker&lt;br/&gt;+ play on-hit animation : On-Hit Animation, Defender&lt;br/&gt;+ apply knockback : Knockback Movement, Defender&lt;br/&gt;+ apply status effect : Status Effect, Defender&lt;br/&gt;+ update indicators : Attack State Indicator&lt;br/&gt;+ abort execution : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="236" width="260" height="174" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Combat State&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ current role&lt;br/&gt;+ active status effects : Status Effect&lt;br/&gt;+ configuration linkage : Attack Configuration&lt;br/&gt;+ reset to neutral : Attack State Indicator, Non-Attack Ability Lock&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="236" width="260" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Animated Ability»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Animated Ability&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Roster Entry»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Roster Entry&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="588" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Attack Animation&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ selected ability : Animated Ability, Attacker&lt;br/&gt;+ play on attacker : Combat Execution&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;On-Hit Animation&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ selected ability : Animated Ability, Defender, Attack Effect&lt;br/&gt;+ play on defender : Combat Execution&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="588" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Knockback Movement&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ knockback destination : Knockback Distance, Knockback Obstruction&lt;br/&gt;+ apply displacement : Movement Execution, Defender&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="412" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Non-Attack Ability Lock&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ suppression state&lt;br/&gt;+ apply to combatant : Combatant, Animated Ability&lt;br/&gt;+ release on reset : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="412" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Status Effect&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ applied condition&lt;br/&gt;+ persist on combat state : Combat State&lt;br/&gt;+ display via indicator : Attack State Indicator&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="588" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: HCS Integration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;HCS Integration&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ integration state&lt;br/&gt;+ start monitoring : HCS File Watcher, Game Bridge&lt;br/&gt;+ stop monitoring : HCS File Watcher&lt;br/&gt;+ route attack result events : Attack Result Event, Combat Execution&lt;br/&gt;+ route simple ability events : Simple Ability Event, Animated Ability&lt;br/&gt;+ route held character state : Held Character State, Combat State&lt;br/&gt;+ route sweep results : Sweep Results, Sweep Attack&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="236" width="260" height="174" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Geometry»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Knockback Obstruction&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ obstruction point : Collision Ray&lt;br/&gt;+ clip knockback destination : Knockback Movement, Knockback Distance&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="412" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Spawned NPC»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Spawned NPC&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="588" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Area Attack Pop-Up Menu»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Area Attack Pop-Up Menu&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Geometry»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Game Collision Detection&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ DLL capability : Game Bridge&lt;br/&gt;+ accept ray parameters : Collision Ray&lt;br/&gt;+ return obstruction data : Collision Ray&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="236" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Geometry»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Collision Ray&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ origin point&lt;br/&gt;+ direction vector&lt;br/&gt;+ maximum distance&lt;br/&gt;+ return obstruction result : Game Collision Detection&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="60" width="260" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Geometry»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Line-of-Sight&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ path state&lt;br/&gt;+ evaluate from attacker to defender : Collision Ray, Attacker, Defender&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="412" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Attack Configuration&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ attacker assignment : Attacker&lt;br/&gt;+ configured defenders : Defender, Attacker-Defender Pair&lt;br/&gt;+ attack parameters : Attack Effect, Knockback Distance, Attack Result, Attack Mode&lt;br/&gt;+ open from desktop : Context Menu, Animated Ability&lt;br/&gt;+ confirm : Combat Execution&lt;br/&gt;+ cancel : Combat State&lt;br/&gt;+ abort : Combat Execution, Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1116" width="260" height="158" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Attacker&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ attacking role : Roster Entry&lt;br/&gt;+ pre-assigned on open : Attack Configuration, Context Menu&lt;br/&gt;+ receive attack animation : Attack Animation&lt;br/&gt;+ combat state assignment : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2236" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Defender&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ defending role : Roster Entry&lt;br/&gt;+ added by GM : Attack Configuration&lt;br/&gt;+ receive on-hit animation : On-Hit Animation&lt;br/&gt;+ receive knockback movement : Knockback Movement&lt;br/&gt;+ combat state assignment : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1362" width="260" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Combatant&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ combat role : Attacker, Defender, Roster Entry&lt;br/&gt;+ non-attack ability lock : Non-Attack Ability Lock, Animated Ability&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="3080" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Attacker-Defender Pair&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ paired attacker : Attacker&lt;br/&gt;+ paired defender : Defender&lt;br/&gt;+ attack effect : Attack Effect&lt;br/&gt;+ knockback distance : Knockback Distance&lt;br/&gt;+ attack result : Attack Result&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1116" width="260" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Attack Effect&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ effect type&lt;br/&gt;+ determines status effect : Status Effect&lt;br/&gt;+ determines on-hit animation : On-Hit Animation&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2866" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Attack Result&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ result type&lt;br/&gt;+ controls effect application : Status Effect, Knockback Movement, On-Hit Animation&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2466" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Attack Mode&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ mode type&lt;br/&gt;+ recorded for HCS reporting : HCS Integration&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="3680" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Knockback Distance&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ displacement units&lt;br/&gt;+ clipped by obstruction : Knockback Obstruction&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2666" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Area Center&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ designated target NPC : Spawned NPC&lt;br/&gt;+ area radius targets : Defender, Area Attack&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="3280" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Area Attack&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ area variant activation : Area Center, Area Attack Pop-Up Menu&lt;br/&gt;+ add in-range defenders : Defender, Roster Entry&lt;br/&gt;+ execute per pair : Attacker-Defender Pair, Combat Execution&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1822" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Sweep Attack&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ sequential delivery order : Attacker-Defender Pair, Combatant&lt;br/&gt;+ resolve pairs in sequence : Combat Execution, Attack Animation, On-Hit Animation&lt;br/&gt;+ combine with auto-fire : Auto-Fire&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1608" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Auto-Fire&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ total shot count&lt;br/&gt;+ distribute across defenders : Defender, Attacker-Defender Pair&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2036" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Ranged Attack&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ line-of-sight requirement : Line-of-Sight, Collision Ray&lt;br/&gt;+ exclude blocked defenders : Defender, Game Collision Detection&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="3480" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="28" target="14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12991" y="1822" />
+              <mxPoint x="12991" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="28" target="22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="1788" />
+              <mxPoint x="4274" y="1788" />
+              <mxPoint x="4274" y="1264" />
+              <mxPoint x="1920" y="1264" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="28" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12675" y="1822" />
+              <mxPoint x="12675" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="28" target="20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1983" y="1780" />
+              <mxPoint x="7442" y="1780" />
+              <mxPoint x="7442" y="1518" />
+              <mxPoint x="1920" y="1518" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="28" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="13079" y="1822" />
+              <mxPoint x="13079" y="684" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="27" target="28">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1920" y="3246" />
+              <mxPoint x="-4826" y="3246" />
+              <mxPoint x="-4826" y="1950" />
+              <mxPoint x="1920" y="1950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="27" target="20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="3258" />
+              <mxPoint x="6914" y="3258" />
+              <mxPoint x="6914" y="1510" />
+              <mxPoint x="1941" y="1510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="27" target="13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6091" y="3280" />
+              <mxPoint x="6091" y="684" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="1094" />
+              <mxPoint x="-1306" y="1094" />
+              <mxPoint x="-1306" y="190" />
+              <mxPoint x="80" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="23">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="927" y="1274" />
+              <mxPoint x="927" y="2866" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="25">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1191" y="1274" />
+              <mxPoint x="1191" y="3680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="24">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1059" y="1274" />
+              <mxPoint x="1059" y="2466" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="399" y="1274" />
+              <mxPoint x="399" y="2236" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=1.0;exitY=0.08;exitDx=0;exitDy=0;entryX=0.0;entryY=0.08;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="795" y="1128" />
+              <mxPoint x="795" y="1126" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="101" y="1094" />
+              <mxPoint x="-690" y="1094" />
+              <mxPoint x="-690" y="428" />
+              <mxPoint x="101" y="428" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1939" y="1116" />
+              <mxPoint x="1939" y="362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="663" y="1274" />
+              <mxPoint x="663" y="1362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.48000000000000004;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1323" y="1274" />
+              <mxPoint x="1323" y="2666" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4579" y="2866" />
+              <mxPoint x="4579" y="684" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5043" y="2866" />
+              <mxPoint x="5043" y="698" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="25" target="11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6187" y="3680" />
+              <mxPoint x="6187" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="24" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4975" y="2466" />
+              <mxPoint x="4975" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="24" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4843" y="2466" />
+              <mxPoint x="4843" y="684" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="24" target="10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5307" y="2466" />
+              <mxPoint x="5307" y="698" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="37815" y="2236" />
+              <mxPoint x="37815" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2563" y="2236" />
+              <mxPoint x="2563" y="362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2695" y="2236" />
+              <mxPoint x="2695" y="684" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.32;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="23">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="1284" />
+              <mxPoint x="8058" y="1284" />
+              <mxPoint x="8058" y="2840" />
+              <mxPoint x="1983" y="2840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=1.0;exitDx=0;exitDy=0;entryX=0.4;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="24">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1962" y="1284" />
+              <mxPoint x="5594" y="1284" />
+              <mxPoint x="5594" y="2444" />
+              <mxPoint x="2004" y="2444" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=1.0;exitDx=0;exitDy=0;entryX=0.4;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1983" y="1280" />
+              <mxPoint x="5242" y="1280" />
+              <mxPoint x="5242" y="2206" />
+              <mxPoint x="2004" y="2206" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="62" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=1.0;exitDx=0;exitDy=0;entryX=0.16;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2004" y="1284" />
+              <mxPoint x="-7994" y="1284" />
+              <mxPoint x="-7994" y="1340" />
+              <mxPoint x="1941" y="1340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="63" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.48000000000000004;exitY=1.0;exitDx=0;exitDy=0;entryX=0.16;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2024" y="1272" />
+              <mxPoint x="5770" y="1272" />
+              <mxPoint x="5770" y="2648" />
+              <mxPoint x="1941" y="2648" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="64" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.5599999999999999;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="30" target="22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1920" y="2014" />
+              <mxPoint x="8762" y="2014" />
+              <mxPoint x="8762" y="1272" />
+              <mxPoint x="2045" y="1272" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="65" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="30" target="20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="1998" />
+              <mxPoint x="-6410" y="1998" />
+              <mxPoint x="-6410" y="1506" />
+              <mxPoint x="1962" y="1506" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="37359" y="3080" />
+              <mxPoint x="37359" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="3050" />
+              <mxPoint x="4538" y="3050" />
+              <mxPoint x="4538" y="2372" />
+              <mxPoint x="1920" y="2372" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="68" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.32;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1962" y="3038" />
+              <mxPoint x="-2450" y="3038" />
+              <mxPoint x="-2450" y="1506" />
+              <mxPoint x="1983" y="1506" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4251" y="3080" />
+              <mxPoint x="4251" y="522" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3883" y="3080" />
+              <mxPoint x="3883" y="684" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="71" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2959" y="1362" />
+              <mxPoint x="2959" y="362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2995" y="1362" />
+              <mxPoint x="2995" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2863" y="1362" />
+              <mxPoint x="2863" y="684" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.48000000000000004;exitY=0.0;exitDx=0;exitDy=0;entryX=0.32;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3091" y="1362" />
+              <mxPoint x="3091" y="684" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="75" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="26" target="12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5599" y="2666" />
+              <mxPoint x="5599" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="76" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="31" target="16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="8211" y="3480" />
+              <mxPoint x="8211" y="186" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="77" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.4;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="31" target="20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="3438" />
+              <mxPoint x="9290" y="3438" />
+              <mxPoint x="9290" y="1506" />
+              <mxPoint x="2004" y="1506" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="31" target="15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="8203" y="3480" />
+              <mxPoint x="8203" y="346" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="79" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="31" target="17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="8467" y="3480" />
+              <mxPoint x="8467" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="80" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="38343" y="1608" />
+              <mxPoint x="38343" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="81" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.64;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="1586" />
+              <mxPoint x="8146" y="1586" />
+              <mxPoint x="8146" y="1276" />
+              <mxPoint x="2066" y="1276" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.24;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="30">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1920" y="1732" />
+              <mxPoint x="8234" y="1732" />
+              <mxPoint x="8234" y="2014" />
+              <mxPoint x="1962" y="2014" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="83" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6427" y="1608" />
+              <mxPoint x="6427" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="84" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.48000000000000004;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="1736" />
+              <mxPoint x="7970" y="1736" />
+              <mxPoint x="7970" y="3062" />
+              <mxPoint x="2024" y="3062" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="85" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.32;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="7087" y="1608" />
+              <mxPoint x="7087" y="684" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_combat_execution" name="Combat Execution">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Attacker-Defender Pair&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ paired attacker : Attacker&lt;br/&gt;+ paired defender : Defender&lt;br/&gt;+ attack effect : Attack Effect&lt;br/&gt;+ knockback distance : Knockback Distance&lt;br/&gt;+ attack result : Attack Result&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="236" width="260" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Attacker&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ attacking role : Roster Entry&lt;br/&gt;+ pre-assigned on open : Attack Configuration, Context Menu&lt;br/&gt;+ receive attack animation : Attack Animation&lt;br/&gt;+ combat state assignment : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="60" width="260" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Defender&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ defending role : Roster Entry&lt;br/&gt;+ added by GM : Attack Configuration&lt;br/&gt;+ receive on-hit animation : On-Hit Animation&lt;br/&gt;+ receive knockback movement : Knockback Movement&lt;br/&gt;+ combat state assignment : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="236" width="260" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Animated Ability»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Animated Ability&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Attack Effect&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ effect type&lt;br/&gt;+ determines status effect : Status Effect&lt;br/&gt;+ determines on-hit animation : On-Hit Animation&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Movement Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Movement Execution&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="412" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Knockback Distance&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ displacement units&lt;br/&gt;+ clipped by obstruction : Knockback Obstruction&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="412" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Geometry»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Knockback Obstruction&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ obstruction point : Collision Ray&lt;br/&gt;+ clip knockback destination : Knockback Movement, Knockback Distance&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="412" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Attack Configuration&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ attacker assignment : Attacker&lt;br/&gt;+ configured defenders : Defender, Attacker-Defender Pair&lt;br/&gt;+ attack parameters : Attack Effect, Knockback Distance, Attack Result, Attack Mode&lt;br/&gt;+ open from desktop : Context Menu, Animated Ability&lt;br/&gt;+ confirm : Combat Execution&lt;br/&gt;+ cancel : Combat State&lt;br/&gt;+ abort : Combat Execution, Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="260" height="174" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Character Overlay»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Character Overlay&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="236" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Combatant&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ combat role : Attacker, Defender, Roster Entry&lt;br/&gt;+ non-attack ability lock : Non-Attack Ability Lock, Animated Ability&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="236" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Combat Execution&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ pair resolution sequence : Attacker-Defender Pair&lt;br/&gt;+ play attack animation : Attack Animation, Attacker&lt;br/&gt;+ play on-hit animation : On-Hit Animation, Defender&lt;br/&gt;+ apply knockback : Knockback Movement, Defender&lt;br/&gt;+ apply status effect : Status Effect, Defender&lt;br/&gt;+ update indicators : Attack State Indicator&lt;br/&gt;+ abort execution : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="832" width="260" height="158" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Attack Animation&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ selected ability : Animated Ability, Attacker&lt;br/&gt;+ play on attacker : Combat Execution&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1720" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;On-Hit Animation&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ selected ability : Animated Ability, Defender, Attack Effect&lt;br/&gt;+ play on defender : Combat Execution&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2120" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Knockback Movement&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ knockback destination : Knockback Distance, Knockback Obstruction&lt;br/&gt;+ apply displacement : Movement Execution, Defender&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1920" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Status Effect&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ applied condition&lt;br/&gt;+ persist on combat state : Combat State&lt;br/&gt;+ display via indicator : Attack State Indicator&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1062" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Combat State&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ current role&lt;br/&gt;+ active status effects : Status Effect&lt;br/&gt;+ configuration linkage : Attack Configuration&lt;br/&gt;+ reset to neutral : Attack State Indicator, Non-Attack Ability Lock&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="832" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Attack State Indicator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ displayed effect label : Status Effect, Combat State&lt;br/&gt;+ role indicator : Attacker, Defender&lt;br/&gt;+ update on execution : Combat Execution, Character Overlay&lt;br/&gt;+ clear on reset : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1276" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Non-Attack Ability Lock&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ suppression state&lt;br/&gt;+ apply to combatant : Combatant, Animated Ability&lt;br/&gt;+ release on reset : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1506" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="14" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12631" y="1720" />
+              <mxPoint x="12631" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="14" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="36591" y="1720" />
+              <mxPoint x="36591" y="186" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="37647" y="1276" />
+              <mxPoint x="37647" y="186" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="13035" y="1276" />
+              <mxPoint x="13035" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4779" y="1276" />
+              <mxPoint x="4779" y="378" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.24;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="35775" y="990" />
+              <mxPoint x="35775" y="1720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.32;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1059" y="990" />
+              <mxPoint x="1059" y="1276" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1411" y="832" />
+              <mxPoint x="1411" y="186" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="101" y="790" />
+              <mxPoint x="3130" y="790" />
+              <mxPoint x="3130" y="396" />
+              <mxPoint x="80" y="396" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=1.0;exitY=0.08;exitDx=0;exitDy=0;entryX=0.0;entryY=0.08;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="927" y="844" />
+              <mxPoint x="927" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1455" y="832" />
+              <mxPoint x="1455" y="378" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="663" y="990" />
+              <mxPoint x="663" y="1920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="531" y="990" />
+              <mxPoint x="531" y="2120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="795" y="990" />
+              <mxPoint x="795" y="1062" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="13079" y="832" />
+              <mxPoint x="13079" y="234" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.4;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1920" y="964" />
+              <mxPoint x="5066" y="964" />
+              <mxPoint x="5066" y="1242" />
+              <mxPoint x="2004" y="1242" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="980" />
+              <mxPoint x="5242" y="980" />
+              <mxPoint x="5242" y="1476" />
+              <mxPoint x="1920" y="1476" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3327" y="1920" />
+              <mxPoint x="3327" y="378" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2995" y="1920" />
+              <mxPoint x="2995" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3487" y="1920" />
+              <mxPoint x="3487" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3099" y="1920" />
+              <mxPoint x="3099" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="36039" y="1506" />
+              <mxPoint x="36039" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5035" y="1506" />
+              <mxPoint x="5035" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="15" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="36303" y="2120" />
+              <mxPoint x="36303" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="15" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3319" y="2120" />
+              <mxPoint x="3319" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.32;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="15" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2931" y="2120" />
+              <mxPoint x="2931" y="378" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.48000000000000004;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="17" target="19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1920" y="1182" />
+              <mxPoint x="4802" y="1182" />
+              <mxPoint x="4802" y="1246" />
+              <mxPoint x="2024" y="1246" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="17" target="18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="1044" />
+              <mxPoint x="4714" y="1044" />
+              <mxPoint x="4714" y="964" />
+              <mxPoint x="1962" y="964" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_combat_geometry" name="Combat Geometry">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Ranged Attack&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ line-of-sight requirement : Line-of-Sight, Collision Ray&lt;br/&gt;+ exclude blocked defenders : Defender, Game Collision Detection&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="236" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Knockback Movement&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ knockback destination : Knockback Distance, Knockback Obstruction&lt;br/&gt;+ apply displacement : Movement Execution, Defender&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="236" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Attacker&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ attacking role : Roster Entry&lt;br/&gt;+ pre-assigned on open : Attack Configuration, Context Menu&lt;br/&gt;+ receive attack animation : Attack Animation&lt;br/&gt;+ combat state assignment : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Defender&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ defending role : Roster Entry&lt;br/&gt;+ added by GM : Attack Configuration&lt;br/&gt;+ receive on-hit animation : On-Hit Animation&lt;br/&gt;+ receive knockback movement : Knockback Movement&lt;br/&gt;+ combat state assignment : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="260" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Knockback Distance&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ displacement units&lt;br/&gt;+ clipped by obstruction : Knockback Obstruction&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="236" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Game Bridge»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Game Bridge&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Combat Geometry&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ line-of-sight evaluation : Line-of-Sight, Collision Ray, Ranged Attack&lt;br/&gt;+ knockback obstruction detection : Knockback Obstruction, Collision Ray, Knockback Movement&lt;br/&gt;+ issue collision queries : Game Collision Detection&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="760" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Collision Ray&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ origin point&lt;br/&gt;+ direction vector&lt;br/&gt;+ maximum distance&lt;br/&gt;+ return obstruction result : Game Collision Detection&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="730" y="760" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Line-of-Sight&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ path state&lt;br/&gt;+ evaluate from attacker to defender : Collision Ray, Attacker, Defender&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1404" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Knockback Obstruction&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ obstruction point : Collision Ray&lt;br/&gt;+ clip knockback destination : Knockback Movement, Knockback Distance&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1204" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Game Collision Detection&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ DLL capability : Game Bridge&lt;br/&gt;+ accept ray parameters : Collision Ray&lt;br/&gt;+ return obstruction data : Collision Ray&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="990" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="45949" y="870" />
+              <mxPoint x="45949" y="990" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=1.0;exitY=0.08;exitDx=0;exitDy=0;entryX=0.0;entryY=0.08;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="46599" y="767" />
+              <mxPoint x="46599" y="768" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.16;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12631" y="854" />
+              <mxPoint x="12631" y="990" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12675" y="760" />
+              <mxPoint x="12675" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12719" y="854" />
+              <mxPoint x="12719" y="1204" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12763" y="854" />
+              <mxPoint x="12763" y="1404" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12807" y="760" />
+              <mxPoint x="12807" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="46527" y="990" />
+              <mxPoint x="46527" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="11" target="9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="46741" y="1204" />
+              <mxPoint x="46741" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="11" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12851" y="1204" />
+              <mxPoint x="12851" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="11" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1639" y="1204" />
+              <mxPoint x="1639" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="10" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="399" y="1404" />
+              <mxPoint x="399" y="186" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="10" target="9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="47005" y="1404" />
+              <mxPoint x="47005" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="10" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1067" y="1404" />
+              <mxPoint x="1067" y="202" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_hcs_integration" name="HCS Integration">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Game Bridge»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Game Bridge&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="412" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Sweep Attack&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ sequential delivery order : Attacker-Defender Pair, Combatant&lt;br/&gt;+ resolve pairs in sequence : Combat Execution, Attack Animation, On-Hit Animation&lt;br/&gt;+ combine with auto-fire : Auto-Fire&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="412" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Combat Execution&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ pair resolution sequence : Attacker-Defender Pair&lt;br/&gt;+ play attack animation : Attack Animation, Attacker&lt;br/&gt;+ play on-hit animation : On-Hit Animation, Defender&lt;br/&gt;+ apply knockback : Knockback Movement, Defender&lt;br/&gt;+ apply status effect : Status Effect, Defender&lt;br/&gt;+ update indicators : Attack State Indicator&lt;br/&gt;+ abort execution : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="236" width="260" height="174" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Combat State&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ current role&lt;br/&gt;+ active status effects : Status Effect&lt;br/&gt;+ configuration linkage : Attack Configuration&lt;br/&gt;+ reset to neutral : Attack State Indicator, Non-Attack Ability Lock&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="236" width="260" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Animated Ability»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Animated Ability&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Desktop Overlay»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Desktop Overlay&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="236" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Roster Entry»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Roster Entry&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="412" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Character Overlay»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Character Overlay&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="236" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Active Character»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Active Character&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Combat Execution»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Attack State Indicator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ displayed effect label : Status Effect, Combat State&lt;br/&gt;+ role indicator : Attacker, Defender&lt;br/&gt;+ update on execution : Combat Execution, Character Overlay&lt;br/&gt;+ clear on reset : Combat State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="260" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Attack Configuration»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Attacker-Defender Pair&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ paired attacker : Attacker&lt;br/&gt;+ paired defender : Defender&lt;br/&gt;+ attack effect : Attack Effect&lt;br/&gt;+ knockback distance : Knockback Distance&lt;br/&gt;+ attack result : Attack Result&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="60" width="260" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;HCS Integration&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ integration state&lt;br/&gt;+ start monitoring : HCS File Watcher, Game Bridge&lt;br/&gt;+ stop monitoring : HCS File Watcher&lt;br/&gt;+ route attack result events : Attack Result Event, Combat Execution&lt;br/&gt;+ route simple ability events : Simple Ability Event, Animated Ability&lt;br/&gt;+ route held character state : Held Character State, Combat State&lt;br/&gt;+ route sweep results : Sweep Results, Sweep Attack&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="846" width="260" height="158" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;HCS File Watcher&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ monitoring state&lt;br/&gt;+ watch output directory : Info File&lt;br/&gt;+ read on file arrival : Info File&lt;br/&gt;+ dispatch event payload : HCS Integration&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1292" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Info File&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ event payload&lt;br/&gt;+ on-deck combatants data : On-Deck Combatants&lt;br/&gt;+ eligible combatants data : Eligible Combatants&lt;br/&gt;+ active character data : Active Character HCS&lt;br/&gt;+ chronometer data : Chronometer Turn State&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="846" width="260" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;On-Deck Combatants&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ imminent turn characters : Roster Entry, Character Overlay&lt;br/&gt;+ highlight upcoming-turn status : Desktop Overlay&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1922" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Eligible Combatants&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ available-to-act characters : Roster Entry&lt;br/&gt;+ restrict or highlight actions : Desktop Overlay&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1092" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Active Character HCS&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ HCS active turn designation : Roster Entry&lt;br/&gt;+ synchronize with HVT active character : Active Character&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1722" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Chronometer Turn State&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ per-combatant phase&lt;br/&gt;+ update combat state : Combat State, Roster Entry&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1522" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Attack Result Event&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ attacker and defenders payload : Roster Entry&lt;br/&gt;+ result type&lt;br/&gt;+ dispatch to combat execution : Combat Execution&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2122" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Simple Ability Event&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ combatant name : Roster Entry&lt;br/&gt;+ ability identifier : Animated Ability&lt;br/&gt;+ dispatch to ability playback : Animated Ability&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2536" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Held Character State&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ held action designation : Roster Entry&lt;br/&gt;+ update combat state to held : Combat State, Attack State Indicator&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2336" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Sweep Results&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ defender results payload : Roster Entry, Attacker-Defender Pair&lt;br/&gt;+ dispatch to sweep execution : Sweep Attack, Combat Execution&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2750" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="12631" y="1722" />
+              <mxPoint x="12631" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="13035" y="1722" />
+              <mxPoint x="13035" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="13079" y="2122" />
+              <mxPoint x="13079" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="13123" y="2122" />
+              <mxPoint x="13123" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6355" y="1522" />
+              <mxPoint x="6355" y="362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="19" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="13167" y="1522" />
+              <mxPoint x="13167" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="17" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3855" y="1092" />
+              <mxPoint x="3855" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.32;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="17" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="42207" y="1092" />
+              <mxPoint x="42207" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="14" target="15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1920" y="1258" />
+              <mxPoint x="3658" y="1258" />
+              <mxPoint x="3658" y="998" />
+              <mxPoint x="1920" y="998" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="40791" y="846" />
+              <mxPoint x="40791" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.24;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="20">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="663" y="1004" />
+              <mxPoint x="663" y="2122" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1807" y="846" />
+              <mxPoint x="1807" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1455" y="846" />
+              <mxPoint x="1455" y="362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="143" y="812" />
+              <mxPoint x="2426" y="812" />
+              <mxPoint x="2426" y="542" />
+              <mxPoint x="80" y="542" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.16;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="399" y="1004" />
+              <mxPoint x="399" y="1292" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="927" y="1004" />
+              <mxPoint x="927" y="2336" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="795" y="1004" />
+              <mxPoint x="795" y="2536" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1191" y="846" />
+              <mxPoint x="1191" y="522" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="23">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1059" y="1004" />
+              <mxPoint x="1059" y="2750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5299" y="2336" />
+              <mxPoint x="5299" y="186" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4947" y="2336" />
+              <mxPoint x="4947" y="362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.4;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5203" y="2336" />
+              <mxPoint x="5203" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.24;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="15" target="18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="1010" />
+              <mxPoint x="4010" y="1010" />
+              <mxPoint x="4010" y="1704" />
+              <mxPoint x="1962" y="1704" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=1.0;exitDx=0;exitDy=0;entryX=0.24;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="15" target="19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1962" y="998" />
+              <mxPoint x="4186" y="998" />
+              <mxPoint x="4186" y="1488" />
+              <mxPoint x="1962" y="1488" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=1.0;exitDx=0;exitDy=0;entryX=0.24;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="15" target="17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1983" y="1002" />
+              <mxPoint x="3922" y="1002" />
+              <mxPoint x="3922" y="1062" />
+              <mxPoint x="1962" y="1062" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="49" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="15" target="16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2004" y="1014" />
+              <mxPoint x="3746" y="1014" />
+              <mxPoint x="3746" y="1888" />
+              <mxPoint x="1920" y="1888" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3127" y="1922" />
+              <mxPoint x="3127" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3459" y="1922" />
+              <mxPoint x="3459" y="332" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.48000000000000004;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3355" y="1922" />
+              <mxPoint x="3355" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="41415" y="2536" />
+              <mxPoint x="41415" y="156" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.5599999999999999;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4807" y="2536" />
+              <mxPoint x="4807" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5571" y="2750" />
+              <mxPoint x="5571" y="202" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5599" y="2750" />
+              <mxPoint x="5599" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.64;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5731" y="2750" />
+              <mxPoint x="5731" y="508" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="5343" y="2750" />
+              <mxPoint x="5343" y="522" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_character" name="Character">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Character&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_crowd" name="Crowd">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Crowd&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_roster_entry" name="Roster Entry">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Roster Entry&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_desktop_overlay" name="Desktop Overlay">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Desktop Overlay&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_animated_ability" name="Animated Ability">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Animated Ability&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_movement_execution" name="Movement Execution">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Movement Execution&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_gang_mode" name="Gang Mode">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Gang Mode&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_game_bridge" name="Game Bridge">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Game Bridge&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_area_attack_pop-up_menu" name="Area Attack Pop-Up Menu">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Area Attack Pop-Up Menu&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_active_character" name="Active Character">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Active Character&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_character_overlay" name="Character Overlay">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Character Overlay&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_gang_leader" name="Gang Leader">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Gang Leader&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_spawned_npc" name="Spawned NPC">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Spawned NPC&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

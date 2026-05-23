@@ -49,6 +49,241 @@
     <Compile Include="manage_crowd_repository\track_source_file_per_crowd\TrackSourceFilePerCrowd.cs" />
     <Compile Include="manage_crowd_repository\save_dirty_to_source_files\SaveDirtyToSourceFiles.cs" />
     <Compile Include="manage_crowd_repository\save_crowd_to_new_file\SaveCrowdToNewFile.cs" />
+    <!-- Increment 2: Game Bridge Initialization -->
+    <Compile Include="game_bridge_initialization\GameBridgeInitializationHelper.cs" />
+    <Compile Include="game_bridge_initialization\load_hookcostume_dll_from_game_directory\LoadHookCostumeDllFromGameDirectory.cs" />
+    <Compile Include="game_bridge_initialization\initialize_game_bridge\InitializeGameBridge.cs" />
+    <Compile Include="game_bridge_initialization\poll_until_game_client_is_loaded\PollUntilGameClientIsLoaded.cs" />
+    <Compile Include="game_bridge_initialization\inject_required_keybinds_into_game\InjectRequiredKeybindsIntoGame.cs" />
+    <Compile Include="game_bridge_initialization\extract_costume_pack_on_first_run\ExtractCostumePackOnFirstRun.cs" />
+    <Compile Include="game_bridge_initialization\publish_game_loaded_event\PublishGameLoadedEvent.cs" />
+    <Compile Include="game_bridge_initialization\initialize_native_game_bridge\InitializeNativeGameBridge.cs" />
+    <Compile Include="game_bridge_initialization\execute_slash_command_via_dll\ExecuteSlashCommandViaDll.cs" />
+    <!-- Increment 2: KeyBind Execution -->
+    <Compile Include="keybind_execution\KeybindExecutionHelper.cs" />
+    <Compile Include="keybind_execution\generate_keybind_file_for_game_event\GenerateKeybindFileForGameEvent.cs" />
+    <Compile Include="keybind_execution\execute_spawn_npc_command\ExecuteSpawnNpcCommand.cs" />
+    <Compile Include="keybind_execution\execute_target_by_name_command\ExecuteTargetByNameCommand.cs" />
+    <Compile Include="keybind_execution\execute_load_costume_command\ExecuteLoadCostumeCommand.cs" />
+    <Compile Include="keybind_execution\execute_delete_npc_command\ExecuteDeleteNpcCommand.cs" />
+    <!-- Increment 2: Costume File Management -->
+    <Compile Include="costume_file_management\CostumeFileManagementHelper.cs" />
+    <Compile Include="costume_file_management\store_costume_files_in_coh_costumes_directory\StoreCostumeFilesInCohCostumesDirectory.cs" />
+    <Compile Include="costume_file_management\create_original_backup_costume_files\CreateOriginalBackupCostumeFiles.cs" />
+    <Compile Include="costume_file_management\write_custom_keybind_files_to_coh_data_directory\WriteCustomKeybindFilesToCohDataDirectory.cs" />
+    <Compile Include="costume_file_management\load_keybind_file_into_game\LoadKeybindFileIntoGame.cs" />
+    <!-- Increment 2: Identity Management -->
+    <Compile Include="identity_management\IdentityManagementHelper.cs" />
+    <Compile Include="identity_management\add_identity_to_character\AddIdentityToCharacter.cs" />
+    <Compile Include="identity_management\set_identity_type\SetIdentityType.cs" />
+    <Compile Include="identity_management\assign_costume_surface_to_identity\AssignCostumeSurfaceToIdentity.cs" />
+    <Compile Include="identity_management\set_default_identity\SetDefaultIdentity.cs" />
+    <Compile Include="identity_management\set_active_identity\SetActiveIdentity.cs" />
+    <Compile Include="identity_management\remove_identity_from_character\RemoveIdentityFromCharacter.cs" />
+    <!-- Increment 2: Identity Rendering -->
+    <Compile Include="identity_rendering\IdentityRenderingHelper.cs" />
+    <Compile Include="identity_rendering\load_costume_file_for_active_identity\LoadCostumeFileForActiveIdentity.cs" />
+    <Compile Include="identity_rendering\spawn_character_with_model_identity\SpawnCharacterWithModelIdentity.cs" />
+    <Compile Include="identity_rendering\switch_active_identity_on_spawned_character\SwitchActiveIdentityOnSpawnedCharacter.cs" />
+    <Compile Include="identity_rendering\play_animation_on_identity_load\PlayAnimationOnIdentityLoad.cs" />
+    <Compile Include="identity_rendering\stop_persistent_abilities_on_identity_switch\StopPersistentAbilitiesOnIdentitySwitch.cs" />
+    <!-- Increment 2: Ghost Shadows -->
+    <Compile Include="ghost_shadows\GhostShadowsHelper.cs" />
+    <Compile Include="ghost_shadows\superimpose_ghost_on_model_character\SuperimposeGhostOnModelCharacter.cs" />
+    <Compile Include="ghost_shadows\create_ghost_costume_file_from_original\CreateGhostCostumeFileFromOriginal.cs" />
+    <Compile Include="ghost_shadows\align_ghost_position_and_orientation\AlignGhostPositionAndOrientation.cs" />
+    <Compile Include="ghost_shadows\remove_ghost_from_desktop\RemoveGhostFromDesktop.cs" />
+    <!-- Increment 2: Costume Variant Generation -->
+    <Compile Include="costume_variant_generation\CostumeVariantGenerationHelper.cs" />
+    <Compile Include="costume_variant_generation\create_persistent_fx_costume_variants\CreatePersistentFxCostumeVariants.cs" />
+    <Compile Include="costume_variant_generation\create_ghost_costume_files\CreateGhostCostumeFiles.cs" />
+    <!-- Increment 2: Model Browser -->
+    <Compile Include="model_browser\ModelBrowserHelper.cs" />
+    <Compile Include="model_browser\load_available_models_from_models_txt\LoadAvailableModelsFromModelsTxt.cs" />
+    <Compile Include="model_browser\create_crowd_from_coh_model_list\CreateCrowdFromCohModelList.cs" />
+    <Compile Include="model_browser\select_models_to_include_in_crowd\SelectModelsToIncludeInCrowd.cs" />
+    <Compile Include="model_browser\generate_characters_with_model_identities\GenerateCharactersWithModelIdentities.cs" />
+    <Compile Include="model_browser\load_models_list_for_crowd_creation\LoadModelsListForCrowdCreation.cs" />
+    <!-- Increment 3: Resource Catalog Loading -->
+    <Compile Include="resource_catalog_loading\ResourceCatalogLoadingHelper.cs" />
+    <Compile Include="resource_catalog_loading\load_fx_resource_catalog\LoadFxResourceCatalog.cs" />
+    <Compile Include="resource_catalog_loading\load_movement_resource_catalog\LoadMovementResourceCatalog.cs" />
+    <Compile Include="resource_catalog_loading\load_sound_resource_catalog\LoadSoundResourceCatalog.cs" />
+    <Compile Include="resource_catalog_loading\seed_resource_catalogs_from_embedded_csv\SeedResourceCatalogsFromEmbeddedCsv.cs" />
+    <Compile Include="resource_catalog_loading\browse_fx_resources_for_ability_authoring\BrowseFxResourcesForAbilityAuthoring.cs" />
+    <Compile Include="resource_catalog_loading\browse_movement_resources_for_ability_authoring\BrowseMovementResourcesForAbilityAuthoring.cs" />
+    <Compile Include="resource_catalog_loading\browse_sound_resources_for_ability_authoring\BrowseSoundResourcesForAbilityAuthoring.cs" />
+    <!-- Increment 3: Animated Ability Management -->
+    <Compile Include="animated_ability_management\AnimatedAbilityManagementHelper.cs" />
+    <Compile Include="animated_ability_management\create_animated_ability\CreateAnimatedAbility.cs" />
+    <Compile Include="animated_ability_management\edit_animated_ability\EditAnimatedAbility.cs" />
+    <Compile Include="animated_ability_management\delete_animated_ability\DeleteAnimatedAbility.cs" />
+    <Compile Include="animated_ability_management\set_ability_activation_key\SetAbilityActivationKey.cs" />
+    <Compile Include="animated_ability_management\toggle_ability_persistence\ToggleAbilityPersistence.cs" />
+    <Compile Include="animated_ability_management\set_default_ability_for_character\SetDefaultAbilityForCharacter.cs" />
+    <!-- Increment 3: Animation Element Authoring -->
+    <Compile Include="animation_element_authoring\AnimationElementAuthoringHelper.cs" />
+    <Compile Include="animation_element_authoring\add_movement_element_to_ability\AddMovementElementToAbility.cs" />
+    <Compile Include="animation_element_authoring\add_sound_element_to_ability\AddSoundElementToAbility.cs" />
+    <Compile Include="animation_element_authoring\add_fx_element_to_ability\AddFxElementToAbility.cs" />
+    <Compile Include="animation_element_authoring\add_reference_element_to_another_ability\AddReferenceElementToAnotherAbility.cs" />
+    <Compile Include="animation_element_authoring\add_sequence_element\AddSequenceElement.cs" />
+    <Compile Include="animation_element_authoring\add_pause_element\AddPauseElement.cs" />
+    <Compile Include="animation_element_authoring\add_load_identity_element\AddLoadIdentityElement.cs" />
+    <Compile Include="animation_element_authoring\reorder_animation_elements_via_drag_drop\ReorderAnimationElementsViaDragDrop.cs" />
+    <!-- Increment 3: Ability Execution -->
+    <Compile Include="ability_execution\AbilityExecutionHelper.cs" />
+    <Compile Include="ability_execution\play_animated_ability_on_character\PlayAnimatedAbilityOnCharacter.cs" />
+    <Compile Include="ability_execution\stop_active_ability\StopActiveAbility.cs" />
+    <Compile Include="ability_execution\execute_animation_sequence\ExecuteAnimationSequence.cs" />
+    <Compile Include="ability_execution\maintain_persistent_ability_across_identity_changes\MaintainPersistentAbilityAcrossIdentityChanges.cs" />
+    <Compile Include="ability_execution\load_persistent_costume_on_deactivation\LoadPersistentCostumeOnDeactivation.cs" />
+    <Compile Include="ability_execution\add_default_abilities_to_character\AddDefaultAbilitiesToCharacter.cs" />
+    <Compile Include="ability_execution\refresh_ability_activation_eligibility\RefreshAbilityActivationEligibility.cs" />
+    <!-- Increment 3: Keyboard Hook -->
+    <Compile Include="keyboard_hook\KeyboardHookHelper.cs" />
+    <Compile Include="keyboard_hook\install_low_level_keyboard_hook\InstallLowLevelKeyboardHook.cs" />
+    <Compile Include="keyboard_hook\route_key_events_when_game_window_is_focused\RouteKeyEventsWhenGameWindowIsFocused.cs" />
+    <Compile Include="keyboard_hook\route_key_events_when_application_window_is_focused\RouteKeyEventsWhenApplicationWindowIsFocused.cs" />
+    <Compile Include="keyboard_hook\dispatch_ability_activation_keys_to_characters\DispatchAbilityActivationKeysToCharacters.cs" />
+    <!-- Increment 4: Memory Interface -->
+    <Compile Include="memory_interface\MemoryInterfaceHelper.cs" />
+    <Compile Include="memory_interface\detect_game_process_for_connection\DetectGameProcessForConnection.cs" />
+    <Compile Include="memory_interface\read_target_character_from_memory\ReadTargetCharacterFromMemory.cs" />
+    <Compile Include="memory_interface\monitor_current_target_in_game\MonitorCurrentTargetInGame.cs" />
+    <Compile Include="memory_interface\wait_until_target_is_registered_after_spawn\WaitUntilTargetIsRegisteredAfterSpawn.cs" />
+    <Compile Include="memory_interface\scan_and_fix_stale_memory_pointers\ScanAndFixStaleMemoryPointers.cs" />
+    <Compile Include="memory_interface\read_character_position_from_memory\ReadCharacterPositionFromMemory.cs" />
+    <Compile Include="memory_interface\write_character_position_to_memory\WriteCharacterPositionToMemory.cs" />
+    <Compile Include="memory_interface\read_character_model_matrix_from_memory\ReadCharacterModelMatrixFromMemory.cs" />
+    <Compile Include="memory_interface\write_character_rotation_matrix_to_memory\WriteCharacterRotationMatrixToMemory.cs" />
+    <Compile Include="memory_interface\read_character_facing_vector_from_memory\ReadCharacterFacingVectorFromMemory.cs" />
+    <Compile Include="memory_interface\write_character_facing_direction_to_memory\WriteCharacterFacingDirectionToMemory.cs" />
+    <Compile Include="memory_interface\read_camera_position_from_memory\ReadCameraPositionFromMemory.cs" />
+    <!-- Increment 4: Character Movement Authoring -->
+    <Compile Include="character_movement_authoring\CharacterMovementAuthoringHelper.cs" />
+    <Compile Include="character_movement_authoring\add_movement_to_character\AddMovementToCharacter.cs" />
+    <Compile Include="character_movement_authoring\edit_movement_parameters\EditMovementParameters.cs" />
+    <Compile Include="character_movement_authoring\remove_movement_from_character\RemoveMovementFromCharacter.cs" />
+    <Compile Include="character_movement_authoring\set_default_movement\SetDefaultMovement.cs" />
+    <Compile Include="character_movement_authoring\set_movement_activation_key\SetMovementActivationKey.cs" />
+    <Compile Include="character_movement_authoring\add_default_movements_to_character\AddDefaultMovementsToCharacter.cs" />
+    <!-- Increment 4: Movement Execution -->
+    <Compile Include="movement_execution\MovementExecutionHelper.cs" />
+    <Compile Include="movement_execution\execute_move_npc_command\ExecuteMoveNpcCommand.cs" />
+    <Compile Include="movement_execution\move_character_to_location\MoveCharacterToLocation.cs" />
+    <Compile Include="movement_execution\move_character_to_camera_position\MoveCharacterToCameraPosition.cs" />
+    <Compile Include="movement_execution\teleport_character_to_camera\TeleportCharacterToCamera.cs" />
+    <Compile Include="movement_execution\animate_movement\AnimateMovement.cs" />
+    <Compile Include="movement_execution\track_movement_distance_count\TrackMovementDistanceCount.cs" />
+    <Compile Include="movement_execution\enforce_distance_limit_per_movement_type\EnforceDistanceLimitPerMovementType.cs" />
+    <Compile Include="movement_execution\detect_floor_and_wall_collisions\DetectFloorAndWallCollisions.cs" />
+    <Compile Include="movement_execution\turn_character_towards_target\TurnCharacterTowardsTarget.cs" />
+    <Compile Include="movement_execution\reset_character_orientation\ResetCharacterOrientation.cs" />
+    <!-- Increment 4: Camera Rig -->
+    <Compile Include="camera_rig\CameraRigHelper.cs" />
+    <Compile Include="camera_rig\deploy_camera_enable_and_disable_scripts\DeployCameraEnableAndDisableScripts.cs" />
+    <Compile Include="camera_rig\render_camera_rig_in_game\RenderCameraRigInGame.cs" />
+    <Compile Include="camera_rig\execute_follow_command\ExecuteFollowCommand.cs" />
+    <Compile Include="camera_rig\execute_camera_detach_command\ExecuteCameraDetachCommand.cs" />
+    <Compile Include="camera_rig\follow_character_with_game_camera\FollowCharacterWithGameCamera.cs" />
+    <Compile Include="camera_rig\unfollow_character\UnfollowCharacter.cs" />
+    <Compile Include="camera_rig\activate_maneuver_with_camera_mode\ActivateManeuverWithCameraMode.cs" />
+    <!-- Increment 5: Game State Query -->
+    <Compile Include="game_state_query\GameStateQueryHelper.cs" />
+    <Compile Include="game_state_query\query_hovered_npc_info_from_game\QueryHoveredNpcInfoFromGame.cs" />
+    <Compile Include="game_state_query\query_mouse_xyz_position_in_game_world\QueryMouseXyzPositionInGameWorld.cs" />
+    <Compile Include="game_state_query\check_game_done_state\CheckGameDoneState.cs" />
+    <Compile Include="game_state_query\split_oversized_command_chains_for_execution\SplitOversizedCommandChainsForExecution.cs" />
+    <Compile Include="game_state_query\close_game_bridge_on_shutdown\CloseGameBridgeOnShutdown.cs" />
+    <Compile Include="game_state_query\execute_load_map_command\ExecuteLoadMapCommand.cs" />
+    <!-- Increment 5: Pop-Up Menu -->
+    <Compile Include="pop_up_menu\PopUpMenuHelper.cs" />
+    <Compile Include="pop_up_menu\write_pop_up_menu_files_to_coh_menus_directory\WritePopUpMenuFilesToCohMenusDirectory.cs" />
+    <Compile Include="pop_up_menu\load_pop_up_menu_in_game\LoadPopUpMenuInGame.cs" />
+    <Compile Include="pop_up_menu\deploy_area_attack_pop_up_menu\DeployAreaAttackPopUpMenu.cs" />
+    <!-- Increment 5: Roster -->
+    <Compile Include="roster\RosterHelper.cs" />
+    <Compile Include="roster\add_character_to_roster\AddCharacterToRoster.cs" />
+    <Compile Include="roster\add_crowd_to_roster\AddCrowdToRoster.cs" />
+    <Compile Include="roster\spawn_character_to_desktop_from_roster\SpawnCharacterToDesktopFromRoster.cs" />
+    <Compile Include="roster\remove_character_from_roster\RemoveCharacterFromRoster.cs" />
+    <Compile Include="roster\clear_character_from_desktop\ClearCharacterFromDesktop.cs" />
+    <Compile Include="roster\activate_character\ActivateCharacter.cs" />
+    <Compile Include="roster\deactivate_character\DeactivateCharacter.cs" />
+    <Compile Include="roster\activate_crowd_as_gang_with_gang_leader\ActivateCrowdAsGangWithGangLeader.cs" />
+    <Compile Include="roster\deactivate_gang\DeactivateGang.cs" />
+    <!-- Increment 5: Desktop Overlay -->
+    <Compile Include="desktop_overlay\DesktopOverlayHelper.cs" />
+    <Compile Include="desktop_overlay\select_character_on_desktop_via_mouse_click\SelectCharacterOnDesktopViaMouseClick.cs" />
+    <Compile Include="desktop_overlay\multi_select_characters\MultiSelectCharacters.cs" />
+    <Compile Include="desktop_overlay\drag_character_to_new_position_on_desktop\DragCharacterToNewPositionOnDesktop.cs" />
+    <Compile Include="desktop_overlay\double_click_character_to_activate\DoubleClickCharacterToActivate.cs" />
+    <Compile Include="desktop_overlay\sync_roster_selection_with_game_target\SyncRosterSelectionWithGameTarget.cs" />
+    <Compile Include="desktop_overlay\track_spawned_state_per_character\TrackSpawnedStatePerCharacter.cs" />
+    <!-- Increment 5: Context Menu -->
+    <Compile Include="context_menu\ContextMenuHelper.cs" />
+    <Compile Include="context_menu\spawn_character_via_context_menu\SpawnCharacterViaContextMenu.cs" />
+    <Compile Include="context_menu\place_character_at_location\PlaceCharacterAtLocation.cs" />
+    <Compile Include="context_menu\save_character_position\SaveCharacterPosition.cs" />
+    <Compile Include="context_menu\move_camera_to_target_character\MoveCameraToTargetCharacter.cs" />
+    <Compile Include="context_menu\move_target_character_to_camera\MoveTargetCharacterToCamera.cs" />
+    <Compile Include="context_menu\reset_character_orientation_via_context_menu\ResetCharacterOrientationViaContextMenu.cs" />
+    <Compile Include="context_menu\maneuver_character_with_camera_via_context_menu\ManeuverCharacterWithCameraViaContextMenu.cs" />
+    <Compile Include="context_menu\activate_character_option_via_context_menu\ActivateCharacterOptionViaContextMenu.cs" />
+    <Compile Include="context_menu\clone_and_link_character_from_desktop\CloneAndLinkCharacterFromDesktop.cs" />
+    <!-- Increment 6: Crowd Move -->
+    <Compile Include="crowd_move\CrowdMoveHelper.cs" />
+    <Compile Include="crowd_move\move_crowd_with_relative_positioning\MoveCrowdWithRelativePositioning.cs" />
+    <Compile Include="crowd_move\move_crowd_with_optimal_spread_positioning\MoveCrowdWithOptimalSpreadPositioning.cs" />
+    <Compile Include="crowd_move\maintain_group_formation_during_crowd_move\MaintainGroupFormationDuringCrowdMove.cs" />
+    <Compile Include="crowd_move\turn_characters_to_face_destination\TurnCharactersToFaceDestination.cs" />
+    <Compile Include="crowd_move\align_character_facing_with_gang_leader\AlignCharacterFacingWithGangLeader.cs" />
+    <!-- Increment 6: Attack Configuration -->
+    <Compile Include="attack_configuration\AttackConfigurationHelper.cs" />
+    <Compile Include="attack_configuration\select_attacking_character\SelectAttackingCharacter.cs" />
+    <Compile Include="attack_configuration\activate_attack_ability\ActivateAttackAbility.cs" />
+    <Compile Include="attack_configuration\select_defender_targets\SelectDefenderTargets.cs" />
+    <Compile Include="attack_configuration\confirm_attack_targets\ConfirmAttackTargets.cs" />
+    <Compile Include="attack_configuration\configure_attack_for_attacker_defender_pair\ConfigureAttackForAttackerDefenderPair.cs" />
+    <Compile Include="attack_configuration\set_attack_effect\SetAttackEffect.cs" />
+    <Compile Include="attack_configuration\set_knockback_distance\SetKnockbackDistance.cs" />
+    <Compile Include="attack_configuration\set_attack_result\SetAttackResult.cs" />
+    <Compile Include="attack_configuration\set_attack_mode\SetAttackMode.cs" />
+    <Compile Include="attack_configuration\designate_center_target_for_area_attack\DesignateCenterTargetForAreaAttack.cs" />
+    <Compile Include="attack_configuration\execute_ranged_area_attack\ExecuteRangedAreaAttack.cs" />
+    <Compile Include="attack_configuration\execute_sweep_attack_across_multiple_targets\ExecuteSweepAttackAcrossMultipleTargets.cs" />
+    <Compile Include="attack_configuration\assign_auto_fire_shots_per_target\AssignAutoFireShotsPerTarget.cs" />
+    <Compile Include="attack_configuration\spread_attack_across_crowd\SpreadAttackAcrossCrowd.cs" />
+    <!-- Increment 6: Combat Execution -->
+    <Compile Include="combat_execution\CombatExecutionHelper.cs" />
+    <Compile Include="combat_execution\play_attack_animation_on_attacker\PlayAttackAnimationOnAttacker.cs" />
+    <Compile Include="combat_execution\play_on_hit_animation_on_defender\PlayOnHitAnimationOnDefender.cs" />
+    <Compile Include="combat_execution\apply_knockback_movement_to_defender\ApplyKnockbackMovementToDefender.cs" />
+    <Compile Include="combat_execution\apply_status_effect_to_defender\ApplyStatusEffectToDefender.cs" />
+    <Compile Include="combat_execution\update_character_attack_state_indicators\UpdateCharacterAttackStateIndicators.cs" />
+    <Compile Include="combat_execution\cancel_active_attack\CancelActiveAttack.cs" />
+    <Compile Include="combat_execution\abort_attack_in_progress\AbortAttackInProgress.cs" />
+    <Compile Include="combat_execution\reset_character_combat_state\ResetCharacterCombatState.cs" />
+    <Compile Include="combat_execution\disable_non_attack_abilities_during_combat\DisableNonAttackAbilitiesDuringCombat.cs" />
+    <Compile Include="combat_execution\track_attacker_and_defender_roles_per_character\TrackAttackerAndDefenderRolesPerCharacter.cs" />
+    <!-- Increment 6: Combat Geometry -->
+    <Compile Include="combat_geometry\CombatGeometryHelper.cs" />
+    <Compile Include="combat_geometry\detect_knockback_obstruction_via_collision_ray\DetectKnockbackObstructionViaCollisionRay.cs" />
+    <Compile Include="combat_geometry\calculate_line_of_sight_for_ranged_attack\CalculateLineOfSightForRangedAttack.cs" />
+    <Compile Include="combat_geometry\query_game_collision_detection_via_hookcostume_dll\QueryGameCollisionDetectionViaHookCostumeDll.cs" />
+    <!-- Increment 6: HCS Integration -->
+    <Compile Include="hcs_integration\HcsIntegrationHelper.cs" />
+    <Compile Include="hcs_integration\start_hcs_file_watcher_integration\StartHcsFileWatcherIntegration.cs" />
+    <Compile Include="hcs_integration\read_on_deck_combatants_from_info_file\ReadOnDeckCombatantsFromInfoFile.cs" />
+    <Compile Include="hcs_integration\read_eligible_combatants_from_info_file\ReadEligibleCombatantsFromInfoFile.cs" />
+    <Compile Include="hcs_integration\read_active_character_from_info_file\ReadActiveCharacterFromInfoFile.cs" />
+    <Compile Include="hcs_integration\read_chronometer_turn_state_from_info_file\ReadChronometerTurnStateFromInfoFile.cs" />
+    <Compile Include="hcs_integration\process_attack_result_events_from_hcs\ProcessAttackResultEventsFromHcs.cs" />
+    <Compile Include="hcs_integration\process_simple_ability_events_from_hcs\ProcessSimpleAbilityEventsFromHcs.cs" />
+    <Compile Include="hcs_integration\resolve_held_character_state_from_hcs\ResolveHeldCharacterStateFromHcs.cs" />
+    <Compile Include="hcs_integration\execute_sweep_results_from_hcs\ExecuteSweepResultsFromHcs.cs" />
+    <Compile Include="hcs_integration\stop_hcs_integration\StopHcsIntegration.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

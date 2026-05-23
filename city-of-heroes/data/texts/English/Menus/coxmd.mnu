@@ -1,0 +1,32 @@
+// POPMENU sampler for CoXMacroDrive
+//
+Menu "coxmd"
+{	
+  	Menu "Sampler"
+	{
+	Option "Load Sampler Costume on NPC" "spawn_npc Longbow_Male_Group_01_Minion_01 <CoXMacroDrive> Sampler [Ally]$$target_name Ally$$loadcostume CoxMacroDrive"
+	Option "[fx command] Hand Sampler SCIROCCO's sword - and swing it." "accesslevel 9$$costume_save fx.CoXMacroDrive.Default.V_COV.ENEMYPOWERS.ARCHVILLAINS.SCIROCCO.SCIROCCO_SWORD.FX.seqbits-EMOTE-PROFILE-WEAPON-COMBAT-AXE-ATTACK-CHOP"
+	Option "[fx command] Hand Sword/Take Sword" "accesslevel 9$$costume_save fx.CoXMacroDrive.Default.V_COV.ENEMYPOWERS.ARCHVILLAINS.SCIROCCO.SCIROCCO_SWORD.FX"
+	Option "[fxhold command] Prepare Mirror Shield" "accesslevel 9$$costume_save fxhold.Default.V_COV.ENEMYPOWERS.SIGNATUREHEROES.MIRRORSPIRIT.MIRRORSHIELDS.FX"
+	Option "[fxapply command] Activate Mirror Shield" "accesslevel 9$$costume_save fxapply.coxmacrodrive"
+	Option "[fxapply command] Turn off Held FX (Mirror Shield)" "accesslevel 9$$costume_save fxapply.coxmacrodrive$$delete_npc$$spawn_npc Longbow_Male_Group_01_Minion_01 <CoXMacroDrive> Sampler [Ally]$$target_name Ally$$loadcostume CoxMacroDrive"
+	Option "[workaround] Mirror Shield is persistant! What to do?" "delete_npc$$spawn_npc Longbow_Male_Group_01_Minion_01 <CoXMacroDrive> Sampler [Ally]$$target_name Ally$$loadcostume CoxMacroDrive"
+	Option "[move command] Run forward for 3 seconds." "accesslevel 9$$costume_save move.3"
+	Option "[scale command] Make Sampler - 18 feet tall" "accesslevel 9$$costume_save scale.coxmacrodrive.300"
+	Option "[scale command] Make Sampler - 6 feet tall" "accesslevel 9$$costume_save scale.coxmacrodrive.6"
+	Option "[workaround] Hmm... he's not sized yet. Need to click here." "$$target_name Ally$$loadcostume CoxMacroDrive"
+	Option "[seqbits command] seqbits are unreliable from menu items in 1.7e - send through macrodrive" "accesslevel 9$$costume_save seqbits.EMOTE-PROFILE-WEAPON-COMBAT-AXE-ATTACK-CHOP"
+	Option "[skdelay] Macros are SLOW. Make them fast!" "accesslevel 9$$costume_save skdelay.25"
+	Option "[skdelay] Macros are FAST. Make them slow!" "accesslevel 9$$costume_save skdelay.250"
+	Option "[teleport] I want to be on top of the world. (NoClip Enabled)" "accesslevel 9$$costume_save teleport.130.48.320.01.-319.63"
+	Option "[spawnfolder] Save my spawn markers to mapspawn\sampler" "accesslevel 9$$costume_save spawnfile.sampler"
+	Option "[group] Let's set up a group for my spawns I want to place.... Longbow" "accesslevel 9$$costume_save group.Longbow"
+	Option "[faction] Let's set up a faction for my spawns I want to place.... Ally" "accesslevel 9$$costume_save faction.Ally"
+	Option "[tarry] I don't want these guys in the exact same place all the time. Tarry of 50" "accesslevel 9$$costume_save.tarry.50"
+	Option "[ydiff] I've got the camera connected to my avatar and my avatar is 5.87 tall." "accesslevel 9$$costume_save ydiff.5.87"
+	Option "[xyznote] I need to remind my self that this is Atlas Park." "accesslevel 9$$costume_save xyznote.Atlas-Park"
+	Option "[storexyz][storespawn] Mark a new XYZ Spawn Here, and go ahead and mark the MOB too. Spawn a new one so I know where I put it. I want them to have rifles." "spawn_npc Longbow_Male_Group_01_Minion_01 Longbow - Longbow - Ally$$target_custom_name Longbow$$mov SHOTGUN_ALERT_A$$accesslevel 9$$costume_save storespawn.Longbow_Male_Group_01_Minion_01.Longbow.mov-SHOTGUN_ALERT_A"
+	Option "[workaround] Clear everyone off the map. We are about to SPAWN!" "clearnpc"
+	Option "[spawnnow] Spawn this map sampler at a rate of 250 skdelay" "accesslevel 9$$costume_save spawnnow.sampler.250"
+	}
+}

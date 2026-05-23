@@ -74,8 +74,8 @@ namespace Module.HeroVirtualTabletop.Library.Enumerations
 
     public enum AttackResultOption
     {
-        Hit,
-        Miss
+        Miss,
+        Hit
     }
 
     public enum AttackMode

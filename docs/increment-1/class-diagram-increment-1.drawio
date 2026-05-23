@@ -1,0 +1,429 @@
+<mxfile host="drawio_tools.py">
+  <diagram id="page_application_shell" name="Application Shell">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: COH Game Directory»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;COH Game Directory&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ confirmedPath: Path&lt;br/&gt;+ dataDirectory: Path&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ isValid(): Boolean&lt;br/&gt;+ static validatePath(path: Path): Boolean&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;fixed at construction; points to an existing COH installation directory&lt;/i&gt;&lt;br/&gt;&lt;i&gt;derived as confirmedPath / &amp;quot;data&amp;quot; /; computed once at construction and immutable...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns true when confirmedPath references a readable directory containing expec...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;stateless check; returns true if path is a valid COH installation directory; doe...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="260" height="198" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd Repository»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Active Crowd List&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ &amp;lt;&amp;lt; composition &amp;gt;&amp;gt; paths: List&amp;lt;Path&amp;gt;&lt;br/&gt;+ storagePath: Path&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ read(): List&amp;lt;Path&amp;gt;&lt;br/&gt;+ append(path: Path): void&lt;br/&gt;+ remove(path: Path): void&lt;br/&gt;+ contains(path: Path): Boolean&lt;br/&gt;+ computeClonePath(originalPath: Path): Path&lt;br/&gt;+ persist(): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;no duplicate paths; order reflects activation sequence&lt;/i&gt;&lt;br/&gt;&lt;i&gt;reads from storagePath; returns empty list when file does not exist&lt;/i&gt;&lt;br/&gt;&lt;i&gt;adds path to list; persists immediately; rejects duplicate paths&lt;/i&gt;&lt;br/&gt;&lt;i&gt;removes path from list; persists immediately&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns &amp;quot;&amp;lt;name&amp;gt; (N).json&amp;quot; in the same directory as originalPath; N is the lowest...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;writes the current list of paths to storagePath as JSON; a session crash never l...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="294" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd Repository»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Crowd Repository&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ &amp;lt;&amp;lt; aggregation &amp;gt;&amp;gt; loadedCrowds: List&amp;lt;Crowd&amp;gt;&lt;br/&gt;+ allCharactersCrowd: AllCharactersCrowd&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ registerCrowd(crowd: Crowd): void&lt;br/&gt;+ deregisterCrowd(crowd: Crowd): void&lt;br/&gt;+ cloneActiveCrowdFile(sourcePath: Path, clonedPath: Path): void&lt;br/&gt;+ seedFromDefaultCrowdCollection(defaults: DefaultCrowdCollection, crowdTree: CrowdTree): void&lt;br/&gt;+ computeNextAvailableSuffix(basePath: Path): Integer&lt;br/&gt;+ computeClonePath(basePath: Path, suffix: Integer): Path&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;every loaded top-level crowd has exactly one sourceFile; the same crowd file pat...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;adds crowd to loadedCrowds; rejects if a crowd from the same file path is alread...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;removes crowd from loadedCrowds when the GM deactivates its file&lt;/i&gt;&lt;br/&gt;&lt;i&gt;clonedPath is &amp;quot;&amp;lt;name&amp;gt; (N).json&amp;quot; in the same directory; N is the lowest integer ≥...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;only invoked on explicit GM request; never called automatically on startup; popu...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns the lowest integer ≥ 2 where no file &amp;quot;&amp;lt;base&amp;gt; (N).json&amp;quot; exists in the sam...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="260" height="294" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Crowd Tree&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ &amp;lt;&amp;lt; aggregation &amp;gt;&amp;gt; topLevelMembers: List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ activeNameFilter: NameFilter&lt;br/&gt;+ activeBrowseMode: BrowseMode&lt;br/&gt;+ activeCharacterTab: CharacterTab&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ loadActiveFilesOnOpen(): void&lt;br/&gt;+ browseAndActivate(filePaths: List&amp;lt;Path&amp;gt;): void&lt;br/&gt;+ saveDirtyCrowds(): void&lt;br/&gt;+ saveCrowdToNewFile(crowd: Crowd, path: Path): void&lt;br/&gt;+ addCrowdToCollection(name: String): Crowd&lt;br/&gt;+ addCharacterToCrowd(crowd: Crowd, name: String): Character&lt;br/&gt;+ nestCrowdInsideCrowd(crowd: Crowd, parentCrowd: Crowd): void&lt;br/&gt;+ moveCrowdMember(member: CrowdMember, targetCrowd: Crowd): void&lt;br/&gt;+ isAncestorOf(potentialAncestor: Crowd, crowd: Crowd): Boolean&lt;br/&gt;+ removeFromCurrentParent(crowd: Crowd): void&lt;br/&gt;+ notifyGM(notification: Notification): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;wraps only top-level Crowds (not nested); preserves activation order&lt;/i&gt;&lt;br/&gt;&lt;i&gt;Identities tab is active in Increment 1; Abilities and Movements tabs are inacti...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;reads active list at open; loads each crowd file in list order; skips missing or...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;processes each selected path in order; clones when path already in active list; ...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;writes only crowds whose dirty flag is set; routes crowds with no source file to...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;writes the crowd to a new file at path; updates crowd&amp;#x27;s sourceFile; appends path...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="60" width="260" height="406" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Application Shell&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ cohGameDirectory: COHGameDirectory&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ start(): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;Prism Module is never initialised until COH Game Directory passes validation&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="642" width="260" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Prism Module&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ crowdTree: CrowdTree&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ register(): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;registers Crowd Tree views, view models, and services with the IoC container; na...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="864" width="260" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Game Directory Prompt&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ enteredPath: Path&lt;br/&gt;+ isValid: Boolean&lt;br/&gt;+ validationMessage: String&lt;br/&gt;+ canContinue: Boolean&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ setPath(path: Path): void&lt;br/&gt;+ awaitConfirmedPath(): Path&lt;br/&gt;+ buildValidationMessage(path: Path): String&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;true only when enteredPath resolves to a valid COH installation directory&lt;/i&gt;&lt;br/&gt;&lt;i&gt;shows the dialog; blocks until the GM supplies a valid path and confirms; return...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns a human-readable explanation of why path is not a valid COH installation...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1086" width="260" height="214" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="6" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6031" y="642" />
+              <mxPoint x="6031" y="258" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="6" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="766" />
+              <mxPoint x="-48738" y="766" />
+              <mxPoint x="-48738" y="838" />
+              <mxPoint x="80" y="838" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="101" y="822" />
+              <mxPoint x="-49266" y="822" />
+              <mxPoint x="-49266" y="388" />
+              <mxPoint x="80" y="388" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6075" y="864" />
+              <mxPoint x="6075" y="354" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="57467" y="864" />
+              <mxPoint x="57467" y="466" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_coh_game_directory" name="COH Game Directory">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;COH Game Directory&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ confirmedPath: Path&lt;br/&gt;+ dataDirectory: Path&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ isValid(): Boolean&lt;br/&gt;+ static validatePath(path: Path): Boolean&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;fixed at construction; points to an existing COH installation directory&lt;/i&gt;&lt;br/&gt;&lt;i&gt;derived as confirmedPath / &amp;quot;data&amp;quot; /; computed once at construction and immutable...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns true when confirmedPath references a readable directory containing expec...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;stateless check; returns true if path is a valid COH installation directory; doe...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="182" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_character" name="Character">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Crowd Member&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ wrappedNode: CrowdNode&lt;br/&gt;+ containingCrowd: Crowd&lt;br/&gt;+ expanded: Boolean&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ name(): String&lt;br/&gt;+ isLinked(): Boolean&lt;br/&gt;+ remove(): void&lt;br/&gt;+ isDirty(): Boolean&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;the crowd member&amp;#x27;s displayed name is wrappedNode.name; wrappedNode is never null&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns wrappedNode.name&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns true when wrappedNode is a Character and wrappedNode.parentCrowd ≠ conta...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;removes this entry from containingCrowd; does not delete the underlying characte...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;delegates to wrappedNode.isDirty(); for Character wrapping always false; for Cro...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="260" height="262" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Crowd&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ name: String&lt;br/&gt;+ &amp;lt;&amp;lt; composition &amp;gt;&amp;gt; members: List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ sourceFile: CrowdFile&lt;br/&gt;+ dirty: Boolean&lt;br/&gt;+ conceptTag: String&lt;br/&gt;+ groupType: String&lt;br/&gt;+ cohFactionTag: String&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ isDirty(): Boolean&lt;br/&gt;+ rename(newName: String): void&lt;br/&gt;+ delete(parent: Crowd): void&lt;br/&gt;+ addMember(member: CrowdMember): void&lt;br/&gt;+ removeMember(member: CrowdMember): void&lt;br/&gt;+ findMember(name: String): CrowdMember&lt;br/&gt;+ iterateMembers(): List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ markDirty(): void&lt;br/&gt;+ notifyObservers(): void&lt;br/&gt;+ onMemberRenamed(member: CrowdMember, oldName: String, newName: String): void&lt;br/&gt;+ applyNameFilter(filter: NameFilter): List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ pasteFromClipboard(clipboard: Clipboard): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;unique among siblings in the same parent crowd or at the repository root level&lt;/i&gt;&lt;br/&gt;&lt;i&gt;member names must be unique within the crowd; addMember and onMemberRenamed reje...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;present on every loaded top-level crowd; absent on in-memory crowds not yet pers...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;set on any structural change (rename, add/remove member, add/remove nested crowd...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns this.dirty; implements CrowdNode to enable uniform dirty-indicator deleg...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;new name must be unique among siblings; marks this crowd dirty on success&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="260" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Clipboard&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ heldMember: CrowdMember&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ hold(member: CrowdMember): void&lt;br/&gt;+ release(): CrowdMember&lt;br/&gt;+ hasItem(): Boolean&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;at most one item held at any time; null when clipboard is empty&lt;/i&gt;&lt;br/&gt;&lt;i&gt;discards any previously held item; holds the new member&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns the held member and clears heldMember; caller places the member into the...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns true when heldMember is not null&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="198" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Character&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ name: String&lt;br/&gt;+ parentCrowd: Crowd&lt;br/&gt;+ &amp;lt;&amp;lt; composition &amp;gt;&amp;gt; optionGroups: Dictionary&amp;lt;String, OptionGroup&amp;gt;&lt;br/&gt;+ memberships: List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ isDirty(): Boolean&lt;br/&gt;+ rename(newName: String): void&lt;br/&gt;+ delete(crowd: Crowd): void&lt;br/&gt;+ clone(targetCrowd: Crowd): Character&lt;br/&gt;+ linkedClone(sourceCrowd: Crowd, targetCrowd: Crowd): Character&lt;br/&gt;+ cutToClipboard(clipboard: Clipboard, crowd: Crowd): void&lt;br/&gt;+ generateUniqueName(baseName: String, crowd: Crowd): String&lt;br/&gt;+ deepCopyOptionGroups(source: Dictionary&amp;lt;String, OptionGroup&amp;gt;): Dictionary&amp;lt;String, OptionGroup&amp;gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;unique within every crowd the character belongs to at any moment&lt;/i&gt;&lt;br/&gt;&lt;i&gt;set once at construction to the crowd in which this character was originally cre...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;always exactly three keys — Identities, Abilities, Movements; each OptionGroup c...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;every CrowdMember in this list wraps this character; the list is the authoritati...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;Character does not track its own dirty flag; returns false; dirtiness is tracked...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;new name must be unique within every crowd this character currently belongs to; ...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="826" width="260" height="342" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Option Group&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ canonicalName: String&lt;br/&gt;+ &amp;lt;&amp;lt; composition &amp;gt;&amp;gt; options: List&amp;lt;Option&amp;gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;one of: Identities, Abilities, Movements; fixed at construction&lt;/i&gt;&lt;br/&gt;&lt;i&gt;empty in Increment 1&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="826" width="260" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="784" />
+              <mxPoint x="-49882" y="784" />
+              <mxPoint x="-49882" y="288" />
+              <mxPoint x="80" y="288" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6031" y="826" />
+              <mxPoint x="6031" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6075" y="826" />
+              <mxPoint x="6075" y="322" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_crowd" name="Crowd">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd Repository»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Crowd File&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ absolutePath: Path&lt;br/&gt;+ &amp;lt;&amp;lt; aggregation &amp;gt;&amp;gt; containedCrowds: List&amp;lt;Crowd&amp;gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ deserializeCrowds(): List&amp;lt;Crowd&amp;gt;&lt;br/&gt;+ serializeCrowd(crowd: Crowd): SaveResult&lt;br/&gt;+ serializeCrowds(crowds: List&amp;lt;Crowd&amp;gt;): void&lt;br/&gt;+ createBackupBeforeLoad(): void&lt;br/&gt;+ deserializeSingleCrowd(raw: RawCrowdData, characterRegistry: Dictionary&amp;lt;String, Character&amp;gt;): Crowd&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;uniquely identifies the crowd file; two crowd files share no path&lt;/i&gt;&lt;br/&gt;&lt;i&gt;reconstructs the full crowd hierarchy in member order; linked members restored a...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;serializes crowd and all its descendants to JSON; linked members encoded once an...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;serializes a list of crowds to this file; used for clone file creation; does not...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;creates a DailyBackup of this file before reading; skipped when backup already e...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;constructs a Crowd from raw parsed data; characters are registered in characterR...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="260" height="278" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Character»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Character&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ name: String&lt;br/&gt;+ parentCrowd: Crowd&lt;br/&gt;+ &amp;lt;&amp;lt; composition &amp;gt;&amp;gt; optionGroups: Dictionary&amp;lt;String, OptionGroup&amp;gt;&lt;br/&gt;+ memberships: List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ isDirty(): Boolean&lt;br/&gt;+ rename(newName: String): void&lt;br/&gt;+ delete(crowd: Crowd): void&lt;br/&gt;+ clone(targetCrowd: Crowd): Character&lt;br/&gt;+ linkedClone(sourceCrowd: Crowd, targetCrowd: Crowd): Character&lt;br/&gt;+ cutToClipboard(clipboard: Clipboard, crowd: Crowd): void&lt;br/&gt;+ generateUniqueName(baseName: String, crowd: Crowd): String&lt;br/&gt;+ deepCopyOptionGroups(source: Dictionary&amp;lt;String, OptionGroup&amp;gt;): Dictionary&amp;lt;String, OptionGroup&amp;gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;unique within every crowd the character belongs to at any moment&lt;/i&gt;&lt;br/&gt;&lt;i&gt;set once at construction to the crowd in which this character was originally cre...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;always exactly three keys — Identities, Abilities, Movements; each OptionGroup c...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;every CrowdMember in this list wraps this character; the list is the authoritati...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;Character does not track its own dirty flag; returns false; dirtiness is tracked...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;new name must be unique within every crowd this character currently belongs to; ...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="358" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd Repository»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Daily Backup&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ crowdFile: CrowdFile&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ createIfNotTodayExists(): void&lt;br/&gt;+ computeBackupPath(filePath: Path, date: Date): Path&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;creates a date-stamped copy of crowdFile only if no backup exists for today&amp;#x27;s ca...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns &amp;quot;&amp;lt;filename&amp;gt;_&amp;lt;date&amp;gt;.bak&amp;quot; in the same directory as filePath&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="260" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Crowd&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ name: String&lt;br/&gt;+ &amp;lt;&amp;lt; composition &amp;gt;&amp;gt; members: List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ sourceFile: CrowdFile&lt;br/&gt;+ dirty: Boolean&lt;br/&gt;+ conceptTag: String&lt;br/&gt;+ groupType: String&lt;br/&gt;+ cohFactionTag: String&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ isDirty(): Boolean&lt;br/&gt;+ rename(newName: String): void&lt;br/&gt;+ delete(parent: Crowd): void&lt;br/&gt;+ addMember(member: CrowdMember): void&lt;br/&gt;+ removeMember(member: CrowdMember): void&lt;br/&gt;+ findMember(name: String): CrowdMember&lt;br/&gt;+ iterateMembers(): List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ markDirty(): void&lt;br/&gt;+ notifyObservers(): void&lt;br/&gt;+ onMemberRenamed(member: CrowdMember, oldName: String, newName: String): void&lt;br/&gt;+ applyNameFilter(filter: NameFilter): List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ pasteFromClipboard(clipboard: Clipboard): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;unique among siblings in the same parent crowd or at the repository root level&lt;/i&gt;&lt;br/&gt;&lt;i&gt;member names must be unique within the crowd; addMember and onMemberRenamed reje...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;present on every loaded top-level crowd; absent on in-memory crowds not yet pers...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;set on any structural change (rename, add/remove member, add/remove nested crowd...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns this.dirty; implements CrowdNode to enable uniform dirty-indicator deleg...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;new name must be unique among siblings; marks this crowd dirty on success&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="760" width="260" height="454" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CrowdNode&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ name: String&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ isDirty(): Boolean&lt;br/&gt;+ rename(newName: String): void&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1938" width="260" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Crowd Member&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ wrappedNode: CrowdNode&lt;br/&gt;+ containingCrowd: Crowd&lt;br/&gt;+ expanded: Boolean&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ name(): String&lt;br/&gt;+ isLinked(): Boolean&lt;br/&gt;+ remove(): void&lt;br/&gt;+ isDirty(): Boolean&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;the crowd member&amp;#x27;s displayed name is wrappedNode.name; wrappedNode is never null&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns wrappedNode.name&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns true when wrappedNode is a Character and wrappedNode.parentCrowd ≠ conta...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;removes this entry from containingCrowd; does not delete the underlying characte...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;delegates to wrappedNode.isDirty(); for Character wrapping always false; for Cro...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="760" width="260" height="246" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Nested Crowd : Crowd&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ parentCrowd: Crowd&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1620" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Crowd Tree&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ &amp;lt;&amp;lt; aggregation &amp;gt;&amp;gt; topLevelMembers: List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ activeNameFilter: NameFilter&lt;br/&gt;+ activeBrowseMode: BrowseMode&lt;br/&gt;+ activeCharacterTab: CharacterTab&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ loadActiveFilesOnOpen(): void&lt;br/&gt;+ browseAndActivate(filePaths: List&amp;lt;Path&amp;gt;): void&lt;br/&gt;+ saveDirtyCrowds(): void&lt;br/&gt;+ saveCrowdToNewFile(crowd: Crowd, path: Path): void&lt;br/&gt;+ addCrowdToCollection(name: String): Crowd&lt;br/&gt;+ addCharacterToCrowd(crowd: Crowd, name: String): Character&lt;br/&gt;+ nestCrowdInsideCrowd(crowd: Crowd, parentCrowd: Crowd): void&lt;br/&gt;+ moveCrowdMember(member: CrowdMember, targetCrowd: Crowd): void&lt;br/&gt;+ isAncestorOf(potentialAncestor: Crowd, crowd: Crowd): Boolean&lt;br/&gt;+ removeFromCurrentParent(crowd: Crowd): void&lt;br/&gt;+ notifyGM(notification: Notification): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;wraps only top-level Crowds (not nested); preserves activation order&lt;/i&gt;&lt;br/&gt;&lt;i&gt;Identities tab is active in Increment 1; Abilities and Movements tabs are inacti...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;reads active list at open; loads each crowd file in list order; skips missing or...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;processes each selected path in order; clones when path already in active list; ...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;writes only crowds whose dirty flag is set; routes crowds with no source file to...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;writes the crowd to a new file at path; updates crowd&amp;#x27;s sourceFile; appends path...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1126" width="260" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Name Filter&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ text: String&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ matches(name: String): Boolean&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;case-insensitive substring used to match crowd member names; empty text matches ...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns true if name contains text (case-insensitive); always returns true when ...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="2152" width="260" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;All Characters Crowd : Crowd&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ addCharacter(character: Character): void&lt;br/&gt;+ removeCharacter(character: Character): void&lt;br/&gt;+ onCharacterRenamed(oldName: String, newName: String): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;always present; cannot be deleted, renamed, or structurally modified by the GM; ...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;adds a CrowdMember wrapping character if not already present; list remains alpha...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;removes the CrowdMember wrapping character; called when character is deleted fro...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;re-sorts the crowd&amp;#x27;s member list after a character rename; no member is added or...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1334" width="260" height="166" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Clipboard&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ heldMember: CrowdMember&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ hold(member: CrowdMember): void&lt;br/&gt;+ release(): CrowdMember&lt;br/&gt;+ hasItem(): Boolean&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;at most one item held at any time; null when clipboard is empty&lt;/i&gt;&lt;br/&gt;&lt;i&gt;discards any previously held item; holds the new member&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns the held member and clears heldMember; caller places the member into the...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns true when heldMember is not null&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1636" width="260" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="11" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="1304" />
+              <mxPoint x="-114738" y="1304" />
+              <mxPoint x="-114738" y="444" />
+              <mxPoint x="80" y="444" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="11" target="5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1920" y="1606" />
+              <mxPoint x="-5706" y="1606" />
+              <mxPoint x="-5706" y="1040" />
+              <mxPoint x="1920" y="1040" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="730" />
+              <mxPoint x="120346" y="730" />
+              <mxPoint x="120346" y="452" />
+              <mxPoint x="101" y="452" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.16;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6075" y="1214" />
+              <mxPoint x="6075" y="1636" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6119" y="760" />
+              <mxPoint x="6119" y="338" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=none;html=1;startArrow=diamondThin;startFill=1;startSize=14;exitX=1.0;exitY=0.08;exitDx=0;exitDy=0;entryX=0.0;entryY=0.08;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="293835" y="796" />
+              <mxPoint x="293835" y="779" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6163" y="1214" />
+              <mxPoint x="6163" y="2152" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.0;exitY=0.16;exitDx=0;exitDy=0;entryX=1.0;entryY=0.16;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="294187" y="799" />
+              <mxPoint x="294187" y="832" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1941" y="1044" />
+              <mxPoint x="151234" y="1044" />
+              <mxPoint x="151234" y="1916" />
+              <mxPoint x="1920" y="1916" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="296651" y="1126" />
+              <mxPoint x="296651" y="418" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=none;html=1;startArrow=diamondThin;startFill=0;startSize=14;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.32;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="295595" y="1126" />
+              <mxPoint x="295595" y="1214" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="296659" y="1126" />
+              <mxPoint x="296659" y="338" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=none;html=1;startArrow=diamondThin;startFill=0;startSize=14;exitX=0.32;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1983" y="1088" />
+              <mxPoint x="151850" y="1088" />
+              <mxPoint x="151850" y="1024" />
+              <mxPoint x="1962" y="1024" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.4;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="297723" y="1126" />
+              <mxPoint x="297723" y="210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.16;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1920" y="1538" />
+              <mxPoint x="122722" y="1538" />
+              <mxPoint x="122722" y="2122" />
+              <mxPoint x="1941" y="2122" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="138515" y="1516" />
+              <mxPoint x="138515" y="1620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;endSize=16;endFill=0;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.4;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="101" y="1582" />
+              <mxPoint x="-143162" y="1582" />
+              <mxPoint x="-143162" y="1244" />
+              <mxPoint x="164" y="1244" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_crowd_repository" name="Crowd Repository">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Crowd&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ name: String&lt;br/&gt;+ &amp;lt;&amp;lt; composition &amp;gt;&amp;gt; members: List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ sourceFile: CrowdFile&lt;br/&gt;+ dirty: Boolean&lt;br/&gt;+ conceptTag: String&lt;br/&gt;+ groupType: String&lt;br/&gt;+ cohFactionTag: String&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ isDirty(): Boolean&lt;br/&gt;+ rename(newName: String): void&lt;br/&gt;+ delete(parent: Crowd): void&lt;br/&gt;+ addMember(member: CrowdMember): void&lt;br/&gt;+ removeMember(member: CrowdMember): void&lt;br/&gt;+ findMember(name: String): CrowdMember&lt;br/&gt;+ iterateMembers(): List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ markDirty(): void&lt;br/&gt;+ notifyObservers(): void&lt;br/&gt;+ onMemberRenamed(member: CrowdMember, oldName: String, newName: String): void&lt;br/&gt;+ applyNameFilter(filter: NameFilter): List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ pasteFromClipboard(clipboard: Clipboard): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;unique among siblings in the same parent crowd or at the repository root level&lt;/i&gt;&lt;br/&gt;&lt;i&gt;member names must be unique within the crowd; addMember and onMemberRenamed reje...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;present on every loaded top-level crowd; absent on in-memory crowds not yet pers...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;set on any structural change (rename, add/remove member, add/remove nested crowd...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns this.dirty; implements CrowdNode to enable uniform dirty-indicator deleg...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;new name must be unique among siblings; marks this crowd dirty on success&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="260" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;All Characters Crowd : Crowd&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ addCharacter(character: Character): void&lt;br/&gt;+ removeCharacter(character: Character): void&lt;br/&gt;+ onCharacterRenamed(oldName: String, newName: String): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;always present; cannot be deleted, renamed, or structurally modified by the GM; ...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;adds a CrowdMember wrapping character if not already present; list remains alpha...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;removes the CrowdMember wrapping character; called when character is deleted fro...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;re-sorts the crowd&amp;#x27;s member list after a character rename; no member is added or...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="260" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;«from: Crowd»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Crowd Tree&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ &amp;lt;&amp;lt; aggregation &amp;gt;&amp;gt; topLevelMembers: List&amp;lt;CrowdMember&amp;gt;&lt;br/&gt;+ activeNameFilter: NameFilter&lt;br/&gt;+ activeBrowseMode: BrowseMode&lt;br/&gt;+ activeCharacterTab: CharacterTab&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ loadActiveFilesOnOpen(): void&lt;br/&gt;+ browseAndActivate(filePaths: List&amp;lt;Path&amp;gt;): void&lt;br/&gt;+ saveDirtyCrowds(): void&lt;br/&gt;+ saveCrowdToNewFile(crowd: Crowd, path: Path): void&lt;br/&gt;+ addCrowdToCollection(name: String): Crowd&lt;br/&gt;+ addCharacterToCrowd(crowd: Crowd, name: String): Character&lt;br/&gt;+ nestCrowdInsideCrowd(crowd: Crowd, parentCrowd: Crowd): void&lt;br/&gt;+ moveCrowdMember(member: CrowdMember, targetCrowd: Crowd): void&lt;br/&gt;+ isAncestorOf(potentialAncestor: Crowd, crowd: Crowd): Boolean&lt;br/&gt;+ removeFromCurrentParent(crowd: Crowd): void&lt;br/&gt;+ notifyGM(notification: Notification): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;wraps only top-level Crowds (not nested); preserves activation order&lt;/i&gt;&lt;br/&gt;&lt;i&gt;Identities tab is active in Increment 1; Abilities and Movements tabs are inacti...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;reads active list at open; loads each crowd file in list order; skips missing or...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;processes each selected path in order; clones when path already in active list; ...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;writes only crowds whose dirty flag is set; routes crowds with no source file to...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;writes the crowd to a new file at path; updates crowd&amp;#x27;s sourceFile; appends path...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;dashed=1;dashPattern=8 4;strokeColor=#999999;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="260" height="406" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Crowd Repository&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ &amp;lt;&amp;lt; aggregation &amp;gt;&amp;gt; loadedCrowds: List&amp;lt;Crowd&amp;gt;&lt;br/&gt;+ allCharactersCrowd: AllCharactersCrowd&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ registerCrowd(crowd: Crowd): void&lt;br/&gt;+ deregisterCrowd(crowd: Crowd): void&lt;br/&gt;+ cloneActiveCrowdFile(sourcePath: Path, clonedPath: Path): void&lt;br/&gt;+ seedFromDefaultCrowdCollection(defaults: DefaultCrowdCollection, crowdTree: CrowdTree): void&lt;br/&gt;+ computeNextAvailableSuffix(basePath: Path): Integer&lt;br/&gt;+ computeClonePath(basePath: Path, suffix: Integer): Path&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;every loaded top-level crowd has exactly one sourceFile; the same crowd file pat...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;adds crowd to loadedCrowds; rejects if a crowd from the same file path is alread...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;removes crowd from loadedCrowds when the GM deactivates its file&lt;/i&gt;&lt;br/&gt;&lt;i&gt;clonedPath is &amp;quot;&amp;lt;name&amp;gt; (N).json&amp;quot; in the same directory; N is the lowest integer ≥...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;only invoked on explicit GM request; never called automatically on startup; popu...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns the lowest integer ≥ 2 where no file &amp;quot;&amp;lt;base&amp;gt; (N).json&amp;quot; exists in the sam...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="826" width="260" height="278" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Crowd File&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ absolutePath: Path&lt;br/&gt;+ &amp;lt;&amp;lt; aggregation &amp;gt;&amp;gt; containedCrowds: List&amp;lt;Crowd&amp;gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ deserializeCrowds(): List&amp;lt;Crowd&amp;gt;&lt;br/&gt;+ serializeCrowd(crowd: Crowd): SaveResult&lt;br/&gt;+ serializeCrowds(crowds: List&amp;lt;Crowd&amp;gt;): void&lt;br/&gt;+ createBackupBeforeLoad(): void&lt;br/&gt;+ deserializeSingleCrowd(raw: RawCrowdData, characterRegistry: Dictionary&amp;lt;String, Character&amp;gt;): Crowd&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;uniquely identifies the crowd file; two crowd files share no path&lt;/i&gt;&lt;br/&gt;&lt;i&gt;reconstructs the full crowd hierarchy in member order; linked members restored a...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;serializes crowd and all its descendants to JSON; linked members encoded once an...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;serializes a list of crowds to this file; used for clone file creation; does not...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;creates a DailyBackup of this file before reading; skipped when backup already e...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;constructs a Crowd from raw parsed data; characters are registered in characterR...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="826" width="260" height="262" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Active Crowd List&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ &amp;lt;&amp;lt; composition &amp;gt;&amp;gt; paths: List&amp;lt;Path&amp;gt;&lt;br/&gt;+ storagePath: Path&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ read(): List&amp;lt;Path&amp;gt;&lt;br/&gt;+ append(path: Path): void&lt;br/&gt;+ remove(path: Path): void&lt;br/&gt;+ contains(path: Path): Boolean&lt;br/&gt;+ computeClonePath(originalPath: Path): Path&lt;br/&gt;+ persist(): void&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;no duplicate paths; order reflects activation sequence&lt;/i&gt;&lt;br/&gt;&lt;i&gt;reads from storagePath; returns empty list when file does not exist&lt;/i&gt;&lt;br/&gt;&lt;i&gt;adds path to list; persists immediately; rejects duplicate paths&lt;/i&gt;&lt;br/&gt;&lt;i&gt;removes path from list; persists immediately&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns &amp;quot;&amp;lt;name&amp;gt; (N).json&amp;quot; in the same directory as originalPath; N is the lowest...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;writes the current list of paths to storagePath as JSON; a session crash never l...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1462" width="260" height="278" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Daily Backup&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ crowdFile: CrowdFile&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ createIfNotTodayExists(): void&lt;br/&gt;+ computeBackupPath(filePath: Path, date: Date): Path&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;creates a date-stamped copy of crowdFile only if no backup exists for today&amp;#x27;s ca...&lt;/i&gt;&lt;br/&gt;&lt;i&gt;returns &amp;quot;&amp;lt;filename&amp;gt;_&amp;lt;date&amp;gt;.bak&amp;quot; in the same directory as filePath&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1208" width="260" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Default Crowd Collection&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:10px;&quot;&gt;+ deserializeDefaults(): List&amp;lt;Crowd&amp;gt;&lt;br/&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;font-size:9px;color:#666;&quot;&gt;&lt;i&gt;reads the embedded application resource containing starter crowds and characters...&lt;/i&gt;&lt;br/&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1860" width="260" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=none;html=1;startArrow=diamondThin;startFill=0;startSize=14;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="6" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="204963" y="826" />
+              <mxPoint x="204963" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="6" target="8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1920" y="1118" />
+              <mxPoint x="79690" y="1118" />
+              <mxPoint x="79690" y="1190" />
+              <mxPoint x="1920" y="1190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="784" />
+              <mxPoint x="-75138" y="784" />
+              <mxPoint x="-75138" y="268" />
+              <mxPoint x="80" y="268" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=none;html=1;startArrow=diamondThin;startFill=0;startSize=14;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.16;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6031" y="826" />
+              <mxPoint x="6031" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=1.0;exitY=0.08;exitDx=0;exitDy=0;entryX=0.0;entryY=0.08;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="76607" y="848" />
+              <mxPoint x="76607" y="846" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.24;exitY=0.0;exitDx=0;exitDy=0;entryX=0.08;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="6075" y="826" />
+              <mxPoint x="6075" y="466" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.08;exitY=1.0;exitDx=0;exitDy=0;entryX=0.08;entryY=0.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="206715" y="1104" />
+              <mxPoint x="206715" y="1860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=open;endSize=12;html=1;exitX=0.16;exitY=0.0;exitDx=0;exitDy=0;entryX=0.24;entryY=1.0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="207427" y="1860" />
+              <mxPoint x="207427" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

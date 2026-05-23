@@ -53,6 +53,7 @@ namespace CrowdManagement.E2ETests.ManageCrowdRepository
 
             // Load the app; the nested crowd must be visible.
             WhenCharacterCrowdMainWorkspaceOpens(new[] { villains });
+            WhenBrowseResultAppears(1);
 
             ThenCrowdTreeShowsCrowd("Council Empire");
             ThenCrowdTreeShowsChildrenUnder("Council Empire", new[] { "Vampyri" });

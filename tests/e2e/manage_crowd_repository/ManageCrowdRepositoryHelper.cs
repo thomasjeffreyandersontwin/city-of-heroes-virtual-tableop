@@ -159,6 +159,13 @@ namespace CrowdManagement.E2ETests.ManageCrowdRepository
             Driver.LaunchWithCrowdFiles(new string[0]);
         }
 
+        // Used by tests whose crowd tree was not yet visible when LaunchWithCrowdFiles returned.
+        // Calls WaitForBrowseResultToAppear to give the async crowd load a second polling window.
+        protected void WhenBrowseResultAppears(int expectedCount)
+        {
+            Driver.WaitForBrowseResultToAppear(expectedCount);
+        }
+
         protected void WhenSaveDirtyIsInvoked()
         {
             Driver.ClickSaveButton();

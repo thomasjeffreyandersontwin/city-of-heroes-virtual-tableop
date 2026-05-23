@@ -1,0 +1,226 @@
+{
+  "target": "docs/ux/lo-fi/increment-2.drawio",
+  "screens": [
+    {
+      "name": "full application view",
+      "layout": "multi-panel",
+      "col": 0,
+      "row": 0,
+      "panels": [
+        {
+          "name": "character explorer",
+          "position": "left",
+          "width": 210,
+          "regions": [
+            {
+              "name": "toolbar",
+              "type": "toolbar",
+              "buttons": 8
+            },
+            {
+              "name": "animation dropdown",
+              "type": "dropdown",
+              "value": "Animation"
+            },
+            {
+              "name": "crowd tree",
+              "type": "tree",
+              "nodes": [
+                {
+                  "label": "All Characters",
+                  "expanded": true,
+                  "children": [
+                    { "label": "Crowds", "expanded": false },
+                    { "label": "Crowds", "expanded": false },
+                    { "label": "Character" },
+                    { "label": "Character" },
+                    { "label": "Character" },
+                    { "label": "Character" },
+                    { "label": "Crowds", "expanded": false },
+                    { "label": "Crowds", "expanded": false },
+                    { "label": "Crowds", "expanded": false },
+                    { "label": "Crowds", "expanded": false },
+                    { "label": "Crowds", "expanded": false },
+                    { "label": "Crowds", "expanded": false },
+                    { "label": "Crowds", "expanded": false }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "active roster",
+          "position": "center-left",
+          "width": 210,
+          "regions": [
+            {
+              "name": "toolbar",
+              "type": "toolbar",
+              "buttons": 6
+            },
+            {
+              "name": "crowd groups",
+              "type": "grouped-list",
+              "groups": [
+                {
+                  "header": "Crowd 1",
+                  "items": ["Character 1", "Character 2", "Character 3"]
+                },
+                {
+                  "header": "Crowd 2",
+                  "items": ["Character 1", "Character 2"]
+                },
+                {
+                  "header": "No Crowd",
+                  "items": ["Character 1", "Character 2 (selected)", "Character 1", "Character 2"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "character editor",
+          "position": "center-right",
+          "width": 310,
+          "regions": [
+            {
+              "name": "portrait",
+              "type": "avatar",
+              "label": "Spyder"
+            },
+            {
+              "name": "identity section",
+              "type": "slot-row",
+              "slots": 4,
+              "activeSlot": 0,
+              "actions": ["+", "-"]
+            },
+            {
+              "name": "movements section",
+              "type": "slot-row-with-icons",
+              "icons": ["Loc", "Dir", "Flw", "Cam", "Scl", "Rmv"],
+              "slots": 6
+            },
+            {
+              "name": "powers section",
+              "type": "slot-grid",
+              "slots": 8
+            },
+            {
+              "name": "crowds section",
+              "type": "slot-row",
+              "slots": 4
+            },
+            {
+              "name": "navigate toggle",
+              "type": "toggle"
+            }
+          ]
+        },
+        {
+          "name": "costume edit",
+          "position": "right",
+          "width": 280,
+          "regions": [
+            {
+              "name": "identity name",
+              "type": "form",
+              "fields": [
+                { "label": "Identity Name", "input": "text" }
+              ]
+            },
+            {
+              "name": "model/costume selector",
+              "type": "dropdown",
+              "value": "Model \\ Costume"
+            },
+            {
+              "name": "default and play",
+              "type": "form",
+              "fields": [
+                { "label": "Default", "input": "checkbox" },
+                { "label": "Play", "input": "button" }
+              ]
+            },
+            {
+              "name": "type radios",
+              "type": "radio-group",
+              "options": ["Costume", "Model"],
+              "selected": "Model"
+            },
+            {
+              "name": "tag-model table",
+              "type": "table",
+              "columns": ["Tag", "Model"],
+              "rows": [
+                ["Minion", "Minion 1"],
+                ["Minion", "Minion2"],
+                ["Minion", "Brunhilda Crazy"]
+              ],
+              "selectedRow": 1
+            },
+            {
+              "name": "animation dropdown",
+              "type": "dropdown",
+              "value": "Animation"
+            },
+            {
+              "name": "animation listbox",
+              "type": "listbox",
+              "items": [
+                { "label": "Become The Character 2!", "selected": true },
+                { "label": "Character 2 Attack" },
+                { "label": "Character 2 Dodge" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "active roster context menu",
+      "layout": "popup-overlay",
+      "col": 1,
+      "row": 0,
+      "regions": [
+        {
+          "name": "context menu items",
+          "slot": "body",
+          "type": "menu",
+          "groups": [
+            {
+              "items": [
+                { "label": "> Cam" },
+                { "label": "< Cam" },
+                { "label": "Target" },
+                { "label": "Maneuver" }
+              ]
+            },
+            {
+              "items": [
+                { "label": "Spawn" },
+                { "label": "Place" },
+                { "label": "Save Location" }
+              ]
+            },
+            {
+              "items": [
+                { "label": "Activate" },
+                { "label": "Edit", "highlighted": true },
+                { "label": "Remove" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "character editor",
+      "to": "costume edit",
+      "label": "edit identity"
+    }
+  ]
+}

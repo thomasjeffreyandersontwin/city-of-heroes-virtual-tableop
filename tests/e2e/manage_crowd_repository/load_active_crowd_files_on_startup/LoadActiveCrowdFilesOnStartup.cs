@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CrowdManagement.E2ETests.Support;
 
@@ -74,6 +75,8 @@ namespace CrowdManagement.E2ETests.ManageCrowdRepository
         {
             string heroes = GivenCrowdFileOnDisk("heroes_miss_e2e.json", "Freedom Phalanx", "Statesman");
             string missing = GivenCrowdFileExistsOnDisk("missing_e2e.json");
+            // Guarantee the file is truly absent (may be left over from a previous run).
+            if (File.Exists(missing)) File.Delete(missing);
             GivenActiveCrowdListContains(heroes, missing);
 
             // missing_e2e.json does not exist on disk — the app skips it.

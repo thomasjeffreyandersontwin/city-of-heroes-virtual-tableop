@@ -9,9 +9,10 @@
 
 ---
 
-### Move Crowd with Relative Positioning
+## Story: Move Crowd with Relative Positioning
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Crowd Move* — coordinated movement of all crowd members together as a unit
 - *Relative Positioning* — crowd-move strategy displacing each member by the same delta vector
@@ -19,6 +20,8 @@
 - *Context Menu* — right-click popup menu on a character overlay; entry point for crowd-move commands
 - *Movement Execution* — boundary service issuing the per-character move command
 - *Roster Entry* — session record for a character; each spawned member receives a move command
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Move Crowd with Relative Positioning from the *Context Menu* on a spawned crowd member and designates a destination  
    **THEN** every spawned *Roster Entry* in the target crowd receives a *Movement Execution* command  
@@ -43,15 +46,18 @@
 
 ---
 
-### Move Crowd with Optimal Spread Positioning
+## Story: Move Crowd with Optimal Spread Positioning
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Optimal Spread Positioning* — crowd-move strategy distributing members to an evenly spaced arrangement at the destination
 - *Crowd Move* — coordinated movement operation
 - *Movement Execution* — boundary service issuing per-character move commands
 - *Group Formation* — spatial arrangement; optimally re-distributed in this strategy
 - *Context Menu* — entry point for crowd-move commands
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Move Crowd with Optimal Spread Positioning from the *Context Menu* on a spawned crowd member and designates a destination  
    **THEN** the system computes a set of spread destination slots around the destination center, one per spawned member  
@@ -76,13 +82,16 @@
 
 ---
 
-### Maintain Group Formation during Crowd Move
+## Story: Maintain Group Formation during Crowd Move
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Group Formation* — relative spatial offsets between crowd members captured at move start and re-applied at completion
 - *Crowd Move* — the movement operation that must preserve formation
 - *Relative Positioning* — the specific strategy whose defining invariant is formation preservation
+
+### Acceptance criteria
 
 1. **WHEN** a *Crowd Move* with *Relative Positioning* completes  
    **THEN** the relative offset from each member to every other member is the same after the move as before  
@@ -102,13 +111,16 @@
 
 ---
 
-### Turn Characters to Face Destination
+## Story: Turn Characters to Face Destination
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Facing Destination* — post-move orientation applied to all crowd members, pointing toward the movement destination
 - *Crowd Move* — the movement whose completion triggers facing
 - *Gang Mode* — collective activation state; when active, *Gang Leader Facing* substitutes
+
+### Acceptance criteria
 
 1. **WHEN** a *Crowd Move* completes and the crowd is not an active *Gang Mode* group  
    **THEN** a facing command is issued to every moved member pointing toward the movement destination center  
@@ -132,13 +144,16 @@
 
 ---
 
-### Align Character Facing with Gang Leader
+## Story: Align Character Facing with Gang Leader
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Gang Leader Facing* — orientation assigned to all gang members aligning them with the gang leader's facing direction
 - *Gang Leader* — the designated roster entry whose facing vector is the reference
 - *Gang Mode* — the collective activation state that triggers this alignment
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Align Character Facing with Gang Leader for an active *Gang Mode* group  
    **THEN** the system reads the current facing vector of the *Gang Leader* from game memory  
@@ -166,14 +181,17 @@
 
 ---
 
-### Select Attacking Character
+## Story: Select Attacking Character
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Attacker* — the roster entry assigned the attacking role
 - *Attack Configuration* — the panel opened when an attack is initiated
 - *Combatant Selectors* — the region in the attack configuration listing attacker and defenders
 - *Combat State* — per-character record of current combat role
+
+### Acceptance criteria
 
 1. **WHEN** the GM opens an *Attack Configuration* by activating an attack ability from the *Context Menu* on a spawned character  
    **THEN** the *Attack Configuration* panel opens  
@@ -195,14 +213,17 @@
 
 ---
 
-### Activate Attack Ability
+## Story: Activate Attack Ability
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Attack Configuration* — the panel that opens when an attack ability is activated
 - *Attacker* — the character whose attack ability is activated
 - *Animated Ability* — the ability flagged as an attack ability
 - *Desktop* — the in-session screen that transitions to the *Attack Configuration*
+
+### Acceptance criteria
 
 1. **WHEN** the GM activates an attack ability on a spawned character from the *Context Menu* on the *Desktop*  
    **THEN** the application transitions to the *Attack Configuration* panel  
@@ -224,13 +245,16 @@
 
 ---
 
-### Select Defender Targets
+## Story: Select Defender Targets
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Defender* — a roster entry added as a target
 - *Combatant Selectors* — the region listing attacker and all added defenders
 - *Attacker-Defender Pair* — configuration record created for each defender added
+
+### Acceptance criteria
 
 1. **WHEN** the GM clicks Add Defender in the *Combatant Selectors* region and selects a spawned character  
    **THEN** the selected character is added as a *Defender* in the list  
@@ -256,13 +280,16 @@
 
 ---
 
-### Confirm Attack Targets
+## Story: Confirm Attack Targets
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Attack Configuration* — the panel; Confirm Targets locks in the combatant selection before parameters are finalized
 - *Combatant Selectors* — the region holding the confirmed list
 - *Attacker-Defender Pair* — confirmed for each defender when targets are confirmed
+
+### Acceptance criteria
 
 1. **WHEN** the GM clicks Confirm Targets in the *Combatant Selectors* region with one *Attacker* and at least one *Defender* selected  
    **THEN** the combatant list is locked  
@@ -285,15 +312,18 @@
 
 ---
 
-### Configure Attack for Attacker-Defender Pair
+## Story: Configure Attack for Attacker-Defender Pair
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Attacker-Defender Pair* — the independent configuration record for one attacker-to-defender relationship
 - *Attack Effect* — outcome applied on hit (Stunned / Unconscious / Dying / Dead)
 - *Knockback Distance* — displacement units after a hit
 - *Attack Result* — Hit or Miss for this pair
 - *Attack Mode* — Attack or Defend stance
+
+### Acceptance criteria
 
 1. **WHEN** the GM edits *Attack Effect*, *Knockback Distance*, *Attack Result*, and *Attack Mode* for a specific *Attacker-Defender Pair* in the *Attack Parameters* region  
    **THEN** each parameter is stored independently on that pair's record  
@@ -316,13 +346,16 @@
 
 ---
 
-### Set Attack Effect (Stunned, Unconscious, Dying, Dead)
+## Story: Set Attack Effect (Stunned, Unconscious, Dying, Dead)
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Attack Effect* — the status outcome applied to the defender on a hit: Stunned, Unconscious, Dying, or Dead
 - *Status Effect* — the persisted condition that reflects the chosen attack effect after execution
 - *On-Hit Animation* — the animation played on the defender, driven by the attack effect type
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Stunned, Unconscious, Dying, or Dead from the Attack Effect dropdown for a pair  
    **THEN** the *Attack Effect* for that *Attacker-Defender Pair* is set to the chosen value  
@@ -342,13 +375,16 @@
 
 ---
 
-### Set Knockback Distance
+## Story: Set Knockback Distance
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Knockback Distance* — world-space units the defender is displaced after a hit
 - *Knockback Movement* — the physical displacement applied during execution
 - *Knockback Obstruction* — blocker that clips the displacement before it reaches the full distance
+
+### Acceptance criteria
 
 1. **WHEN** the GM enters a positive integer in the Knockback Distance field for a pair  
    **THEN** *Knockback Distance* for that *Attacker-Defender Pair* is updated  
@@ -369,14 +405,17 @@
 
 ---
 
-### Set Attack Result (Hit or Miss)
+## Story: Set Attack Result (Hit or Miss)
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Attack Result* — Hit or Miss for a specific *Attacker-Defender Pair*
 - *Status Effect* — applied only on Hit
 - *Knockback Movement* — applied only on Hit
 - *On-Hit Animation* — played only on Hit
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Hit from the Attack Result dropdown for a pair  
    **THEN** the pair's *Attack Result* is set to Hit  
@@ -396,12 +435,15 @@
 
 ---
 
-### Set Attack Mode (Attack or Defend)
+## Story: Set Attack Mode (Attack or Defend)
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Attack Mode* — strategic stance designation for the attack configuration: Attack or Defend
 - *HCS* — external system that uses *Attack Mode* for turn-tracking purposes
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Attack from the Attack Mode dropdown  
    **THEN** the *Attack Configuration*'s *Attack Mode* is set to Attack  
@@ -421,14 +463,17 @@
 
 ---
 
-### Designate Center Target for Area Attack
+## Story: Designate Center Target for Area Attack
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Area Center* — designated NPC that anchors the area attack
 - *Area Attack* — attack variant affecting all targets within the area radius
 - *Area Attack Pop-Up Menu* — the in-game menu used to designate the center target
 - *Attack Configuration* — the panel where the area center is indicated
+
+### Acceptance criteria
 
 1. **WHEN** the GM checks the Area Center option in the *Attack Parameters* region  
    **THEN** the *Attack Configuration* enters area-attack mode  
@@ -454,15 +499,18 @@
 
 ---
 
-### Execute Ranged Area Attack
+## Story: Execute Ranged Area Attack
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Area Attack* — the confirmed area-attack execution
 - *Area Center* — the NPC anchoring the radius
 - *Line-of-Sight* — required from *Attacker* to each area *Defender*
 - *Ranged Attack* — requires unobstructed LOS
 - *Combat Execution* — the runtime resolution phase
+
+### Acceptance criteria
 
 1. **WHEN** the GM confirms an *Area Attack* with an *Area Center* designated and *Defenders* populated  
    **THEN** *Line-of-Sight* is calculated from the *Attacker* to each *Defender*  
@@ -483,14 +531,17 @@
 
 ---
 
-### Execute Sweep Attack across Multiple Targets
+## Story: Execute Sweep Attack across Multiple Targets
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Sweep Attack* — sequential attack delivering hits to multiple defenders in order
 - *Attacker-Defender Pair* — each resolved in sequence during sweep execution
 - *Attack Animation* — played on attacker before each pair's on-hit step
 - *On-Hit Animation* — played per defender after each pair's attack animation
+
+### Acceptance criteria
 
 1. **WHEN** the GM confirms a *Sweep Attack* with multiple *Defenders*  
    **THEN** execution begins with the first *Attacker-Defender Pair* in the *Combatant Selectors* list  
@@ -515,13 +566,16 @@
 
 ---
 
-### Assign Auto-Fire Shots per Target
+## Story: Assign Auto-Fire Shots per Target
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Auto-Fire* — mechanism distributing shots across defenders in a sweep attack
 - *Sweep Attack* — the attack context in which auto-fire operates
 - *Attacker-Defender Pair* — each pair receives a shot count from auto-fire distribution
+
+### Acceptance criteria
 
 1. **WHEN** the GM enters a total shot count in the Auto-Fire Shots per Target field for a *Sweep Attack*  
    **THEN** shots are distributed across all *Defenders* proportionally  
@@ -541,13 +595,16 @@
 
 ---
 
-### Spread Attack across Crowd
+## Story: Spread Attack across Crowd
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Area Attack* — the variant where all crowd members within range are auto-added as defenders
 - *Crowd* — the crowd whose spawned members within range receive the attack
 - *Attacker-Defender Pair* — created automatically for each in-range crowd member
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Spread Attack across Crowd and designates an *Area Center* within the target crowd  
    **THEN** all spawned members of the crowd within the area radius are added as *Defenders* automatically  
@@ -567,13 +624,16 @@
 
 ---
 
-### Play Attack Animation on Attacker
+## Story: Play Attack Animation on Attacker
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Attack Animation* — *Animated Ability* played on the *Attacker*
 - *Combat Execution* — the runtime phase driving animation playback
 - *Attacker* — character receiving the animation command
+
+### Acceptance criteria
 
 1. **WHEN** *Combat Execution* begins a pair resolution  
    **THEN** the *Attack Animation* associated with the *Attacker*'s attack ability is played  
@@ -592,13 +652,16 @@
 
 ---
 
-### Play On-Hit Animation on Defender
+## Story: Play On-Hit Animation on Defender
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *On-Hit Animation* — *Animated Ability* played on the *Defender* on a Hit
 - *Attack Effect* — determines which on-hit animation variant to play
 - *Attack Result* — must be Hit for the on-hit animation to play
+
+### Acceptance criteria
 
 1. **WHEN** the pair's *Attack Result* is Hit  
    **THEN** the *On-Hit Animation* corresponding to the pair's *Attack Effect* is played on the *Defender*  
@@ -618,14 +681,17 @@
 
 ---
 
-### Apply Knockback Movement to Defender
+## Story: Apply Knockback Movement to Defender
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Knockback Movement* — physical displacement of defender away from attacker
 - *Knockback Distance* — configured distance; may be clipped by obstruction
 - *Knockback Obstruction* — detected by *Collision Ray* before displacement
 - *Movement Execution* — boundary service issuing the movement command
+
+### Acceptance criteria
 
 1. **WHEN** the pair's *Attack Result* is Hit and *Knockback Distance* is greater than zero  
    **THEN** a *Collision Ray* is fired from the *Defender*'s position along the knockback vector  
@@ -647,14 +713,17 @@
 
 ---
 
-### Apply Status Effect to Defender (Stunned, Unconscious, Dying, Dead)
+## Story: Apply Status Effect to Defender (Stunned, Unconscious, Dying, Dead)
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Status Effect* — persisted condition applied after a Hit: Stunned, Unconscious, Dying, or Dead
 - *Attack Effect* — determines which *Status Effect* is applied
 - *Combat State* — records the applied *Status Effect* on the defender
 - *Attack State Indicator* — visual display reflecting the applied effect
+
+### Acceptance criteria
 
 1. **WHEN** the pair's *Attack Result* is Hit  
    **THEN** the *Status Effect* corresponding to the pair's *Attack Effect* is applied to the *Defender*'s *Combat State*  
@@ -675,14 +744,17 @@
 
 ---
 
-### Update Character Attack State Indicators
+## Story: Update Character Attack State Indicators
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Attack State Indicator* — visual element on the *Character Overlay* showing combat status
 - *Status Effect* — the state the indicator reflects
 - *Combat State* — source of truth for indicator content
 - *Desktop Overlay* — the visual layer containing the character overlays
+
+### Acceptance criteria
 
 1. **WHEN** a *Status Effect* is applied to a *Defender* during execution  
    **THEN** the *Attack State Indicator* on the *Defender*'s *Character Overlay* is updated immediately to show the effect label  
@@ -701,13 +773,16 @@
 
 ---
 
-### Cancel Active Attack
+## Story: Cancel Active Attack
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Cancel* — exit path from *Attack Configuration* before execution begins
 - *Combat State* — reset to neutral for all combatants on cancel
 - *Non-Attack Ability Lock* — released on cancel
+
+### Acceptance criteria
 
 1. **WHEN** the GM clicks Cancel in the *Attack Configuration* panel before clicking Confirm  
    **THEN** the *Attack Configuration* panel closes  
@@ -727,13 +802,16 @@
 
 ---
 
-### Abort Attack in Progress
+## Story: Abort Attack in Progress
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Abort* — halt execution mid-flight after Confirm has been clicked
 - *Combat State* — reset after abort
 - *Sweep Attack* — sequential execution halted at current position on abort
+
+### Acceptance criteria
 
 1. **WHEN** the GM clicks Abort during *Combat Execution*  
    **THEN** the current animation (if running) completes  
@@ -759,13 +837,16 @@
 
 ---
 
-### Reset Character Combat State
+## Story: Reset Character Combat State
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Combat State* — per-character record of combat role and status effects
 - *Attack State Indicator* — cleared when combat state resets
 - *Non-Attack Ability Lock* — released on reset
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Reset Character Combat State on a specific character  
    **THEN** that character's *Combat State* is set to neutral  
@@ -788,13 +869,16 @@
 
 ---
 
-### Disable Non-Attack Abilities during Combat
+## Story: Disable Non-Attack Abilities during Combat
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Non-Attack Ability Lock* — suppression of non-attack abilities on active combatants
 - *Combatant* — any roster entry in attacker or defender role in an active configuration
 - *Animated Ability* — suppressed for non-attack types while lock is active
+
+### Acceptance criteria
 
 1. **WHEN** a character is assigned as *Attacker* or *Defender* in an *Attack Configuration*  
    **THEN** all non-attack *Animated Abilities* on that character are locked from activation  
@@ -812,13 +896,16 @@
 
 ---
 
-### Track Attacker and Defender Roles per Character
+## Story: Track Attacker and Defender Roles per Character
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Combat State* — per-character record storing the current role (attacker, defender, neutral)
 - *Attacker* — role indicator set on the attacking character
 - *Defender* — role indicator set on each defending character
+
+### Acceptance criteria
 
 1. **WHEN** a character is assigned as *Attacker* in an *Attack Configuration*  
    **THEN** their *Combat State* shows role = attacker  
@@ -846,14 +933,17 @@
 
 ---
 
-### Detect Knockback Obstruction via Collision Ray
+## Story: Detect Knockback Obstruction via Collision Ray
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** technical
+### Domain terms
 
 - *Collision Ray* — geometric probe issued through *Game Collision Detection*
 - *Knockback Obstruction* — obstruction detected along the knockback vector
 - *Knockback Distance* — the configured displacement, clipped at the obstruction
 - *Game Collision Detection* — HookCostume DLL capability
+
+### Acceptance criteria
 
 1. **WHEN** *Knockback Distance* is greater than zero for a Hit pair  
    **THEN** a *Collision Ray* is issued from the *Defender*'s position along the knockback direction vector, up to *Knockback Distance* units  
@@ -873,14 +963,17 @@
 
 ---
 
-### Calculate Line-of-Sight for Ranged Attack
+## Story: Calculate Line-of-Sight for Ranged Attack
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Line-of-Sight* — clear / blocked result of a collision ray from attacker to defender
 - *Ranged Attack* — requires clear LOS to each defender
 - *Collision Ray* — the probe used to evaluate LOS
 - *Game Collision Detection* — HookCostume DLL capability
+
+### Acceptance criteria
 
 1. **WHEN** the GM confirms a *Ranged Attack*  
    **THEN** a *Collision Ray* is issued from the *Attacker*'s position to each *Defender*'s position  
@@ -904,13 +997,16 @@
 
 ---
 
-### Query Game Collision Detection via HookCostume DLL
+## Story: Query Game Collision Detection via HookCostume DLL
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** technical
+### Domain terms
 
 - *Game Collision Detection* — the HookCostume DLL capability returning obstruction data
 - *Collision Ray* — the probe parameters passed to the DLL
 - *Game Bridge* — the initialized boundary that routes DLL queries
+
+### Acceptance criteria
 
 1. **WHEN** a *Collision Ray* query is issued by the application  
    **THEN** the query parameters are passed to the HookCostume DLL via the *Game Bridge*  
@@ -935,13 +1031,16 @@
 
 ---
 
-### Start HCS File Watcher Integration
+## Story: Start HCS File Watcher Integration
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *HCS Integration* — the subsystem connecting HVT to the Hero Combat System
 - *HCS File Watcher* — the component that monitors the HCS output directory
 - *Game Bridge* — must be initialized before HCS integration can start
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Start HCS File Watcher Integration  
    **THEN** the *HCS File Watcher* begins monitoring the designated HCS output directory for new or updated *Info Files*  
@@ -963,14 +1062,17 @@
 
 ---
 
-### Read On-Deck Combatants from Info File
+## Story: Read On-Deck Combatants from Info File
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *On-Deck Combatants* — characters whose turns are imminent per the HCS turn order
 - *Info File* — the file written by HCS containing turn state
 - *Roster Entry* — the HVT record matched to each on-deck character name
 - *Character Overlay* — updated to highlight on-deck status
+
+### Acceptance criteria
 
 1. **WHEN** a new *Info File* arrives and contains an on-deck combatants list  
    **THEN** the *HCS File Watcher* reads the list  
@@ -988,13 +1090,16 @@
 
 ---
 
-### Read Eligible Combatants from Info File
+## Story: Read Eligible Combatants from Info File
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Eligible Combatants* — characters available to act in the current HCS phase
 - *Info File* — source of the eligible list
 - *Roster Entry* — matched to each eligible character name
+
+### Acceptance criteria
 
 1. **WHEN** a new *Info File* arrives with an eligible combatants list  
    **THEN** each named character is matched to a *Roster Entry*  
@@ -1010,13 +1115,16 @@
 
 ---
 
-### Read Active Character from Info File
+## Story: Read Active Character from Info File
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Active Character (HCS)* — the character whose turn is currently active in the HCS chronometer
 - *Info File* — the source of the active character designation
 - *Active Character* (Increment 5) — the HVT roster selection synchronized to the HCS designation
+
+### Acceptance criteria
 
 1. **WHEN** a new *Info File* arrives with an active character designation  
    **THEN** the *HCS File Watcher* reads the active character name  
@@ -1033,13 +1141,16 @@
 
 ---
 
-### Read Chronometer Turn State from Info File
+## Story: Read Chronometer Turn State from Info File
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Chronometer Turn State* — per-combatant turn phase indicator from HCS (active, held, passed, waiting)
 - *Info File* — the file containing the turn state data
 - *Combat State* — updated for affected characters based on their phase
+
+### Acceptance criteria
 
 1. **WHEN** a new *Info File* arrives with chronometer turn state data  
    **THEN** each named character's phase is read  
@@ -1055,13 +1166,16 @@
 
 ---
 
-### Process Attack Result Events from HCS
+## Story: Process Attack Result Events from HCS
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** technical
+### Domain terms
 
 - *Attack Result Event* — HCS info file entry describing a resolved attack outcome
 - *Combat Execution* — the HVT path invoked to apply the attack result
 - *Attacker-Defender Pair* — instantiated from the event payload
+
+### Acceptance criteria
 
 1. **WHEN** the *HCS File Watcher* reads an *Attack Result Event* from an *Info File*  
    **THEN** the event payload (attacker, defender(s), Hit or Miss) is dispatched to *Combat Execution*  
@@ -1082,12 +1196,15 @@
 
 ---
 
-### Process Simple Ability Events from HCS
+## Story: Process Simple Ability Events from HCS
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** technical
+### Domain terms
 
 - *Simple Ability Event* — HCS info file entry for a non-attack ability use
 - *Animated Ability* — the HVT ability triggered by the event
+
+### Acceptance criteria
 
 1. **WHEN** the *HCS File Watcher* reads a *Simple Ability Event* from an *Info File*  
    **THEN** the named ability is triggered on the named character's *Animated Ability* playback path
@@ -1106,13 +1223,16 @@
 
 ---
 
-### Resolve Held Character State from HCS
+## Story: Resolve Held Character State from HCS
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Held Character State* — HCS flag indicating a character is holding its action
 - *Combat State* — updated to reflect held status
 - *Attack State Indicator* — updated on the character overlay
+
+### Acceptance criteria
 
 1. **WHEN** the *HCS File Watcher* reads a *Held Character State* entry from an *Info File*  
    **THEN** the named character's *Combat State* is updated to reflect the held phase  
@@ -1127,13 +1247,16 @@
 
 ---
 
-### Execute Sweep Results from HCS
+## Story: Execute Sweep Results from HCS
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *Sweep Results* — HCS-generated multi-target sweep outcome listing defenders and their individual results
 - *Sweep Attack* — the execution path triggered by the sweep results payload
 - *Attacker-Defender Pair* — instantiated from each sweep result entry
+
+### Acceptance criteria
 
 1. **WHEN** the *HCS File Watcher* reads *Sweep Results* from an *Info File*  
    **THEN** the payload is dispatched to the *Sweep Attack* execution path  
@@ -1153,12 +1276,15 @@
 
 ---
 
-### Stop HCS Integration
+## Story: Stop HCS Integration
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 
 - *HCS Integration* — the file-watcher subsystem
 - *HCS File Watcher* — deactivated on stop
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Stop HCS Integration  
    **THEN** the *HCS File Watcher* stops monitoring the output directory  
@@ -1175,3 +1301,5 @@
 4. **WHEN** the session ends while HCS Integration is active  
    **THEN** the *HCS File Watcher* is stopped automatically  
    **AND** no further file events are processed
+
+

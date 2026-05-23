@@ -1,0 +1,161 @@
+{
+  "target": "docs/ux/lo-fi/increment-1.drawio",
+  "screens": [
+    {
+      "name": "game directory prompt",
+      "layout": "modal",
+      "col": 0,
+      "row": 0,
+      "regions": [
+        {
+          "name": "directory entry form",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "COH Game Directory", "input": "text" },
+            { "label": "Validation feedback", "input": "text" }
+          ],
+          "buttons": [
+            { "label": "Browse..." },
+            { "label": "Continue", "primary": true }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "character explorer",
+      "layout": "panel-with-collapsed-tabs",
+      "col": 1,
+      "row": 0,
+      "regions": [
+        {
+          "name": "toolbar",
+          "slot": "panel",
+          "type": "toolbar",
+          "buttons": [
+            { "label": "New" },
+            { "label": "Cut" },
+            { "label": "Find" },
+            { "label": "Clone" },
+            { "label": "Paste" },
+            { "label": "+Crowd" },
+            { "label": "Del" },
+            { "label": "Edit" },
+            { "label": "Save" }
+          ]
+        },
+        {
+          "name": "filter bar",
+          "slot": "panel",
+          "type": "form",
+          "fields": [
+            { "label": "Filter by Name", "input": "text", "placeholder": "Spyder" }
+          ]
+        },
+        {
+          "name": "crowd tree",
+          "slot": "panel",
+          "type": "tree",
+          "nodes": [
+            {
+              "label": "All Characters",
+              "expanded": true,
+              "children": [
+                {
+                  "label": "* Crowd 1",
+                  "expanded": false,
+                  "badge": "dirty",
+                  "note": "* = dirty flag set; no source file yet"
+                },
+                {
+                  "label": "Crowd 2 ●",
+                  "expanded": true,
+                  "badge": "saved",
+                  "note": "● = has source file; clean (not dirty)",
+                  "children": [
+                    { "label": "Character 1" },
+                    { "label": "Character 2" },
+                    { "label": "Character 3" },
+                    { "label": "Spyder", "selected": true }
+                  ]
+                },
+                {
+                  "label": "* Crowd 3 ●",
+                  "expanded": false,
+                  "badge": "dirty-with-file",
+                  "note": "* ● = dirty AND has source file; will be saved on Ctrl+S"
+                },
+                { "label": "Crowd 4", "expanded": false },
+                { "label": "Crowd 5", "expanded": false },
+                { "label": "Crowd 6", "expanded": false },
+                { "label": "Crowd 7", "expanded": false },
+                { "label": "Crowd 8", "expanded": false },
+                { "label": "Crowd 9", "expanded": false }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "save status bar",
+          "slot": "footer",
+          "type": "chrome",
+          "name_label": "Saved 2, failed 0, skipped 1  ●  Crowd 1 has no source file — use Save to New File"
+        },
+        {
+          "name": "collapsed side tabs",
+          "slot": "side",
+          "type": "collapsed-tabs",
+          "tabs": [
+            { "label": "Active Roster" },
+            { "label": "Edit Character" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "context menu",
+      "layout": "popup-overlay",
+      "col": 2,
+      "row": 0,
+      "regions": [
+        {
+          "name": "context menu items",
+          "slot": "body",
+          "type": "menu",
+          "groups": [
+            {
+              "items": [
+                { "label": "New", "shortcut": "Ctrl+N" },
+                { "label": "Edit", "shortcut": "Ctrl+E" },
+                { "label": "Delete", "shortcut": "Del" },
+                { "label": "Save Dirty Crowds", "shortcut": "Ctrl+S" },
+                { "label": "Save to New File…", "shortcut": "Ctrl+Shift+S" }
+              ]
+            },
+            {
+              "items": [
+                { "label": "Cut", "shortcut": "Ctrl+X" },
+                { "label": "Clone", "shortcut": "Ctrl+C" },
+                { "label": "Link", "shortcut": "Ctrl+L" },
+                { "label": "Paste", "shortcut": "Ctrl+V" }
+              ]
+            },
+            {
+              "items": [
+                { "label": "Spawn", "shortcut": "Alt+S" },
+                { "label": "Place", "shortcut": "Alt+P" }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "game directory prompt",
+      "to": "character explorer",
+      "label": "valid path"
+    }
+  ]
+}

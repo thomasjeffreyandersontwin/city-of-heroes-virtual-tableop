@@ -6,10 +6,13 @@
 
 ## Story: Query Hovered NPC Info from Game
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Game State Query* — the DLL-backed observation service that reads live game data
 - *Hovered NPC Info* — NPC name and identity data returned when the mouse hovers over an NPC in the game viewport
 - *Game Bridge* — the DLL bridge used to call the HookCostume DLL
+
+### Acceptance criteria
 
 1. **WHEN** the GM's mouse pointer hovers over a visible NPC entity in the COH game viewport  
    **THEN** the application invokes the *Game State Query* via the *Game Bridge* DLL  
@@ -35,10 +38,13 @@
 
 ## Story: Query Mouse XYZ Position in Game World
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Mouse XYZ Position* — three-dimensional world-space coordinates of the GM's mouse cursor in the COH game world
 - *Game State Query* — the DLL-backed observation service
 - *Game Bridge* — the DLL bridge
+
+### Acceptance criteria
 
 1. **WHEN** the application requests the *Mouse XYZ Position*  
    **THEN** the *Game State Query* calls the *Game Bridge* DLL and returns the world-space X/Y/Z coordinate triple of the mouse cursor's current position in the COH game world  
@@ -60,12 +66,15 @@
 
 ## Story: Check Game Done State
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Game Done State* — Boolean flag indicating whether the COH game session has ended
 - *Game State Query* — the DLL-backed observation service
 - *Roster Entry* — a character's session record in the roster
 - *Spawned State* — per-roster-entry flag for in-game NPC presence
 - *Desktop Overlay* — visual interaction layer rendered atop the COH game view
+
+### Acceptance criteria
 
 1. **WHEN** the application polls the *Game Done State* and the COH session is still active  
    **THEN** the *Game State Query* returns false  
@@ -92,10 +101,13 @@
 
 ## Story: Split Oversized Command Chains for Execution
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Command Chain* — ordered sequence of game commands for delivery to the *Game Bridge*
 - *Oversized Command Chain* — a *Command Chain* exceeding the COH engine's per-execution limit
 - *Game Bridge* — the DLL bridge for command delivery
+
+### Acceptance criteria
 
 1. **WHEN** the application assembles a *Command Chain* for delivery  
    **THEN** the payload size and command count are measured against the known COH engine limit before delivery is attempted
@@ -121,10 +133,13 @@
 
 ## Story: Close Game Bridge on Shutdown
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Game Bridge* — the DLL bridge managing COH game communication
 - *Spawned NPC* — in-game character entity produced by the game bridge
 - *Game State Query* — the DLL-backed observation service
+
+### Acceptance criteria
 
 1. **WHEN** the GM closes the application or triggers application shutdown  
    **THEN** the *Game Bridge* close sequence is initiated before the process exits  
@@ -147,9 +162,12 @@
 
 ## Story: Execute Load Map Command
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Game Bridge* — the DLL bridge for game command delivery
 - *Game Done State* — session-end flag monitored after map transitions
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers a Load Map action for a designated COH map  
    **THEN** the *Game Bridge* issues the load-map slash command with the specified map identifier  
@@ -172,10 +190,13 @@
 
 ## Story: Write Pop-Up Menu Files to COH Menus Directory
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Pop-Up Menu* — COH-native menu definition file
 - *COH Menus Directory* — file-system path where COH reads pop-up menu files
 - *COH Game Directory* — validated installation root
+
+### Acceptance criteria
 
 1. **WHEN** the application writes a *Pop-Up Menu*  
    **THEN** the menu definition text file is written to the *COH Menus Directory*  
@@ -197,9 +218,12 @@
 
 ## Story: Load Pop-Up Menu in Game
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Pop-Up Menu* — COH-native menu definition file written to the *COH Menus Directory*
 - *Game Bridge* — the DLL bridge for game command delivery
+
+### Acceptance criteria
 
 1. **WHEN** the application issues the load-pop-up-menu command for a named *Pop-Up Menu*  
    **THEN** the *Game Bridge* delivers the command to the COH client  
@@ -221,11 +245,14 @@
 
 ## Story: Deploy Area Attack Pop-Up Menu
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Area Attack Pop-Up Menu* — the specific pop-up menu for area attack target designation
 - *Pop-Up Menu* — COH-native menu definition file
 - *COH Menus Directory* — file-system path for COH menu files
 - *Game Bridge* — the DLL bridge
+
+### Acceptance criteria
 
 1. **WHEN** a game session is initialized  
    **THEN** the *Area Attack Pop-Up Menu* file is written to the *COH Menus Directory*  
@@ -248,12 +275,15 @@
 
 ## Story: Add Character to Roster
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Roster* — session-scope ordered list of characters in play
 - *Roster Entry* — a character's session record with name, *Spawned State*, active, and gang indicators
 - *Character* — the named data entity from the crowd library
 - *Spawned State* — per-roster-entry Boolean for in-game NPC presence
 - *Roster Panel* — the roster list region in the desktop screen
+
+### Acceptance criteria
 
 1. **WHEN** the GM adds a *Character* to the *Roster* via the Add action in the *Roster Panel*  
    **THEN** a new *Roster Entry* is created for that character with *Spawned State* false and no active or gang indicators  
@@ -277,12 +307,15 @@
 
 ## Story: Add Crowd to Roster
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Roster* — session-scope character list
 - *Roster Entry* — a character's session record
 - *Crowd* — a named hierarchical container of characters
 - *Character* — the named data entity from the crowd library
 - *Spawned State* — per-roster-entry Boolean for NPC presence
+
+### Acceptance criteria
 
 1. **WHEN** the GM adds a *Crowd* to the *Roster* via the Add Crowd action  
    **THEN** each leaf *Character* in the *Crowd* (including those in nested crowds, expanded recursively) is added as a separate *Roster Entry* with *Spawned State* false  
@@ -309,7 +342,8 @@
 
 ## Story: Spawn Character to Desktop from Roster
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Roster Entry* — a character's session record
 - *Spawned State* — per-roster-entry Boolean for in-game NPC presence
 - *Spawned NPC* — the in-game entity created by the spawn command
@@ -317,6 +351,8 @@
 - *Character Overlay* — per-character visual marker in the desktop overlay
 - *Game Bridge* — the DLL bridge for game commands
 - *Roster Panel* — the roster list region
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a *Roster Entry* and triggers the Spawn action in the *Roster Panel*  
    **THEN** the *Game Bridge* issues a spawn NPC command for that character  
@@ -344,13 +380,16 @@
 
 ## Story: Remove Character from Roster
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Roster* — session-scope character list
 - *Roster Entry* — a character's session record
 - *Spawned State* — per-roster-entry Boolean for NPC presence
 - *Spawned NPC* — the in-game entity
 - *Desktop Overlay* — visual interaction layer
 - *Game Bridge* — the DLL bridge
+
+### Acceptance criteria
 
 1. **WHEN** the GM removes a *Roster Entry* whose *Spawned State* is true  
    **THEN** the *Game Bridge* issues a despawn command for the character  
@@ -377,13 +416,16 @@
 
 ## Story: Clear Character from Desktop
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Roster Entry* — a character's session record
 - *Spawned State* — per-roster-entry Boolean for NPC presence
 - *Spawned NPC* — the in-game entity
 - *Character Overlay* — per-character visual marker
 - *Desktop Overlay* — visual interaction layer
 - *Game Bridge* — the DLL bridge
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Clear on a *Roster Entry* whose *Spawned State* is true  
    **THEN** the *Game Bridge* issues a despawn command for that character's *Spawned NPC*  
@@ -411,12 +453,15 @@
 
 ## Story: Activate Character (mark as active turn)
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Active Character* — a *Roster Entry* marked as holding the current turn
 - *Roster Entry* — a character's session record
 - *Roster Panel* — the roster list region
 - *Character Overlay* — per-character visual marker
 - *Desktop Overlay* — visual interaction layer
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers the Activate action on a *Roster Entry* in the *Roster Panel*  
    **THEN** that entry is marked as the *Active Character*  
@@ -442,11 +487,14 @@
 
 ## Story: Deactivate Character
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Active Character* — a *Roster Entry* marked as holding the current turn
 - *Roster Entry* — a character's session record
 - *Roster Panel* — the roster list region
 - *Character Overlay* — per-character visual marker
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers the Deactivate action on the *Active Character* entry in the *Roster Panel*  
    **THEN** the active indicator is removed from that *Roster Entry*  
@@ -470,13 +518,16 @@
 
 ## Story: Activate Crowd as Gang with Gang Leader
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Gang Mode* — collective activation state for a crowd's roster entries
 - *Gang Leader* — the designated lead roster entry in a gang
 - *Roster Entry* — a character's session record
 - *Roster Panel* — the roster list region
 - *Character Overlay* — per-character visual marker
 - *Crowd* — named character group in the library
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Activate Gang, selects a *Crowd*, and designates a *Gang Leader*  
    **THEN** all *Roster Entries* belonging to that *Crowd* are activated simultaneously  
@@ -507,11 +558,14 @@
 
 ## Story: Deactivate Gang
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Gang Mode* — collective activation state
 - *Roster Entry* — a character's session record
 - *Gang Leader* — the designated lead roster entry
 - *Character Overlay* — per-character visual marker
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Deactivate Gang  
    **THEN** all *Roster Entries* in the current *Gang Mode* group are marked inactive simultaneously  
@@ -535,11 +589,14 @@
 
 ## Story: Select Character on Desktop via Mouse Click
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Character Overlay* — per-character visual marker in the desktop overlay
 - *Desktop Overlay* — visual interaction layer
 - *Roster Entry* — a character's session record
 - *Roster Panel* — the roster list region
+
+### Acceptance criteria
 
 1. **WHEN** the GM single-clicks a *Character Overlay* in the *Desktop Overlay*  
    **THEN** that *Character Overlay* displays a selection highlight  
@@ -562,12 +619,15 @@
 
 ## Story: Multi-Select Characters
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Multi-Select* — state in which two or more character overlays are simultaneously selected
 - *Character Overlay* — per-character visual marker
 - *Desktop Overlay* — visual interaction layer
 - *Roster Entry* — a character's session record
 - *Roster Panel* — the roster list region
+
+### Acceptance criteria
 
 1. **WHEN** the GM shift-clicks or ctrl-clicks a *Character Overlay* while another is already selected  
    **THEN** that overlay is added to the current selection  
@@ -593,12 +653,15 @@
 
 ## Story: Drag Character to New Position on Desktop
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Character Overlay* — per-character visual marker
 - *Desktop Overlay* — visual interaction layer
 - *Spawned State* — per-roster-entry Boolean for NPC presence
 - *Movement Execution* — the service that repositions spawned NPCs
 - *Saved Character Position* — the stored coordinate for a roster entry
+
+### Acceptance criteria
 
 1. **WHEN** the GM drags a *Character Overlay* to a new position in the *Desktop Overlay* and releases  
    **THEN** *Movement Execution* is invoked with the drop-point world-space coordinates as the destination  
@@ -625,12 +688,15 @@
 
 ## Story: Double-Click Character to Activate
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Character Overlay* — per-character visual marker
 - *Desktop Overlay* — visual interaction layer
 - *Active Character* — a *Roster Entry* marked as holding the current turn
 - *Roster Entry* — a character's session record
 - *Roster Panel* — the roster list region
+
+### Acceptance criteria
 
 1. **WHEN** the GM double-clicks a *Character Overlay* in the *Desktop Overlay*  
    **THEN** the matching *Roster Entry* is marked as the *Active Character*  
@@ -654,13 +720,16 @@
 
 ## Story: Sync Roster Selection with Game Target
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Roster Entry* — a character's session record
 - *Roster Panel* — the roster list region
 - *Character Overlay* — per-character visual marker
 - *Desktop Overlay* — visual interaction layer
 - *Memory Interface* — the process-memory read service
 - *Hovered NPC Info* — NPC identity data from the game
+
+### Acceptance criteria
 
 1. **WHEN** the GM changes the current target in the COH game client  
    **THEN** the *Memory Interface* detects the target-register change  
@@ -684,12 +753,15 @@
 
 ## Story: Track Spawned State per Character
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Spawned State* — per-roster-entry Boolean for in-game NPC presence
 - *Roster Entry* — a character's session record
 - *Roster Panel* — the roster list region
 - *Character Overlay* — per-character visual marker
 - *Game Done State* — session-end Boolean flag
+
+### Acceptance criteria
 
 1. **WHEN** a character is spawned from the *Roster Panel* or *Context Menu*  
    **THEN** the *Roster Entry's* *Spawned State* is set to true  
@@ -715,13 +787,16 @@
 
 ## Story: Spawn Character via Context Menu
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Context Menu* — right-click popup scoped to a target character
 - *Spawned State* — per-roster-entry Boolean for NPC presence
 - *Spawned NPC* — the in-game entity
 - *Character Overlay* — per-character visual marker
 - *Desktop Overlay* — visual interaction layer
 - *Game Bridge* — the DLL bridge
+
+### Acceptance criteria
 
 1. **WHEN** the GM right-clicks a *Character Overlay* whose *Spawned State* is false  
    **THEN** the *Context Menu* shows the Spawn action as an available option
@@ -744,12 +819,15 @@
 
 ## Story: Place Character at Location
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Context Menu* — right-click popup scoped to a target character
 - *Mouse XYZ Position* — world-space coordinate of the mouse cursor in the game world
 - *Movement Execution* — service that repositions spawned NPCs
 - *Spawned State* — per-roster-entry Boolean for NPC presence
 - *Character Overlay* — per-character visual marker
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Place at Location from the *Context Menu* on a spawned character  
    **THEN** the *Mouse XYZ Position* at the time of the action is read from the *Game State Query*  
@@ -772,12 +850,15 @@
 
 ## Story: Save Character Position
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Saved Character Position* — stored X/Y/Z world-space coordinate for a roster entry
 - *Context Menu* — right-click popup scoped to a target character
 - *Memory Interface* — process-memory read service providing character position
 - *Spawned State* — per-roster-entry Boolean for NPC presence
 - *Roster Entry* — a character's session record
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Save Position from the *Context Menu* on a spawned character  
    **THEN** the *Memory Interface* reads the character's current X/Y/Z position  
@@ -804,11 +885,14 @@
 
 ## Story: Move Camera to Target Character
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Context Menu* — right-click popup scoped to a target character
 - *Camera Rig* — the virtual camera in the COH game world
 - *Character Overlay* — per-character visual marker
 - *Spawned State* — per-roster-entry Boolean
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Move Camera to Target from the *Context Menu* on a spawned character  
    **THEN** the *Camera Rig* is directed to move to the target character's current in-game position  
@@ -829,12 +913,15 @@
 
 ## Story: Move Target Character to Camera
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Context Menu* — right-click popup scoped to a target character
 - *Camera Rig* — the virtual camera in the COH game world
 - *Movement Execution* — service that repositions spawned NPCs
 - *Spawned State* — per-roster-entry Boolean
 - *Character Overlay* — per-character visual marker
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Move Target to Camera from the *Context Menu* on a spawned character  
    **THEN** the *Camera Rig's* current world-space position is read  
@@ -856,10 +943,13 @@
 
 ## Story: Reset Character Orientation via Context Menu
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Context Menu* — right-click popup scoped to a target character
 - *Movement Execution* — service that repositions and reorients spawned NPCs
 - *Spawned State* — per-roster-entry Boolean
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Reset Orientation from the *Context Menu* on a spawned character  
    **THEN** *Movement Execution* writes the identity rotation matrix to process memory for that character  
@@ -880,11 +970,14 @@
 
 ## Story: Maneuver Character with Camera via Context Menu
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Context Menu* — right-click popup scoped to a target character
 - *Camera Rig* — the virtual camera
 - *Movement Execution* — service that repositions spawned NPCs
 - *Spawned State* — per-roster-entry Boolean
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Maneuver with Camera from the *Context Menu* on a spawned character  
    **THEN** maneuver-with-camera mode is activated for that character  
@@ -908,11 +1001,14 @@
 
 ## Story: Activate Character Option via Context Menu
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Context Menu* — right-click popup scoped to a target character
 - *Active Character* — a *Roster Entry* marked as holding the current turn
 - *Roster Entry* — a character's session record
 - *Roster Panel* — the roster list region
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Activate Option from the *Context Menu* on a *Roster Entry*  
    **THEN** that *Roster Entry* is marked as the *Active Character*  
@@ -934,13 +1030,16 @@
 
 ## Story: Clone and Link Character from Desktop
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Context Menu* — right-click popup scoped to a target character
 - *Roster Entry* — a character's session record
 - *Roster* — session-scope character list
 - *Character* — the named data entity from the crowd library
 - *Crowd* — a named hierarchical container of characters
 - *Spawned State* — per-roster-entry Boolean
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Clone-Link from the *Context Menu* on a *Roster Entry*  
    **THEN** a clone-link operation is performed: a new *Character* is created as a linked copy of the original in the crowd library  
@@ -962,3 +1061,5 @@
 
 5. **WHEN** the GM later modifies the original or the linked copy in the crowd library  
    **THEN** the modification is reflected in all crowds where either appears, because they are linked members sharing the same underlying data
+
+

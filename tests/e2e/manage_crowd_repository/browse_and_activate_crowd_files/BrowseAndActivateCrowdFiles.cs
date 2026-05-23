@@ -64,6 +64,7 @@ namespace CrowdManagement.E2ETests.ManageCrowdRepository
             GivenActiveCrowdListContains(heroes);
 
             WhenCharacterCrowdMainWorkspaceOpens(new[] { heroes });
+            WhenBrowseResultAppears(1);
 
             ThenCrowdTreeShowsCrowd("Freedom Phalanx");
             ThenNoCrowdLoadErrorsOccurred();

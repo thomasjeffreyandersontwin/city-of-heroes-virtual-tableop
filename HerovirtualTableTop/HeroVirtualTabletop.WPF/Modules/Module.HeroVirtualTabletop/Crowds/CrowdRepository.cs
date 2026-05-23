@@ -64,16 +64,22 @@ namespace Module.HeroVirtualTabletop.Crowds
 
         private string ActiveCrowdListPath
         {
-            get { return Path.Combine(_dataDirectory, "active-crowds.json"); }
+            get
+            {
+                if (string.IsNullOrEmpty(_dataDirectory))
+                    return null;
+                return Path.Combine(_dataDirectory, "active-crowds.json");
+            }
         }
 
         private List<string> ReadActiveCrowdList()
         {
-            if (!File.Exists(ActiveCrowdListPath))
+            string path = ActiveCrowdListPath;
+            if (string.IsNullOrEmpty(path) || !File.Exists(path))
                 return new List<string>();
             try
             {
-                return Helper.GetDeserializedJSONFromFile<List<string>>(ActiveCrowdListPath)
+                return Helper.GetDeserializedJSONFromFile<List<string>>(path)
                        ?? new List<string>();
             }
             catch { return new List<string>(); }
@@ -81,7 +87,10 @@ namespace Module.HeroVirtualTabletop.Crowds
 
         private void WriteActiveCrowdList(List<string> paths)
         {
-            Helper.SerializeObjectAsJSONToFile(ActiveCrowdListPath, paths);
+            string path = ActiveCrowdListPath;
+            if (string.IsNullOrEmpty(path))
+                return;
+            Helper.SerializeObjectAsJSONToFile(path, paths);
         }
 
         /// <summary>Adds a crowd to the in-memory aggregate (active-crowds mode).</summary>
@@ -344,28 +353,79 @@ namespace Module.HeroVirtualTabletop.Crowds
             });
         }
 
-        // ── ICrowdRepository — not used in active-crowds mode ─────────────────
+        // ── Legacy single-file mode (used when DataDirectory is not set) ──────────
 
-        public string CrowdRepositoryPath { get { return null; } set { } }
+        private string _crowdRepositoryPath;
+
+        public string CrowdRepositoryPath
+        {
+            get { return _crowdRepositoryPath; }
+            set { _crowdRepositoryPath = value; }
+        }
+
         public string CrowdsFolderPath { get { return null; } set { } }
+
+        private bool UseLegacyMode { get { return string.IsNullOrEmpty(_dataDirectory) && !string.IsNullOrEmpty(_crowdRepositoryPath); } }
+
+        private List<CrowdModel> LoadFromLegacyFile()
+        {
+            if (!File.Exists(_crowdRepositoryPath))
+            {
+                Helper.SerializeObjectAsJSONToFile(_crowdRepositoryPath, new List<CrowdModel>());
+            }
+            return Helper.GetDeserializedJSONFromFile<List<CrowdModel>>(_crowdRepositoryPath) ?? new List<CrowdModel>();
+        }
+
+        private void SaveToLegacyFile(List<CrowdModel> crowds)
+        {
+            Helper.SerializeObjectAsJSONToFile(_crowdRepositoryPath, crowds);
+        }
 
         // ── Repository operations ─────────────────────────────────────────────
 
         public void GetCrowdCollection(Action<List<CrowdModel>> GetCrowdCollectionCompleted)
         {
+            if (UseLegacyMode)
+            {
+                ThreadPool.QueueUserWorkItem(_ =>
+                {
+                    var crowds = LoadFromLegacyFile();
+                    GetCrowdCollectionCompleted(crowds);
+                });
+                return;
+            }
+            if (_inMemoryCrowds != null)
+            {
+                GetCrowdCollectionCompleted(new List<CrowdModel>(_inMemoryCrowds));
+                return;
+            }
             LoadActiveCrowdFiles(loaded => GetCrowdCollectionCompleted(new List<CrowdModel>(loaded)));
         }
 
         public void SaveCrowdCollection(Action SaveCrowdCollectionCompleted, List<CrowdModel> crowdCollection)
         {
+            if (UseLegacyMode)
+            {
+                ThreadPool.QueueUserWorkItem(_ =>
+                {
+                    SaveToLegacyFile(crowdCollection);
+                    SaveCrowdCollectionCompleted();
+                });
+                return;
+            }
             SaveDirtyCrowds(_ => SaveCrowdCollectionCompleted());
         }
 
         public CrowdRepository()
         {
             // active-crowds.json lives one level above the CoH game folder, in <project-root>\data
-            string projectRoot = Path.GetDirectoryName(Settings.Default.CityOfHeroesGameDirectory);
-            DataDirectory = Path.Combine(projectRoot, Constants.GAME_DATA_FOLDERNAME);
+            string gameDir = Settings.Default.CityOfHeroesGameDirectory;
+            if (!string.IsNullOrEmpty(gameDir))
+            {
+                string projectRoot = Path.GetDirectoryName(gameDir);
+                if (!string.IsNullOrEmpty(projectRoot))
+                    DataDirectory = Path.Combine(projectRoot, Constants.GAME_DATA_FOLDERNAME);
+            }
         }
 
         public List<CrowdModel> LoadDefaultCrowdMembers()

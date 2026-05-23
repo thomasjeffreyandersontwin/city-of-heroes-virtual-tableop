@@ -43,6 +43,7 @@ namespace Module.HeroVirtualTabletop.Crowds
             }
             set
             {
+                if (name == value) return;
                 OldName = name;
                 name = value;
                 OnPropertyChanged("Name");

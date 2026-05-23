@@ -681,9 +681,9 @@ namespace Module.HeroVirtualTabletop.Characters
         public string Spawn(bool completeEvent = true)
         {
             SpawnLog("Spawn START name=" + name + " completeEvent=" + completeEvent + " hasBeenSpawned=" + hasBeenSpawned);
-            if (ManeuveringWithCamera)
+            if (maneuveringWithCamera)
             {
-                ManeuveringWithCamera = false;
+                maneuveringWithCamera = false;
             }
             if (hasBeenSpawned)
             {
@@ -706,11 +706,20 @@ namespace Module.HeroVirtualTabletop.Characters
                 model = ActiveIdentity.Surface;
             }
             SpawnLog("Spawn: ActiveIdentity=" + (ActiveIdentity != null ? ActiveIdentity.Name + "/" + ActiveIdentity.Surface : "NULL") + " model=" + model + " label=" + Label);
+            keyBindsGenerator.GenerateKeyBindsForEvent(GameEvent.TargetEnemyNear);
+            keyBindsGenerator.GenerateKeyBindsForEvent(GameEvent.NOP);
             keyBindsGenerator.GenerateKeyBindsForEvent(GameEvent.SpawnNpc, model, Label);
             SpawnLog("Spawn: GenerateKeyBindsForEvent SpawnNpc done");
             Target(false);
             SpawnLog("Spawn: Target(false) done");
-            keybind = ActiveIdentity.RenderWithoutAnimation(completeEvent, this);
+            if (ActiveIdentity != null)
+            {
+                keybind = ActiveIdentity.RenderWithoutAnimation(completeEvent, this);
+            }
+            else if (completeEvent)
+            {
+                keybind = keyBindsGenerator.CompleteEvent();
+            }
             SpawnLog("Spawn: RenderWithoutAnimation done keybind=" + keybind);
             if (completeEvent)
             {
@@ -718,6 +727,7 @@ namespace Module.HeroVirtualTabletop.Characters
                 SpawnLog("Spawn: WaitUntilTargetIsRegistered done");
                 gamePlayer = new MemoryElement();
                 Position = new Position();
+                hasBeenSpawned = true;
             }
             SpawnLog("Spawn END");
             return keybind;
@@ -768,7 +778,7 @@ namespace Module.HeroVirtualTabletop.Characters
             get
             {
                 this.Target(false);
-                keyBindsGenerator.CompleteEvent();
+                keyBindsGenerator.ExecutePendingWithoutPersistingToBindFile();
                 MemoryElement currentTarget = new MemoryElement();
                 return Label == currentTarget.Label;
             }
@@ -1155,9 +1165,9 @@ namespace Module.HeroVirtualTabletop.Characters
 
         public string ClearFromDesktop(bool completeEvent = true)
         {
-            if (ManeuveringWithCamera)
+            if (maneuveringWithCamera)
             {
-                ManeuveringWithCamera = false;
+                maneuveringWithCamera = false;
             }
             return clearFromDesktop(completeEvent);
         }
@@ -1272,6 +1282,9 @@ namespace Module.HeroVirtualTabletop.Characters
         {
             string[] defaultMovementNames = new string[] { "Walk", "Run", "Swim" };
             
+            if (Helper.GlobalMovements == null)
+                return;
+
             foreach (CharacterMovement cm in Helper.GlobalMovements)
             {
                 if (this.Name != Constants.DEFAULT_CHARACTER_NAME && this.Name != Constants.COMBAT_EFFECTS_CHARACTER_NAME)

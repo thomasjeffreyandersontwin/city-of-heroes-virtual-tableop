@@ -1,0 +1,187 @@
+{
+  "target": "docs/ux/lo-fi/increment-5.drawio",
+  "screens": [
+    {
+      "name": "character explorer",
+      "layout": "panel",
+      "col": 1,
+      "row": 0,
+      "regions": [
+        {
+          "name": "explorer toolbar",
+          "slot": "body",
+          "type": "toolbar",
+          "buttons": [
+            { "label": "Save" },
+            { "label": "Cut" },
+            { "label": "Copy" },
+            { "label": "Add" },
+            { "label": "×" },
+            { "label": "Edit" }
+          ]
+        },
+        {
+          "name": "filter",
+          "slot": "body",
+          "type": "form",
+          "fields": [
+            { "label": "Search", "input": "text" }
+          ]
+        },
+        {
+          "name": "character tree",
+          "slot": "body",
+          "type": "tree",
+          "note": "hierarchical crowd/character tree with expand/collapse",
+          "sample": [
+            { "level": 0, "label": "All Characters", "type": "root" },
+            { "level": 1, "label": "Character 1", "type": "character" },
+            { "level": 1, "label": "Character 2", "type": "character", "selected": true },
+            { "level": 0, "label": "Crowd 1", "type": "crowd", "expanded": true },
+            { "level": 1, "label": "Character 1", "type": "character" },
+            { "level": 1, "label": "Character 2", "type": "character" },
+            { "level": 0, "label": "Crowd 2", "type": "crowd", "expanded": true },
+            { "level": 1, "label": "Character 1 (1)", "type": "character" },
+            { "level": 1, "label": "Character 2 (1)", "type": "character" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "active roster",
+      "layout": "panel",
+      "col": 2,
+      "row": 0,
+      "regions": [
+        {
+          "name": "roster toolbar",
+          "slot": "body",
+          "type": "toolbar",
+          "buttons": [
+            { "label": "💾" },
+            { "label": "📍" },
+            { "label": "✏" },
+            { "label": "⬜" },
+            { "label": "➡" },
+            { "label": "⬅" },
+            { "label": "🎥" },
+            { "label": "×" }
+          ]
+        },
+        {
+          "name": "roster list",
+          "slot": "body",
+          "type": "tree",
+          "note": "crowd-grouped character list; crowd sections are collapsible headers; characters are selectable leaf nodes",
+          "sample": [
+            { "level": 0, "label": "Crowd 1", "type": "crowd-header" },
+            { "level": 1, "label": "Character 1" },
+            { "level": 1, "label": "Character 2" },
+            { "level": 1, "label": "Character 3" },
+            { "level": 0, "label": "Crowd 2", "type": "crowd-header" },
+            { "level": 1, "label": "Character 1" },
+            { "level": 1, "label": "Character 2" },
+            { "level": 0, "label": "No Crowd", "type": "crowd-header" },
+            { "level": 1, "label": "Character 1" },
+            { "level": 1, "label": "Character 2", "selected": true, "active": true },
+            { "level": 1, "label": "Character 1" },
+            { "level": 1, "label": "Character 2" }
+          ],
+          "actions": [
+            { "label": "Spawn", "primary": true },
+            { "label": "Place" },
+            { "label": "Remove" },
+            { "label": "Activate", "primary": true }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "game world",
+      "layout": "viewport",
+      "col": 3,
+      "row": 0,
+      "regions": [
+        {
+          "name": "3d scene",
+          "slot": "body",
+          "type": "viewport",
+          "note": "game world with ground plane, character figures, name labels, target reticle, camera icon"
+        }
+      ]
+    },
+    {
+      "name": "context menu",
+      "layout": "popup",
+      "col": 4,
+      "row": 0,
+      "regions": [
+        {
+          "name": "menu items",
+          "slot": "body",
+          "type": "listbox",
+          "note": "right-click context menu on game world character",
+          "items": [
+            "> Cam",
+            "< Cam",
+            "Target",
+            "Maneuver",
+            "---",
+            "Spawn",
+            "Place",
+            "Save Location",
+            "---",
+            "Activate",
+            "Edit",
+            "Remove"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "active character widget",
+      "layout": "hud",
+      "col": 3,
+      "row": 1,
+      "regions": [
+        {
+          "name": "character HUD",
+          "slot": "body",
+          "type": "composite",
+          "note": "bottom HUD showing active character portrait, option groups (Common, Defenses), ability slots (Weapons, Abilities), identity slots, movement slots",
+          "sections": [
+            { "label": "Spyder", "type": "name" },
+            { "label": "Common", "type": "group-header" },
+            { "label": "Defenses", "type": "group-header" },
+            { "label": "Weapons", "type": "slot-row" },
+            { "label": "Identity", "type": "slot-row" },
+            { "label": "Movements", "type": "slot-row" },
+            { "label": "Abilities", "type": "slot-row" }
+          ]
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "character explorer",
+      "to": "active roster",
+      "label": "drag to add"
+    },
+    {
+      "from": "active roster",
+      "to": "game world",
+      "label": "spawn / place"
+    },
+    {
+      "from": "game world",
+      "to": "context menu",
+      "label": "right-click character"
+    },
+    {
+      "from": "game world",
+      "to": "active character widget",
+      "label": "active character HUD"
+    }
+  ]
+}

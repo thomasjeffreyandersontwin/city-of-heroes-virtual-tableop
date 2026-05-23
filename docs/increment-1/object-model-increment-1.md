@@ -128,10 +128,12 @@ COH data directory root   | (derived path: stored path / data /)
 A Character is the named data entity the GM creates and organises in crowds. In Increment 1 a Character holds only its name and three empty Option Groups.
 
 ### **Character** << Entity >>
-+ Character(name: String)
++ Character(name: String, parentCrowd: Crowd)
 ------
 + name: String
 	Invariant: unique within every crowd the character belongs to at any moment
++ parentCrowd: Crowd
+	Invariant: set once at construction to the crowd in which this character was originally created; immutable thereafter; used by CrowdMember.isLinked() to derive linked status
 + << composition >> optionGroups: Dictionary<String, OptionGroup>
 	Invariant: always exactly three keys — Identities, Abilities, Movements; each OptionGroup created lazily on first access; never absent
 + memberships: List<CrowdMember>
@@ -158,17 +160,17 @@ A Character is the named data entity the GM creates and organises in crowds. In 
 			allCharactersCrowd.removeCharacter(this)
 		crowd.markDirty()
 + clone(targetCrowd: Crowd): Character
-	Invariant: result is fully independent of this character; no shared state; result is placed in targetCrowd with a unique name; result appears in All Characters Crowd
+	Invariant: result is fully independent of this character; no shared state; result is placed in targetCrowd with a unique name; result appears in All Characters Crowd; targetCrowd becomes the clone's parentCrowd
 	Interaction:
 		clonedName: String = generateUniqueName(this.name, targetCrowd)
-		clonedCharacter: Character = new Character(clonedName)
+		clonedCharacter: Character = new Character(clonedName, targetCrowd)
 		clonedCharacter.optionGroups = deepCopyOptionGroups(this.optionGroups)
 		clonedMember: CrowdMember = new CrowdMember(clonedCharacter, targetCrowd)
 		targetCrowd.addMember(clonedMember)
 		allCharactersCrowd.addCharacter(clonedCharacter)
 		return clonedCharacter
 + linkedClone(sourceCrowd: Crowd, targetCrowd: Crowd): Character
-	Invariant: independent clone placed in sourceCrowd; clone immediately linked into targetCrowd; result and this character share no state
+	Invariant: independent clone placed in sourceCrowd (parentCrowd = sourceCrowd); clone also added as a CrowdMember in targetCrowd; result and this character share no state; clone's CrowdMember in targetCrowd is "linked" because clone.parentCrowd ≠ targetCrowd
 	Interaction:
 		clonedCharacter: Character = this.clone(sourceCrowd)
 		targetCrowd.linkMember(clonedCharacter)
@@ -201,21 +203,22 @@ Locator: lines 61–90
 ```source
 Character
 character name    | (text)
+parent crowd      | Crowd
 option groups     | Option Group
 rename            | (text)
-delete from crowd | (containing Crowd, Linked Member, All Characters Crowd)
+delete from crowd | (containing Crowd, All Characters Crowd)
 clone             | Crowd, Crowd Member
-linked clone      | Crowd, Crowd Member, Linked Member
+linked clone      | Crowd, Crowd Member
 cut to clipboard  | Clipboard, Crowd Member
 ```
 
 ### decisions made
 - Character is an `<< Entity >>` — identity matters; two characters with the same name in different crowds are distinct domain objects with independent lifecycles
 - Character implements `CrowdNode` (defined in the Crowd KA): supplies `name`, `isDirty()`, and `rename()`; the interface enables `CrowdMember` to treat Character and Crowd uniformly for tree display and dirty-indicator propagation
+- `parentCrowd` is set once at construction to the crowd in which the character was originally created; it is the anchor for `CrowdMember.isLinked()` — any CrowdMember wrapping this Character in a different crowd is "linked"; no `LinkedMember` subclass is needed
 - `memberships: List<CrowdMember>` is an association (not composition); Character does not own CrowdMember lifecycle; the list exists solely as the reverse-navigation needed by `rename` to propagate across all crowds and by `delete` to detect last-membership removal
 - `allCharactersCrowd` is accessed via CrowdRepository in the implementation; shown as a direct collaborator in interaction steps to reflect the CRC without specifying the property access path
 - `isDirty()` always returns false on Character; the containing Crowd carries the dirty flag; implementing `CrowdNode` still requires the method to enable uniform delegation in `CrowdMember.isDirty()`
-- CRC collaborator `Linked Member` for `delete from crowd` is not a direct parameter; LinkedMember subtypes surface naturally through the `memberships` list — removing from `this.memberships` removes any LinkedMember entries alongside plain CrowdMember entries
 - Option Group is an `<< Entity >>` — its `canonicalName` is its identity within a character's `optionGroups` collection; future increments will add options to it; modeled as a full Entity now to avoid structural breakage
 
 ---
@@ -285,18 +288,18 @@ The Crowd KA covers the crowd domain model, membership patterns, the Crowd Tree 
 		for each characterMember in characterMembers:
 			original: Character = characterMember.wrappedNode as Character
 			numberedName: String = generateNumberedName(original.name)
-			numberedCopy: Character = new Character(numberedName)
+			numberedCopy: Character = new Character(numberedName, this)
 			numberedCopy.optionGroups = original.deepCopyOptionGroups()
 			allCharactersCrowd.addCharacter(numberedCopy)
 			this.removeMember(characterMember)
 			this.addMember(new CrowdMember(numberedCopy, this))
-+ linkMember(character: Character): LinkedMember
-	Invariant: adds character as a linked member in this crowd; rejects if character is already present here by name
++ linkMember(character: Character): CrowdMember
+	Invariant: adds character as a CrowdMember in this crowd; rejects if character is already present here by name; the resulting member is "linked" because character.parentCrowd ≠ this crowd
 	Interaction:
 		guard: findMember(character.name) is null
-		linkedMember: LinkedMember = new LinkedMember(character, this)
-		this.addMember(linkedMember)
-		return linkedMember
+		member: CrowdMember = new CrowdMember(character, this)
+		this.addMember(member)
+		return member
 + copyMembershipsTo(targetCrowd: Crowd): void
 	Invariant: adds each direct character member as a linked member in targetCrowd; skips members already present in targetCrowd by name; source crowd is unchanged
 	Interaction:
@@ -323,6 +326,11 @@ The Crowd KA covers the crowd domain model, membership patterns, the Crowd Tree 
 ----
 + name(): String
 	Invariant: returns wrappedNode.name
++ isLinked(): Boolean
+	Invariant: returns true when wrappedNode is a Character and wrappedNode.parentCrowd ≠ containingCrowd; returns false for Crowd-wrapping members and for Characters whose parentCrowd equals containingCrowd
+	Interaction:
+		if not (wrappedNode is Character): return false
+		return (wrappedNode as Character).parentCrowd != containingCrowd
 + remove(): void
 	Invariant: removes this entry from containingCrowd; does not delete the underlying character or crowd from the repository
 	Interaction:
@@ -335,10 +343,7 @@ The Crowd KA covers the crowd domain model, membership patterns, the Crowd Tree 
 ------
 + parentCrowd: Crowd
 
-### **Linked Member : Crowd Member** << Entity >>
-+ LinkedMember(sharedCharacter: Character, containingCrowd: Crowd)
-------
-	Invariant: all appearances of a linked member across crowds share the same underlying Character instance; renaming the character from any crowd renames it everywhere; removing a linked member from one crowd does not affect other crowds that link the same character
+> **LinkedMember** — retired. Linked status is derived via `CrowdMember.isLinked()`: returns true when `(wrappedNode as Character).parentCrowd ≠ containingCrowd`. The shared-identity invariant (renaming from any crowd renames everywhere) is guaranteed by the fact that all CrowdMembers across all crowds wrap the same Character instance — no subclass is needed to enforce it.
 
 ### **Crowd Tree** << Service >>
 + CrowdTree(repository: CrowdRepository, activeList: ActiveCrowdList)
@@ -428,7 +433,7 @@ The Crowd KA covers the crowd domain model, membership patterns, the Crowd Tree 
 + addCharacterToCrowd(crowd: Crowd, name: String): Character
 	Invariant: creates a new Character in the specified crowd; adds it to All Characters Crowd; marks crowd dirty
 	Interaction:
-		newCharacter: Character = new Character(name)
+		newCharacter: Character = new Character(name, crowd)
 		newMember: CrowdMember = new CrowdMember(newCharacter, crowd)
 		crowd.addMember(newMember)
 		repository.allCharactersCrowd.addCharacter(newCharacter)
@@ -506,8 +511,8 @@ crowd members  | Crowd Member
 dirty flag     | (boolean)
 add member     | Crowd Member
 flatten to numbered independent copies | Character, Crowd Member
-link crowd member as linked member | Crowd Member, Character, Linked Member
-copy memberships as linked members to crowd | Crowd Member, Character, Linked Member
+link character as member           | Crowd Member, Character
+copy memberships as members to crowd | Crowd Member, Character
 paste member from clipboard | Clipboard, Crowd Member
 
 Crowd Tree
@@ -532,7 +537,8 @@ move crowd member to crowd | Crowd, Crowd Member
 - Clipboard is a `<< Service >>` — transient, session-scoped, one held item at a time; no persistent state
 - `BrowseMode` (ByConceptTag, ByGroupType, ByCOHFaction, AllCharacters) and `CharacterTab` (Identities, Abilities, Movements) are enum-like value types; no separate classes required
 - `SaveResult`, `MissingFileWarning`, `DeserializationError`, `SaveFailureError`, `NothingToSaveStatus`, `Notification` are domain notification value types; their detailed structure is deferred to the implementation phase
-- `LinkedMember` constructor takes `Character` (not `CrowdNode`) because the shared-identity invariant is specific to Characters — nested Crowds are not linkable
+- `LinkedMember` class is retired; `CrowdMember.isLinked()` is a derived boolean (`(wrappedNode as Character).parentCrowd ≠ containingCrowd`); the shared-identity guarantee is preserved because all CrowdMembers across all crowds wrap the same Character instance
+- `Crowd.linkMember` now creates a plain `CrowdMember` (not a `LinkedMember` subtype); the resulting member's `isLinked()` returns true automatically because the Character's parentCrowd differs from this crowd
 - `Crowd.copyMembershipsTo` links character-level members only; nested Crowd members are not linked into targetCrowd; this is a character-linking operation
 - `allCharactersCrowd` in `Character.clone`, `Character.delete`, and `Crowd.flattenToNumberedCopies` is accessed via `CrowdRepository.allCharactersCrowd` in the implementation; shown as a direct collaborator in interaction steps to reflect CRC collaborator intent without specifying the navigation path
 

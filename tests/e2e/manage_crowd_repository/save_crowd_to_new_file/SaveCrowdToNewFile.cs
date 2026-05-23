@@ -92,6 +92,7 @@ namespace CrowdManagement.E2ETests.ManageCrowdRepository
             GivenActiveCrowdListContains(armageddons);
 
             WhenCharacterCrowdMainWorkspaceOpens(new[] { armageddons });
+            WhenBrowseResultAppears(1);
 
             ThenCrowdTreeShowsCrowd("Armageddon Squad");
             ThenCrowdTreeShowsChildrenUnder("Armageddon Squad", new[] { "Demolition Team" });

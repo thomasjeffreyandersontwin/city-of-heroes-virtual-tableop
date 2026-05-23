@@ -9,13 +9,16 @@
 
 ---
 
-### Story: Detect Game Process for Connection
+## Story: Detect Game Process for Connection
 
+**Story type:** technical
 **Domain terms:**
 - *Game Process* — the running COH client process the *memory interface* must detect and attach to
 - *Memory Interface* — the service that attaches to the running *game process* and reads/writes game-state values
 - *Memory Pointer* — a resolved process-memory address identifying a specific game-state value
 - *Game Bridge* — the boundary service that routes game commands (Increment 2)
+
+### Acceptance criteria
 
 1. **WHEN** the application starts and the COH client is running  
    **THEN** the *memory interface* detects the *game process* by its known executable name and window handle  
@@ -37,13 +40,16 @@
 
 ---
 
-### Story: Read Target Character from Memory
+## Story: Read Target Character from Memory
 
+**Story type:** technical
 **Domain terms:**
 - *Current Target* — the game entity identifier in the COH targeting register; identifies which *spawned NPC* the GM intends to act on
 - *Memory Interface* — reads the targeting register from *game process* memory
 - *Spawned NPC* — the COH game-world entity targeted for movement operations
 - *Memory Pointer* — the cached address for the targeting register
+
+### Acceptance criteria
 
 1. **WHEN** the GM has a character selected in the COH game client  
    **THEN** the *memory interface* reads the *current target* identifier from the COH targeting register in process memory  
@@ -61,13 +67,16 @@
 
 ---
 
-### Story: Monitor Current Target in Game
+## Story: Monitor Current Target in Game
 
+**Story type:** user
 **Domain terms:**
 - *Current Target* — continuously monitored entity identifier in the COH targeting register
 - *Memory Interface* — polls the targeting register on each update cycle
 - *Spawned NPC* — the entity being tracked
 - *Movement Execution* — the consumer of the *current target* for movement dispatch
+
+### Acceptance criteria
 
 1. **WHEN** a session is active and a *spawned NPC* is the *current target*  
    **THEN** the *memory interface* continuously polls the targeting register and exposes the active *current target* to movement services  
@@ -84,13 +93,16 @@
 
 ---
 
-### Story: Wait until Target is Registered after Spawn
+## Story: Wait until Target is Registered after Spawn
 
+**Story type:** user
 **Domain terms:**
 - *Target Registration* — confirmation that a newly spawned NPC is addressable in the COH targeting system
 - *Memory Interface* — polls for *target registration* after spawn
 - *Spawned NPC* — the newly created game entity waiting for registration
 - *Movement Execution* — blocked until *target registration* succeeds
+
+### Acceptance criteria
 
 1. **WHEN** a *spawned NPC* has just been created via a spawn command  
    **THEN** the *memory interface* polls the COH targeting system until the NPC's name resolves correctly  
@@ -108,13 +120,16 @@
 
 ---
 
-### Story: Scan and Fix Stale Memory Pointers
+## Story: Scan and Fix Stale Memory Pointers
 
+**Story type:** technical
 **Domain terms:**
 - *Stale Memory Pointer* — a *memory pointer* whose cached address no longer refers to the expected game-state value
 - *Memory Pointer* — a cached resolved process-memory address
 - *Memory Interface* — runs the periodic scan and refreshes stale pointers
 - *Game Process* — the COH client process whose memory layout may change
+
+### Acceptance criteria
 
 1. **WHEN** the *memory interface* runs its periodic scan  
    **THEN** each cached *memory pointer* is read at its recorded address and validated against expected game-state patterns  
@@ -136,13 +151,16 @@
 
 ---
 
-### Story: Read Character Position (X, Y, Z) from Memory
+## Story: Read Character Position (X, Y, Z) from Memory
 
+**Story type:** technical
 **Domain terms:**
 - *Character Position* — the X/Y/Z world-space coordinates of the character's location in process memory
 - *Memory Interface* — reads *character position* before each movement step
 - *Memory Pointer* — the resolved address for the position register
 - *Movement Execution* — consumer of the returned coordinates
+
+### Acceptance criteria
 
 1. **WHEN** *movement execution* requires the character's current location  
    **THEN** the *memory interface* reads the *character position* (X, Y, Z) from the resolved *memory pointer* address in the *game process*  
@@ -156,13 +174,16 @@
 
 ---
 
-### Story: Write Character Position to Memory
+## Story: Write Character Position to Memory
 
+**Story type:** technical
 **Domain terms:**
 - *Character Position* — the X/Y/Z coordinates written to process memory to reposition the *spawned NPC*
 - *Memory Interface* — writes the new coordinates to the resolved *memory pointer*
 - *Spawned NPC* — the entity repositioned in the game world
 - *Target Registration* — must be confirmed before position is written
+
+### Acceptance criteria
 
 1. **WHEN** *movement execution* computes a new destination position  
    **THEN** the *memory interface* writes the new *character position* (X, Y, Z) to the resolved *memory pointer* address in the *game process*  
@@ -179,12 +200,15 @@
 
 ---
 
-### Story: Read Character Model Matrix from Memory
+## Story: Read Character Model Matrix from Memory
 
+**Story type:** technical
 **Domain terms:**
 - *Character Model Matrix* — the 4×4 world-space transform matrix in process memory encoding position, rotation, and scale
 - *Memory Interface* — reads the matrix before turning and orientation operations
 - *Movement Execution* — consumer of the matrix for orientation computation
+
+### Acceptance criteria
 
 1. **WHEN** *movement execution* needs to compute a turn or orientation change  
    **THEN** the *memory interface* reads the *character model matrix* from the resolved *memory pointer* in the *game process*  
@@ -197,13 +221,16 @@
 
 ---
 
-### Story: Write Character Rotation Matrix to Memory
+## Story: Write Character Rotation Matrix to Memory
 
+**Story type:** technical
 **Domain terms:**
 - *Character Rotation Matrix* — the orientation subcomponent of the character's transform; written to process memory to change facing
 - *Memory Interface* — writes the computed rotation matrix
 - *Movement Execution* — computes and supplies the new rotation matrix
 - *Spawned NPC* — changes facing in the game world upon write
+
+### Acceptance criteria
 
 1. **WHEN** *movement execution* computes a new facing direction for the character  
    **THEN** the *memory interface* writes the *character rotation matrix* to the resolved *memory pointer* in the *game process*  
@@ -215,12 +242,15 @@
 
 ---
 
-### Story: Read Character Facing Vector from Memory
+## Story: Read Character Facing Vector from Memory
 
+**Story type:** technical
 **Domain terms:**
 - *Character Facing Vector* — the unit direction vector in process memory pointing in the character's current facing direction
 - *Memory Interface* — reads the vector before turns and camera-relative steps
 - *Movement Execution* — uses the vector to compute the required rotation delta
+
+### Acceptance criteria
 
 1. **WHEN** *movement execution* or a turn operation needs the character's current facing  
    **THEN** the *memory interface* reads the *character facing vector* from the resolved *memory pointer* in the *game process*  
@@ -233,13 +263,16 @@
 
 ---
 
-### Story: Write Character Facing Direction to Memory
+## Story: Write Character Facing Direction to Memory
 
+**Story type:** technical
 **Domain terms:**
 - *Character Rotation Matrix* — written to encode the new facing direction
 - *Character Facing Vector* — the source direction used to compute the matrix
 - *Memory Interface* — writes the new rotation data
 - *Spawned NPC* — updates its facing in the game world
+
+### Acceptance criteria
 
 1. **WHEN** *movement execution* determines a new facing direction (from a turn-to-target or reset)  
    **THEN** the *memory interface* computes the corresponding *character rotation matrix* and writes it to the *game process*  
@@ -251,13 +284,16 @@
 
 ---
 
-### Story: Read Camera Position from Memory
+## Story: Read Camera Position from Memory
 
+**Story type:** technical
 **Domain terms:**
 - *Camera Position* — the X/Y/Z world-space coordinates of the COH game camera in process memory
 - *Memory Interface* — reads *camera position* on demand for camera-relative commands
 - *Camera Rig* — provides the camera object whose position is read
 - *Movement Execution* — uses *camera position* as the destination for camera-relative moves
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers a camera-relative movement command (move to camera position, teleport to camera, or maneuver-with-camera step)  
    **THEN** the *memory interface* reads the *camera position* (X, Y, Z) from the resolved *memory pointer* in the *game process*  
@@ -278,13 +314,16 @@
 
 ---
 
-### Story: Add Movement to Character
+## Story: Add Movement to Character
 
+**Story type:** user
 **Domain terms:**
 - *Character Movement* — the named movement configuration being added
 - *Movement Type* — the locomotion category (Walk/Run/Swim/Fly/Jump) selected on creation
 - *Option Group* — the Movements collection on the character that receives the new entry
 - *Crowd Manager — Movements* — the screen where movement list actions occur
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a character in the *crowd tree* and adds a movement in the *crowd manager — movements* movement list  
    **THEN** a new *character movement* entry appears in the movement list for that character  
@@ -305,14 +344,17 @@
 
 ---
 
-### Story: Edit Movement Parameters
+## Story: Edit Movement Parameters
 
+**Story type:** user
 **Domain terms:**
 - *Character Movement* — the movement being edited
 - *Movement Parameters* — the configurable execution values (step interval, speed factor, approach behavior)
 - *Movement Type* — the locomotion category, changeable in the editor
 - *Distance Limit* — the max travel distance per activation, configurable in the editor
 - *Movement Editor* — the form screen opened from the movement list
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a *character movement* in the movement list and opens the *movement editor*  
    **THEN** the *movement editor* displays the movement's current name, *movement type*, *movement activation key*, *distance limit*, and default flag  
@@ -336,13 +378,16 @@
 
 ---
 
-### Story: Remove Movement from Character
+## Story: Remove Movement from Character
 
+**Story type:** user
 **Domain terms:**
 - *Character Movement* — the movement being removed
 - *Option Group* — the Movements collection from which the entry is deleted
 - *Movement Activation Key* — the key binding cleared when the movement is removed
 - *Crowd Manager — Movements* — the screen where remove actions occur
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a *character movement* in the movement list and removes it  
    **THEN** the *character movement* is permanently deleted from the character's Movements *option group*  
@@ -360,12 +405,15 @@
 
 ---
 
-### Story: Set Default Movement
+## Story: Set Default Movement
 
+**Story type:** user
 **Domain terms:**
 - *Default Movement* — the *character movement* automatically applied when no explicit activation key is pressed
 - *Character Movement* — the movement receiving the default designation
 - *Crowd Manager — Movements* — where the set-default action is invoked
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a *character movement* in the movement list and invokes Set Default  
    **THEN** the selected movement is marked as the *default movement*  
@@ -382,13 +430,16 @@
 
 ---
 
-### Story: Set Movement Activation Key
+## Story: Set Movement Activation Key
 
+**Story type:** user
 **Domain terms:**
 - *Movement Activation Key* — the keyboard key assigned to trigger a *character movement*
 - *Character Movement* — the movement receiving the key assignment
 - *Keyboard Hook* — intercepts presses of the assigned key to dispatch movement
 - *Crowd Manager — Movements* — where set-key is invoked
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a *character movement* and assigns a *movement activation key* via set-key  
    **THEN** the key is saved on the *character movement* and displayed in the movement list's activation key column  
@@ -404,13 +455,16 @@
 
 ---
 
-### Story: Add Default Movements to Character (Walk, Run, Swim)
+## Story: Add Default Movements to Character (Walk, Run, Swim)
 
+**Story type:** user
 **Domain terms:**
 - *Character Movement* — the three default movements (Walk, Run, Swim) added to the character
 - *Movement Type* — Walk, Run, and Swim used as the three types
 - *Option Group* — the Movements *option group* receiving the default set
 - *Default Movement* — Walk is designated as the *default movement* in the default set
+
+### Acceptance criteria
 
 1. **WHEN** the GM invokes Add Default Movements on a character  
    **THEN** three *character movements* are added to the character's Movements *option group*: Walk (type Walk), Run (type Run), Swim (type Swim)  
@@ -432,13 +486,16 @@
 
 ---
 
-### Story: Execute Move NPC Command
+## Story: Execute Move NPC Command
 
+**Story type:** user
 **Domain terms:**
 - *Move NPC Command* — the game command that repositions a *spawned NPC* to a specified world-space location
 - *Movement Execution* — issues the *move NPC command* via the *native game bridge*
 - *Spawned NPC* — the entity repositioned in the game world
 - *Target Registration* — must be confirmed before the command fires
+
+### Acceptance criteria
 
 1. **WHEN** *movement execution* has computed a valid destination and *target registration* is confirmed  
    **THEN** the *move NPC command* is delivered via the *native game bridge* targeting the *spawned NPC* by name  
@@ -455,14 +512,17 @@
 
 ---
 
-### Story: Move Character to Location
+## Story: Move Character to Location
 
+**Story type:** user
 **Domain terms:**
 - *Movement Execution* — drives the step-by-step movement to the target location
 - *Character Position* — read before each step to track progress
 - *Move NPC Command* — issued for each movement step
 - *Distance Limit* — halts movement when the *movement distance count* reaches the limit
 - *Floor Collision* / *Wall Collision* — checked before each step
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a target location on the desktop and triggers Move to Location  
    **THEN** *movement execution* issues *move NPC commands* step by step toward the destination  
@@ -485,13 +545,16 @@
 
 ---
 
-### Story: Move Character to Camera Position
+## Story: Move Character to Camera Position
 
+**Story type:** user
 **Domain terms:**
 - *Camera Position* — the X/Y/Z coordinates of the COH game camera; the movement destination
 - *Movement Execution* — drives the step-by-step movement toward *camera position*
 - *Camera Rig* — provides the camera whose position is the destination
 - *Memory Interface* — reads *camera position* to supply the destination
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Move to Camera Position  
    **THEN** the *memory interface* reads the current *camera position*  
@@ -505,14 +568,17 @@
 
 ---
 
-### Story: Teleport Character to Camera
+## Story: Teleport Character to Camera
 
+**Story type:** user
 **Domain terms:**
 - *Camera Position* — the teleport destination read from process memory
 - *Character Position* — set in one memory write to the *camera position* value
 - *Memory Interface* — reads *camera position*, writes *character position*
 - *Movement Animation* — not played during teleport (instant position change)
 - *Target Registration* — must be confirmed before teleport
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Teleport to Camera and *target registration* is confirmed  
    **THEN** the *memory interface* reads the current *camera position*  
@@ -529,14 +595,17 @@
 
 ---
 
-### Story: Animate Walk/Run/Swim/Fly/Jump Movement
+## Story: Animate Walk/Run/Swim/Fly/Jump Movement
 
+**Story type:** user
 **Domain terms:**
 - *Movement Animation* — the game-side locomotion animation played on the *spawned NPC*
 - *Movement Type* — determines which animation plays (Walk/Run/Swim/Fly/Jump)
 - *Character Movement* — the active movement whose type drives animation selection
 - *Spawned NPC* — the entity on which the animation plays
 - *Movement Execution* — starts and stops the animation
+
+### Acceptance criteria
 
 1. **WHEN** *movement execution* begins a *character movement* activation  
    **THEN** the *movement animation* matching the active *movement type* is started on the *spawned NPC*  
@@ -550,19 +619,23 @@
    **THEN** the *movement animation* on the next execution matches the updated *movement type*  
    **AND** the previous animation is not continued
 
-4. **WHEN** a *character movement* with a Fly or Jump *movement type* is executed  
-   **THEN** the corresponding aerial animation plays and the *spawned NPC* moves in the vertical axis as well  
-   **BUT** floor collision rules still apply; the NPC does not pass through floor geometry unless the movement type explicitly permits it
+4. **WHEN** a *character movement* with a Fly, Jump, or Swim *movement type* is executed  
+   **THEN** the corresponding aerial or aquatic animation plays  
+   **AND** the *character movement's* `levitate` flag is true — the *spawned NPC* is not ground-tethered and may move vertically  
+   **AND** floor collision detection does not apply; the NPC is not anchored to the floor during execution
 
 ---
 
-### Story: Track Movement Distance Count
+## Story: Track Movement Distance Count
 
+**Story type:** user
 **Domain terms:**
 - *Movement Distance Count* — running tally of in-game distance traveled in the current execution
 - *Movement Execution* — increments the count after each step
 - *Distance Limit* — the threshold compared against the count
 - *Character Position* — read before and after each step to compute the per-step distance delta
+
+### Acceptance criteria
 
 1. **WHEN** a *character movement* activation begins  
    **THEN** the *movement distance count* is reset to zero  
@@ -578,13 +651,16 @@
 
 ---
 
-### Story: Enforce Distance Limit per Movement Type
+## Story: Enforce Distance Limit per Movement Type
 
+**Story type:** user
 **Domain terms:**
 - *Distance Limit* — the max travel distance configured on a *character movement*
 - *Movement Distance Count* — the running tally compared against the *distance limit*
 - *Movement Execution* — enforces the limit by halting movement when the count reaches the threshold
 - *Movement Type* — each *movement type* may have a different *distance limit* configured
+
+### Acceptance criteria
 
 1. **WHEN** the *movement distance count* reaches the *distance limit* during a *character movement* execution  
    **THEN** *movement execution* immediately halts step issuance  
@@ -601,13 +677,16 @@
 
 ---
 
-### Story: Detect Floor and Wall Collisions
+## Story: Detect Floor and Wall Collisions
 
+**Story type:** user
 **Domain terms:**
 - *Floor Collision* — the runtime check detecting intersection with a floor surface
 - *Wall Collision* — the runtime check detecting intersection with a wall or obstacle
 - *Movement Execution* — performs collision checks before each movement step
 - *Spawned NPC* — the entity whose path is checked
+
+### Acceptance criteria
 
 1. **WHEN** *movement execution* computes the next movement step  
    **THEN** *floor collision* is checked to detect whether the path intersects a floor surface  
@@ -630,14 +709,17 @@
 
 ---
 
-### Story: Turn Character towards Target
+## Story: Turn Character towards Target
 
+**Story type:** user
 **Domain terms:**
 - *Character Facing Vector* — the current facing direction read before the turn
 - *Character Rotation Matrix* — computed from the target bearing and written to memory
 - *Memory Interface* — reads the facing vector, writes the rotation matrix
 - *Spawned NPC* — changes facing in the game world upon write
 - *Movement Execution* — computes and issues the turn
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Turn to Target on a *spawned NPC*  
    **THEN** the *memory interface* reads the *character facing vector* and the target entity's *character position*  
@@ -655,13 +737,16 @@
 
 ---
 
-### Story: Reset Character Orientation
+## Story: Reset Character Orientation
 
+**Story type:** user
 **Domain terms:**
 - *Character Rotation Matrix* — the identity-equivalent rotation matrix written to reset orientation
 - *Memory Interface* — writes the reset matrix to process memory
 - *Spawned NPC* — returns to default forward-facing orientation in the game world
 - *Movement Execution* — computes and issues the reset
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Reset Character Orientation on a *spawned NPC*  
    **THEN** *movement execution* computes the identity-equivalent *character rotation matrix* (default forward-facing orientation)  
@@ -682,13 +767,16 @@
 
 ---
 
-### Story: Deploy Camera Enable and Disable Scripts
+## Story: Deploy Camera Enable and Disable Scripts
 
+**Story type:** technical
 **Domain terms:**
 - *Camera Enable/Disable Script* — the COH script file deployed to arm or disarm the *camera rig*
 - *Game Bridge* — delivers the script to the COH game session
 - *Camera Rig* — the virtual camera system armed by the enable script
 - *Camera Follow* — terminated when the disable script is deployed
+
+### Acceptance criteria
 
 1. **WHEN** the GM activates the *camera rig* for a session  
    **THEN** the *game bridge* deploys the *camera enable/disable script* (enable variant) to the running COH game session  
@@ -707,13 +795,16 @@
 
 ---
 
-### Story: Render Camera Rig in Game
+## Story: Render Camera Rig in Game
 
+**Story type:** technical
 **Domain terms:**
 - *Camera Rig* — the virtual camera object rendered in the COH game world
 - *Camera Enable/Disable Script* — the mechanism that renders the rig
 - *Camera Position* — the location in the game world where the rig appears after activation
 - *Movement Execution* — requires the rig to be rendered before camera-relative operations
+
+### Acceptance criteria
 
 1. **WHEN** the *camera enable/disable script* (enable variant) is successfully deployed  
    **THEN** the *camera rig* is visible as a camera object in the COH game world at the current camera position  
@@ -730,13 +821,16 @@
 
 ---
 
-### Story: Execute Follow Command
+## Story: Execute Follow Command
 
+**Story type:** user
 **Domain terms:**
 - *Camera Follow* — the mode in which the *camera rig* tracks the targeted *spawned NPC*
 - *Camera Rig* — the virtual camera that follows the character
 - *Spawned NPC* — the entity being followed
 - *Character Position* — tracked continuously while *camera follow* is active
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Follow on a targeted *spawned NPC*  
    **THEN** the *camera rig* enters *camera follow* mode, continuously updating its position to match the *character position* of the targeted *spawned NPC*  
@@ -757,13 +851,16 @@
 
 ---
 
-### Story: Execute Camera Detach Command
+## Story: Execute Camera Detach Command
 
+**Story type:** user
 **Domain terms:**
 - *Camera Detach* — the operation that disconnects the *camera rig* from any followed *spawned NPC*
 - *Camera Rig* — returns to free-roam mode after detach
 - *Camera Follow* — the mode terminated by detach
 - *Game Bridge* — executes the detach *slash command*
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Camera Detach while *camera follow* is active  
    **THEN** the *game bridge* executes the *execute camera detach command* as a *slash command*  
@@ -780,14 +877,17 @@
 
 ---
 
-### Story: Follow Character with Game Camera
+## Story: Follow Character with Game Camera
 
+**Story type:** user
 **Domain terms:**
 - *Camera Follow* — the active tracking mode
 - *Camera Rig* — the virtual camera tracking the character
 - *Spawned NPC* — the character being followed
 - *Character Position* — the position the camera tracks
 - *Crowd Manager — Movements* / *Desktop* — surfaces where Follow is accessible
+
+### Acceptance criteria
 
 1. **WHEN** the GM activates Follow on a *spawned NPC* via the desktop context menu or crowd manager  
    **THEN** *camera follow* is activated for that character  
@@ -804,13 +904,16 @@
 
 ---
 
-### Story: Unfollow Character
+## Story: Unfollow Character
 
+**Story type:** user
 **Domain terms:**
 - *Camera Follow* — the mode being terminated
 - *Camera Rig* — returns to free-roam mode
 - *Spawned NPC* — the character no longer followed
 - *Camera Detach* — the underlying operation executed on unfollow
+
+### Acceptance criteria
 
 1. **WHEN** the GM triggers Unfollow on the currently followed *spawned NPC*  
    **THEN** *camera follow* mode is terminated  
@@ -828,13 +931,16 @@
 
 ---
 
-### Story: Activate Maneuver-with-Camera Mode
+## Story: Activate Maneuver-with-Camera Mode
 
+**Story type:** user
 **Domain terms:**
 - *Maneuver-with-Camera Mode* — the movement input mode driving character movement in the camera's facing direction
 - *Camera Rig* — must be rendered; provides the bearing for movement steps
 - *Movement Execution* — uses the *camera rig's* facing direction as the movement destination bearing
 - *Camera Position* — read on each step as the direction reference
+
+### Acceptance criteria
 
 1. **WHEN** the GM activates Maneuver-with-Camera Mode via the context menu or crowd manager  
    **THEN** *maneuver-with-camera mode* becomes active and subsequent movement commands drive the *spawned NPC* in the *camera rig's* current facing direction  
@@ -851,3 +957,5 @@
 4. **WHEN** the *camera rig* is not rendered and the GM attempts to activate *maneuver-with-camera mode*  
    **THEN** the activation is blocked and the GM sees a message indicating the *camera rig* must be active first  
    **BUT** no mode state change occurs
+
+

@@ -9,13 +9,16 @@
 
 ---
 
-### Load HookCostume DLL from Game Directory
+## Story: Load HookCostume DLL from Game Directory
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** technical
+### Domain terms
 - *HookCostume DLL* — native Win32 DLL in the *COH Game Directory* providing the low-level game API
 - *COH Game Directory* — validated file-system path to the COH installation
 - *Game Bridge* — application service that owns the DLL load and game connection lifecycle
 - *Native Game Bridge* — .NET P/Invoke wrapper that calls DLL entry points
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Bridge* starts initialization and the *HookCostume DLL* is present in the *COH Game Directory*  
    **THEN** the *Game Bridge* successfully loads the *HookCostume DLL* into the application process  
@@ -39,13 +42,16 @@
 
 ---
 
-### Initialize Game Bridge (InitGame)
+## Story: Initialize Game Bridge (InitGame)
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *InitGame* — named initialization operation on the *Game Bridge* that calls the DLL init entry point and starts polling
 - *Game Bridge* — application service owning the full initialization sequence
 - *HookCostume DLL* — must be loaded before *InitGame* is called
 - *Game Loaded Event* — the signal fired when polling confirms the COH client is ready
+
+### Acceptance criteria
 
 1. **WHEN** the *HookCostume DLL* is loaded and the *Game Bridge* calls *InitGame*  
    **THEN** the DLL init entry point executes successfully  
@@ -69,12 +75,15 @@
 
 ---
 
-### Poll until Game Client is Loaded
+## Story: Poll until Game Client is Loaded
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Game Bridge* — owns the polling loop
 - *Game Loaded Event* — fired exactly once when polling confirms the COH client is ready
 - *Game Command* — must be withheld until the *Game Loaded Event* fires
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Bridge* enters the polling state after *InitGame* succeeds  
    **THEN** the *Game Bridge* repeatedly queries the game client's readiness at a fixed interval  
@@ -98,14 +107,17 @@
 
 ---
 
-### Inject Required KeyBinds into Game
+## Story: Inject Required KeyBinds into Game
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** technical
+### Domain terms
 - *Game Bridge* — triggers keybind injection after the *Game Loaded Event*
 - *Game Loaded Event* — the trigger for injection
 - *KeyBind File* — file written to *COH Data Directory* and loaded into COH
 - *Slash Command* — `/bind_load_file` delivers the keybind file to the game
 - *COH Data Directory* — destination for the *KeyBind File*
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Loaded Event* fires  
    **THEN** the *Game Bridge* writes the required *KeyBind File* to the *COH Data Directory*  
@@ -129,12 +141,15 @@
 
 ---
 
-### Extract Costume Pack on First Run
+## Story: Extract Costume Pack on First Run
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Game Bridge* — triggers costume pack extraction after the *Game Loaded Event*
 - *COH Costumes Directory* — destination for the extracted pack contents
 - *Costume File* — the files unpacked from the embedded costume pack
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Loaded Event* fires and no costume pack has been extracted in this installation (first run)  
    **THEN** the *Game Bridge* extracts the embedded costume pack into the *COH Costumes Directory*  
@@ -158,12 +173,15 @@
 
 ---
 
-### Publish Game Loaded Event
+## Story: Publish Game Loaded Event
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Game Loaded Event* — the typed signal published when polling confirms COH is ready
 - *Game Bridge* — the publisher; owns the "published exactly once" invariant
 - *Game Command* — blocked until this event fires; released after
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Bridge* polling loop confirms the COH client is fully loaded  
    **THEN** the *Game Bridge* publishes the *Game Loaded Event* to all registered subscribers  
@@ -187,12 +205,15 @@
 
 ---
 
-### Initialize Native Game Bridge
+## Story: Initialize Native Game Bridge
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** technical
+### Domain terms
 - *Native Game Bridge* — .NET P/Invoke wrapper over the *HookCostume DLL*
 - *HookCostume DLL* — must be loaded before the *Native Game Bridge* can execute calls
 - *Slash Command* — the primary operation type exposed by the *Native Game Bridge*
+
+### Acceptance criteria
 
 1. **WHEN** the *HookCostume DLL* is loaded and the *Game Bridge* initializes the *Native Game Bridge*  
    **THEN** the *Native Game Bridge* successfully binds to the DLL entry points  
@@ -216,12 +237,15 @@
 
 ---
 
-### Execute Slash Command via DLL
+## Story: Execute Slash Command via DLL
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** technical
+### Domain terms
 - *Slash Command* — COH in-game command string delivered to the game engine
 - *Native Game Bridge* — the P/Invoke layer that marshals *Slash Commands* to the *HookCostume DLL*
 - *Game Bridge* — routes commands through the *Native Game Bridge*; enforces the ready precondition
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Bridge* is in the ready state and a *Slash Command* string is submitted for immediate execution  
    **THEN** the *Native Game Bridge* marshals the command to the *HookCostume DLL* entry point  
@@ -249,13 +273,16 @@
 
 ---
 
-### Generate KeyBind File for Game Event
+## Story: Generate KeyBind File for Game Event
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *KeyBind File* — the plain-text file containing *Keybind* entries assembled by the *Game Bridge*
 - *Keybind* — a key-to-command mapping entry written into the file
 - *Game Command* — the unit of work whose *Slash Commands* are encoded in the *Keybind* entries
 - *Slash Command* — the primitive command string embedded in each *Keybind*
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Bridge* receives a *Game Command* that requires keybind delivery  
    **THEN** it assembles the correct *Keybind* entries (key name mapped to *Slash Command* chain) for that command  
@@ -278,14 +305,17 @@
 
 ---
 
-### Execute Spawn NPC Command
+## Story: Execute Spawn NPC Command
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Spawn NPC Command* — *Game Command* that creates a *Spawned NPC* at the camera position
 - *Spawned NPC* — the COH game-world entity instantiated by this command
 - *Model* — the COH NPC archetype name used as the appearance reference
 - *KeyBind File* — the delivery vehicle for the *Spawn NPC Command*
 - *Game Bridge* — must be in the ready state for the command to execute
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Bridge* is ready and the *Spawn NPC Command* is issued with a valid *Model* name and *character* name  
    **THEN** the *Spawn NPC Command* is delivered via a *KeyBind File*  
@@ -310,13 +340,16 @@
 
 ---
 
-### Execute Target by Name Command
+## Story: Execute Target by Name Command
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Target by Name Command* — *Game Command* that sets the COH game's current target to a named *Spawned NPC*
 - *Spawned NPC* — the named entity in the game world that must be targeted before *Load Costume Command* can run
 - *Load Costume Command* — the dependent command that requires a valid target
 - *KeyBind File* — delivery mechanism
+
+### Acceptance criteria
 
 1. **WHEN** the *Target by Name Command* is issued with the *character's* name after the *Spawned NPC* exists in the game world  
    **THEN** COH sets the game's current target to that *Spawned NPC*  
@@ -340,14 +373,17 @@
 
 ---
 
-### Execute Load Costume Command
+## Story: Execute Load Costume Command
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Load Costume Command* — *Game Command* that applies a *Costume File* to the currently targeted *Spawned NPC*
 - *Costume File* — the `.costume` file in the *COH Costumes Directory* whose path is embedded in the command
 - *COH Costumes Directory* — the directory where *Costume Files* must reside for COH to read them
 - *Spawned NPC* — must be the current game target when the command executes
 - *KeyBind File* — delivery vehicle
+
+### Acceptance criteria
 
 1. **WHEN** the *Spawned NPC* is the current game target and the *Load Costume Command* is issued with a valid *Costume File* path  
    **THEN** COH reads the *Costume File* and applies the costume to the targeted *Spawned NPC*  
@@ -371,12 +407,15 @@
 
 ---
 
-### Execute Delete NPC Command
+## Story: Execute Delete NPC Command
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Delete NPC Command* — *Game Command* that removes a *Spawned NPC* from the game world by name
 - *Spawned NPC* — the named game-world entity to remove
 - *Ghost NPC* — also removed via this command when the *Ghost Shadow* is cleared
+
+### Acceptance criteria
 
 1. **WHEN** the *Delete NPC Command* is issued with the name of an existing *Spawned NPC*  
    **THEN** COH removes the *Spawned NPC* from the game world  
@@ -404,12 +443,15 @@
 
 ---
 
-### Store Costume Files in COH Costumes Directory
+## Story: Store Costume Files in COH Costumes Directory
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Costume File* — `.costume` file containing character appearance data
 - *COH Costumes Directory* — `<coh_dir>/costumes/` target directory
 - *Costume Surface* — file path reference stored on a *Costume Identity*
+
+### Acceptance criteria
 
 1. **WHEN** HVT writes a *Costume File* for a *Costume Identity*  
    **THEN** the file is created in the *COH Costumes Directory* at the path specified by the *Costume Surface*  
@@ -433,12 +475,15 @@
 
 ---
 
-### Create Original-Backup Costume Files
+## Story: Create Original-Backup Costume Files
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Original-Backup Costume File* — protected immutable copy of a character's costume created once before first modification
 - *Costume File* — the working file being backed up
 - *COH Costumes Directory* — storage location for both working and backup files
+
+### Acceptance criteria
 
 1. **WHEN** HVT is about to modify a character's *Costume File* for the first time  
    **THEN** it creates an *Original-Backup Costume File* in the *COH Costumes Directory* before making any changes  
@@ -463,12 +508,15 @@
 
 ---
 
-### Write Custom KeyBind Files to COH Data Directory
+## Story: Write Custom KeyBind Files to COH Data Directory
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *KeyBind File* — plain-text file of *Keybind* entries written by the *Game Bridge*
 - *COH Data Directory* — `<coh_dir>/data/` where *KeyBind Files* are written
 - *Keybind* — key-to-command mapping entry in the file
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Bridge* has assembled the *Keybind* entries for a *Game Command*  
    **THEN** it writes the *KeyBind File* to the *COH Data Directory*  
@@ -492,13 +540,16 @@
 
 ---
 
-### Load KeyBind File into Game
+## Story: Load KeyBind File into Game
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *KeyBind File* — the file to load; must exist on disk before the load instruction
 - *Slash Command* — `/bind_load_file <path>` instructs COH to load the file
 - *Native Game Bridge* — delivers the load *Slash Command* to the DLL
 - *Game Bridge* — orchestrates write-then-load sequence
+
+### Acceptance criteria
 
 1. **WHEN** the *KeyBind File* has been written to the *COH Data Directory*  
    **THEN** the *Game Bridge* issues the `/bind_load_file <path>` *Slash Command* via the *Native Game Bridge*  
@@ -526,13 +577,16 @@
 
 ---
 
-### Add Identity to Character
+## Story: Add Identity to Character
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Identity* — named visual appearance entry in a *Character's* Identities *Option Group*
 - *Character* — the entity whose identity list receives the new entry
 - *Identity List* — the body panel of the *Crowd Manager — Identities* screen showing identities for the selected *Character*
 - *Option Group* — the Identities container on the *Character*
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a *Character* in the *Crowd Tree* and chooses Add in the *Identity List*  
    **THEN** a new *Identity* entry is added to the *Character's* Identities *Option Group*  
@@ -557,14 +611,17 @@
 
 ---
 
-### Set Identity Type (Model or Costume)
+## Story: Set Identity Type (Model or Costume)
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Identity* — the entry whose type is being set
 - *Model Identity* — *Identity* subtype backed by a COH model name
 - *Costume Identity* — *Identity* subtype backed by a *Costume File*
 - *Costume Surface* — the path field shown when type is Costume
 - *Identity List* — the panel where type is changed
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects an *Identity* in the *Identity List* and sets its type to Model  
    **THEN** the *Identity* is configured as a *Model Identity*  
@@ -590,13 +647,16 @@
 
 ---
 
-### Assign Costume Surface to Identity
+## Story: Assign Costume Surface to Identity
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Costume Surface* — file path referencing the *Costume File* for a *Costume Identity*
 - *Costume Identity* — the *Identity* subtype that requires a *Costume Surface*
 - *COH Costumes Directory* — the directory in which the referenced *Costume File* must reside
 - *Identity List* — the panel where assignment occurs
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a *Costume Identity* in the *Identity List* and provides a valid *Costume File* path  
    **THEN** the *Costume Surface* is saved on the *Identity*  
@@ -621,13 +681,16 @@
 
 ---
 
-### Set Default Identity
+## Story: Set Default Identity
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Default Identity* — the *Identity* automatically activated when the *Character* is first spawned
 - *Identity* — the entry receiving or losing the default flag
 - *Identity List* — the panel showing the default marker
 - *Character* — the entity whose identities are being configured
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects an *Identity* and chooses Set Default in the *Identity List*  
    **THEN** the default flag is set on that *Identity*  
@@ -653,15 +716,18 @@
 
 ---
 
-### Set Active Identity
+## Story: Set Active Identity
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Active Identity* — the *Identity* currently rendered as a *Spawned NPC* in the game world
 - *Costume Identity* — activated via spawn + target + load costume sequence
 - *Model Identity* — activated via spawn command alone
 - *Spawned NPC* — the game-world entity created by activation
 - *Game Bridge* — must be in the ready state; executes the activation pipeline
 - *Animation* — plays on the *Spawned NPC* after activation completes
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a *Model Identity* and chooses Set Active  
    **THEN** the *Game Bridge* issues the *Spawn NPC Command* with the model name  
@@ -690,13 +756,16 @@
 
 ---
 
-### Remove Identity from Character
+## Story: Remove Identity from Character
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Identity* — the entry being removed from the *Character's* Identities *Option Group*
 - *Active Identity* — if removed, the *Spawned NPC* must be despawned first
 - *Default Identity* — if removed, the default flag is cleared from the *Character*
 - *Identity List* — panel updated after removal
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects an *Identity* that is not active and chooses Remove  
    **THEN** the *Identity* is removed from the *Character's* Identities *Option Group*  
@@ -725,14 +794,17 @@
 
 ---
 
-### Load Costume File for Active Identity
+## Story: Load Costume File for Active Identity
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Costume File* — the `.costume` file applied to the *Spawned NPC*
 - *Active Identity* — the *Costume Identity* being rendered
 - *Load Costume Command* — the *Game Command* that applies the file
 - *COH Costumes Directory* — where the *Costume File* must exist
 - *Target by Name Command* — must precede the *Load Costume Command*
+
+### Acceptance criteria
 
 1. **WHEN** a *Costume Identity* is activated and the *Spawned NPC* is present in the game world  
    **THEN** the *Game Bridge* issues the *Target by Name Command* to select the *Spawned NPC*  
@@ -757,14 +829,17 @@
 
 ---
 
-### Spawn Character with Model Identity
+## Story: Spawn Character with Model Identity
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Model Identity* — the *Identity* being activated; carries a COH model name
 - *Spawn NPC Command* — the *Game Command* that creates the *Spawned NPC*
 - *Spawned NPC* — appears at the camera position in the game world after this command
 - *Game Bridge* — must be in the ready state
 - *Model* — the COH NPC archetype used as the appearance
+
+### Acceptance criteria
 
 1. **WHEN** the GM activates a *Model Identity* on a *Character* with the *Game Bridge* ready  
    **THEN** the *Game Bridge* issues the *Spawn NPC Command* with the *Model* name and *character* name  
@@ -789,14 +864,17 @@
 
 ---
 
-### Switch Active Identity on Spawned Character
+## Story: Switch Active Identity on Spawned Character
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Active Identity* — switching replaces the current *Active Identity* with a new one
 - *Persistent Abilities* — must be stopped before the switch completes
 - *Spawned NPC* — the existing NPC is despawned before the new identity is spawned
 - *Delete NPC Command* — used to remove the old *Spawned NPC*
 - *Game Bridge* — orchestrates the full switch sequence
+
+### Acceptance criteria
 
 1. **WHEN** the GM sets a new *Active Identity* on a *Character* that already has an *Active Identity*  
    **THEN** the *Game Bridge* first stops all *Persistent Abilities* on the *Character*  
@@ -822,13 +900,16 @@
 
 ---
 
-### Play Animation on Identity Load
+## Story: Play Animation on Identity Load
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Animation* — the spawn animation played on the *Spawned NPC* immediately after identity load
 - *Spawned NPC* — the recipient of the animation
 - *Active Identity* — the identity whose load triggers the animation
 - *Game Bridge* — issues the animation command after spawning
+
+### Acceptance criteria
 
 1. **WHEN** an *Identity* activation sequence completes (NPC spawned and costume loaded if applicable)  
    **THEN** the *Game Bridge* plays the spawn *Animation* on the *Spawned NPC*  
@@ -852,12 +933,15 @@
 
 ---
 
-### Stop Persistent Abilities on Identity Switch
+## Story: Stop Persistent Abilities on Identity Switch
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Persistent Abilities* — (boundary, owned by Increment 3) abilities with ongoing visual effects tied to the current costume state
 - *Active Identity* — the identity being replaced in the switch
 - *Character* — the entity whose *Persistent Abilities* are stopped
+
+### Acceptance criteria
 
 1. **WHEN** the GM initiates an identity switch on a *Character* that has one or more active *Persistent Abilities*  
    **THEN** all *Persistent Abilities* on that *Character* are stopped before the old *Active Identity* is despawned  
@@ -885,14 +969,17 @@
 
 ---
 
-### Superimpose Ghost on Model Character
+## Story: Superimpose Ghost on Model Character
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Ghost Shadow* — semi-transparent NPC overlay on a *Model Identity* character
 - *Ghost NPC* — the *Spawned NPC* carrying the *Ghost Costume File*
 - *Ghost Costume File* — derived from the *Original-Backup Costume File*
 - *Ghost Alignment* — positions the *Ghost NPC* to match the *Character*
 - *Model Identity* — the only identity type that supports ghost shadows
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a *Character* with an active *Model Identity* and chooses Add Ghost in the *Identity List*  
    **THEN** HVT generates the *Ghost Costume File* from the *Character's* *Original-Backup Costume File*  
@@ -919,12 +1006,15 @@
 
 ---
 
-### Create Ghost Costume File from Original
+## Story: Create Ghost Costume File from Original
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Ghost Costume File* — *Costume File* derived from the *Original-Backup Costume File* using ghost material treatment
 - *Original-Backup Costume File* — immutable source; never modified
 - *COH Costumes Directory* — storage location for the resulting *Ghost Costume File*
+
+### Acceptance criteria
 
 1. **WHEN** HVT generates a *Ghost Costume File* from the *Character's* *Original-Backup Costume File*  
    **THEN** the ghost material or reduced-opacity treatment is applied to all costume parts in the source  
@@ -948,13 +1038,16 @@
 
 ---
 
-### Align Ghost Position and Orientation with Character
+## Story: Align Ghost Position and Orientation with Character
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Ghost Alignment* — operation that matches the *Ghost NPC's* position and facing to the *Character's*
 - *Ghost NPC* — the entity being repositioned
 - *Spawned NPC* — the *Character's* primary NPC, whose position is the reference
 - *Game Bridge* — reads position and facing, then writes to the *Ghost NPC*
+
+### Acceptance criteria
 
 1. **WHEN** the *Ghost NPC* has been spawned  
    **THEN** the *Game Bridge* reads the *Character's* current in-game position and facing orientation  
@@ -978,13 +1071,16 @@
 
 ---
 
-### Remove Ghost from Desktop
+## Story: Remove Ghost from Desktop
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Ghost Shadow* — the overlay being deactivated
 - *Ghost NPC* — the *Spawned NPC* to be removed via *Delete NPC Command*
 - *Delete NPC Command* — despawns the *Ghost NPC* by name
 - *Identity List* — shows the ghost indicator that is cleared after removal
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects a *Character* with an active *Ghost Shadow* and chooses Remove Ghost  
    **THEN** the *Game Bridge* issues the *Delete NPC Command* targeting the *Ghost NPC* by name  
@@ -1013,13 +1109,16 @@
 
 ---
 
-### Create Persistent-FX Costume Variants
+## Story: Create Persistent-FX Costume Variants
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Persistent-FX Costume Variant* — *Costume File* derived from the *Original-Backup Costume File* with persistent-ability FX layers
 - *Original-Backup Costume File* — immutable source for derivation
 - *COH Costumes Directory* — target for the generated variant file
 - *Persistent Abilities* — the abilities whose FX are embedded in this variant
+
+### Acceptance criteria
 
 1. **WHEN** HVT generates a *Persistent-FX Costume Variant* from the *Character's* *Original-Backup Costume File*  
    **THEN** the persistent-ability FX layers are overlaid on the source costume data  
@@ -1043,12 +1142,15 @@
 
 ---
 
-### Create Ghost Costume Files
+## Story: Create Ghost Costume Files
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Ghost Costume File* — *Costume File* with ghost material treatment derived from the *Original-Backup Costume File*
 - *Original-Backup Costume File* — the source; not modified by this operation
 - *COH Costumes Directory* — the output directory
+
+### Acceptance criteria
 
 1. **WHEN** HVT creates *Ghost Costume Files* for a *Character*  
    **THEN** the ghost material treatment is applied to the *Original-Backup Costume File* data  
@@ -1076,13 +1178,16 @@
 
 ---
 
-### Load Available Models from Models.txt
+## Story: Load Available Models from Models.txt
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Models.txt* — plain-text file in the *COH Game Directory* enumerating NPC model names
 - *Model List* — the in-memory collection loaded from *Models.txt*
 - *Game Loaded Event* — the trigger for this load
 - *COH Game Directory* — contains *Models.txt*
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Loaded Event* fires  
    **THEN** HVT reads *Models.txt* from the *COH Game Directory* and loads the *Model List* into memory  
@@ -1106,15 +1211,18 @@
 
 ---
 
-### Create Crowd from COH Model List
+## Story: Create Crowd from COH Model List
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Model Browser* — the modal screen where the GM selects *Models* and triggers crowd creation
 - *Model* — a selected COH NPC archetype
 - *Crowd* — the new entity created in the *Crowd Repository*
 - *Character* — one generated per selected *Model* in the new *Crowd*
 - *Model Identity* — pre-configured on each generated *Character*
 - *Model List* — the data source displayed in the *Model Browser*
+
+### Acceptance criteria
 
 1. **WHEN** the GM opens the *Model Browser*, selects one or more *Models*, and chooses Create Crowd from Selection  
    **THEN** a new *Crowd* is added to the *Crowd Repository*  
@@ -1140,12 +1248,15 @@
 
 ---
 
-### Select Models to Include in Crowd
+## Story: Select Models to Include in Crowd
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Model Browser* — the modal panel showing the *Model List*
 - *Model* — a named COH NPC archetype in the list
 - *Model List* — the full collection displayed in the *Model Browser*
+
+### Acceptance criteria
 
 1. **WHEN** the GM opens the *Model Browser*  
    **THEN** the *Model List* is displayed with each *Model* name and type classification visible  
@@ -1170,13 +1281,16 @@
 
 ---
 
-### Generate Characters with Model Identities
+## Story: Generate Characters with Model Identities
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Character* — the entity generated per selected *Model*
 - *Model Identity* — the pre-configured *Identity* placed on each generated *Character*
 - *Model* — the COH archetype; its name becomes the default *Character* name and *Model Identity* reference
 - *Crowd* — the container for the generated *Characters*
+
+### Acceptance criteria
 
 1. **WHEN** the GM confirms crowd creation from a *Model* selection  
    **THEN** HVT generates one *Character* per selected *Model*  
@@ -1201,13 +1315,16 @@
 
 ---
 
-### Load Models List for Crowd Creation
+## Story: Load Models List for Crowd Creation
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *Model List* — in-memory collection of available *Models*; data source for the *Model Browser*
 - *Models.txt* — the source file read to populate the *Model List*
 - *Game Loaded Event* — triggers the load
 - *Model Browser* — blocked until the *Model List* is loaded
+
+### Acceptance criteria
 
 1. **WHEN** the *Game Loaded Event* fires  
    **THEN** HVT reads *Models.txt* from the *COH Game Directory* and populates the *Model List*  
@@ -1228,3 +1345,5 @@
 5. **WHEN** the session ends and a new session begins  
    **THEN** the *Model List* is cleared from memory  
    **AND** *Models.txt* is re-read on the next *Game Loaded Event* to ensure the list reflects the current COH installation
+
+

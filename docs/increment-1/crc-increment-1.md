@@ -46,14 +46,14 @@ The COH Game Directory is the configured file-system path to the City of Heroes 
 
 ### **COH Game Directory**
 stored configuration path           | (file path from user settings)
-COH data directory root             | (derived path: stored path / data /)
+COH Data Directory                  | (derived path: stored path / data /)
                                     |   invariant: crowd repository file operations cannot proceed until this path is confirmed as a valid COH installation directory; path is fixed for the session once accepted
 
 ### references
 Source: docs/increment-1/ubiquitous-language-increment-1.md · lines 59–76
 
 ### decisions made
-- `COH data directory` is a derived path property on `COH Game Directory`; no independent CRC block — its storage-location role is captured as `COH data directory root` and its constraint is folded into the invariant on `stored configuration path`
+- `COH data directory` is a derived path property on `COH Game Directory`; no independent CRC block — its storage-location role is captured as `COH Data Directory` and its constraint is folded into the invariant on `stored configuration path`
 - Validation of the path is triggered by Application Shell; COH Game Directory owns only the stored path value and the derived data directory root
 
 ---
@@ -65,14 +65,16 @@ A Character is the named data entity the GM creates and organizes in crowds. In 
 ### **Character**
 character name                      | (text)
                                     |   invariant: name must be unique within every crowd the character belongs to at any moment
+parent crowd                        | Crowd
+                                    |   invariant: set once at creation; the crowd in which this character was originally created; immutable thereafter
 option groups                       | Option Group
 rename                              | (text)
                                     |   invariant: rename propagates to all crowds the character belongs to; name must remain unique in every crowd it belongs to at the moment of rename
-delete from crowd                   | (containing Crowd, Linked Member, All Characters Crowd)
-                                    |   invariant: deleting from one crowd removes only that crowd's reference if the character is a linked member elsewhere; deleting from the last crowd removes the character from the repository entirely
+delete from crowd                   | (containing Crowd, All Characters Crowd)
+                                    |   invariant: deleting from one crowd removes only that crowd's reference if the character appears elsewhere; deleting from the last crowd removes the character from the repository entirely
 clone                               | Crowd, Crowd Member
                                     |   invariant: the clone and the original share no state
-linked clone                        | Crowd, Crowd Member, Linked Member
+linked clone                        | Crowd, Crowd Member
 cut to clipboard                    | Clipboard, Crowd Member
 
 ### **Option Group**
@@ -86,6 +88,7 @@ Source: docs/increment-1/ubiquitous-language-increment-1.md · lines 79–97
 ### decisions made
 - Character implements `Crowd Node`; rename and delete live on Character; rename propagation to all crowds is automatic because Crowd Member wraps the same Character instance — updating the name on the instance is reflected everywhere it is referenced
 - clone, linked clone, and cut-to-clipboard are Character-specific operations; they originate from a specific Character instance
+- `parent crowd` is a property on Character: set once at creation to the crowd the character was originally created in; used to derive linked status — a character whose `parent crowd` differs from its containing crowd is "linked"; no separate `Linked Member` class required
 - Option Group is modeled as a class because its three-group invariant (always present, always exactly three, fixed canonical names) is independently testable and the named groups are the anchor for Identities, Abilities, and Movements in future increments
 
 ---
@@ -114,8 +117,10 @@ apply name filter                   | Name Filter, Crowd Member
 paste member from clipboard         | Clipboard, Crowd Member
 flatten to numbered independent copies | Character, Crowd Member
                                     |   invariant: after flatten-copy, no two resulting characters share any state; nested crowds are left in place
-link crowd member as linked member  | Crowd Member, Character, Linked Member
-copy memberships as linked members to crowd | Crowd Member, Character, Linked Member
+link character as member            | Crowd Member, Character
+                                    |   note: adds a CrowdMember wrapping the same Character instance; linked status is derived — character.parentCrowd ≠ this crowd
+copy memberships as members to crowd | Crowd Member, Character
+                                    |   note: adds each direct character member as a CrowdMember in targetCrowd; linked status is derived per member
 concept tag                         | (Animals, Armed Forces, Civilians, Vehicles, Supernatural, or absent)
 group type                          | (gang, crew, squad, or absent)
 COH faction tag                     | (COH faction name or absent)
@@ -131,25 +136,24 @@ isDirty()                           | (delegates to wrapped Character or Crowd)
 ### **Nested Crowd : Crowd**
 parent crowd                        | Crowd
 
-### **Linked Member : Crowd Member**
-shared character identity           | Crowd, Character
-                                    |   invariant: all appearances of a linked member across crowds share the same underlying character instance; renaming from any crowd renames the character everywhere
+> **Linked Member** — retired. A character is "linked" in a crowd when `character.parentCrowd ≠ containingCrowd`. No separate class is needed: adding the same Character instance as a CrowdMember in a second crowd is all that is required. Renaming from any crowd renames the character everywhere because all CrowdMembers wrap the same Character instance. The derived `isLinked()` check on CrowdMember surfaces the linked status for display.
 
 ### **Crowd Tree**
 top-level crowd members             | Crowd Member
 active browse mode                  | (By Concept, By Gangs/Crews/Squads, By COH Structure, All Characters)
 active name filter                  | Name Filter
                                     |   invariant: filter applied live; clearing restores all nodes; crowds with no matching descendants collapse; those with at least one match expand
-linked member indicator             | Linked Member
+linked member indicator             | (derived: character.parentCrowd ≠ containing crowd)
 active character tab                | (Identities active; Abilities and Movements inactive in Increment 1)
                                     |   invariant: Crowd Tree is always the first surface the GM sees after startup
-load active crowd files on open     | Active Crowd List, Crowd File, Crowd
+open crowd files via browse-activate | Active Crowd List, Crowd File, Crowd
+                                    |   note: actual file load delegates to Crowd Repository; this is the UI trigger
 browse and activate crowd files     | Active Crowd List, Crowd File, Crowd
                                     |   invariant: each selected file is loaded one at a time; a failed file is reported but does not abort the remaining selections
-save dirty crowds                   | Crowd, Crowd File, Daily Backup
+trigger save dirty crowds           | Crowd Repository, Crowd, Crowd File, Daily Backup
                                     |   invariant: only crowds with dirty flag set are written; each to its own source file; clean crowds are not touched
                                     |   invariant: a dirty crowd with no source file is automatically routed to save crowd to new file; cancellation leaves it unsaved
-save crowd to new file              | Crowd, Crowd File, Active Crowd List
+trigger save crowd to new file      | Crowd Repository, Crowd, Crowd File, Active Crowd List
                                     |   invariant: on success the chosen path becomes the crowd's source file, appended to active crowd list, dirty flag cleared
                                     |   invariant: only top-level crowds may be saved to new file; nested crowd selection is rejected
 add crowd to collection             | Crowd, Crowd Member
@@ -183,9 +187,11 @@ Source: docs/increment-1/ubiquitous-language-increment-1.md · lines 100–201
 - operations distributed: clone/linked-clone/cut-to-clipboard live on `Character`; paste/flatten/link-member/copy-memberships live on `Crowd`; nest/move live on `Crowd Tree`
 - `Nested Crowd : Crowd` carries only the parent-crowd-participation delta; all management behavior is inherited from Crowd
 - `All Characters Crowd : Crowd` carries only the aggregation and protection delta; Crowd Tree enforces the protection invariant
-- `Linked Member : Crowd Member` carries only the shared-identity delta; decorator behaviors (expanded, remove, isDirty) are inherited from Crowd Member
+- `Linked Member` is retired: a character is "linked" when `character.parentCrowd ≠ crowdMember.containingCrowd`; the linked indicator in Crowd Tree is derived; the renaming-everywhere invariant is maintained automatically because all CrowdMembers across all crowds wrap the same Character instance; no subclass needed
 - `concept tag`, `group type`, and `COH faction tag` are classification properties on `Crowd` that drive the three browse modes in `Crowd Tree`; absent when unset — crowds without a tag appear under "Uncategorized" / "Untagged"
 - `nest crowd inside crowd` and `move crowd member to crowd` both live on `Crowd Tree` because both involve tree structure; they are distinct: nest changes a crowd's parent, move changes a member's crowd
+- `link character as member` replaces the former `link crowd member as linked member`: the operation adds a CrowdMember wrapping the same Character instance in the target crowd; linked status is derived from `character.parentCrowd ≠ containingCrowd` on CrowdMember
+- `Crowd Tree` is the UI surface for structural and file-triggered operations; it initiates file operations by delegating to `Crowd Repository`. `Crowd Repository` owns the actual file I/O lifecycle. The responsibilities on `Crowd Tree` are the user-facing triggers; the invariants describe `Crowd Repository`'s execution contract.
 
 ---
 

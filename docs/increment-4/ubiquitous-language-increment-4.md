@@ -14,7 +14,7 @@ date: 2026-05-17
 **Terms**:
 - **Character Movement**
   - **character movement** — a named movement configuration the GM assigns to a character; defined by *movement type*, *movement parameters*, a *movement activation key*, a *distance limit*, and a default flag; lives in the character's Movements *option group*
-  - **movement type** — the locomotion category of a *character movement*; one of Walk, Run, Swim, Fly, or Jump; determines which *movement animation* plays and which surfaces the movement may traverse
+  - **movement type** — the locomotion category of a *character movement*; one of Walk, Run, Swim, Fly, or Jump; determines which *movement animation* plays; whether the character is ground-tethered is determined by the *levitate* property (derived from movement type)
   - **movement parameters** — the configurable values that govern how a *character movement* executes (step interval, speed factor, approach behavior)
   - **movement activation key** — the keyboard key the GM assigns to trigger a *character movement*; read by the *keyboard hook* to dispatch movement on the active character
   - **default movement** — the *character movement* applied automatically when a character begins moving without an explicit selection; at most one per character carries this designation
@@ -77,8 +77,15 @@ The *camera rig* is the GM's scene-navigation tool and the prerequisite for all 
 ### movement_type
 
 - is a type property of *character movement* — one of Walk, Run, Swim, Fly, or Jump; set via the type dropdown in the *movement editor*
-- determines which *movement animation* the *spawned NPC* plays during *movement execution* and which surfaces the movement may traverse
+- determines which *movement animation* the *spawned NPC* plays during *movement execution*; it also determines the *levitate* value (Walk and Run → `false`; Swim, Fly, Jump → `true`)
 - **Invariant:** every *character movement* must have a *movement type*; a movement with no type assigned cannot be saved
+
+### levitate
+
+- is a boolean property of *character movement* — the single execution difference between movement types
+- is `true` for Swim, Fly, and Jump: the character is not ground-tethered; vertical displacement is permitted and floor collision detection does not apply
+- is `false` for Walk and Run: the character stays on the floor; floor collision detection applies
+- is derived from *movement type* and does not require separate GM configuration; the movement editor sets it automatically based on the selected type
 
 ### movement_parameters
 
@@ -114,7 +121,8 @@ The *camera rig* is the GM's scene-navigation tool and the prerequisite for all 
 ### Decisions made
 
 - `character movement` is a concept: distinct identity (named, unique within the character's Movements option group), state (movement type, parameters, activation key, distance limit, default flag), behavior (created, edited, removed, played, dispatched by keyboard hook), and invariants; the central authored object of this increment
-- `movement type` is a type property, not a subtype: all five locomotion categories share identical authoring structure and the same movement-execution pipeline; the difference is which animation plays and which environments are traversable — a type-property distinction, not a structural behavioral divergence at the authoring level
+- `movement type` is a type property, not a subtype: all five locomotion categories share the same execution pipeline; the type drives animation selection only — a data distinction, not a behavioral one
+- `levitate` is a boolean property that captures the single execution difference between movement types: Walk and Run have `levitate = false` (ground-tethered); Swim, Fly, and Jump have `levitate = true` (not ground-tethered, vertical displacement permitted, floor collision skipped); no arc physics is modeled
 - `movement parameters`, `movement activation key`, `default movement`, `distance limit` are properties of *character movement*, documented as stub headings because their invariants are directly testable
 - `movement distance count` earns a concept block: distinct behavior (track, compare against limit, halt, reset), its own story (Track Movement Distance Count), testable independently of the parent *character movement*
 - Scope-fit: crowd movement is deferred to Increment 6; all terms pass the single-character movement scope

@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04917CD0-ADF4-41BB-B5E8-139A09E43722}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Module.HeroVirtualTabletop</RootNamespace>
+    <AssemblyName>Module.HeroVirtualTabletop</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Settings\Settings.Designer.cs">
+      <Link>Settings.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="AnimatedAbilities\AbilityEditorView.xaml.cs">
+      <DependentUpon>AbilityEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnimatedAbilities\AbilityEditorViewModel.cs" />
+    <Compile Include="AnimatedAbilities\ActiveAttackView.xaml.cs">
+      <DependentUpon>ActiveAttackView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnimatedAbilities\ActiveAttackViewModel.cs" />
+    <Compile Include="AnimatedAbilities\AnimatedAbility.cs" />
+    <Compile Include="AnimatedAbilities\AnimatedElement.cs" />
+    <Compile Include="AnimatedAbilities\AnimationResource.cs" />
+    <Compile Include="AnimatedAbilities\AttackConfigurationView.xaml.cs">
+      <DependentUpon>AttackConfigurationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnimatedAbilities\AttackConfigurationViewModel.cs" />
+    <Compile Include="AnimatedAbilities\AttackTargetSelectionView.xaml.cs">
+      <DependentUpon>AttackTargetSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnimatedAbilities\AttackTargetSelectionViewModel.cs" />
+    <Compile Include="AnimatedAbilities\AutoFireAttackConfigurationView.xaml.cs">
+      <DependentUpon>AutoFireAttackConfigurationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AnimatedAbilities\AutoFireAttackConfigurationViewModel.cs" />
+    <Compile Include="AnimatedAbilities\CollisionEngine.cs" />
+    <Compile Include="AnimatedAbilities\DelayManager.cs" />
+    <Compile Include="AnimatedAbilities\ResourceRepository.cs" />
+    <Compile Include="Characters\CharacterEditorView.xaml.cs">
+      <DependentUpon>CharacterEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Characters\CharacterEditorViewModel.cs" />
+    <Compile Include="Characters\CharacterManagementMenuControl.xaml.cs">
+      <DependentUpon>CharacterManagementMenuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Crowds\CharacterCrowdMainView.xaml.cs">
+      <DependentUpon>CharacterCrowdMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Crowds\CharacterCrowdMainViewModel.cs" />
+    <Compile Include="Crowds\CrowdFromModelsView.xaml.cs">
+      <DependentUpon>CrowdFromModelsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Crowds\CrowdFromModelsViewModel.cs" />
+    <Compile Include="Desktop\DesktopContextMenu.cs" />
+    <Compile Include="Desktop\DesktopKeyEventHandler.cs" />
+    <Compile Include="Desktop\DesktopMouseEventHandler.cs" />
+    <Compile Include="HCSIntegration\HCSIntegrationLib.cs" />
+    <Compile Include="HCSIntegration\HCSIntegrator.cs" />
+    <Compile Include="Identities\Camera.cs" />
+    <Compile Include="Identities\IdentityEditorView.xaml.cs">
+      <DependentUpon>IdentityEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Identities\IdentityEditorViewModel.cs" />
+    <Compile Include="Library\Converters\AnimationTypeToAnimationIconTextConverter.cs" />
+    <Compile Include="Library\Converters\AttackConverters.cs" />
+    <Compile Include="Library\Converters\characterComparer.cs" />
+    <Compile Include="Library\Converters\DistanceCounterTextColorConverter.cs" />
+    <Compile Include="Library\Converters\CrowdNameConverter.cs" />
+    <Compile Include="Library\Converters\IdentityTypeConverter.cs" />
+    <Compile Include="Library\Converters\MovementConverters.cs" />
+    <Compile Include="Library\Events\Events.cs" />
+    <Compile Include="Library\ProcessCommunicator\HoveredElement.cs" />
+    <Compile Include="Library\Sevices\ITargetObserver.cs" />
+    <Compile Include="Library\Sevices\TargetObserver.cs" />
+    <Compile Include="Library\Utility\AsyncDelegateExecuter.cs" />
+    <Compile Include="Library\Utility\DllInjector.cs" />
+    <Compile Include="Library\Utility\FlattenRecursive.cs" />
+    <Compile Include="Library\Utility\IconInteractionUtility.cs" />
+    <Compile Include="Library\Utility\KeyBoardHook.cs" />
+    <Compile Include="Movements\Movement.cs" />
+    <Compile Include="Movements\MovementEditorView.xaml.cs">
+      <DependentUpon>MovementEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Movements\MovementEditorViewModel.cs" />
+    <Compile Include="OptionGroups\OptionGroupView.xaml.cs">
+      <DependentUpon>OptionGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OptionGroups\OptionGroupViewModel.cs" />
+    <Compile Include="Library\GameCommunicator\GameCommandExecution.cs" />
+    <Compile Include="Library\GameCommunicator\HookCostumeGameCommandExecutor.cs" />
+    <Compile Include="Library\GameCommunicator\IGameCommandExecutor.cs" />
+    <Compile Include="Library\GameCommunicator\KeyBindsGenerator.cs" />
+    <Compile Include="Library\GameCommunicator\NoOpGameCommandExecutor.cs" />
+    <Compile Include="Identities\Identity.cs" />
+    <Compile Include="Crowds\CrowdMember.cs" />
+    <Compile Include="Library\Enumerations\Enumerations.cs" />
+    <Compile Include="Library\HeroVirtualTabletopModule.cs" />
+    <Compile Include="Library\Utility\WindowsUtilities.cs" />
+    <Compile Include="Characters\Character.cs" />
+    <Compile Include="Crowds\Crowd.cs" />
+    <Compile Include="Library\ProcessCommunicator\IMemoryElement.cs" />
+    <Compile Include="Library\ProcessCommunicator\IMemoryElementPosition.cs" />
+    <Compile Include="Library\ProcessCommunicator\IMemoryElementTargeter.cs" />
+    <Compile Include="Library\ProcessCommunicator\IMemoryInstance.cs" />
+    <Compile Include="Library\ProcessCommunicator\MemoryElement.cs" />
+    <Compile Include="Library\ProcessCommunicator\MemoryElementPosition.cs" />
+    <Compile Include="Library\ProcessCommunicator\MemoryInstance.cs" />
+    <Compile Include="OptionGroups\CharacterOption.cs" />
+    <Compile Include="OptionGroups\OptionGroup.cs" />
+    <Compile Include="OptionGroups\OptionListBox.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Crowds\CrowdRepository.cs" />
+    <Compile Include="Library\Utility\Helper.cs" />
+    <Compile Include="Crowds\CharacterExplorerViewModel.cs" />
+    <Compile Include="Library\HeroVirtualTabletopMainViewModel.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Rosters\ActiveCharacterWidgetView.xaml.cs">
+      <DependentUpon>ActiveCharacterWidgetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rosters\ActiveCharacterWidgetViewModel.cs" />
+    <Compile Include="Rosters\RosterExplorerViewModel.cs" />
+    <Compile Include="Crowds\CharacterExplorerView.xaml.cs">
+      <DependentUpon>CharacterExplorerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Crowds\CharacterMenuControl.xaml.cs">
+      <DependentUpon>CharacterMenuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Library\HeroVirtualTabletopMainView.xaml.cs">
+      <DependentUpon>HeroVirtualTabletopMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Library\HeroVirtualTabletopModuleView.xaml.cs">
+      <DependentUpon>HeroVirtualTabletopModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rosters\RosterExplorerView.xaml.cs">
+      <DependentUpon>RosterExplorerView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Settings\Settings.settings">
+      <Link>Settings.settings</Link>
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\MOVElements.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Frameworks\Framework.WPF\Framework.WPF.csproj">
+      <Project>{8af7c885-3d47-4837-84b1-9761b9737f3f}</Project>
+      <Name>Framework.WPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Module.Shared\Module.Shared.csproj">
+      <Project>{13aa1a7e-bf19-4823-ae8b-b8d7c9693aec}</Project>
+      <Name>Module.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fasm.NET.xml" />
+    <EmbeddedResource Include="Resources\enable_camera.txt" />
+    <EmbeddedResource Include="Resources\disable_camera.txt" />
+    <EmbeddedResource Include="Resources\attack.mnu" />
+    <EmbeddedResource Include="Resources\Bullseye.cur" />
+    <EmbeddedResource Include="Resources\FXElements.csv" />
+    <EmbeddedResource Include="Resources\DefaultCharactersWithAbilities.data" />
+    <EmbeddedResource Include="Resources\character.mnu" />
+    <EmbeddedResource Include="Resources\costumes.zip" />
+    <None Include="Resources\Models.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Refactored\Caliburn.Micro.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Fasm.NET.1.70.03\lib\Fasm.NET.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Frameworks\Framework.WPF\bin\Debug\Framework.WPF.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Refactored\HeroVirtualTabletop.dll">
+      <Aliases>HVTRefactored</Aliases>
+    </ReferencePath>
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\Resources\irrKlang.NET4.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\MemorySharp.1.2.0\lib\MemorySharp.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Microsoft.CSharp\v4.0_4.0.0.0__b03f5f7f11d50a3a\Microsoft.CSharp.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.Mvvm.Desktop.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.Mvvm.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Prism.Mvvm.1.1.1\lib\net45\Microsoft.Practices.Prism.SharedInterfaces.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\bin\Debug\Microsoft.Xna.Framework.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.Shared\bin\Debug\Module.Shared.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Moq.4.5.29\lib\net45\Moq.dll" />
+    <ReferencePath Include="C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\NUnit.2.6.3\lib\nunit.framework.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\AutoFixture.AutoMoq.3.50.2\lib\net40\Ploeh.AutoFixture.AutoMoq.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\AutoFixture.3.50.2\lib\net40\Ploeh.AutoFixture.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_64\PresentationCore\v4.0_4.0.0.0__31bf3856ad364e35\PresentationCore.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\PresentationFramework\v4.0_4.0.0.0__31bf3856ad364e35\PresentationFramework.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Prism.Core.6.1.0\lib\net45\Prism.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Prism.Unity.6.1.1\lib\net45\Prism.Unity.Wpf.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Prism.Wpf.6.1.0\lib\net45\Prism.Wpf.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Data.DataSetExtensions\v4.0_4.0.0.0__b77a5c561934e089\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_64\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.IO.Compression\v4.0_4.0.0.0__b77a5c561934e089\System.IO.Compression.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.IO.Compression.FileSystem\v4.0_4.0.0.0__b77a5c561934e089\System.IO.Compression.FileSystem.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.ObjectModel\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.ObjectModel.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Runtime\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Runtime.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Threading.Tasks\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Threading.Tasks.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\bin\Debug\System.Windows.Interactivity.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xaml\v4.0_4.0.0.0__b77a5c561934e089\System.Xaml.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml.Linq\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\ToastNotifications.2.2.5\lib\net40\ToastNotifications.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\ToastNotifications.Messages.2.2.5\lib\net40\ToastNotifications.Messages.dll" />
+    <ReferencePath Include="C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\WindowsBase\v4.0_4.0.0.0__31bf3856ad364e35\WindowsBase.dll" />
+    <ReferencePath Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\packages\Extended.Wpf.Toolkit.2.8\lib\net40\Xceed.Wpf.Toolkit.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\AnimatedAbilities\AbilityEditorView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\AnimatedAbilities\ActiveAttackView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\AnimatedAbilities\AttackConfigurationView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\AnimatedAbilities\AttackTargetSelectionView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\AnimatedAbilities\AutoFireAttackConfigurationView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Characters\CharacterEditorView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Characters\CharacterManagementMenuControl.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Crowds\CharacterCrowdMainView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Crowds\CharacterExplorerView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Crowds\CharacterMenuControl.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Crowds\CrowdFromModelsView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Identities\IdentityEditorView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Movements\MovementEditorView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\OptionGroups\OptionGroupView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Library\HeroVirtualTabletopMainView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Library\HeroVirtualTabletopModuleView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Rosters\ActiveCharacterWidgetView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\Rosters\RosterExplorerView.g.cs" />
+    <Compile Include="C:\hero-desktop\city-of-heroes-virtual-tabletop\HerovirtualTableTop\HeroVirtualTabletop.WPF\Modules\Module.HeroVirtualTabletop\obj\Debug\GeneratedInternalTypeHelper.g.cs" />
+  </ItemGroup>
+</Project>

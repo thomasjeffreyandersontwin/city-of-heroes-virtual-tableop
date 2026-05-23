@@ -2592,7 +2592,7 @@
                     "1. **WHEN** *movement execution* begins a *character movement* activation  \n   **THEN** the *movement animation* matching the active *movement type* is started on the *spawned NPC*  \n   **AND** Walk type plays the walk cycle, Run plays the run cycle, Swim the swim cycle, Fly the fly cycle, Jump the jump arc",
                     "2. **WHEN** *movement execution* halts (distance limit reached, collision, or GM stop)  \n   **THEN** the *movement animation* stops on the *spawned NPC*  \n   **AND** the *spawned NPC* returns to its idle pose",
                     "3. **WHEN** the *movement type* of the active *character movement* changes mid-session  \n   **THEN** the *movement animation* on the next execution matches the updated *movement type*  \n   **AND** the previous animation is not continued",
-                    "4. **WHEN** a *character movement* with a Fly or Jump *movement type* is executed  \n   **THEN** the corresponding aerial animation plays and the *spawned NPC* moves in the vertical axis as well  \n   **BUT** floor collision rules still apply; the NPC does not pass through floor geometry unless the movement type explicitly permits it"
+                    "4. **WHEN** a *character movement* with a Fly, Jump, or Swim *movement type* is executed  \n   **THEN** the corresponding aerial or aquatic animation plays  \n   **AND** the *character movement's* `levitate` flag is true — the *spawned NPC* is not ground-tethered and may move vertically  \n   **AND** floor collision detection does not apply; the NPC is not anchored to the floor during execution"
                   ],
                   "scenarios": []
                 },

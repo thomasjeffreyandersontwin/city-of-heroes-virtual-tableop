@@ -135,6 +135,15 @@ namespace Module.HeroVirtualTabletop.Movements
             }
             set
             {
+                // Enforce per-character key uniqueness: clear any other movement that holds the same key
+                if (value != Keys.None && character != null && character.Movements != null)
+                {
+                    foreach (CharacterMovement other in character.Movements)
+                    {
+                        if (!ReferenceEquals(other, this) && other.activationKey == value)
+                            other.activationKey = Keys.None;
+                    }
+                }
                 activationKey = value;
                 OnPropertyChanged("ActivationKey");
             }

@@ -5,14 +5,17 @@
 
 ---
 
-## Load FX Resource Catalog (FxRepo.data)
+## Story: Load FX Resource Catalog (FxRepo.data)
 
-**Domain terms** (vocabulary for this story's AC):
+**Story type:** user
+### Domain terms
 - *FX Resource Catalog* — the in-memory resource store for visual-effects entries, loaded from `FxRepo.data`
 - *FxRepo.data* — the binary data file in the COH data directory that persists FX resource entries
 - *FX Resource* — a named visual-effects entry in the catalog
 - *COH Data Directory* — the file-system location where catalog data files are stored
 - *Resource Catalog* — base concept: in-memory store, loaded-state guard
+
+### Acceptance criteria
 
 1. **WHEN** the application starts and `FxRepo.data` is present in the *COH Data Directory*
    **THEN** the *FX Resource Catalog* is loaded into memory with all *FX Resource* entries from that file
@@ -31,13 +34,16 @@
 
 ---
 
-## Load Movement Resource Catalog (MoveRepo.data)
+## Story: Load Movement Resource Catalog (MoveRepo.data)
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Movement Resource Catalog* — the in-memory store for movement resource entries, loaded from `MoveRepo.data`
 - *MoveRepo.data* — the binary data file in the COH data directory for movement entries
 - *Movement Resource* — a named movement entry in the catalog
 - *COH Data Directory* — file-system storage location for catalog files
+
+### Acceptance criteria
 
 1. **WHEN** the application starts and `MoveRepo.data` is present in the *COH Data Directory*
    **THEN** the *Movement Resource Catalog* is loaded into memory with all *Movement Resource* entries
@@ -55,13 +61,16 @@
 
 ---
 
-## Load Sound Resource Catalog (SoundRepo.data)
+## Story: Load Sound Resource Catalog (SoundRepo.data)
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Sound Resource Catalog* — the in-memory store for sound resource entries, loaded from `SoundRepo.data`
 - *SoundRepo.data* — the binary data file for sound entries
 - *Sound Resource* — a named audio entry in the catalog
 - *COH Data Directory* — file-system storage location
+
+### Acceptance criteria
 
 1. **WHEN** the application starts and `SoundRepo.data` is present in the *COH Data Directory*
    **THEN** the *Sound Resource Catalog* is loaded into memory with all *Sound Resource* entries
@@ -80,13 +89,16 @@
 
 ---
 
-## Seed Resource Catalogs from Embedded CSV on First Run
+## Story: Seed Resource Catalogs from Embedded CSV on First Run
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Embedded CSV* — default resource data bundled in the application assembly for all three catalog types
 - *Resource Catalog* — the persistent in-memory store seeded from this embedded data on first run
 - *FX Resource Catalog*, *Movement Resource Catalog*, *Sound Resource Catalog* — the three typed catalogs seeded
 - *COH Data Directory* — where the resulting binary data files are written after seeding
+
+### Acceptance criteria
 
 1. **WHEN** the application starts and no `FxRepo.data` is found in the *COH Data Directory*
    **THEN** the *FX Resource Catalog* is seeded from the *Embedded CSV* for FX resources
@@ -109,13 +121,16 @@
 
 ---
 
-## Browse FX Resources for Ability Authoring
+## Story: Browse FX Resources for Ability Authoring
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *FX Resource* — a named visual-effects entry available for assignment to a *FX Element*
 - *FX Resource Catalog* — the source collection for the resource picker
 - *Ability Editor* — the screen where the GM authors *Animated Abilities* and adds elements
 - *FX Element* — the animation element type whose resource is selected through this browse flow
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Add FX in the *Ability Editor* element list
    **THEN** a resource picker opens showing all *FX Resource* entries from the *FX Resource Catalog*
@@ -135,13 +150,16 @@
 
 ---
 
-## Browse Movement Resources for Ability Authoring
+## Story: Browse Movement Resources for Ability Authoring
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Movement Resource* — a named movement entry for assignment to a *Movement Element*
 - *Movement Resource Catalog* — source for the movement resource picker
 - *Ability Editor* — the screen hosting the element list
 - *Movement Element* — the animation element type whose resource is selected here
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Add MOV in the *Ability Editor* element list
    **THEN** a resource picker opens showing all *Movement Resource* entries from the *Movement Resource Catalog*
@@ -160,13 +178,16 @@
 
 ---
 
-## Browse Sound Resources for Ability Authoring
+## Story: Browse Sound Resources for Ability Authoring
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Sound Resource* — a named audio entry for assignment to a *Sound Element*
 - *Sound Resource Catalog* — source for the sound resource picker
 - *Ability Editor* — the authoring screen
 - *Sound Element* — the animation element type configured through this flow
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Add Sound in the *Ability Editor* element list
    **THEN** a resource picker opens showing all *Sound Resource* entries from the *Sound Resource Catalog*
@@ -185,13 +206,16 @@
 
 ---
 
-## Create Animated Ability
+## Story: Create Animated Ability
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Animated Ability* — the named composable action sequence created on a character
 - *Crowd Manager — Abilities* — the screen where the GM manages the ability list for a selected character
 - *Abilities Option Group* — the collection on a character that holds its animated abilities
 - *Activation Key* — optional key field on the ability, unset at creation
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Create in the ability list on the *Crowd Manager — Abilities* screen
    **THEN** a new *Animated Ability* is added to the selected character's *Abilities Option Group* with a default name and empty element list
@@ -212,13 +236,16 @@
 
 ---
 
-## Edit Animated Ability
+## Story: Edit Animated Ability
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Animated Ability* — the ability being edited
 - *Ability Editor* — the screen opened by the edit action; contains ability config form and element list
 - *Activation Key* — configurable key field on the ability
 - *Animation Element* — ordered items in the element list managed from this screen
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Edit on an *Animated Ability* in the ability list
    **THEN** the *Ability Editor* opens pre-populated with the ability's current name, *Activation Key*, persistence flag, and attack flag
@@ -241,12 +268,15 @@
 
 ---
 
-## Delete Animated Ability
+## Story: Delete Animated Ability
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Animated Ability* — the ability being removed
 - *Crowd Manager — Abilities* — the screen hosting the delete action
 - *Animation Elements* — the elements owned by the ability, removed with it
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Delete on an *Animated Ability* in the ability list
    **THEN** the ability and all its *Animation Elements* are permanently removed from the character's *Abilities Option Group*
@@ -267,13 +297,16 @@
 
 ---
 
-## Set Ability Activation Key
+## Story: Set Ability Activation Key
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Activation Key* — the keyboard key bound to an *Animated Ability* for keyboard-triggered dispatch
 - *Animated Ability* — the ability the key is assigned to
 - *Keyboard Hook* — the system hook that listens for this key to dispatch the ability
 - *Ability List* — the list in *Crowd Manager — Abilities* showing the assigned key
+
+### Acceptance criteria
 
 1. **WHEN** the GM uses the set-key action on an *Animated Ability* in the ability list
    **THEN** the *Activation Key* is updated on that ability and displayed in the key column
@@ -292,13 +325,16 @@
 
 ---
 
-## Toggle Ability Persistence
+## Story: Toggle Ability Persistence
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Persistent Ability* — an *Animated Ability* with the persistence flag set
 - *Animated Ability* — the ability whose flag is toggled
 - *Active Identity* — the identity whose load triggers persistent ability replay
 - *Crowd Manager — Abilities* — the screen where the toggle action is available
+
+### Acceptance criteria
 
 1. **WHEN** the GM toggles persistence on an *Animated Ability* that is currently non-persistent
    **THEN** the persistence flag is set and the persistent indicator appears in the ability list row
@@ -318,12 +354,15 @@
 
 ---
 
-## Set Default Ability for Character
+## Story: Set Default Ability for Character
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Default Ability* — the *Animated Ability* auto-activated when the character is first spawned
 - *Animated Ability* — the ability receiving the default flag
 - *Spawned NPC* — the game-world entity activated when the character spawns
+
+### Acceptance criteria
 
 1. **WHEN** the GM uses set-default on an *Animated Ability* in the ability list
    **THEN** that ability receives the default flag and the default indicator is shown in its row
@@ -343,13 +382,16 @@
 
 ---
 
-## Add Movement Element to Ability
+## Story: Add Movement Element to Ability
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Movement Element* — the animation element that applies a *Movement Resource* to the *Spawned NPC*
 - *Animated Ability* — the ability receiving the new element
 - *Movement Resource* — the resource selected from the *Movement Resource Catalog*
 - *Element List* — the ordered list in the *Ability Editor*
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Add MOV in the *Ability Editor* element list and selects a *Movement Resource*
    **THEN** a new *Movement Element* is added to the ability's element list at the bottom position
@@ -369,13 +411,16 @@
 
 ---
 
-## Add Sound Element to Ability
+## Story: Add Sound Element to Ability
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Sound Element* — the animation element that plays a *Sound Resource*
 - *Animated Ability* — the ability receiving the element
 - *Sound Resource* — the resource selected from the *Sound Resource Catalog*
 - *Element List* — the ordered list in the *Ability Editor*
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Add Sound in the *Ability Editor* element list and selects a *Sound Resource*
    **THEN** a new *Sound Element* is added to the ability's element list at the bottom position
@@ -395,14 +440,17 @@
 
 ---
 
-## Add FX Element to Ability
+## Story: Add FX Element to Ability
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *FX Element* — the animation element that plays a *FX Resource* on the *Spawned NPC*
 - *Animated Ability* — the ability receiving the element
 - *FX Resource* — the resource selected from the *FX Resource Catalog*
 - *Element List* — ordered list in the *Ability Editor*
 - *Spawned NPC* — the game-world target
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Add FX in the *Ability Editor* element list and selects a *FX Resource*
    **THEN** a new *FX Element* is added to the ability's element list at the bottom position
@@ -422,12 +470,15 @@
 
 ---
 
-## Add Reference Element to Another Ability
+## Story: Add Reference Element to Another Ability
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Reference Element* — the animation element that delegates to another *Animated Ability* by name
 - *Animated Ability* — both the owning ability and the referenced ability
 - *Element List* — ordered list in the *Ability Editor*
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Add Reference in the *Ability Editor* element list and names a target ability on the same character
    **THEN** a new *Reference Element* is added showing the referenced ability name and order position
@@ -450,13 +501,16 @@
 
 ---
 
-## Add Sequence Element (And/Or)
+## Story: Add Sequence Element (And/Or)
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Sequence Element* — the animation element that groups children with And or Or execution type
 - *Animation Sequence* — And: all children sequentially; Or: one child at random
 - *Animated Ability* — the ability receiving the sequence element
 - *Element List* — ordered list in the *Ability Editor*
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Add Sequence in the *Ability Editor* element list and chooses And or Or
    **THEN** a new *Sequence Element* of the specified type is added to the element list
@@ -480,12 +534,15 @@
 
 ---
 
-## Add Pause Element
+## Story: Add Pause Element
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Pause Element* — the animation element that introduces a timed delay
 - *Animated Ability* — the ability receiving the element
 - *Element List* — ordered list in the *Ability Editor*
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Add Pause in the *Ability Editor* element list and configures a duration
    **THEN** a new *Pause Element* is added to the element list with the specified duration and order position
@@ -504,13 +561,16 @@
 
 ---
 
-## Add Load-Identity Element
+## Story: Add Load-Identity Element
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Load-Identity Element* — the animation element that triggers an identity switch mid-sequence
 - *Identity* — the named identity on the same character activated by this element
 - *Animated Ability* — the ability receiving the element
 - *Element List* — ordered list in the *Ability Editor*
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Add Identity in the *Ability Editor* element list and names a target identity on the same character
    **THEN** a new *Load-Identity Element* is added showing the target identity name and order position
@@ -529,12 +589,15 @@
 
 ---
 
-## Reorder Animation Elements via Drag-Drop
+## Story: Reorder Animation Elements via Drag-Drop
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Animation Element* — the ordered composition unit being reordered
 - *Element List* — the ordered display in the *Ability Editor*
 - *Animated Ability* — the ability whose element order is being modified
+
+### Acceptance criteria
 
 1. **WHEN** the GM drag-drops an *Animation Element* from one position to another in the element list
    **THEN** the element moves to the target position
@@ -557,13 +620,16 @@
 
 ---
 
-## Play Animated Ability on Character
+## Story: Play Animated Ability on Character
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Animated Ability* — the ability being played
 - *Spawned NPC* — the game-world entity on which the ability executes
 - *Animation Element* — each typed unit executed in order during play
 - *Crowd Manager — Abilities* — screen providing the play action
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Play on an *Animated Ability* in the ability list and the character is spawned
    **THEN** the ability begins executing its *Animation Elements* in order on the target *Spawned NPC*
@@ -582,12 +648,15 @@
 
 ---
 
-## Stop Active Ability
+## Story: Stop Active Ability
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Animated Ability* — the currently executing ability to be stopped
 - *Active Ability Indicator* — the visual marker on the executing ability's row
 - *Crowd Manager — Abilities* — the screen where the stop action is available
+
+### Acceptance criteria
 
 1. **WHEN** the GM selects Stop on an *Animated Ability* that is currently executing
    **THEN** execution is halted immediately; the current element is abandoned
@@ -607,12 +676,15 @@
 
 ---
 
-## Execute Animation Sequence (And: sequential, Or: random)
+## Story: Execute Animation Sequence (And: sequential, Or: random)
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Animation Sequence* — the execution pattern: And (all in order) or Or (one at random)
 - *Sequence Element* — the element holding child elements and the And/Or type
 - *Animation Element* — the child elements within the sequence
+
+### Acceptance criteria
 
 1. **WHEN** a *Sequence Element* with type And executes
    **THEN** every child *Animation Element* is executed one after another in ascending order
@@ -632,12 +704,15 @@
 
 ---
 
-## Maintain Persistent Ability across Identity Changes
+## Story: Maintain Persistent Ability across Identity Changes
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Persistent Ability* — the ability with the persistence flag set
 - *Active Identity* — the identity being changed
 - *Spawned NPC* — the game-world entity on which the ability replays
+
+### Acceptance criteria
 
 1. **WHEN** a character's *Active Identity* is changed while a *Persistent Ability* is executing
    **THEN** the *Persistent Ability* is stopped before the identity switch begins
@@ -656,13 +731,16 @@
 
 ---
 
-## Load Persistent Costume on Deactivation
+## Story: Load Persistent Costume on Deactivation
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Persistent-FX Costume Variant* — the costume file carrying persistent ability visual layers
 - *Persistent Ability* — the ability whose deactivation triggers the costume reload
 - *Spawned NPC* — the game-world entity receiving the costume reload
 - *Load Costume Command* — the game command that applies the costume file
+
+### Acceptance criteria
 
 1. **WHEN** a *Persistent Ability* is deactivated (persistence flag cleared while the ability is active)
    **THEN** the *Persistent-FX Costume Variant* is loaded onto the *Spawned NPC* via the *Load Costume Command*
@@ -682,12 +760,15 @@
 
 ---
 
-## Add Default Abilities to Character
+## Story: Add Default Abilities to Character
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Default Ability Set* — the standard named abilities attached to new characters: Recovery, Stun Recovery, Pass Turn, Half Phase Action, Hold Action, Draw A Weapon, Dodge, Strike, Haymaker, Prone, Move By, Move Through, Grab, Disarm, Block, Set, Sweep, Rapid Fire, Off Ground, Generic Damage/Power
 - *Animated Ability* — each ability in the default set
 - *Abilities Option Group* — the character collection receiving the abilities
+
+### Acceptance criteria
 
 1. **WHEN** the Add Default Abilities operation is applied to a character
    **THEN** all 20 named abilities from the *Default Ability Set* are added to the character's *Abilities Option Group*
@@ -707,12 +788,15 @@
 
 ---
 
-## Refresh Ability Activation Eligibility
+## Story: Refresh Ability Activation Eligibility
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Ability Activation Eligibility* — the computed readiness state gating keyboard-triggered dispatch
 - *Animated Ability* — the ability whose eligibility is evaluated
 - *Keyboard Hook* — the hook that consults eligibility before dispatching
+
+### Acceptance criteria
 
 1. **WHEN** the eligibility conditions for an *Animated Ability* change (e.g., character spawned/despawned, ability execution starts/stops, activation key assigned/cleared)
    **THEN** the *Ability Activation Eligibility* is refreshed and reflects the updated state
@@ -731,11 +815,14 @@
 
 ---
 
-## Install Low-Level Keyboard Hook
+## Story: Install Low-Level Keyboard Hook
 
-**Domain terms**:
+**Story type:** technical
+### Domain terms
 - *Keyboard Hook* — the Windows system-level hook intercepting key events
 - *Ability Dispatch* — the dispatch action enabled by the installed hook
+
+### Acceptance criteria
 
 1. **WHEN** the application starts and the hook installation is requested
    **THEN** the *Keyboard Hook* is installed as a low-level Windows keyboard hook
@@ -755,13 +842,16 @@
 
 ---
 
-## Route Key Events when Game Window is Focused
+## Story: Route Key Events when Game Window is Focused
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Key Routing* — the *Keyboard Hook* behavior that matches a key press to an ability
 - *Game Window Focus* — the OS state where the COH game window is foreground
 - *Ability Dispatch* — the triggered action when a key matches an ability's *Activation Key*
 - *Active Character* — the character whose abilities are searched for a key match
+
+### Acceptance criteria
 
 1. **WHEN** the COH game window is the foreground window and the GM presses a key
    **THEN** the *Keyboard Hook* evaluates *Key Routing* against the *Active Character's* abilities
@@ -779,12 +869,15 @@
 
 ---
 
-## Route Key Events when Application Window is Focused
+## Story: Route Key Events when Application Window is Focused
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Application Window Focus* — the OS state where the HVT application window is foreground
 - *Key Routing* — the routing evaluation performed by the *Keyboard Hook*
 - *Ability Dispatch* — the triggered action when a match is found
+
+### Acceptance criteria
 
 1. **WHEN** the HVT application window is the foreground window and the GM presses a key
    **THEN** the *Keyboard Hook* evaluates *Key Routing* using the same logic as *Game Window Focus*
@@ -803,13 +896,16 @@
 
 ---
 
-## Dispatch Ability Activation Keys to Characters
+## Story: Dispatch Ability Activation Keys to Characters
 
-**Domain terms**:
+**Story type:** user
+### Domain terms
 - *Ability Dispatch* — the action that executes an *Animated Ability* triggered by a key press
 - *Activation Key* — the key on an *Animated Ability* that triggers dispatch
 - *Active Character* — the character whose abilities are searched
 - *Ability Activation Eligibility* — the guard that must pass before dispatch fires
+
+### Acceptance criteria
 
 1. **WHEN** a key press is received through *Key Routing* and the *Active Character* has an *Animated Ability* with a matching *Activation Key*
    **THEN** *Ability Dispatch* retrieves that ability and initiates execution of its element list on the character's *Spawned NPC*
@@ -829,3 +925,5 @@
 5. **WHEN** dispatch fires successfully and the ability completes
    **THEN** the active indicator is cleared on the ability row
    **AND** the *Ability Activation Eligibility* is refreshed to eligible for the next key press
+
+
